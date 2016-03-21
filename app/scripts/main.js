@@ -1,7 +1,7 @@
 /*global hackathon-for-hunger-frontend, $*/
 
 
-window.hackathon-for-hunger-frontend = {
+window.hackathon_for_hunger_frontend = {
   Models: {},
   Collections: {},
   Views: {},
@@ -14,5 +14,5 @@ window.hackathon-for-hunger-frontend = {
 
 $(document).ready(function () {
   'use strict';
-  hackathon-for-hunger-frontend.init();
+  hackathon_for_hunger_frontend.init();
 });

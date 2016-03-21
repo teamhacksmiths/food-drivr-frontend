@@ -2,6 +2,8 @@
 var LIVERELOAD_PORT = 35729;
 var SERVER_PORT = 9000;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
+var serveStatic = require('serve-static');
+
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
@@ -68,15 +70,29 @@ module.exports = function (grunt) {
       options: {
         port: grunt.option('port') || SERVER_PORT,
         // change this to '0.0.0.0' to access the server from outside
-        hostname: 'localhost'
+        hostname: '0.0.0.0'
       },
+      // In order to solve the issue for the livereload connect server, I added the
+      // serveStatic package and replaced the following:
+      // livereload: {
+      //   options: {
+      //     middleware: function (connect) {
+      //       return [
+      //         lrSnippet,
+      //         mountFolder(connect, '.tmp'),
+      //         mountFolder(connect, yeomanConfig.app)
+      //       ];
+      //     }
+      //   }
+      // },
+      // With the livereload task shown below
       livereload: {
         options: {
-          middleware: function (connect) {
+          middleware: function(connect) {
             return [
-              lrSnippet,
-              mountFolder(connect, '.tmp'),
-              mountFolder(connect, yeomanConfig.app)
+              serveStatic('.tmp'),
+              connect().use('/bower_components', serveStatic('./bower_components')),
+              serveStatic(yeomanConfig.app)
             ];
           }
         }
@@ -106,10 +122,10 @@ module.exports = function (grunt) {
     },
     open: {
       server: {
-        path: 'http://localhost:<%= connect.options.port %>'
+        path: 'http://0.0.0.0:<%= connect.options.port %>'
       },
       test: {
-        path: 'http://localhost:<%= connect.test.options.port %>'
+        path: 'http://0.0.0.0:<%= connect.test.options.port %>'
       }
     },
     clean: {
@@ -132,7 +148,7 @@ module.exports = function (grunt) {
       all: {
         options: {
           run: true,
-          urls: ['http://localhost:<%= connect.test.options.port %>/index.html']
+          urls: ['http://0.0.0.0:<%= connect.test.options.port %>/index.html']
         }
       }
     },
