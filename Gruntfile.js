@@ -70,7 +70,7 @@ module.exports = function (grunt) {
       options: {
         port: grunt.option('port') || SERVER_PORT,
         // change this to '0.0.0.0' to access the server from outside
-        hostname: '0.0.0.0'
+        hostname: 'localhost'
       },
       // In order to solve the issue for the livereload connect server, I added the
       // serveStatic package and replaced the following:
@@ -122,10 +122,10 @@ module.exports = function (grunt) {
     },
     open: {
       server: {
-        path: 'http://0.0.0.0:<%= connect.options.port %>'
+        path: 'http://localhost:<%= connect.options.port %>'
       },
       test: {
-        path: 'http://0.0.0.0:<%= connect.test.options.port %>'
+        path: 'http://localhost:<%= connect.test.options.port %>'
       }
     },
     clean: {
@@ -148,7 +148,7 @@ module.exports = function (grunt) {
       all: {
         options: {
           run: true,
-          urls: ['http://0.0.0.0:<%= connect.test.options.port %>/index.html']
+          urls: ['http://localhost:<%= connect.test.options.port %>/index.html']
         }
       }
     },
