@@ -90,6 +90,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function(connect) {
             return [
+              lrSnippet,
               serveStatic('.tmp'),
               connect().use('/bower_components', serveStatic('./bower_components')),
               serveStatic(yeomanConfig.app)
