@@ -13,6 +13,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    background-color: #F2F2F2;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -21,11 +22,6 @@ body {
 .footer {
     padding-left: 15px;
     padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-    border-bottom: 1px solid #e5e5e5;
 }
 
 /* Make the masthead heading the same height as the navigation */
@@ -77,8 +73,8 @@ body {
   .header,
   .marketing,
   .footer {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0px;
+    padding-right: 0px;
   }
   /* Space out the masthead */
   .header {
@@ -88,4 +84,31 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+/*
+ * CUSTOM CSS BEGINS HERE
+ */
+.text-grey {
+  color: #B5B5B5;
+}
+
+.text-flex {
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-margin-left {
+  margin-left: auto;
+}
+
+.btn-custom {
+  color: #8F8F8F;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: white;
+  padding: 14px 150px;
 }
