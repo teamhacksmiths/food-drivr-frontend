@@ -30,13 +30,15 @@ TBD
 
 ## Authors
 
-* **Frank Robert**
-* **Cody Perry**
-* **Ryan Collins**
+* **[Frank Robert](https://github.com/OfficialPhrank)**
+* **[Cody Perry](https://github.com/cperry24)**
+* **[Ryan Collins](https://github.com/RyanCCollins)**
+* **[Jacob Bryan](https://github.com/bryanj4)**
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
+
 
