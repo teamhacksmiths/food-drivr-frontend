@@ -32,5 +32,5 @@
   "scripts": {
     "start": "grunt server",
     "setup": "npm install && bower install"
-  },
+  }
 }
