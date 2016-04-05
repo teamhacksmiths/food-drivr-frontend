@@ -26,27 +26,32 @@ body {
 
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 100px;
+  padding-bottom: 19px;
+  font-size: 22px;
+}
+
+.header {
+  margin: 0 5%;
 }
 
 /* Custom page footer */
 .footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
+  padding-top: 19px;
+  color: #777;
+  text-align: center;
 }
 
 .container-narrow > hr {
-    margin: 30px 0;
+  margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
 .jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .jumbotron .btn {
@@ -61,6 +66,69 @@ body {
 
 .marketing p + h4 {
   margin-top: 28px;
+}
+
+/*
+ * CUSTOM CSS BEGINS HERE
+ */
+h1 {
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 60px;
+ }
+
+a:hover {
+  text-decoration: none;
+}
+
+.text-grey {
+  color: #B5B5B5;
+}
+
+.text-flex {
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-margin-left {
+  margin-left: auto;
+}
+
+.container {
+  min-height: 74vh;
+}
+
+.btn-custom {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #8F8E8F;
+  padding: 14px 60px;
+  border-style: none;
+  border-radius: 0;
+  width: 80%;
+  margin: 0 10%;
+}
+
+.form-control {
+  background: #F8F8F8;
+  height: 65px;
+  width: 80%;
+  margin: 0 10%;
+  font-size: 25px;
+  padding-left: 40px;
+  border-radius: 0;
+  border-color: #FFF;
+}
+
+/* Responsive: Portrait After Mobile Large and up */
+@media screen and (min-width: 426px) {
+  .header {
+    margin: 0 16%;
+  }
 }
 
 /* Responsive: Portrait tablets and up */
@@ -84,31 +152,4 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
-}
-
-/*
- * CUSTOM CSS BEGINS HERE
- */
-.text-grey {
-  color: #B5B5B5;
-}
-
-.text-flex {
-  display: flex;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-margin-left {
-  margin-left: auto;
-}
-
-.btn-custom {
-  color: #8F8F8F;
-  font-size: 30px;
-  font-weight: bold;
-  background-color: white;
-  padding: 14px 150px;
 }
