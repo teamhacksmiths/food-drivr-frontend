@@ -9,6 +9,9 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "backbone.localStorage": "^1.1.16",
+    "react": "^0.14.8",
+    "backbone-react-component": "^0.10.0"
   }
 }
