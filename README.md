@@ -5,10 +5,10 @@ You will want to install the following packages globally:
 * grunt-cli 
 * bower 
 * yeoman
-* babel-cli
+
 This one liner will do the trick for you
 ```
-npm install -g grunt-cli bower yo babel-cli
+npm install -g grunt-cli bower yo
 ```
 
 ### Installing
@@ -22,7 +22,7 @@ npm start
 ```
 To compile JSX to JS, run
 ```
-npm compile
+npm run compile
 ```
 To compile everything to deployment, run
 ```
