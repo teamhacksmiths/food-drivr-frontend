@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Waste Not Food Taxi - Powered by Food Drivr&#8482;</title>
     <meta name="description" content="">
@@ -9,32 +10,44 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-  </head>
-  <body>
+</head>
+
+<body>
     <!--[if lt IE 10]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="container">
-      <div class="header text-flex">
+    <div class="header text-flex">
         <h3 class="text-grey">Food Taxi Logo</h3>
         <h3 class="text-margin-left"><a class="text-grey" href="#">Login</a></h3>
-      </div>
-      <h1 class="text-center">Food Taxi Headline</h1>
-      <p class="lead text-center text-grey">Waste Not Food Taxi is simple. Organizations with leftover edible food sign up with our service and our volunteers are notified via an app to accept your donation. We send over a volunteer to pick up the food and get it to the nearest hunger relief partner.</p>
-      <p class="text-center"><a class="btn-custom text-muted" href="#">Join Us</a></p>
-      <div class="footer">
+    </div>
+    <div class="container">
+        <h1 class="text-center">Food Taxi Headline</h1>
+        <p class="lead text-center text-grey">Waste Not Food Taxi is simple. Organizations with leftover edible food sign up with our service and our volunteers are notified via an app to accept your donation. We send over a volunteer to pick up the food and get it to the nearest hunger relief
+            partner.
+        </p>
+        <p class="text-center">
+            <button class="btn btn-custom" href="#">Join Us</button>
+        </p>
+    </div>
+    <div class="footer">
         <p>Made with ♥ by Team Hacksmiths</p>
-      </div>
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
+    <!--
+        **
+        To add for tracking purposes in the future.
+        **
+
+        <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
     e=o.createElement(i);r=o.getElementsByTagName(i)[0];
     e.src='https://www.google-analytics.com/analytics.js';
     r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
     ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
+
+    </script>-->
+
     <!-- build:js scripts/vendor.js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
@@ -57,6 +70,19 @@
     <!-- build:js({.tmp,app}) scripts/main.js -->
     <script src="scripts/main.js"></script>
     <script src="scripts/templates.js"></script>
+    <script src="scripts/collections/donors.js"></script>
+    <script src="scripts/collections/drivers.js"></script>
+    <script src="scripts/collections/donations.js"></script>
+    <script src="scripts/collections/businesses.js"></script>
+    <script src="scripts/models/donor.js"></script>
+    <script src="scripts/models/driver.js"></script>
+    <script src="scripts/models/user.js"></script>
+    <script src="scripts/models/donation.js"></script>
+    <script src="scripts/models/recipient.js"></script>
     <!-- endbuild -->
-  </body>
+    <script src="https://fb.me/react-0.14.8.min.js"></script>
+    <script src="https://fb.me/react-dom-0.14.8.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/6.1.19/browser.min.js"></script>
+</body>
+
 </html>

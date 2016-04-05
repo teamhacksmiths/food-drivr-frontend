@@ -13,7 +13,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 body {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: #FFFFFF;
+    background-color: #F2F2F2;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -34,8 +34,7 @@ body {
 }
 
 .header {
-  margin-right: 17%;
-  margin-left: 16%;
+  margin: 0 5%;
 }
 
 /* Custom page footer */
@@ -69,6 +68,70 @@ body {
   margin-top: 28px;
 }
 
+
+/*
+ * CUSTOM CSS BEGINS HERE
+ */
+h1 {
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 60px;
+ }
+
+a:hover {
+  text-decoration: none;
+}
+
+.text-grey {
+  color: #B5B5B5;
+}
+
+.text-flex {
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-margin-left {
+  margin-left: auto;
+}
+
+.container {
+  min-height: 74vh;
+}
+
+.btn-custom {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #8F8E8F;
+  padding: 14px 60px;
+  border-style: none;
+  border-radius: 0;
+  width: 80%;
+  margin: 0 10%;
+}
+
+.form-control {
+  background: #F8F8F8;
+  height: 65px;
+  width: 80%;
+  margin: 0 10%;
+  font-size: 25px;
+  padding-left: 40px;
+  border-radius: 0;
+  border-color: #FFF;
+}
+
+/* Responsive: Portrait After Mobile Large and up */
+@media screen and (min-width: 426px) {
+  .header {
+    margin: 0 16%;
+  }
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
@@ -92,48 +155,3 @@ body {
   }
 }
 
-/*
- * CUSTOM CSS BEGINS HERE
- */
-h1 {
-  font-size: 48px;
-  font-weight: 400;
-  margin-bottom: 60px;
- }
-
-.text-grey {
-  color: #B5B5B5;
-}
-
-.text-flex {
-  display: flex;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-margin-left {
-  margin-left: auto;
-}
-
-.btn-custom {
-  color: white;
-  font-size: 30px;
-  font-weight: bold;
-  background-color: #8F8E8F;
-  padding: 14px 150px;
-  height: 65px;
-  width: 80%;
-  margin-left: 60px;
-}
-.form-control {
-  background: #F8F8F8;
-  height: 65px;
-  width: 80%;
-  margin-left: 60px;
-  font-size: 25px;
-  padding-left: 40px;
-  border-radius: 0;
-  border-color: #FFF;
-}
