@@ -4,7 +4,7 @@ var app = app || {};
 (function() {
   'use strict';
 
-  app.Donation = Backbone.Model.extend({
+  app.Business = Backbone.Model.extend({
 
     url: '',
 
