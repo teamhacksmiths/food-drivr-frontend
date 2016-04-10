@@ -54,5 +54,3 @@ var SignInButton = React.createClass({
 		);
 	}
 });
-
-ReactDOM.render(React.createElement(SignInPage, null), document.getElementById('react'));

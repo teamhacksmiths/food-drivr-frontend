@@ -46,8 +46,3 @@ var SignUpButton = React.createClass({
 			);
 	}
 });
-
-ReactDOM.render(
-	<SignUpPage />,
-    document.getElementById('react')
-);

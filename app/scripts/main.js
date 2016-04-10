@@ -1,5 +1,4 @@
-/*global hackathon-for-hunger-frontend, $*/
-
+/*global app, $*/
 
 window.HackathonForHungerFrontend = {
   Models: {},

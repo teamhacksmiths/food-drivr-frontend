@@ -57,12 +57,6 @@ require('load-grunt-tasks')(grunt);
           'test/spec/**/*.js'
         ]
       },
-      jst: {
-        files: [
-          '<%= yeoman.app %>/scripts/templates/*.ejs'
-        ],
-        tasks: ['jst']
-      },
       babel: {
       	files: ['app/scripts/jsx/*.js'],
       	tasks: ['babel']
@@ -262,13 +256,6 @@ require('load-grunt-tasks')(grunt);
         }]
       }
     },
-    jst: {
-      compile: {
-        files: {
-          '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.ejs']
-        }
-      }
-    },
     rev: {
       dist: {
         files: {
@@ -299,10 +286,6 @@ require('load-grunt-tasks')(grunt);
 	}
   });
 
-  grunt.registerTask('createDefaultTemplate', function () {
-    grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');
-  });
-
   grunt.registerTask('server', function (target) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve' + (target ? ':' + target : '')]);
@@ -316,8 +299,6 @@ require('load-grunt-tasks')(grunt);
     if (target === 'test') {
       return grunt.task.run([
         'clean:server',
-        'createDefaultTemplate',
-        'jst',
         'sass:server',
         'connect:test',
         'open:test',
@@ -327,8 +308,6 @@ require('load-grunt-tasks')(grunt);
 
     grunt.task.run([
       'clean:server',
-      'createDefaultTemplate',
-      'jst',
       'sass:server',
       'connect:livereload',
       'open:server',
@@ -340,8 +319,6 @@ require('load-grunt-tasks')(grunt);
     isConnected = Boolean(isConnected);
     var testTasks = [
         'clean:server',
-        'createDefaultTemplate',
-        'jst',
         'sass',
         'connect:test',
         'mocha'
@@ -358,8 +335,6 @@ require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('build', [
     'clean:dist',
-    'createDefaultTemplate',
-    'jst',
     'sass:dist',
     'useminPrepare',
     'imagemin',

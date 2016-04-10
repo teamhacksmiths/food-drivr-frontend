@@ -8,7 +8,7 @@ You will want to install the following packages globally:
 
 This one liner will do the trick for you
 ```
-npm install -g grunt-cli bower yo
+npm install -g grunt-cli bower yo browserify
 ```
 
 ### Installing
