@@ -25,6 +25,8 @@ module.exports = function (grunt) {
     useminPrepare: 'grunt-usemin'
   });
 
+require('load-grunt-tasks')(grunt);
+
   // configurable paths
   var yeomanConfig = {
     app: 'app',
@@ -60,6 +62,10 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/scripts/templates/*.ejs'
         ],
         tasks: ['jst']
+      },
+      babel: {
+      	files: ['app/scripts/jsx/*.js'],
+      	tasks: ['babel']
       },
       test: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
@@ -275,7 +281,22 @@ module.exports = function (grunt) {
           ]
         }
       }
-    }
+    },
+    babel: {
+  		options: {
+    		plugins: ['transform-react-jsx'],
+    		presets: ['react']
+  		},
+    	jsx: {
+    		files: [{
+      			expand: true,
+      			cwd: 'app/scripts/jsx', // Custom folder
+      			src: ['*.js'],
+      			dest: 'app/scripts/jsx-compiled/', // Custom folder
+      			ext: '.js'
+    		}]
+  		}
+	}
   });
 
   grunt.registerTask('createDefaultTemplate', function () {
@@ -348,7 +369,8 @@ module.exports = function (grunt) {
     'uglify',
     'copy',
     'rev',
-    'usemin'
+    'usemin',
+    'babel:jsx'
   ]);
 
   grunt.registerTask('default', [

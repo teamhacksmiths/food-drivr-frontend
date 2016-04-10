@@ -5,6 +5,7 @@ You will want to install the following packages globally:
 * grunt-cli 
 * bower 
 * yeoman
+
 This one liner will do the trick for you
 ```
 npm install -g grunt-cli bower yo
@@ -15,10 +16,19 @@ To install all of the project’s dependencies, run
 ```
 npm run setup
 ```
-To run the grunt task to build and serve, run
+To run the grunt task to build and serve locally, run
 ```
 npm start
 ```
+To compile JSX to JS, run
+```
+npm run compile
+```
+To compile everything to deployment, run
+```
+grunt build
+```
+
 
 ## Deployment
 TBD
@@ -27,6 +37,7 @@ TBD
 * Backbone
 * NodeJS
 * Grunt
+* React
 
 ## Authors
 
@@ -34,6 +45,7 @@ TBD
 * **[Cody Perry](https://github.com/cperry24)**
 * **[Ryan Collins](https://github.com/RyanCCollins)**
 * **[Jacob Bryan](https://github.com/bryanj4)**
+* **[Gabriele Cimato](https://github.com/Gabri3l)**
 
 ## License
 

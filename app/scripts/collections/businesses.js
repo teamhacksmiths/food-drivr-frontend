@@ -1,14 +1,14 @@
-/*global HackathonForHungerFrontend, Backbone*/
+/*global Backbone*/
+var app = app || {};
 
-HackathonForHungerFrontend.Collections = HackathonForHungerFrontend.Collections || {};
+(function() {
+	'use strict';
 
-(function () {
-  'use strict';
+	// Declare the Businesses collection.
+	var Businesses = Backbone.Collection.extend({
+		// Reference to this collection's model.
+		model: app.Business
 
-  HackathonForHungerFrontend.Collections.Businesses = Backbone.Collection.extend({
-
-    model: HackathonForHungerFrontend.Models.Businesses
-
-  });
+	});
 
 })();
