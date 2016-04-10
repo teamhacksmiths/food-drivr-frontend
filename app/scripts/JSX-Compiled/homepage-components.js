@@ -22,13 +22,9 @@ var BodyButton = React.createClass({
 
 	render: function () {
 		return React.createElement(
-			'form',
-			{ method: 'GET', action: '/#signup' },
-			React.createElement(
-				'button',
-				{ type: 'submit', className: 'btn btn-custom' },
-				'Join Us'
-			)
+			'a',
+			{ href: '/#signup', role: 'button', className: 'btn btn-custom' },
+			'Join Us'
 		);
 	}
 });
@@ -39,14 +35,14 @@ var BodySection = React.createClass({
 	render: function () {
 		return React.createElement(
 			'div',
-			{ className: 'container' },
+			{ className: 'well' },
 			React.createElement(
 				'p',
 				{ className: 'lead text-center text-grey' },
 				'Waste Not Food Taxi is simple. Organizations with leftover edible food sign up with our service and our volunteers are notified via an app to accept your donation. We send over a volunteer to pick up the food and get it to the nearest hunger relief partner.'
 			),
 			React.createElement(
-				'p',
+				'span',
 				{ className: 'text-center' },
 				React.createElement(BodyButton, null)
 			)
