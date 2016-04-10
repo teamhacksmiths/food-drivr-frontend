@@ -2,6 +2,9 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstr
 
 @import 'bootstrap-sass-official/assets/stylesheets/bootstrap.scss';
 
+$btn-background: #8F8E8F;
+
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -77,6 +80,12 @@ h1 {
   margin-bottom: 60px;
  }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -105,12 +114,22 @@ a:hover {
   color: white;
   font-size: 30px;
   font-weight: bold;
-  background-color: #8F8E8F;
-  padding: 14px 60px;
+  height: 65px;
+  background-color: $btn-background;
+  padding: 14px 30px;
   border-style: none;
   border-radius: 0;
   width: 80%;
   margin: 0 10%;
+}
+.btn-small {
+  margin: 0 40%;
+  width: 20%;
+  background-color: $btn-background;
+  color: white;
+  font-weight: bold;
+  border-style: none;
+  border-radius: 0;
 }
 
 .form-control {
@@ -118,7 +137,7 @@ a:hover {
   height: 65px;
   width: 80%;
   margin: 0 10%;
-  font-size: 25px;
+  font-size: 30px;
   padding-left: 40px;
   border-radius: 0;
   border-color: #FFF;

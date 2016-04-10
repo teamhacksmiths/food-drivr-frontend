@@ -15,6 +15,57 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="react" class=container>
+        <div id="donation-main">
+            <div class="header text-flex">
+                <h3 className='text-grey'>Food Taxi Logo</h3>
+                <h3 class='text-margin-left'><a class='text-grey' href='#'>Login</a></h3>
+            </div>
+            <div id="donation-list">
+                <h1 class="business-title text-center">Jane Doe Catering</h1>
+                <div id="add-donation">
+                    <input type="text" placeholder="Enter Donation Here" class="form-control" id="new-donation">
+                    <button class="btn-custom text-center" href="#">Add</button>
+
+                </div><hr>
+                <div id="past-donations">
+                    <h2 class="text-center">Past Donations</h2><hr>
+                    <ul id="past-donations-list">
+                        <li id="template">
+                        <button type="button" class="btn-custom" data-toggle="modal" data-target="#templateModal">%DISH_NAME%</button>
+                        </li>
+                        <li class="text-center">
+                            *DOT*<br>*DOT*<br>*DOT*<br><p>Show only 10 by default then reload the rest 10 more when they press the #view-more button below</p><p>Each item in the list is a button that corresponds to a pop-up modal</p>
+
+                        </li>
+                    </ul>
+                    <button id="view-more" class="btn-small" type="button">View More</button>
+                </div>
+            </div>
+            <div class="footer">
+                <p>Made with ♥ by <a href="http://hacksmiths.io">Team Hacksmiths</a></p>
+            </div>
+        </div>
+
+        </div>
+
+        <div id="modal-list">
+            <div class="modal fade" id="templateModal" tabindex="1" role="dialog" aria-labelledby="myTemplateModalLabel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="templateModalLabel">%DISH_NAME%</h4>
+                        </div>
+                        <div class="modal-body">
+                            %DETAILED_INFO_ON_DONATION%
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default"type="button" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <!--
@@ -55,9 +106,6 @@
         <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/main.js -->
         <script src="scripts/main.js"></script>
-        <script src="scripts/JSX-Compiled/homepage-component.js"></script>
-        <script src="scripts/JSX-Compiled/signin-component.js"></script>
-        <!-- <script src="scripts/JSX-Compiled/signup-component.js"></script> -->
         <script src="scripts/collections/users.js"></script>
         <script src="scripts/collections/donations.js"></script>
         <script src="scripts/collections/businesses.js"></script>
