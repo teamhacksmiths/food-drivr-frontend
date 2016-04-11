@@ -14,8 +14,44 @@
         <!--[if lt IE 10]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div id="react" class=container>
+        <div id="react" class="container">
+        <div id="donation-main">
+            <div class="header text-flex">
+                <h3 className='text-grey'>Food Taxi Logo</h3>
+                <h3 class='text-margin-left'><a class='text-grey' href='#'>Login</a></h3>
+            </div>
+            <div id="donation-list">
+                <h1 class="business-title text-center">Jane Doe Catering</h1>
+                <div id="add-donation" class="row">
+                    <input type="text" placeholder="Enter Donation Here" class="donation-box col-xs-9" id="new-donation">
+                    <div class="col-xs-1"></div>
+                    <button class="btn-add text-center col-xs-2" href="#">Add</button>
+
+                </div><hr>
+                <div id="past-donations">
+                    <h4 class="text-left">Past Donations</h4>
+                    <ul id="past-donations-list">
+                        <li id="template" class="row">
+                            <div class="col-xs-6"><h4>ST JUDE</h4>
+                            <p>March 22, 2016</p></div>
+                            <div class="col-xs-6 foodtype"><div id="food-item1">4 trays of lasagne</div></div>
+                        </li>
+                                                <li id="template" class="row">
+                            <div class="col-xs-6"><h4>City Mission</h4>
+                            <p>March 21, 2016</p></div>
+                            <div class="col-xs-6 foodtype"><div id="food-item1">3 dozen bagels</div><div id="food-item2">6 dozen donuts</div></div>
+                        </li>
+                    </ul>
+                    <button id="view-more" class="btn-small center-block" type="button">View More</button>
+                </div>
+            </div>
+            <div class="footer">
+                <p>Made with ♥ by <a href="http://hacksmiths.io">Team Hacksmiths</a></p>
+            </div>
         </div>
+
+        </div>
+
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <!--
         **
@@ -55,13 +91,6 @@
         <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/main.js -->
         <script src="scripts/main.js"></script>
-        <script src="scripts/jsx-compiled/homepage-components.js"></script>
-        <script src="scripts/jsx-compiled/signin-components.js"></script>
-        <script src="scripts/jsx-compiled/signup-components.js"></script>
-        <script src="scripts/jsx-compiled/donation-components.js"></script>
-        <script src="scripts/jsx-compiled/reusable-components.js"></script>
-        <script src="scripts/jsx-compiled/router.js"></script>
-
         <script src="scripts/collections/users.js"></script>
         <script src="scripts/collections/donations.js"></script>
         <script src="scripts/collections/businesses.js"></script>
