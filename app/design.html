@@ -14,7 +14,7 @@
         <!--[if lt IE 10]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div id="react" class=container>
+        <div id="react" class="container">
         <div id="donation-main">
             <div class="header text-flex">
                 <h3 className='text-grey'>Food Taxi Logo</h3>
@@ -22,23 +22,27 @@
             </div>
             <div id="donation-list">
                 <h1 class="business-title text-center">Jane Doe Catering</h1>
-                <div id="add-donation">
-                    <input type="text" placeholder="Enter Donation Here" class="form-control" id="new-donation">
-                    <button class="btn-custom text-center" href="#">Add</button>
+                <div id="add-donation" class="row">
+                    <input type="text" placeholder="Enter Donation Here" class="donation-box col-xs-9" id="new-donation">
+                    <div class="col-xs-1"></div>
+                    <button class="btn-add text-center col-xs-2" href="#">Add</button>
 
                 </div><hr>
                 <div id="past-donations">
-                    <h2 class="text-center">Past Donations</h2><hr>
+                    <h4 class="text-left">Past Donations</h4>
                     <ul id="past-donations-list">
-                        <li id="template">
-                        <button type="button" class="btn-custom" data-toggle="modal" data-target="#templateModal">%DISH_NAME%</button>
+                        <li id="template" class="row">
+                            <div class="col-xs-6"><h4>ST JUDE</h4>
+                            <p>March 22, 2016</p></div>
+                            <div class="col-xs-6 foodtype"><div id="food-item1">4 trays of lasagne</div></div>
                         </li>
-                        <li class="text-center">
-                            *DOT*<br>*DOT*<br>*DOT*<br><p>Show only 10 by default then reload the rest 10 more when they press the #view-more button below</p><p>Each item in the list is a button that corresponds to a pop-up modal</p>
-
+                                                <li id="template" class="row">
+                            <div class="col-xs-6"><h4>City Mission</h4>
+                            <p>March 21, 2016</p></div>
+                            <div class="col-xs-6 foodtype"><div id="food-item1">3 dozen bagels</div><div id="food-item2">6 dozen donuts</div></div>
                         </li>
                     </ul>
-                    <button id="view-more" class="btn-small" type="button">View More</button>
+                    <button id="view-more" class="btn-small center-block" type="button">View More</button>
                 </div>
             </div>
             <div class="footer">
@@ -48,25 +52,6 @@
 
         </div>
 
-        <div id="modal-list">
-            <div class="modal fade" id="templateModal" tabindex="1" role="dialog" aria-labelledby="myTemplateModalLabel">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="templateModalLabel">%DISH_NAME%</h4>
-                        </div>
-                        <div class="modal-body">
-                            %DETAILED_INFO_ON_DONATION%
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-default"type="button" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <!--
         **
