@@ -3,8 +3,10 @@ var SignUpPage = React.createClass({
 		return (
 			<div className="signup">
 				<Header />
-				<h1 className="text-center">Sign Up as a Donor</h1>
-				<SignUpForm />
+				<div className='container'>
+					<Headline value="Sign Up as a Donor" />
+					<SignUpForm />
+				</div>
 				<Footer />
 			</div>
 			);

@@ -19,6 +19,18 @@ var Header = React.createClass({
 	}
 });
 
+var Headline = React.createClass({
+	displayName: 'Headline',
+
+	render: function () {
+		return React.createElement(
+			'h1',
+			{ className: 'text-center' },
+			this.props.value
+		);
+	}
+});
+
 var Login = React.createClass({
 	displayName: 'Login',
 

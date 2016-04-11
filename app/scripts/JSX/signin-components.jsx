@@ -3,8 +3,10 @@ var SignInPage = React.createClass({
 		return (
 			<div className="signin">
 				<Header />
-      			<h1 className="text-center">Sign In</h1>
-				<SignInForm />
+				<div className="container">
+      				<Headline value="Sign In" />
+					<SignInForm />
+				</div>
 				<Footer />
 			</div>
 			);

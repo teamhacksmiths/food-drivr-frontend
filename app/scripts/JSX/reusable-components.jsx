@@ -5,9 +5,17 @@ var Header = React.createClass({
 					<h3 className='text-grey'>
 						<a href="#">Food Taxi Logo</a>
 					</h3>
-					<Login />        	
+					<Login />
 				</div>
 			);
+	}
+});
+
+var Headline = React.createClass({
+	render: function() {
+		return (
+			<h1 className='text-center'>{this.props.value}</h1>
+		);
 	}
 });
 

@@ -7,11 +7,10 @@ var HomePage = React.createClass({
 			{ className: 'homepage' },
 			React.createElement(Header, null),
 			React.createElement(
-				'h1',
-				{ className: 'text-center' },
-				'Food Taxi Headline!'
+				'div',
+				{ className: 'container' },
+				React.createElement(BodySection, null)
 			),
-			React.createElement(BodySection, null),
 			React.createElement(Footer, null)
 		);
 	}
@@ -39,14 +38,15 @@ var BodySection = React.createClass({
 	render: function () {
 		return React.createElement(
 			'div',
-			{ className: 'container' },
+			{ className: 'homepage-content' },
+			React.createElement(Headline, { value: 'Food Taxi Headline!' }),
 			React.createElement(
 				'p',
 				{ className: 'lead text-center text-grey' },
 				'Waste Not Food Taxi is simple. Organizations with leftover edible food sign up with our service and our volunteers are notified via an app to accept your donation. We send over a volunteer to pick up the food and get it to the nearest hunger relief partner.'
 			),
 			React.createElement(
-				'p',
+				'div',
 				{ className: 'text-center' },
 				React.createElement(BodyButton, null)
 			)
