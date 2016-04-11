@@ -7,11 +7,11 @@ var SignUpPage = React.createClass({
       { className: "signup" },
       React.createElement(Header, null),
       React.createElement(
-        "h1",
-        { className: "text-center" },
-        "Sign Up as a Donor"
+        "div",
+        { className: "container" },
+        React.createElement(Headline, { value: "Sign Up as a Donor" }),
+        React.createElement(SignUpForm, null)
       ),
-      React.createElement(SignUpForm, null),
       React.createElement(Footer, null)
     );
   }

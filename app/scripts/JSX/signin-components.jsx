@@ -1,4 +1,5 @@
 var SignInPage = React.createClass({
+<<<<<<< HEAD
     render: function(){
         return (
             <div className="signin">
@@ -9,6 +10,20 @@ var SignInPage = React.createClass({
             </div>
             );
     }
+=======
+	render: function(){
+		return (
+			<div className="signin">
+				<Header />
+				<div className="container">
+      				<Headline value="Sign In" />
+					<SignInForm />
+				</div>
+				<Footer />
+			</div>
+			);
+	}
+>>>>>>> gabriele-master
 });
 
 var SignInForm = React.createClass({

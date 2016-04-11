@@ -7,11 +7,11 @@ var SignInPage = React.createClass({
 			{ className: "signin" },
 			React.createElement(Header, null),
 			React.createElement(
-				"h1",
-				{ className: "text-center" },
-				"Sign In"
+				"div",
+				{ className: "container" },
+				React.createElement(Headline, { value: "Sign In" }),
+				React.createElement(SignInForm, null)
 			),
-			React.createElement(SignInForm, null),
 			React.createElement(Footer, null)
 		);
 	}
