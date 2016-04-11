@@ -1,18 +1,6 @@
 var SignInPage = React.createClass({
-<<<<<<< HEAD
     render: function(){
         return (
-            <div className="signin">
-                <Header />
-                <h1 className="text-center">Sign In</h1>
-                <SignInForm />
-                <Footer />
-            </div>
-            );
-    }
-=======
-	render: function(){
-		return (
 			<div className="signin">
 				<Header />
 				<div className="container">
@@ -23,7 +11,6 @@ var SignInPage = React.createClass({
 			</div>
 			);
 	}
->>>>>>> gabriele-master
 });
 
 var SignInForm = React.createClass({
@@ -47,7 +34,7 @@ var SignInForm = React.createClass({
 var SignInButton = React.createClass({
     render: function(){
         return (
-            <button type="submit" className="btn btn-custom">Enter</button>
+                <a href="/#donation" role="button" className='btn btn-info'>Enter</a>
             );
     }
 });

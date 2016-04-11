@@ -3,15 +3,7 @@ var DonationPage = React.createClass({
         return (
             <div className="donation">
                 <Header />
-            {
-            //  <DonateBar />
-            }
-
-                <h1 className="text-center">Jane Doe Catering</h1>
                 <FoodBar />
-            {
-            //  <DonateTable />
-            }
                 <hr />
                 <FoodTable />
                 <Footer />
@@ -19,57 +11,34 @@ var DonationPage = React.createClass({
             );
     }
 });
-{
-// var DonateBar = React.createClass({
-//  render: function(){
-//      return (
-//              <span>
-//                  <DonateButton />
-//              </span>
-//          );
-//  }
-// });
 
-/*var DonateButton = React.createClass({
+var BusinessName = React.createClass({
     render: function(){
         return (
-            <button></button>
-            );
+            <h1 className='business-title text-center'>{this.props.value}</h1>
+        );
     }
-});*/
-}
+});
+
 var FoodBar = React.createClass({
     render: function(){
         return (
-                <div className="header text-flex">
-                    <input type="text" placeholder="What would you like to donate?" />
-                    <FoodButton />
+            <div id="donation-list">
+                <BusinessName value="Jane Doe Catering" />
+                <div id="add-donation" className="row">
+                    <input type="text" placeholder="Enter Donation Here" className="donation-box col-xs-9" id="new-donation" />
+                    <div className="col-xs-1"></div>
+                <FoodButton />
                 </div>
-            );
+            </div>
+        );
     }
 });
-{
-// To be used with the state and props based on user input.
 
-/*var DonateTable = React.createClass({
-    render: function(){
-        return (
-            <ul>
-                <li>
-                    4 lbs of Beans
-                </li>
-                <li>
-                    3 Cans of Soup
-                </li>
-            </ul>
-            );
-    }
-});*/
-}
 var FoodButton = React.createClass({
     render: function(){
         return (
-            <button type="submit" className="btn btn-custom">Add</button>
+            <button className="btn-add text-center col-xs-2">Add</button>
             );
     }
 });
@@ -77,19 +46,31 @@ var FoodButton = React.createClass({
 var FoodTable = React.createClass({
     render: function(){
         return (
-            <table>
-            <tr>
-                <th>Donations To Date</th>
-                <th>Food Donated</th>
-            </tr>
-            <tr>
-                <td>ST JUDE</td>
-                <td rowSpan="2">4 Trays of Lasagna</td>
-            </tr>
-            <tr>
-                <td>March 22nd, 2016</td>
-            </tr>
-            </table>
-            );
+            <div id="past-donations well">
+                <h4 className="text-left">Past Donations</h4>
+                <ul id="past-donations-list">
+                    <li id="template" className="row">
+                        <div className="col-xs-6">
+                            <h4>ST JUDE</h4>
+                            <p>March 22, 2016</p>
+                        </div>
+                        <div className="col-xs-6 foodtype">
+                            <div id="food-item1">4 trays of lasagne</div>
+                        </div>
+                    </li>
+                    <li id="template" className="row">
+                        <div className="col-xs-6">
+                            <h4>City Mission</h4>
+                            <p>March 21, 2016</p>
+                        </div>
+                        <div className="col-xs-6 foodtype">
+                            <div id="food-item1">3 dozen bagels</div>
+                            <div id="food-item2">6 dozen donuts</div>
+                        </div>
+                    </li>
+                </ul>
+                <button id="view-more" className="btn-small center-block" type="button">View More</button>
+            </div>
+        );
     }
 });

@@ -1,128 +1,142 @@
 var DonationPage = React.createClass({
-	displayName: "DonationPage",
+    displayName: "DonationPage",
 
-	render: function () {
-		return React.createElement(
-			"div",
-			{ className: "donation" },
-			React.createElement(Header, null),
-			React.createElement(
-				"h1",
-				{ className: "text-center" },
-				"Jane Doe Catering"
-			),
-			React.createElement(FoodBar, null),
-			React.createElement("hr", null),
-			React.createElement(FoodTable, null),
-			React.createElement(Footer, null)
-		);
-	}
+    render: function () {
+        return React.createElement(
+            "div",
+            { className: "donation" },
+            React.createElement(Header, null),
+            React.createElement(FoodBar, null),
+            React.createElement("hr", null),
+            React.createElement(FoodTable, null),
+            React.createElement(Footer, null)
+        );
+    }
 });
-{
-	// var DonateBar = React.createClass({
-	// 	render: function(){
-	// 		return (
-	// 				<span>
-	//					<DonateButton />
-	//				</span>
-	// 			);
-	// 	}
-	// });
 
-	/*var DonateButton = React.createClass({
- 	render: function(){
- 		return (
- 			<button></button>
- 			);
- 	}
- });*/
-}
+var BusinessName = React.createClass({
+    displayName: "BusinessName",
+
+    render: function () {
+        return React.createElement(
+            "h1",
+            { className: "business-title text-center" },
+            this.props.value
+        );
+    }
+});
+
 var FoodBar = React.createClass({
-	displayName: "FoodBar",
+    displayName: "FoodBar",
 
-	render: function () {
-		return React.createElement(
-			"div",
-			{ className: "header text-flex" },
-			React.createElement("input", { type: "text", placeholder: "What would you like to donate?" }),
-			React.createElement(FoodButton, null)
-		);
-	}
+    render: function () {
+        return React.createElement(
+            "div",
+            { id: "donation-list" },
+            React.createElement(BusinessName, { value: "Jane Doe Catering" }),
+            React.createElement(
+                "div",
+                { id: "add-donation", className: "row" },
+                React.createElement("input", { type: "text", placeholder: "Enter Donation Here", className: "donation-box col-xs-9", id: "new-donation" }),
+                React.createElement("div", { className: "col-xs-1" }),
+                React.createElement(FoodButton, null)
+            )
+        );
+    }
 });
-{
-	// To be used with the state and props based on user input.
 
-	/*var DonateTable = React.createClass({
- 	render: function(){
- 		return (
- 			<ul>
- 				<li>
- 					4 lbs of Beans
- 				</li>
- 				<li>
- 					3 Cans of Soup
- 				</li>
- 			</ul>
- 			);
- 	}
- });*/
-}
 var FoodButton = React.createClass({
-	displayName: "FoodButton",
+    displayName: "FoodButton",
 
-	render: function () {
-		return React.createElement(
-			"button",
-			{ type: "submit", className: "btn btn-custom" },
-			"Add"
-		);
-	}
+    render: function () {
+        return React.createElement(
+            "button",
+            { className: "btn-add text-center col-xs-2" },
+            "Add"
+        );
+    }
 });
 
 var FoodTable = React.createClass({
-	displayName: "FoodTable",
+    displayName: "FoodTable",
 
-	render: function () {
-		return React.createElement(
-			"table",
-			null,
-			React.createElement(
-				"tr",
-				null,
-				React.createElement(
-					"th",
-					null,
-					"Donations To Date"
-				),
-				React.createElement(
-					"th",
-					null,
-					"Food Donated"
-				)
-			),
-			React.createElement(
-				"tr",
-				null,
-				React.createElement(
-					"td",
-					null,
-					"ST JUDE"
-				),
-				React.createElement(
-					"td",
-					{ rowSpan: "2" },
-					"4 Trays of Lasagna"
-				)
-			),
-			React.createElement(
-				"tr",
-				null,
-				React.createElement(
-					"td",
-					null,
-					"March 22nd, 2016"
-				)
-			)
-		);
-	}
+    render: function () {
+        return React.createElement(
+            "div",
+            { id: "past-donations well" },
+            React.createElement(
+                "h4",
+                { className: "text-left" },
+                "Past Donations"
+            ),
+            React.createElement(
+                "ul",
+                { id: "past-donations-list" },
+                React.createElement(
+                    "li",
+                    { id: "template", className: "row" },
+                    React.createElement(
+                        "div",
+                        { className: "col-xs-6" },
+                        React.createElement(
+                            "h4",
+                            null,
+                            "ST JUDE"
+                        ),
+                        React.createElement(
+                            "p",
+                            null,
+                            "March 22, 2016"
+                        )
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "col-xs-6 foodtype" },
+                        React.createElement(
+                            "div",
+                            { id: "food-item1" },
+                            "4 trays of lasagne"
+                        )
+                    )
+                ),
+                React.createElement(
+                    "li",
+                    { id: "template", className: "row" },
+                    React.createElement(
+                        "div",
+                        { className: "col-xs-6" },
+                        React.createElement(
+                            "h4",
+                            null,
+                            "City Mission"
+                        ),
+                        React.createElement(
+                            "p",
+                            null,
+                            "March 21, 2016"
+                        )
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "col-xs-6 foodtype" },
+                        React.createElement(
+                            "div",
+                            { id: "food-item1" },
+                            "3 dozen bagels"
+                        ),
+                        React.createElement(
+                            "div",
+                            { id: "food-item2" },
+                            "6 dozen donuts"
+                        )
+                    )
+                )
+            ),
+            React.createElement(
+                "button",
+                { id: "view-more", className: "btn-small center-block", type: "button" },
+                "View More"
+            )
+        );
+    }
 });
