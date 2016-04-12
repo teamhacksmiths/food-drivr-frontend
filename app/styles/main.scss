@@ -40,6 +40,7 @@ body {
 
 .header {
   margin: 0 5%;
+  background-color: #61DEEF;
 }
 
 /* Custom page footer */
@@ -126,6 +127,7 @@ a:hover {
 .container {
   min-height: 74vh;
 }
+
 button {
   background-color: $btn-background;
   color: white;
@@ -178,13 +180,6 @@ button {
   border-color: #FFF;
 }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
   /* Space out the masthead */
   .header {
     margin-bottom: 30px;
@@ -193,6 +188,26 @@ button {
   .jumbotron {
     border-bottom: 0;
   }
+
+.signup {
+  background-color: #F7B32B;
+}
+
+.signin {
+  background-color: #FF1E40;
+}
+
+.donation {
+  background-color: #F9F9F9;
+}
+
+#past-donations-list {
+  font-weight: bold;
+}
+
+#past-donations-list h4 {
+  color: #9FE9F2;
+}
 
 /* Responsive: Portrait After Mobile Large and up */
 @media screen and (min-width: 426px) {
