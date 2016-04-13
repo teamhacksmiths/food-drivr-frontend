@@ -23,9 +23,8 @@ npm run start
 TBD
 
 ## Built With
-* Backbone
 * NodeJS
-* Grunt
+* Webpack
 * React
 
 ## Authors
