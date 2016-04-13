@@ -32,6 +32,6 @@
   },
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --content-base"
+    "start": "webpack-dev-server --progress --colors --inline"
   }
 }
