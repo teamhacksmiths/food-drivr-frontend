@@ -1,6 +1,6 @@
 import {Header, Headline, Footer} from './reusable-components.jsx';
 import React from 'react';
-import {Link} from 'rrtr';
+import {Link} from 'react-router';
 
 var SignUpPage = React.createClass({
 	render: function(){

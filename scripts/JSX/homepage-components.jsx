@@ -1,7 +1,7 @@
 import { Header, Headline, Footer } from './reusable-components.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Link} from 'rrtr';
+import {Link} from 'react-router';
 
 var BodyButton = React.createClass({
     render: function(){

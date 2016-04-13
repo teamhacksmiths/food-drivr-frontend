@@ -4,7 +4,7 @@ import SignUpPage from './JSX/signup-components.jsx';
 import DonationPage from './JSX/donation-components.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {browserHistory, Router, Route, IndexRoute} from 'rrtr';
+import {browserHistory, Router, Route, IndexRoute} from 'react-router';
 
 var App = React.createClass({
     render: function(){
