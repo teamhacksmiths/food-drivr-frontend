@@ -8,10 +8,10 @@ import {browserHistory, Router, Route, Link} from 'rrtr';
 
 ReactDOM.render((
     <Router history={browserHistory}>
-        <Route path="/" component={HomePage} />
-        <Route path="/signin" component={SignInPage} />
-        <Route path="/signup" component={SignUpPage} />
-        <Route path="/donation" component={DonationPage} />
+	        <Route path="/" component={HomePage} />
+	        <Route path="/signin" component={SignInPage} />
+	        <Route path="/signup" component={SignUpPage} />
+	        <Route path="/donation" component={DonationPage} />
     </Router>
   ),document.getElementById('reacted')
 );
