@@ -1,7 +1,7 @@
 {
-  "name": "hunger-test",
+  "name": "food-drivr",
   "version": "1.0.0",
-  "description": "",
+  "description": "Platform for food donation optimization",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +21,7 @@
     "react-dom": "^15.0.1",
     "rrtr": "^2.2.0"
   },
+  "private": true,
   "devDependencies": {
     "babel-core": "^6.7.6",
     "babel-loader": "^6.2.4",
@@ -32,6 +33,6 @@
   },
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --progress --colors --inline"
+    "start": "webpack-dev-server --progress --colors --inline build"
   }
 }

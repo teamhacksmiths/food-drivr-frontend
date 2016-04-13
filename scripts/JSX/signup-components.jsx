@@ -1,5 +1,6 @@
 import {Header, Headline, Footer} from './reusable-components.jsx';
 import React from 'react';
+import {Link} from 'rrtr';
 
 var SignUpPage = React.createClass({
 	render: function(){
@@ -46,7 +47,7 @@ var SignUpForm = React.createClass({
 var SignUpButton = React.createClass({
 	render: function(){
 		return (
-			<a href="/#donation" role="button" className='btn btn-info'>Register</a>
+			<Link to="/donation" role="button" className='btn btn-info'>Register</Link>
 		);
 	}
 });

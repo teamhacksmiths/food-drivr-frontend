@@ -1,12 +1,13 @@
 import { Header, Headline, Footer } from './reusable-components.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Link} from 'rrtr';
 
 var BodyButton = React.createClass({
     render: function(){
         return (
-                <a href="/#signup" role="button" className='btn btn-info'>Join Us</a>
-            );
+            <Link to="/signup" role="button" className='btn btn-info'>Join Us</Link>
+        );
     }
 });
 
@@ -25,7 +26,7 @@ var BodySection = React.createClass({
 	}
 });
 
-module.exports = React.createClass({
+var HomePage = React.createClass({
     render: function(){
         return (
             <div className='homepage'>
@@ -33,6 +34,8 @@ module.exports = React.createClass({
                 <BodySection />
                 <Footer />
             </div>
-            );
+        );
     }
 });
+
+module.exports = HomePage;

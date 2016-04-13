@@ -1,11 +1,12 @@
 import React from 'react';
+import {Link} from 'rrtr';
 
 var Header = React.createClass({
 	render: function(){
 		return (
 				<div className='header text-flex'>
 					<h3 className='text-grey'>
-						<a href="#">Food Taxi Logo</a>
+						<Link to="/">Food Taxi Logo</Link>
 					</h3>
 					<Login />
 				</div>
@@ -25,7 +26,7 @@ var Login = React.createClass({
 	render: function(){
 		return (
 				<h3 className='text-margin-left'>
-				<a className='text-grey' href="#signin">Login</a>
+				<Link to="/signin"className='text-grey'>Login</Link>
 				</h3>
 			);
 	}
@@ -35,7 +36,7 @@ var Footer = React.createClass({
 	render: function(){
 		return (
 			<div className='footer'>
-				<p>Made with ♥ by <a href='http://hacksmiths.io'>Team Hacksmiths</a></p>
+				<p>Made with ♥ by <Link to='http://hacksmiths.io'>Team Hacksmiths</Link></p>
 			</div>
 			);
 	}
