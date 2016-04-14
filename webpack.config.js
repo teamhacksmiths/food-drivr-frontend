@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
  
 module.exports = {
   entry: './scripts/main.js',
@@ -16,13 +17,19 @@ module.exports = {
       }
     ]
   },
-/*  plugins: [
+  plugins: [/*
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
       mangle: false
-    })
-  ],*/
+    }),*/
+    new OpenBrowserPlugin({ url: 'http://localhost:8080' })
+  ],
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    progress: true,
+    colors: true,
+    stats: 'errors-only'
   }
 };
