@@ -41,7 +41,7 @@ var FoodBar = React.createClass({
 var FoodButton = React.createClass({
     render: function(){
         return (
-            <button className="btn-add text-center col-xs-2">Add</button>
+            <button onClick={this.addDonation} className="btn-add text-center col-xs-2">Add</button>
             );
     }
 });
@@ -77,5 +77,21 @@ var FoodTable = React.createClass({
         );
     }
 });
+
+const PendingDonations = [
+     /*Dummy Data*/
+        {
+        id: '4a068c42-75b2-4ae2-bd0d-284b4abbb8f0',
+        donation: '4 lbs of pasta'
+        },
+        {
+        id: '4e81fc6e-bfb6-419b-93e5-0242fb6f3f6a',
+        donation: '3 cans of soup'
+        },
+        {
+        id: '11bbffc8-5891-4b45-b9ea-5c99aadf870f',
+        donation: '4 bags of potatos'
+        }
+    ];
 
 module.exports = DonationPage;

@@ -6,15 +6,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
 
-var App = React.createClass({
-    render: function(){
+export default class App extends React.Component{
+    render() {
         return (
             <div className="container">
               {this.props.children}
             </div>
-        );
+        )
     }
-});
+}
 
 ReactDOM.render((
     <Router history={browserHistory}>
@@ -25,5 +25,5 @@ ReactDOM.render((
 	        <Route path="donation" component={DonationPage} />
 	    </Route>
     </Router>
-  ),document.getElementById('reacted')
+  ),document.getElementById('Main')
 );

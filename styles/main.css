@@ -1,3 +1,5 @@
+require("bootstrap-webpack");
+
 $btn-background: #8F8E8F;
 $form-background: #F8F8F8;
 $text-color-grey: #95989A;
