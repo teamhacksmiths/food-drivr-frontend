@@ -1,0 +1,11 @@
+<<<<<<< HEAD
+node_modules
+dist
+test/temp
+.sass-cache
+app/bower_components
+.tmp
+test/bower_components/
+=======
+node_modules
+>>>>>>> hunger-test-master

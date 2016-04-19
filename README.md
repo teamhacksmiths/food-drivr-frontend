@@ -2,6 +2,7 @@ Hackathon for Hunger Frontend
 
 ## Getting Started
 You will want to install the following packages globally: 
+<<<<<<< HEAD
 * grunt-cli 
 * bower 
 * yeoman
@@ -9,11 +10,19 @@ You will want to install the following packages globally:
 This one liner will do the trick for you
 ```
 npm install -g grunt-cli bower yo
+=======
+* webpack-dev-server
+
+This one liner will do the trick for you
+```
+npm install -g webpack-dev-server
+>>>>>>> hunger-test-master
 ```
 
 ### Installing
 To install all of the project’s dependencies, run
 ```
+<<<<<<< HEAD
 npm run setup
 ```
 To run the grunt task to build and serve locally, run
@@ -29,14 +38,27 @@ To compile everything to deployment, run
 grunt build
 ```
 
+=======
+npm install
+```
+To run the webpack task to build and serve locally, run
+```
+npm run start
+```
+>>>>>>> hunger-test-master
 
 ## Deployment
 TBD
 
 ## Built With
+<<<<<<< HEAD
 * Backbone
 * NodeJS
 * Grunt
+=======
+* NodeJS
+* Webpack
+>>>>>>> hunger-test-master
 * React
 
 ## Authors
