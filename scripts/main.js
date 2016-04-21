@@ -4,9 +4,11 @@ import SignUpPage from './JSX/signup-components.jsx';
 import SignUpDonor from './JSX/signupdonor-components.jsx';
 import SignUpVolunteer from './JSX/signupvolunteer-components.jsx';
 import DonationPage from './JSX/donation-components.jsx';
+import Models from './models.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {browserHistory, Router, Route, IndexRoute} from 'react-router';
+
 
 export default class App extends React.Component{
     render() {
@@ -17,6 +19,8 @@ export default class App extends React.Component{
         )
     }
 }
+
+// Models();
 
 ReactDOM.render((
     <Router history={browserHistory}>

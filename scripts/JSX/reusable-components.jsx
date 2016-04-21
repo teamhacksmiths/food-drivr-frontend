@@ -17,7 +17,7 @@ var Header = React.createClass({
 var Headline = React.createClass({
 	render: function() {
 		return (
-			<h1 className='text-center'>{this.props.value}</h1>
+			<h1 className='text-center text-grey'>{this.props.value}</h1>
 		);
 	}
 });

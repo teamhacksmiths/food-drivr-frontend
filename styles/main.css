@@ -1,222 +1,320 @@
-require("bootstrap-webpack");
+html, body, #Main, .homepage {
+  height: 100%;
+    width: 100%;
+    margin: 0;
+}
 
-$btn-background: #8F8E8F;
-$form-background: #F8F8F8;
-$text-color-grey: #95989A;
+.homepage{
+    position: relative;
+  height: 100%;
+    width: 100%;
+    background: #477D7F;
+}
 
+.browsehappy
+{
+    margin: .2em 0;
+    padding: .2em 0;
 
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
     color: #000;
-    padding: 0.2em 0;
+    background: #ccc;
+}
+
+.section {
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 /* Space out content a bit */
-body {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: #FFF;
+body
+{
+    background-color: #fff;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
-.footer {
-    padding-left: 15px;
+.footer
+{
     padding-right: 15px;
+    padding-left: 15px;
 }
 
 /* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 100px;
-  padding-bottom: 19px;
-  font-size: 22px;
+.header h3
+{
+    font-size: 22px;
+    line-height: 100px;
+
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 19px;
 }
 
-.header {
-  margin: 0 5%;
-  background-color: #61DEEF;
+.header
+{
+    margin: 0 5%;
+
 }
 
 /* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  text-align: center;
+.footer
+{
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+    text-align: center;
+    color: white;
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
+.container-narrow > hr
+{
+    margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+.jumbotron
+{
+    text-align: center;
+
+    border-bottom: 1px solid #e5e5e5;
 }
 
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+.jumbotron .btn
+{
+    font-size: 21px;
+
+    padding: 14px 24px;
 }
 
 /* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
+.marketing
+{
+    margin: 40px 0;
 }
 
-.marketing p + h4 {
-  margin-top: 28px;
+.marketing p + h4
+{
+    margin-top: 28px;
 }
 
 /*
  * CUSTOM CSS BEGINS HERE
  */
-h1 {
-  font-size: 48px;
-  font-weight: 400;
-  margin-bottom: 60px;
- }
+h1
+{
+    font-size: 48px;
+    font-weight: 400;
 
-h4 {
-  color: $text-color-grey;
+    margin-bottom: 60px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  h4 {
-    color: black;
-  }
-  p {
-    font-style: italic;
-  }
-  .foodtype {
-    font-size: 20px;
+h4
+{
     color: $text-color-grey;
+}
+
+ul
+{
+    margin: 0;
+    padding: 0;
+
+    list-style-type: none;
+}
+h4
+{
+    color: black;
+}
+p
+{
+    font-style: italic;
+}
+.foodtype
+{
+    font-size: 20px;
+
     text-align: right;
-  }
+
+    color: $text-color-grey;
 }
 
-a:hover {
-  text-decoration: none;
+a:hover
+{
+    text-decoration: none;
 }
 
-.text-grey {
-  color: #B5B5B5;
+
+/* Hero =========================*/
+.homepage-content {
+  position: absolute;
+  top: 30%;
 }
 
-.text-flex {
-  display: flex;
+.text-grey h1 {
+  font-size: 130px;
+    font-family: 'Playfair Display SC', serif;
+    color: #FFFFFF;
+    text-rendering: optimizeLegibility;
+    font-weight: 400;
+    margin: 0;
 }
 
-.text-center {
-  text-align: center;
+.hero h2 {
+  font-size: 40px;
+    font-family: 'Playfair Display SC', serif;
+    color: #FFFFFF;
+    text-rendering: optimizeLegibility;
+    font-weight: 400;
+    margin: 0;
+    margin-left: 15px;
 }
 
-.text-margin-left {
-  margin-left: auto;
+
+
+.name {
+  position: absolute;
+  left: 20%;
+  top: 40%;
 }
 
-.container {
-  min-height: 74vh;
+.text-grey
+{
+    color: white;
+
 }
 
-button {
-  background-color: $btn-background;
+.text-flex
+{
+    display: flex;
+}
+
+.text-center
+{
+    text-align: center;
+}
+
+.text-margin-left
+{
+    margin-left: auto;
+}
+
+.container
+{
+  height: 100%;
+  width: 100%;
+  padding: 0 0 0 0;
+}
+
+button
+{
+    font-weight: bold
+
+    color: white;
+    background-color: red;
+}
+
+.button-home{
   color: white;
-  font-weight: bold;
-  border-style: none;
-  border-radius: 0;
-  .btn-custom {
+    padding: 10px 40px; 
+    background-color: red;
+    width: 250px;
+    border-radius: 25px;
+}
+
+#add-donation
+{
+    margin-bottom: 65px;
+}
+.container
+{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.form-control
+{
     font-size: 30px;
-    height: 65px;
-    padding: 14px 30px;
+
     width: 80%;
+    height: 65px;
     margin: 0 10%;
-  }
-  .btn-small {
-    width: 20%;
-    margin: 0 10%;
-  }
+    padding-left: 40px;
+
+    border-color: #fff;
+    border-radius: 0;
+    background: #f8f8f8;
+}
+.donation-box
+{
+    font-size: 30px;
+
+    height: 65px;
+
+    border-style: none;
+    border-color: #fff;
+    border-radius: 0;
+    background-color: $form-background;
 }
 
-.btn-add {
-  font-size: 30px;
-  height: 65px;
-  padding: 14px 30px;
+/* Space out the masthead */
+.header
+{
+    margin: 0;
+  padding: 25px;
+  width: 100%;
+  position: fixed;
+    background-color: transparent;
+    font-color: white;
+    z-index: 10;
 }
-
-#add-donation {
-  margin-bottom: 65px;
-}
-.container {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.form-control {
-  background: #F8F8F8;
-  height: 65px;
-  width: 80%;
-  margin: 0 10%;
-  font-size: 30px;
-  padding-left: 40px;
-  border-radius: 0;
-  border-color: #FFF;
-}
-.donation-box {
-  background-color: $form-background;
-  height: 65px;
-  font-size: 30px;
-  border-radius: 0;
-  border-style: none;
-  border-color: #FFF;
-}
-
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
+/* Remove the bottom border on the jumbotron for visual effect */
+.jumbotron
+{
     border-bottom: 0;
-  }
-
-.signup {
-  background-color: #F7B32B;
 }
 
-.signin {
-  background-color: #FF1E40;
+.signup
+{
+    background-color: #f7b32b;
 }
 
-.donation {
-  background-color: #F9F9F9;
+.signin
+{
+    background-color: #ff1e40;
 }
 
-#past-donations-list {
-  font-weight: bold;
+.donation
+{
+    background-color: #f9f9f9;
 }
 
-#past-donations-list h4 {
-  color: #9FE9F2;
+#past-donations-list
+{
+    font-weight: bold;
+}
+
+#past-donations-list h4
+{
+    color: #9fe9f2;
 }
 
 /* Responsive: Portrait After Mobile Large and up */
-@media screen and (min-width: 426px) {
-  .header {
-    margin: 0 16%;
-  }
+@media screen and (min-width: 426px)
+{
+    .header
+    {
+        margin: 0 16%;
+    }
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+@media screen and (min-width: 768px)
+{
+    .container
+    {
+        max-width: 1000px;
+    }
 }
