@@ -1,15 +1,13 @@
-import {Header, Headline, Footer} from './reusable-components.jsx';
+import {Headline} from './reusable-components.jsx';
 import React from 'react';
 
 var DonationPage = React.createClass({
     render: function(){
         return (
             <div className="donation">
-                <Header />
                 <FoodBar />
                 <hr />
                 <FoodTable />
-                <Footer />
             </div>
         );
     }

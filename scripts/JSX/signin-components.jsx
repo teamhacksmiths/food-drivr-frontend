@@ -1,4 +1,4 @@
-import {Header, Headline, Footer} from './reusable-components.jsx';
+import {Headline} from './reusable-components.jsx';
 import React from 'react';
 import {Link} from 'react-router';
 
@@ -6,18 +6,22 @@ var SignInPage = React.createClass({
     render: function(){
         return (
 			<div className="signin">
-				<Header />
 				<div className="container">
       				<Headline value="Sign In" />
 					<SignInForm />
 				</div>
-				<Footer />
 			</div>
 			);
 	}
 });
 
 var SignInForm = React.createClass({
+    getInitialState: function(){
+        return {
+            user: '',
+               password: '',
+        }
+    },
     render: function(){
         return (
             <form action="">
