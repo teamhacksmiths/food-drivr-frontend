@@ -30,7 +30,7 @@ function SignUpDonor(props) {
             className="form-control"
             onChange={props.onEmailChange}
             value={props.email}
-            />
+          />
         </div>
         <div className="form-group">
           <input
@@ -41,7 +41,7 @@ function SignUpDonor(props) {
             className="form-control"
             onChange={ props.onPasswordChange }
             value={ props.password }
-            />
+          />
         </div>
         <div className="form-group">
           <input
@@ -52,13 +52,13 @@ function SignUpDonor(props) {
             className="form-control"
             onChange={ props.onPasswordConfirmChange }
             value={ props.passwordConfirmation }
-            />
+          />
         </div>
         <span className="text-center">
           <button
             className='btn btn-info'
             type='submit'
-            >
+          >
               Register
           </button>
         </span>

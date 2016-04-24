@@ -28,7 +28,12 @@ var FoodBar = React.createClass({
       <div id="donation-list">
         <BusinessName value="Jane Doe Catering" />
         <div id="add-donation" className="row">
-          <input type="text" placeholder="Enter Donation Here" className="donation-box col-xs-9" id="new-donation" />
+          <input
+            type="text"
+            placeholder="Enter Donation Here"
+            className="donation-box col-xs-9"
+            id="new-donation"
+          />
             <div className="col-xs-1"></div>
           <FoodButton />
         </div>
