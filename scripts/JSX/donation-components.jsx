@@ -1,5 +1,6 @@
 import {Headline} from './reusable-components.jsx';
 import React from 'react';
+import $ from 'jquery';
 
 var DonationPage = React.createClass({
     render: function(){
@@ -45,6 +46,15 @@ var FoodButton = React.createClass({
 });
 
 var FoodTable = React.createClass({
+    getInitialState: function(){
+        return {
+            donations: [],
+            authToken: ''
+        };
+    }
+    getDonations: function(authToken){
+
+    },
     render: function(){
         return (
             <div id="past-donations well">
