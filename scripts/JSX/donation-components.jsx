@@ -56,7 +56,7 @@ var FoodTable = React.createClass({
       donations: [],
       authToken: ''
     };
-  }
+  },
   getDonations: function(authToken){
 
   },
@@ -64,7 +64,7 @@ var FoodTable = React.createClass({
     return (
       <div id="past-donations well">
         <h4 className="text-left">Past Donations</h4>
-      <ul id="past-donations-list"> on 
+      <ul id="past-donations-list"> on
           <li id="template" className="row">
             <div className="col-xs-6">
               <h4>ST JUDE</h4>

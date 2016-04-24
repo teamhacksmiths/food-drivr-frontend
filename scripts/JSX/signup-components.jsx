@@ -1,7 +1,7 @@
 import { Headline } from './reusable-components.jsx';
 import React from 'react';
 import { Link } from 'react-router';
-import messages from './utils/messages';
+import messages from '../utils/messages';
 
 var SignUpPage = React.createClass({
   render: function() {
@@ -42,7 +42,7 @@ var SignUpButton = React.createClass({
           role="button"
           className="btn btn-info"
         >
-        { messages.VOLUNTEER }
+        { messages.DRIVER }
       </Link>
       </div>
     );
