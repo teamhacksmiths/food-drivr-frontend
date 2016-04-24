@@ -4,13 +4,13 @@ import {Link} from 'react-router';
 var Header = React.createClass({
 	render: function(){
 		return (
-				<div className='header text-flex'>
-					<h3 className='text-grey'>
-						<Link to="/">Food Taxi Logo</Link>
-					</h3>
-					<Login />
-				</div>
-			);
+			<div className='header text-flex'>
+				<h3 className='text-grey'>
+					<Link to="/">Food Taxi Logo</Link>
+				</h3>
+				<Login />
+			</div>
+		);
 	}
 });
 
@@ -25,10 +25,10 @@ var Headline = React.createClass({
 var Login = React.createClass({
 	render: function(){
 		return (
-				<h3 className='text-margin-left'>
+			<h3 className='text-margin-left'>
 				<Link to="/signin"className='text-grey'>Login</Link>
-				</h3>
-			);
+			</h3>
+		);
 	}
 });
 
@@ -38,7 +38,7 @@ var Footer = React.createClass({
 			<div className='footer'>
 				<p>Made with ♥ by <Link to='http://hacksmiths.io'>Team Hacksmiths</Link></p>
 			</div>
-			);
+		);
 	}
 });
 
