@@ -1,14 +1,13 @@
-import { Headline } from './reusable-components.jsx';
 import React from 'react';
+import { PropTypes } from 'react';
 import { Link } from 'react-router';
 import $ from 'jquery';
-import { PropTypes } from 'react';
+import { Headline } from './reusable-components.jsx';
 
-
-function SignUpDonor(props) {
+function UserRegister(props) {
     return (
         <div className='container'>
-        <Headline value="Sign Up as a Donor" />
+        <Headline header={"Sign Up As A " + props.userType} />
         <form onSubmit={props.onSubmitUser}>
           <div className="form-group">
             <input 
@@ -66,7 +65,7 @@ function SignUpDonor(props) {
     );
 }
 
-SignUpDonor.propTypes = {
+UserRegister.propTypes = {
     onSubmitUser: PropTypes.func.isRequired,
     onNameChange: PropTypes.func.isRequired,
     onEmailChange: PropTypes.func.isRequired,
@@ -78,4 +77,4 @@ SignUpDonor.propTypes = {
     passwordConfirmation: PropTypes.string.isRequired,
 }
 
-module.exports = SignUpDonor;
+module.exports = UserRegister;

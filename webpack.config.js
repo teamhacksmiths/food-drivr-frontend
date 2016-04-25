@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
-	entry: './scripts/main.js',
+	entry: './scripts/index.js',
 	output: {
 		path: __dirname,
 		filename: 'bundle.js'

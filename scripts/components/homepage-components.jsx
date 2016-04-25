@@ -1,14 +1,19 @@
-import {Headline} from './reusable-components.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
 import $ from 'jquery';
+import {Headline} from './reusable-components.jsx';
 
 
 var BodyButton = React.createClass({
     render: function(){
         return (
-            <Link to="/signup" role="button" className='button-home'>JOIN US</Link>
+            <Link
+                to="/signup"
+                role="button"
+                className='button-home'
+                >JOIN US
+                </Link>
         );
     }
 });

@@ -1,6 +1,6 @@
-import {Headline} from './reusable-components.jsx';
 import React from 'react';
 import {Link} from 'react-router';
+import {Headline} from './reusable-components.jsx';
 
 var SignInPage = React.createClass({
     render: function(){

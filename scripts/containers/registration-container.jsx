@@ -1,11 +1,10 @@
-import { Headline } from './reusable-components.jsx';
 import React from 'react';
 import { Link } from 'react-router';
 import $ from 'jquery';
-import SignUpDonor from './signupdonor-components.jsx';
+import { Headline } from '../components/reusable-components.jsx';
+import UserRegister from '../components/signupuser-components.jsx';
 
-var FormDonor = React.createClass({
-
+var Registration = React.createClass({
     contextTypes: {
         router: React.PropTypes.object.isRequired
     },
@@ -21,7 +20,7 @@ var FormDonor = React.createClass({
         };
     },
     handleSubmitUser: function(e) {
-        console.log(this.context.router);
+        console.log(this);
         e.preventDefault();
         var name = this.state.name;
         var email = this.state.email;
@@ -106,7 +105,11 @@ var FormDonor = React.createClass({
             success: function(data) {
                 if (data !== null || data !== undefined || data !== {}) {
                     this.context.router.push({
-                        pathname: '/donation'
+                        pathname: '/donation',
+                        state: {
+                            authToken: this.state.authToken,
+                            user: this.state.user
+                        }
                     });
                     this.setState({authToken: data});
                     console.log(this.state.authToken);
@@ -119,7 +122,8 @@ var FormDonor = React.createClass({
     },
     render: function() {
         return (
-            <SignUpDonor 
+            <UserRegister
+                userType={this.props.userFunction}
                 onSubmitUser={this.handleSubmitUser}
                 onNameChange={this.handleNameChange}
                 onEmailChange={this.handleEmailChange}
@@ -134,4 +138,4 @@ var FormDonor = React.createClass({
     }
 });
 
-module.exports = FormDonor;
+module.exports = Registration;

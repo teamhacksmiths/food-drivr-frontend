@@ -235,6 +235,10 @@ button
     border-radius: 25px;
 }
 
+.invisible-btn {
+  display: none;
+}
+
 #add-donation
 {
     margin-bottom: 65px;
