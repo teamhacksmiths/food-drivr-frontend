@@ -27,7 +27,6 @@ var SignUpPage = React.createClass({
     render: function() {
         return (
             <div className='container'>
-        <Headline header="Sign Up As:" />
             <button
                 className={this.state.class}
                 type='submit'
@@ -43,7 +42,7 @@ var SignUpPage = React.createClass({
                   Volunteer
             </button>
             {this.state.userState ?
-                <Registration userFunction={this.state.userType} /> : null
+                <Registration userType={this.state.userType} /> : null
             }
       </div>
         );

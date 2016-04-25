@@ -123,7 +123,7 @@ var Registration = React.createClass({
     render: function() {
         return (
             <UserRegister
-                userType={this.props.userFunction}
+                userType={this.props.userType}
                 onSubmitUser={this.handleSubmitUser}
                 onNameChange={this.handleNameChange}
                 onEmailChange={this.handleEmailChange}
