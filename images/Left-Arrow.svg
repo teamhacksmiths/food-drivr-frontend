@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.1 (28215) - http://www.bohemiancoding.com/sketch -->
+    <title>Arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M36,72 C55.882251,72 72,55.882251 72,36 C72,16.117749 55.882251,0 36,0 C16.117749,0 0,16.117749 0,36 C0,55.882251 16.117749,72 36,72 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="72" height="72" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-60.000000, -1937.000000)">
+            <g id="Arrow" transform="translate(60.000000, 1937.000000)">
+                <use id="Stroke" stroke="#DDDDDD" mask="url(#mask-2)" stroke-width="2" transform="translate(36.000000, 36.000000) scale(-1, 1) translate(-36.000000, -36.000000) " xlink:href="#path-1"></use>
+                <polygon id="Shape" fill="#FFFFFF" transform="translate(36.000000, 36.000000) scale(-1, 1) translate(-36.000000, -36.000000) " points="20 34.835443 47.9254658 34.835443 38.6832298 25.4177215 40.0745342 24 52 36.1518987 50.6086957 37.5696203 50.5093168 37.4683544 40.2732919 48 38.8819876 46.5822785 48.4223602 36.8607595 20 36.8607595"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
