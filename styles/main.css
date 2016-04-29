@@ -1,6 +1,96 @@
-html, body, #Main, .homepage {
+body, #Main, .homepage {
   width: 100%;
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: white;
+  outline: none;
+}
+
+button {
+    font-weight: bold;
+    color: white;
+    background-color: red;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 60px;
+}
+
+h4 {
+  color: black;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Main content */
+.container {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  background: #394969
+}
+
+/* Header Section */
+.header {
+  padding: 45px 245px 10px 245px;
+}
+
+.header h3 {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 8px 0;
+}
+
+/* Homepage Elements */
+.fd-logo {
+  margin: 10px;
+}
+
+.homepage-intro {
+  width: 100%;
+}
+
+.homepage-title {
+  margin-top: 97px;
+  font-weight: bold;
+  font-size: 69px;
+}
+
+.button-home{
+  font-size: 20px;
+  color: white;
+  padding: 10px 77px;
+  background-color: #ff1e40;
+  border-radius: 25px;
+}
+
+.homepage-howto {
+  top: 20%;
+  background-color: white;
+}
+
+
+
+
+
+
+
+.foodtype {
+  font-size: 20px;
+  text-align: right;
+  color: $text-color-grey;
 }
 
 .howtodiv {
@@ -33,29 +123,12 @@ html, body, #Main, .homepage {
     padding-left: 15px;
 }
 
-.container {
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  background: #394969
-}
 
-/* Header Section */
-.header {
-  padding: 45px 245px;
-}
 
-.header h3 {
-    font-size: 22px;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 8px 0;
-}
+
 
 /* Custom page footer */
-.footer
-{
-  position:fixed;
+.footer {
   left:0px;
   bottom:0px;
   height:30px;
@@ -82,66 +155,7 @@ html, body, #Main, .homepage {
   padding: 14px 24px;
 }
 
-/* Supporting marketing content */
-.marketing
-{
-    margin: 40px 0;
-}
 
-.marketing p + h4
-{
-    margin-top: 28px;
-}
-
-/*
- * CUSTOM CSS BEGINS HERE
- */
-h1 {
-  font-size: 48px;
-  font-weight: 400;
-  margin-bottom: 60px;
-}
-
-h4 {
-  color: $text-color-grey;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-h4 {
-  color: black;
-}
-
-p {
-  font-style: italic;
-}
-
-.foodtype {
-  font-size: 20px;
-  text-align: right;
-  color: $text-color-grey;
-}
-
-a:hover {
-  text-decoration: none;
-  color: white;
-}
-
-/* Hero =========================*/
-.homepage-intro {
-  padding-top: 30%;
-  width: 100%;
-  height: 100%;
-}
-
-.homepage-howto {
-  top: 20%;
-  background-color: white;
-}
 
 .text-grey h1 {
   font-size: 130px;
@@ -186,22 +200,6 @@ a:hover {
 .text-margin-left
 {
     margin-left: auto;
-}
-
-button
-{
-    font-weight: bold
-
-    color: white;
-    background-color: red;
-}
-
-.button-home{
-  color: white;
-    padding: 10px 40px; 
-    background-color: red;
-    width: 250px;
-    border-radius: 25px;
 }
 
 .invisible-btn {
@@ -278,8 +276,7 @@ button
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-    .container
-    {
+    .container {
         max-width: 1450px;
     }
 }
