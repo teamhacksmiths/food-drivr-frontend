@@ -35,15 +35,17 @@ ul {
 
 /* Main content */
 .container {
-  height: 100%;
   width: 100%;
+  max-width: 1450px;
   padding: 0;
   background: #394969
 }
 
 /* Header Section */
 .header {
-  padding: 45px 245px 10px 245px;
+  margin: 45px auto 10px auto;
+  width: 90%;
+  max-width: 1000px;
 }
 
 .header h3 {
@@ -210,11 +212,6 @@ ul {
 {
     margin-bottom: 65px;
 }
-.container
-{
-    padding-right: 5px;
-    padding-left: 5px;
-}
 
 .form-control
 {
@@ -272,11 +269,10 @@ ul {
 
 /* Responsive: Portrait After Mobile Large and up */
 @media screen and (min-width: 426px) {
+
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 1450px;
-    }
+@media screen and (min-width: 1024px) {
+
 }
