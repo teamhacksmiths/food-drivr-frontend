@@ -15,7 +15,7 @@ var Header = React.createClass({
 var Headline = React.createClass({
 	render: function() {
 		return (
-			<h1 className='text-center text-grey'>{this.props.value}</h1>
+			<h1 className={this.props.className}>{this.props.value}</h1>
 		);
 	}
 });
@@ -40,6 +40,17 @@ var Login = React.createClass({
 	}
 });
 
+var ScrollDownButton = React.createClass({
+	render: function() {
+		return (
+			<div>
+				<p className="text-grey">{this.props.text}</p>
+				<img src="images/down-arrow.svg" alt="down arrow"/>
+			</div>
+		);
+	}
+});
+
 var Footer = React.createClass({
 	render: function() {
 		return (
@@ -53,5 +64,6 @@ var Footer = React.createClass({
 module.exports = {
 	Header: Header,
 	Footer: Footer,
-	Headline: Headline
+	Headline: Headline,
+	ScrollDownButton: ScrollDownButton
 }
