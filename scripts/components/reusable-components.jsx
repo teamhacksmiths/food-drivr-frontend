@@ -23,8 +23,8 @@ var Headline = React.createClass({
 var AppStoreIcon = React.createClass({
 	render: function() {
 		return (
-			<Link to="">
-				<img src="images/App-Store-Badge.png" alt="apple store icon"/>
+			<Link to='' className={this.props.className}>
+				<img src='images/App-Store-Badge.png' alt='apple store icon'/>
 			</Link>
 		);
 	}
@@ -34,7 +34,7 @@ var Login = React.createClass({
 	render: function() {
 		return (
 			<h3 className='text-margin-left'>
-				<Link to="/signin" className='text-grey'>Login</Link>
+				<Link to='/signin' className='text-white'>Login</Link>
 			</h3>
 		);
 	}
@@ -44,8 +44,8 @@ var ScrollDownButton = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<p className="text-grey">{this.props.text}</p>
-				<img src="images/down-arrow.svg" alt="down arrow"/>
+				<p className='text-white'>{this.props.text}</p>
+				<img src='images/down-arrow.svg' alt='down arrow'/>
 			</div>
 		);
 	}
@@ -65,5 +65,6 @@ module.exports = {
 	Header: Header,
 	Footer: Footer,
 	Headline: Headline,
-	ScrollDownButton: ScrollDownButton
+	ScrollDownButton: ScrollDownButton,
+	AppStoreIcon: AppStoreIcon
 }

@@ -4,7 +4,7 @@ import { Header, Footer } from './reusable-components.jsx';
 export default class App extends React.Component {
     render() {
         return (
-            <div className="container">
+            <div className='container'>
             	<Header />
               	{this.props.children}
                 <Footer />

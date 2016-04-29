@@ -1,4 +1,4 @@
-body, #Main, .homepage {
+body {
   width: 100%;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -33,6 +33,28 @@ ul {
   list-style-type: none;
 }
 
+/* Generic Classes */
+
+.text-grey {
+  color: #3c3d41;
+}
+
+.text-lightgrey {
+  color: #70767a;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
 /* Main content */
 .container {
   width: 100%;
@@ -56,6 +78,11 @@ ul {
 }
 
 /* Homepage Elements */
+.homepage {
+  position: relative;
+  width: 100%;
+}
+
 .fd-logo {
   margin: 10px;
 }
@@ -78,12 +105,140 @@ ul {
   border-radius: 25px;
 }
 
+/* How It works Section*/
+
 .homepage-howto {
-  top: 20%;
-  background-color: white;
+  background: white;
+  padding: 100px 0 50px;
 }
 
+.howto-title {
+  font-weight: bold;
+}
 
+.howto-content {
+  display: flex;
+  margin: 0 185px;
+}
+
+.howto-img {
+  margin: 20px;
+}
+
+.howto-div {
+  margin: 20px;
+}
+
+/* Become a Driver Section */
+.homepage-becomedriver {
+  display: flex;
+  padding: 100px 20px 0;
+  background: #4b4c4e;
+  min-height: 700px;
+}
+
+.becomedriver-content {
+  width: 40%;
+  padding: 0 60px;
+}
+
+.becomedriver-title {
+  font-weight: bold;
+}
+
+.becomedriver-img {
+  background-image: url("../images/Food-Drivr-Driver-iphone.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: left top;
+  width: 40%;
+}
+
+.becomedriver-arrow {
+  position: relative;
+  width: 72px;
+  margin: 0 40px;;
+}
+
+.becomedriver-arrow img {
+  position: absolute;
+  top: 38%;
+}
+
+.becomedriver-appStoreIcon {
+  position: absolute;
+  top: 48%;
+  right: 20%;
+}
+
+/* Comments Section */
+.homepage-comments {
+  background: #14cfe8;
+  padding: 150px 0 20px;
+}
+
+.comments-container p {
+  width: 40%;
+  margin: auto;
+  font-size: 20px;
+}
+
+.comments-author {
+  font-size: 16px;
+  margin: 60px 0 10px;
+}
+
+.comments-company {
+  font-size: 12px;
+}
+
+.comments-dots {
+  margin-top: 60px;
+}
+
+.bullet {
+  display: inline;
+  font-size: 45px;
+  margin: 0 10px;
+}
+
+.bullet:before {
+  content: "•";
+}
+
+.active-bullet:before{
+  content: "◦";
+}
+
+/* Contacts Section */
+.homepage-contacts {
+  padding: 100px 350px 0;
+  font-size: 20px;
+}
+
+.homepage-contacts p {
+  width: 400px;
+  margin: 50px 0;
+}
+
+.email{
+  display: inline;
+  border-bottom: 1px solid #FFF;
+  padding-bottom: 3px;
+}
+
+.contacts-social {
+  display: block;
+}
+
+.social-icon {
+  margin: 20px 10px 0 0;
+}
+
+.copyright {
+  margin-top: 50px;
+  font-size: 10px;
+}
 
 
 
@@ -95,15 +250,6 @@ ul {
   color: $text-color-grey;
 }
 
-.howtodiv {
-  float: left;
-  width: 33%;
-}
-
-.homepage {
-  position: relative;
-  width: 100%;
-}
 
 .browsehappy {
   margin: .2em 0;
@@ -186,18 +332,12 @@ ul {
   top: 40%;
 }
 
-.text-grey {
-  color: white;
-}
 
 .text-flex {
   display: flex;
 }
 
-.text-center
-{
-    text-align: center;
-}
+
 
 .text-margin-left
 {
