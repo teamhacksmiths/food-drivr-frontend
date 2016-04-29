@@ -1,325 +1,360 @@
 body {
-  width: 100%;
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
+	width: 100%;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
 }
 
 a:hover,
 a:focus {
-  text-decoration: none;
-  color: white;
-  outline: none;
+	text-decoration: none;
+	color: white;
+	outline: none;
 }
 
 button {
-    font-weight: bold;
-    color: white;
-    background-color: red;
+		font-weight: bold;
+		color: white;
+		background-color: red;
 }
 
 h1 {
-  font-size: 48px;
-  font-weight: 400;
-  margin-bottom: 60px;
+	font-size: 48px;
+	font-weight: 400;
+	margin-bottom: 60px;
 }
 
 h4 {
-  color: black;
+	color: black;
 }
 
 ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
 }
 
 /* Generic Classes */
 
 .text-grey {
-  color: #3c3d41;
+	color: #3c3d41;
 }
 
 .text-lightgrey {
-  color: #70767a;
+	color: #70767a;
 }
 
 .text-white {
-  color: white;
+	color: white;
 }
 
 .text-center{
-  text-align: center;
+	text-align: center;
 }
 
 .text-right {
-  text-align: right;
+	text-align: right;
 }
 
 .text-margin-left {
-    margin-left: auto;
+		margin-left: auto;
 }
 
 /* Main content */
 .container {
-  width: 100%;
-  max-width: 1450px;
-  padding: 0;
-  background: #394969
+	width: 100%;
+	max-width: 1450px;
+	padding: 0;
+	background: #394969
 }
 
 /* Header Section */
 .header {
-  margin: 45px auto 10px auto;
-  width: 90%;
-  max-width: 1000px;
+	margin: 45px auto 10px auto;
+	width: 90%;
+	max-width: 1000px;
 }
 
 .header h3 {
-    font-size: 22px;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 8px 0;
+		font-size: 22px;
+		margin-top: 0;
+		margin-bottom: 0;
+		padding: 8px 0;
 }
 
 /* Homepage Elements */
 .homepage {
-  position: relative;
-  width: 100%;
+	position: relative;
+	width: 100%;
 }
 
 .fd-logo {
-  margin: 10px;
+	margin: 10px;
 }
 
 .homepage-intro {
-  margin-top: 50px;
-  width: 100%;
+	margin-top: 50px;
+	width: 100%;
 }
 
 .homepage-title {
-  margin: 100px auto;
-  font-weight: bold;
-  font-size: 40px;
-  max-width: 300px;
+	margin: 100px auto;
+	font-weight: bold;
+	font-size: 40px;
+	max-width: 300px;
 }
 
 .homepage-content {
-  max-width: 530px;
-  margin: auto;
-  font-size: 18px;
-  padding: 0 20px;
+	max-width: 530px;
+	margin: auto;
+	font-size: 18px;
+	padding: 0 20px;
 }
 
 .button-container {
-  margin: 80px 10px;
+	margin: 80px 0;
 }
 
 .button-home{
-  font-size: 20px;
-  color: white;
-  padding: 10px 77px;
-  background-color: #ff1e40;
-  border-radius: 25px;
+	font-size: 20px;
+	color: white;
+	padding: 10px 77px;
+	background-color: #ff1e40;
+	border-radius: 25px;
 }
 
 /* How It works Section*/
 
 .homepage-howto {
-  background: white;
-  padding: 100px 0 50px;
+	background: white;
+	padding: 100px 0 50px;
 }
 
 .howto-title {
-  font-weight: bold;
-  font-size: 40px;
+	font-weight: bold;
+	font-size: 40px;
 }
 
 .howto-content {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 30px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 30px;
 }
 
 .howto-img {
-  margin: 20px;
+	margin: 20px;
 }
 
 .howto-div {
-  padding: 20px;
-  width: 100%;
+	padding: 20px;
+	width: 100%;
 }
 
 /* Become a Driver Section */
 .homepage-becomedriver {
-  display: flex;
-  padding: 100px 20px 0;
-  background: #4b4c4e;
-  min-height: 700px;
+	display: flex;
+	padding-top: 55px;
+	background: #4b4c4e;
+	min-height: 700px;
 }
 
 .becomedriver-content {
-  width: 40%;
-  padding: 0 60px;
+	width: 80%;
+	margin: auto;
 }
 
 .becomedriver-title {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 .becomedriver-img {
-  background-image: url("../images/Food-Drivr-Driver-iphone.png");
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  background-position: left top;
-  width: 40%;
+	display: none;
+	background-image: url("../images/Food-Drivr-Driver-iphone.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 40%;
+	background-position: center bottom;
 }
 
 .becomedriver-arrow {
-  position: relative;
-  width: 72px;
-  margin: 0 40px;;
+	display: none;
+	position: relative;
+	width: 72px;
+	margin: 0 40px;;
 }
 
 .becomedriver-arrow img {
-  position: absolute;
-  top: 38%;
+	position: absolute;
+	top: 38%;
 }
 
 .becomedriver-appStoreIcon {
-  position: absolute;
-  top: 48%;
-  right: 20%;
+	display: none;
+	position: absolute;
+	top: 52%;
+	right: 14%;;
 }
 
 /* Comments Section */
 .homepage-comments {
-  background: #14cfe8;
-  padding: 150px 0 20px;
+	background: #14cfe8;
+	padding: 150px 0 20px;
 }
 
 .comments-container p {
-  width: 70%;
-  margin: auto;
-  font-size: 20px;
+	width: 70%;
+	margin: auto;
+	font-size: 20px;
 }
 
 .comments-author {
-  font-size: 16px;
-  margin: 60px 0 10px;
+	font-size: 16px;
+	margin: 60px 0 10px;
 }
 
 .comments-company {
-  font-size: 12px;
+	font-size: 12px;
 }
 
 .comments-dots {
-  margin-top: 60px;
+	margin-top: 60px;
 }
 
 .bullet {
-  display: inline;
-  font-size: 45px;
-  margin: 0 10px;
+	display: inline;
+	font-size: 45px;
+	margin: 0 10px;
 }
 
 .bullet:before {
-  content: "•";
+	content: "•";
 }
 
 .active-bullet:before{
-  content: "◦";
+	content: "◦";
 }
 
 /* Contacts Section */
 .homepage-contacts {
-  padding: 55px 15% 0;
-  font-size: 20px;
+	padding: 55px 15% 0;
+	font-size: 20px;
 }
 
 .homepage-contacts p {
-  max-width: 400px;
-  margin: 50px 0;
+	max-width: 400px;
+	margin: 50px 0;
 }
 
 .email{
-  display: inline;
-  border-bottom: 1px solid #FFF;
-  padding-bottom: 3px;
-  font-size: 14px;
+	display: inline;
+	border-bottom: 1px solid #FFF;
+	padding-bottom: 3px;
+	font-size: 14px;
 }
 
 .contacts-social {
-  display: block;
+	display: block;
 }
 
 .social-icon {
-  margin: 20px 10px 0 0;
+	margin: 20px 10px 0 0;
 }
 
 .copyright {
-  margin-top: 50px;
-  font-size: 10px;
+	margin-top: 50px;
+	font-size: 10px;
 }
 
 /* Custom page footer */
 .footer {
-  left:0px;
-  bottom:0px;
-  height:30px;
-  width:100%;
-  text-align: center;
-  color: white;
+	left:0px;
+	bottom:0px;
+	height:30px;
+	width:100%;
+	text-align: center;
+	color: white;
 }
 
 /* Responsive: Portrait After Mobile Large and up */
 @media screen and (min-width: 426px) {
-  .howto-title {
-    font-size: 48px;
-  }
+	.howto-title {
+		font-size: 48px;
+	}
 
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .homepage-intro {
-    margin-top: 0;
-  }
+	.homepage-intro {
+		margin-top: 0;
+	}
 
-  .homepage-title {
-    font-size: 60px;
-    max-width: 900px;
-  }
+	.homepage-title {
+		font-size: 60px;
+		max-width: 900px;
+	}
 
-  .howto-div {
-    padding: 7%;
-    width: 33%;
-  }
+	.howto-div {
+		padding: 7%;
+		width: 33%;
+	}
 
-  .comments-container p {
-    width: 60%;
-  }
+	.comments-container p {
+		width: 60%;
+	}
 
-  .email {
-    font-size: 20px;
-  }
+	.email {
+		font-size: 20px;
+	}
 
 }
 
 /* Responsive: Laptop and up */
 @media screen and (min-width: 1024px) {
-  .homepage-title {
-    font-size: 70px;
-    max-width: 900px;
-  }
+	.homepage-title {
+		font-size: 70px;
+		max-width: 900px;
+	}
 
-  .comments-container p {
-    width: 40%;
-  }
+	.comments-container p {
+		width: 40%;
+	}
 
-  .homepage-contacts {
-    padding: 55px 25% 0;
-  }
+	.homepage-becomedriver {
+		padding-top: 70px;
+	}
 
+	.becomedriver-title {
+		font-size: 32px;
+	}
+
+	.becomedriver-arrow,
+	.becomedriver-appStoreIcon,
+	.becomedriver-img{
+		display: block;
+	}
+
+	.becomedriver-content {
+		width: 40%;
+		padding:0 50px;
+	}
+
+	.homepage-contacts {
+		padding: 55px 25% 0;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.homepage-becomedriver {
+		padding-top: 100px;
+	}
+
+	.becomedriver-title {
+		font-size: 42px;
+	}
+
+	.becomedriver-img {
+		background-size: auto 100%;
+	}
 }
 
 /*************************************************************/
@@ -327,83 +362,83 @@ ul {
 /*************************************************************/
 
 .foodtype {
-  font-size: 20px;
-  text-align: right;
-  color: $text-color-grey;
+	font-size: 20px;
+	text-align: right;
+	color: $text-color-grey;
 }
 
 
 .browsehappy {
-  margin: .2em 0;
-  padding: .2em 0;
-  color: #000;
-  background: #ccc;
+	margin: .2em 0;
+	padding: .2em 0;
+	color: #000;
+	background: #ccc;
 }
 
 .section {
-  position: relative;
-  height: 100%;
-  width: 100%;
+	position: relative;
+	height: 100%;
+	width: 100%;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .marketing,
 .footer {
-    padding-right: 15px;
-    padding-left: 15px;
+		padding-right: 15px;
+		padding-left: 15px;
 }
 
 
 .container-narrow > hr
 {
-  margin: 30px 0;
+	margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
 .jumbotron
 {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+	text-align: center;
+	border-bottom: 1px solid #e5e5e5;
 }
 
 .jumbotron .btn
 {
-  font-size: 21px;
-  padding: 14px 24px;
+	font-size: 21px;
+	padding: 14px 24px;
 }
 
 
 
 .text-grey h1 {
-  font-size: 130px;
-  font-family: 'Playfair Display SC', serif;
-  color: #FFFFFF;
-  text-rendering: optimizeLegibility;
-  font-weight: 400;
-  margin: 0;
+	font-size: 130px;
+	font-family: 'Playfair Display SC', serif;
+	color: #FFFFFF;
+	text-rendering: optimizeLegibility;
+	font-weight: 400;
+	margin: 0;
 }
 
 .hero h2 {
-  font-size: 40px;
-  font-family: 'Playfair Display SC', serif;
-  color: #FFFFFF;
-  text-rendering: optimizeLegibility;
-  font-weight: 400;
-  margin: 0;
-  margin-left: 15px;
+	font-size: 40px;
+	font-family: 'Playfair Display SC', serif;
+	color: #FFFFFF;
+	text-rendering: optimizeLegibility;
+	font-weight: 400;
+	margin: 0;
+	margin-left: 15px;
 }
 
 
 
 .name {
-  position: absolute;
-  left: 20%;
-  top: 40%;
+	position: absolute;
+	left: 20%;
+	top: 40%;
 }
 
 
 .text-flex {
-  display: flex;
+	display: flex;
 }
 
 
@@ -411,64 +446,64 @@ ul {
 
 
 .invisible-btn {
-  display: none;
+	display: none;
 }
 
 #add-donation
 {
-    margin-bottom: 65px;
+		margin-bottom: 65px;
 }
 
 .form-control
 {
-    font-size: 30px;
+		font-size: 30px;
 
-    width: 80%;
-    height: 65px;
-    margin: 0 10%;
-    padding-left: 40px;
+		width: 80%;
+		height: 65px;
+		margin: 0 10%;
+		padding-left: 40px;
 
-    border-color: #fff;
-    border-radius: 0;
-    background: #f8f8f8;
+		border-color: #fff;
+		border-radius: 0;
+		background: #f8f8f8;
 }
 .donation-box
 {
-    font-size: 30px;
-    height: 65px;
-    border-style: none;
-    border-color: #fff;
-    border-radius: 0;
-    background-color: $form-background;
+		font-size: 30px;
+		height: 65px;
+		border-style: none;
+		border-color: #fff;
+		border-radius: 0;
+		background-color: $form-background;
 }
 
 /* Remove the bottom border on the jumbotron for visual effect */
 .jumbotron
 {
-    border-bottom: 0;
+		border-bottom: 0;
 }
 
 .signup
 {
-    background-color: #f7b32b;
+		background-color: #f7b32b;
 }
 
 .signin
 {
-    background-color: #ff1e40;
+		background-color: #ff1e40;
 }
 
 .donation
 {
-    background-color: #f9f9f9;
+		background-color: #f9f9f9;
 }
 
 #past-donations-list
 {
-    font-weight: bold;
+		font-weight: bold;
 }
 
 #past-donations-list h4
 {
-    color: #9fe9f2;
+		color: #9fe9f2;
 }
