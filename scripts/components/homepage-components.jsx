@@ -31,7 +31,7 @@ var SectionIntro = React.createClass({
                     </p>
                 </div>
 				<Headline value='WASTE NOT FOOD TAXI' className='homepage-title text-center text-white'/>
-				<p className='lead text-center text-white' style={{width: 530, margin: 'auto', fontSize: 18}}>
+				<p className='homepage-content text-center text-white'>
                     On a daily basis, businesess like catering facilities, restaurants, grocery stores, as well as individuals produce more food than what is necessary for them to meet their needs.
                     <br/>
                     <br/>
@@ -40,7 +40,7 @@ var SectionIntro = React.createClass({
                     Join us and help end hunger.
 				</p>
                 <br/>
-				<div className='text-center' style={{margin: 80}}>
+				<div className='button-container text-center'>
 					<BodyButton />
 				</div>
                 <div className='text-center' style={{marginBottom: 20}}>
@@ -70,19 +70,19 @@ var SectionHowTo = React.createClass({
                 <div className='howto-content'>
                     <div className='howto-div'>
                         <HowToDivTitle title='DONATING' imgSrc='images/package.svg' imgAlt='donation package' />
-                        <p className='howto-div text-lightgrey text-center'>
+                        <p className='text-lightgrey text-center'>
                             After signing up, donors can enter in items they wish to donate to those in need. Once items are donated, a notification is sent out to all drivers of a pending donation.
                         </p>
                     </div>
                     <div className='howto-div'>
                         <HowToDivTitle title='PICKUP' imgSrc='images/truck.svg' imgAlt='pickup truck' />
-                        <p className='howto-div text-lightgrey text-center'>
+                        <p className='text-lightgrey text-center'>
                             Drivers receive notification of a pending donation and can choose to accept. Upon accepting, they will be given all of the information about the pending donation.
                         </p>
                     </div>
                     <div className='howto-div'>
                         <HowToDivTitle title='DELIVERY' imgSrc='images/delivery.svg' imgAlt='delivery truck' />
-                        <p className='howto-div text-lightgrey text-center'>
+                        <p className='text-lightgrey text-center'>
                             After the pick up of a donation has been completed, drivers deliver the donation to the nearest pre-determined organization recipient.
                         </p>
                     </div>

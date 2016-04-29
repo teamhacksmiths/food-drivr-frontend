@@ -55,6 +55,10 @@ ul {
   text-align: right;
 }
 
+.text-margin-left {
+    margin-left: auto;
+}
+
 /* Main content */
 .container {
   width: 100%;
@@ -88,13 +92,26 @@ ul {
 }
 
 .homepage-intro {
+  margin-top: 50px;
   width: 100%;
 }
 
 .homepage-title {
-  margin-top: 97px;
+  margin: 100px auto;
   font-weight: bold;
-  font-size: 69px;
+  font-size: 40px;
+  max-width: 300px;
+}
+
+.homepage-content {
+  max-width: 530px;
+  margin: auto;
+  font-size: 18px;
+  padding: 0 20px;
+}
+
+.button-container {
+  margin: 80px 10px;
 }
 
 .button-home{
@@ -114,11 +131,13 @@ ul {
 
 .howto-title {
   font-weight: bold;
+  font-size: 40px;
 }
 
 .howto-content {
   display: flex;
-  margin: 0 185px;
+  flex-wrap: wrap;
+  margin: 0 30px;
 }
 
 .howto-img {
@@ -126,7 +145,8 @@ ul {
 }
 
 .howto-div {
-  margin: 20px;
+  padding: 20px;
+  width: 100%;
 }
 
 /* Become a Driver Section */
@@ -240,9 +260,54 @@ ul {
   font-size: 10px;
 }
 
+/* Custom page footer */
+.footer {
+  left:0px;
+  bottom:0px;
+  height:30px;
+  width:100%;
+  text-align: center;
+  color: white;
+}
 
+/* Responsive: Portrait After Mobile Large and up */
+@media screen and (min-width: 426px) {
+  .howto-title {
+    font-size: 48px;
+  }
 
+}
 
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .homepage-intro {
+    margin-top: 0;
+  }
+
+  .homepage-title {
+    font-size: 60px;
+    max-width: 900px;
+  }
+
+  .howto-div {
+    padding: 7%;
+    width: 33%;
+  }
+
+}
+
+/* Responsive: Laptop and up */
+@media screen and (min-width: 1024px) {
+  .homepage-title {
+    font-size: 70px;
+    max-width: 900px;
+  }
+
+}
+
+/*************************************************************/
+/* EVERYTHING AFTER THIS NEEDS TO BE REVIEWED AND REFACTORED */
+/*************************************************************/
 
 .foodtype {
   font-size: 20px;
@@ -271,19 +336,6 @@ ul {
     padding-left: 15px;
 }
 
-
-
-
-
-/* Custom page footer */
-.footer {
-  left:0px;
-  bottom:0px;
-  height:30px;
-  width:100%;
-  text-align: center;
-  color: white;
-}
 
 .container-narrow > hr
 {
@@ -339,10 +391,7 @@ ul {
 
 
 
-.text-margin-left
-{
-    margin-left: auto;
-}
+
 
 .invisible-btn {
   display: none;
@@ -405,14 +454,4 @@ ul {
 #past-donations-list h4
 {
     color: #9fe9f2;
-}
-
-/* Responsive: Portrait After Mobile Large and up */
-@media screen and (min-width: 426px) {
-
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 1024px) {
-
 }
