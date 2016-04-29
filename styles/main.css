@@ -282,10 +282,80 @@ ul {
 	color: white;
 }
 
+/*************************************************************/
+/*                       SIGNUP STYLE                        */
+/*************************************************************/
+.signup-container p{
+	padding: 80px 0;
+	font-size: 30px;
+}
+
+.btn-signup {
+	display: block;
+	border: none;
+	margin: auto;
+	font-size: 25px;
+	margin-top: 10px;
+}
+
+.btn-signup:focus,
+.btn-signup-register:focus {
+	outline: none;
+}
+
+.btn-signup-register {
+	padding-bottom: 30px;
+}
+
+.form-signup,
+.btn-signup-register {
+	background: transparent;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom-style: solid;
+	border-bottom-color: white;
+  width: 80%;
+  max-width: 400px;
+  font-size: 19px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.form-signup:focus {
+	outline: none;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: white;
+  opacity:  .8;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: white;
+  opacity:  .8;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: white;
+  opacity:  .8;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+  opacity:  .8;
+}
+
+/*************************************************************/
+/*                     MEDIA QUERIES                         */
+/*************************************************************/
+
 /* Responsive: Portrait After Mobile Large and up */
 @media screen and (min-width: 426px) {
 	.howto-title {
 		font-size: 48px;
+	}
+
+	.signup-container p{
+		font-size: 35px;
 	}
 
 }
@@ -363,67 +433,6 @@ ul {
 	.becomedriver-img {
 		background-size: auto 100%;
 	}
-}
-
-/*************************************************************/
-/*                       SIGNUP STYLE                        */
-/*************************************************************/
-.signup-container p{
-	padding: 80px 0;
-	font-size: 35px;
-}
-
-.btn-signup {
-	display: block;
-	border: none;
-	margin: auto;
-	font-size: 25px;
-	margin-top: 10px;
-}
-
-.btn-signup:focus,
-.btn-signup-register:focus {
-	outline: none;
-}
-
-.btn-signup-register {
-	padding-bottom: 30px;
-}
-
-.form-signup,
-.btn-signup-register {
-	background: transparent;
-	border-top: none;
-	border-left: none;
-	border-right: none;
-	border-bottom-style: solid;
-	border-bottom-color: white;
-  width: 30%;
-  font-size: 19px;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  color: white;
-}
-
-.form-signup:focus {
-	outline: none;
-}
-
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-  color: white;
-  opacity:  .8;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: white;
-  opacity:  .8;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: white;
-  opacity:  .8;
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: white;
-  opacity:  .8;
 }
 
 /*************************************************************/
@@ -523,19 +532,6 @@ ul {
 		margin-bottom: 65px;
 }
 
-.form-control
-{
-		font-size: 30px;
-
-		width: 80%;
-		height: 65px;
-		margin: 0 10%;
-		padding-left: 40px;
-
-		border-color: #fff;
-		border-radius: 0;
-		background: #f8f8f8;
-}
 .donation-box
 {
 		font-size: 30px;
