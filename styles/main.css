@@ -232,12 +232,12 @@ ul {
 
 /* Contacts Section */
 .homepage-contacts {
-  padding: 100px 350px 0;
+  padding: 55px 15% 0;
   font-size: 20px;
 }
 
 .homepage-contacts p {
-  width: 400px;
+  max-width: 400px;
   margin: 50px 0;
 }
 
@@ -245,6 +245,7 @@ ul {
   display: inline;
   border-bottom: 1px solid #FFF;
   padding-bottom: 3px;
+  font-size: 14px;
 }
 
 .contacts-social {
@@ -298,6 +299,10 @@ ul {
     width: 60%;
   }
 
+  .email {
+    font-size: 20px;
+  }
+
 }
 
 /* Responsive: Laptop and up */
@@ -309,6 +314,10 @@ ul {
 
   .comments-container p {
     width: 40%;
+  }
+
+  .homepage-contacts {
+    padding: 55px 25% 0;
   }
 
 }
