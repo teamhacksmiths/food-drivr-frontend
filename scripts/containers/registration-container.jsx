@@ -133,6 +133,7 @@ var Registration = React.createClass({
                 email={this.state.email}
                 password={this.state.password}
                 passwordConfirmation={this.state.passwordConfirmation}
+                style={this.props.style}
             />
         );
     }
