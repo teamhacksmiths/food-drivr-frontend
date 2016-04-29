@@ -198,7 +198,7 @@ ul {
 }
 
 .comments-container p {
-  width: 40%;
+  width: 70%;
   margin: auto;
   font-size: 20px;
 }
@@ -294,6 +294,10 @@ ul {
     width: 33%;
   }
 
+  .comments-container p {
+    width: 60%;
+  }
+
 }
 
 /* Responsive: Laptop and up */
@@ -301,6 +305,10 @@ ul {
   .homepage-title {
     font-size: 70px;
     max-width: 900px;
+  }
+
+  .comments-container p {
+    width: 40%;
   }
 
 }
