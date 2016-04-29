@@ -5,9 +5,7 @@ var Header = React.createClass({
 	render: function() {
 		return (
 			<div className='header text-flex'>
-				<h3 className='text-grey'>
-					<Link to="/">Food Taxi Logo</Link>
-				</h3>
+				<AppStoreIcon />
 				<Login />
 			</div>
 		);
@@ -22,11 +20,21 @@ var Headline = React.createClass({
 	}
 });
 
+var AppStoreIcon = React.createClass({
+	render: function() {
+		return (
+			<Link to="">
+				<img src="images/App-Store-Badge.png" alt="apple store icon"/>
+			</Link>
+		);
+	}
+});
+
 var Login = React.createClass({
 	render: function() {
 		return (
 			<h3 className='text-margin-left'>
-				<Link to="/signin"className='text-grey'>Login</Link>
+				<Link to="/signin" className='text-grey'>Login</Link>
 			</h3>
 		);
 	}
