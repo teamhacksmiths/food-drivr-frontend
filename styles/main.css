@@ -132,13 +132,13 @@ ul {
 }
 
 .button-container {
-	margin: 40px 0;
+	margin: 35px 0;
 }
 
-.button-home{
+.button-home {
 	font-size: 20px;
 	color: white;
-	padding: 10px 77px;
+	padding: 10px 55px;
 	background-color: #ff1e40;
 	border-radius: 25px;
 }
@@ -151,7 +151,6 @@ ul {
 }
 
 /* How It works Section*/
-
 .homepage-howto {
 	background: white;
 	padding: 100px 0 50px;
@@ -180,18 +179,20 @@ ul {
 /* Become a Driver Section */
 .homepage-becomedriver {
 	display: flex;
+	position: relative;
 	padding-top: 55px;
 	background: #4b4c4e;
 	min-height: 700px;
 }
 
 .becomedriver-content {
-	width: 80%;
+	width: 65%;
 	margin: auto;
 }
 
 .becomedriver-title {
 	font-weight: bold;
+	font-size: 40px;
 }
 
 .becomedriver-img {
@@ -199,27 +200,27 @@ ul {
 	background-image: url("../images/Food-Drivr-Driver-iphone.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
-	width: 40%;
+	width: 37%;
 	background-position: center bottom;
 }
 
 .becomedriver-arrow {
-	display: none;
 	position: relative;
-	width: 72px;
-	margin: 0 40px;;
+	width: 40px;
+  margin: 0 5px;
 }
 
 .becomedriver-arrow img {
 	position: absolute;
 	top: 38%;
+	width: 100%;
 }
 
 .becomedriver-appStoreIcon {
 	display: none;
 	position: absolute;
-	top: 52%;
-	right: 14%;;
+	top: 10%;
+  right: 11%;
 }
 
 /* Comments Section */
@@ -232,6 +233,10 @@ ul {
 	width: 70%;
 	margin: auto;
 	font-size: 20px;
+}
+
+.comments-container {
+	height: 280px;
 }
 
 .comments-author {
@@ -409,8 +414,17 @@ ul {
 		width: 33%;
 	}
 
+	.becomedriver-arrow {
+		width: 74px;
+    margin: 0 20px;
+	}
+
 	.comments-container p {
 		width: 60%;
+	}
+
+	.comments-container {
+		height: 260px;
 	}
 
 	.email {
@@ -419,11 +433,27 @@ ul {
 
 }
 
+
+@media screen and (min-height: 850px) {
+
+	.homepage-content {
+		font-size: 20px;
+	}
+
+	.button-container {
+		margin: 90px auto;
+	}
+}
+
 /* Responsive: Laptop and up */
 @media screen and (min-width: 1024px) {
 	.homepage-title {
 		font-size: 70px;
 		max-width: 900px;
+	}
+
+	.button-home {
+		padding: 10px 77px;
 	}
 
 	.comments-container p {
@@ -447,6 +477,10 @@ ul {
 	.becomedriver-content {
 		width: 40%;
 		padding:0 50px;
+	}
+
+	.comments-container {
+		height: 220px;
 	}
 
 	.homepage-contacts {

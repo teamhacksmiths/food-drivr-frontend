@@ -96,29 +96,64 @@ var Arrow = React.createClass({
     render: function(){
         return (
             <div className='becomedriver-arrow'>
-                <img src={'images/' + this.props.direction + '-Arrow.svg'} alt={this.props.direction + ' arrow'}/>
+                <img className='pointer-cursor' onClick={this.props.onClick} src={'images/' + this.props.direction + '-Arrow.svg'} alt={this.props.direction + ' arrow'}/>
+            </div>
+        );
+    }
+});
+
+var DonorDescription = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
+                <p>As an extra benefit to all of our donors, we provide tax receipts to them so they can write their donations off when they do their taxes.</p>
+                <p>Food Drivr provides an easy way for both drivers and donors to help put an end to hunger in their communities.</p>
+            </div>
+        );
+    }
+});
+
+var VolunteerDescription = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
+                <p>Some other text for volunteers!</p>
             </div>
         );
     }
 });
 
 var SectionBecomeDriver = React.createClass({
+    getInitialState: function() {
+        return {
+            userType: 'Donor',
+            description : ''
+        };
+    },
+    onSubmitDonor: function() {
+        this.setState({ userType: 'Donor' });
+    },
+    onSubmitVolunteer: function() {
+        this.setState({ userType: 'Volunteer' });
+    },
     render: function(){
         return (
             <div className='homepage-becomedriver'>
                 <AppStoreIcon className='becomedriver-appStoreIcon'/>
-                <Arrow direction='Left'/>
+                <Arrow direction='Left' onClick={this.state.userType === 'Donor' ? this.onSubmitVolunteer : this.onSubmitDonor}/>
                 <div className='becomedriver-content text-white'>
-                    <Headline value='Become a Driver' className='becomedriver-title'/>
-                    <p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
-                    <p>As an extra benefit to all of our donors, we provide tax receipts to them so they can write their donations off when they do their taxes.</p>
-                    <p>Food Drivr provides an easy way for both drivers and donors to help put an end to hunger in their communities.</p>
-                    <div className='button-container text-center'>
+                    <Headline value={'Become a ' + this.state.userType} className='becomedriver-title'/>
+                    { this.state.userType === 'Donor' ?
+                        <DonorDescription /> :
+                        <VolunteerDescription /> }
+                    <div className='button-container'>
                         <BodyButton />
                     </div>
                 </div>
                 <div className='becomedriver-img' />
-                <Arrow direction='Right'/>
+                <Arrow direction='Right' onClick={this.state.userType === 'Donor' ? this.onSubmitVolunteer : this.onSubmitDonor}/>
             </div>
         );
     }
@@ -141,16 +176,41 @@ var Comment = React.createClass({
 });
 
 var SectionComments = React.createClass({
+    getInitialState: function() {
+        return {
+            text: "We're so happy you came in! We've been throwing away hundreds of cupcakes and it just makes us sick. Thank you for what you're doing.",
+            author : 'CARLOS ESTRADA',
+            company: 'Jones Brothers Cupcakes',
+            item: 0
+        };
+    },
+    selectItem: function(value) {
+        this.setState({ item: value });
+        if (value === 0) {
+            this.setState({ text: "We're so happy you came in! We've been throwing away hundreds of cupcakes and it just makes us sick. Thank you for what you're doing.",
+                            author: 'CARLOS ESTRADA',
+                            company: 'Jones Brothers Cupcakes' });
+        } else if (value === 1) {
+            this.setState({ text: "Some more text about someone from a random company 1 should go here!",
+                            author: 'NAME LASTNAME 1',
+                            company: 'Super Company 1' });
+        } else {
+            this.setState({ text: "A different kind of text about someone from a random company 2 should go here!",
+                            author: 'NAME LASTNAME 2',
+                            company: 'Super Company 2' });
+        }
+    },
+    isActive: function(value) {
+        return ((this.state.item === value) ? 'active-bullet ' : '') + 'bullet pointer-cursor';
+    },
     render: function(){
         return (
             <div className='homepage-comments text-center text-white'>
-                <Comment text="We're so happy you came in! We've been throwing away hundreds of cupcakes and it just makes us sick. Thank you for what you're doing."
-                         author='CARLOS ESTRADA'
-                         company='Jones Brothers Cupcakes'/>
+                <Comment text={this.state.text} author={this.state.author} company={this.state.company}/>
                 <div className='comments-dots'>
-                    <div className='active-bullet bullet' />
-                    <div className='bullet' />
-                    <div className='bullet' />
+                    <div className={this.isActive(0)} onClick={this.selectItem.bind(this,0)}/>
+                    <div className={this.isActive(1)} onClick={this.selectItem.bind(this,1)}/>
+                    <div className={this.isActive(2)} onClick={this.selectItem.bind(this,2)}/>
                 </div>
             </div>
         );
