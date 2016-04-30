@@ -247,7 +247,6 @@ var HomePage = React.createClass({
     render: function(){
         return (
             <div>
-                <Header />
                 <div className='homepage'>
                         <SectionIntro />
                         <SectionHowTo />
@@ -255,7 +254,6 @@ var HomePage = React.createClass({
                         <SectionComments />
                         <SectionContacts />
                 </div>
-                <Footer />
             </div>
         );
     }
