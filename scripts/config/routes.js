@@ -11,7 +11,7 @@ import DonationPage from '../containers/donation-container.jsx';
 
 var routes = (
     <Router history={browserHistory}>
-      <Route path="/" component={App}> 
+      <Route path="/" component={App}>
         <IndexRoute component={HomePage} />
           <Route path="signin" component={SignInPage} />
           <Route path="signup" component={SignUpPage} />
