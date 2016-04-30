@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import $ from 'jquery';
 import { Headline } from '../components/reusable-components.jsx';
 import UserRegister from '../components/signupuser-components.jsx';
 
@@ -74,51 +73,6 @@ var Registration = React.createClass({
         this.setState({
             passwordConfirmation: e.target.value
         });
-    },
-    createUser: function(user) {
-        $.ajax({
-            url: 'https://wastenotfoodtaxi.herokuapp.com/api/v1/users',
-            type: 'POST',
-            dataType: 'json',
-            data: JSON.stringify(user),
-            processData: false,
-            cache: false,
-            contentType: 'application/json; charset=UTF-8',
-            success: function(data) {
-                this.setState({ userData: data });
-                this.createSession(this.sessionData);
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(status, err.toString());
-            }.bind(this),
-        })
-    },
-    createSession: function(sessionData) {
-        $.ajax({
-            url: 'https://wastenotfoodtaxi.herokuapp.com/api/v1/sessions',
-            type: 'POST',
-            dataType: 'json',
-            data: JSON.stringify(sessionData),
-            processData: false,
-            cache: false,
-            contentType: 'application/json; charset=UTF-8',
-            success: function(data) {
-                if (data !== null || data !== undefined || data !== {}) {
-                    this.context.router.push({
-                        pathname: '/donation',
-                        state: {
-                            authToken: this.state.authToken,
-                            user: this.state.user
-                        }
-                    });
-                    this.setState({authToken: data});
-                    console.log(this.state.authToken);
-                }
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(status, err.toString());
-            }.bind(this),
-        })
     },
     render: function() {
         return (

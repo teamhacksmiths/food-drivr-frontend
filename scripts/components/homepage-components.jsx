@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
-import $ from 'jquery';
 import {Headline} from './reusable-components.jsx';
 import {ScrollDownButton} from './reusable-components.jsx';
 import {AppStoreIcon} from './reusable-components.jsx';
