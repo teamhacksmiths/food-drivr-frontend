@@ -19,14 +19,14 @@ var SignUpPage = React.createClass({
         router: React.PropTypes.object.isRequired
     },
     onSubmitDonor: function() {
-        this.setState({ userType: "Donor" });
+        this.setState({ userType: 'Donor' });
         this.setState({ userState: true });
         this.setState({ class: 'invisible-btn' });
         this.setState({ signupType: 'Donor '});
         this.setState({ style: {background: '#f7b32b'}});
     },
     onSubmitVolunteer: function() {
-        this.setState({ userType: "Volunteer" });
+        this.setState({ userType: 'Volunteer' });
         this.setState({ userState: true });
         this.setState({ class: 'invisible-btn' });
         this.setState({ signupType: 'Volunteer '});

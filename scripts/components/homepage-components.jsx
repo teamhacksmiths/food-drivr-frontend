@@ -96,29 +96,64 @@ var Arrow = React.createClass({
     render: function(){
         return (
             <div className='becomedriver-arrow'>
-                <img className='pointer-cursor' src={'images/' + this.props.direction + '-Arrow.svg'} alt={this.props.direction + ' arrow'}/>
+                <img className='pointer-cursor' onClick={this.props.onClick} src={'images/' + this.props.direction + '-Arrow.svg'} alt={this.props.direction + ' arrow'}/>
+            </div>
+        );
+    }
+});
+
+var DonorDescription = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
+                <p>As an extra benefit to all of our donors, we provide tax receipts to them so they can write their donations off when they do their taxes.</p>
+                <p>Food Drivr provides an easy way for both drivers and donors to help put an end to hunger in their communities.</p>
+            </div>
+        );
+    }
+});
+
+var VolunteerDescription = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
+                <p>Some other text for volunteers!</p>
             </div>
         );
     }
 });
 
 var SectionBecomeDriver = React.createClass({
+    getInitialState: function() {
+        return {
+            userType: 'Donor',
+            description : ''
+        };
+    },
+    onSubmitDonor: function() {
+        this.setState({ userType: 'Donor' });
+    },
+    onSubmitVolunteer: function() {
+        this.setState({ userType: 'Volunteer' });
+    },
     render: function(){
         return (
             <div className='homepage-becomedriver'>
                 <AppStoreIcon className='becomedriver-appStoreIcon'/>
-                <Arrow direction='Left'/>
+                <Arrow direction='Left' onClick={this.state.userType === 'Donor' ? this.onSubmitVolunteer : this.onSubmitDonor}/>
                 <div className='becomedriver-content text-white'>
-                    <Headline value='Become a Driver' className='becomedriver-title'/>
-                    <p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
-                    <p>As an extra benefit to all of our donors, we provide tax receipts to them so they can write their donations off when they do their taxes.</p>
-                    <p>Food Drivr provides an easy way for both drivers and donors to help put an end to hunger in their communities.</p>
+                    <Headline value={'Become a ' + this.state.userType} className='becomedriver-title'/>
+                    { this.state.userType === 'Donor' ?
+                        <DonorDescription /> :
+                        <VolunteerDescription /> }
                     <div className='button-container'>
                         <BodyButton />
                     </div>
                 </div>
                 <div className='becomedriver-img' />
-                <Arrow direction='Right'/>
+                <Arrow direction='Right' onClick={this.state.userType === 'Donor' ? this.onSubmitVolunteer : this.onSubmitDonor}/>
             </div>
         );
     }
