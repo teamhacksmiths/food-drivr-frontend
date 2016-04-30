@@ -73,6 +73,7 @@ ul {
 	max-width: 1450px;
 	padding: 0;
 	background: #394969;
+	position: relative;
 }
 
 /* Header Section */
@@ -293,13 +294,13 @@ ul {
 }
 
 .copyright {
-	margin-top: 50px;
+	margin: 50px 0 30px;
 	font-size: 10px;
 }
 
 /* Custom page footer */
 .footer {
-	left: 0;
+	position: absolute;
 	bottom: 0;
 	height: 30px;
 	width: 100%;

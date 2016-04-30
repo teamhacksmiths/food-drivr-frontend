@@ -246,12 +246,16 @@ var SectionContacts = React.createClass({
 var HomePage = React.createClass({
     render: function(){
         return (
-            <div className='homepage'>
-                    <SectionIntro />
-                    <SectionHowTo />
-                    <SectionBecomeDriver />
-                    <SectionComments />
-                    <SectionContacts />
+            <div>
+                <Header />
+                <div className='homepage'>
+                        <SectionIntro />
+                        <SectionHowTo />
+                        <SectionBecomeDriver />
+                        <SectionComments />
+                        <SectionContacts />
+                </div>
+                <Footer />
             </div>
         );
     }
