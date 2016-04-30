@@ -23,10 +23,10 @@ var SectionIntro = React.createClass({
 			<div className='homepage-intro'>
                 <div className='text-center text-white'>
                     <img src='images/fd-logo.svg' alt='food drivr logo' className='fd-logo'/>
-                    <p style={{marginBottom: 15, fontSize: 19}}>
+                    <p className='homepage-logotitle'>
                         FOOD DRIVR
                     </p>
-                    <p style={{width: 155, margin: 'auto'}}>
+                    <p className='homepage-powered'>
                         Powering Donations For
                     </p>
                 </div>
@@ -43,9 +43,9 @@ var SectionIntro = React.createClass({
 				<div className='button-container text-center'>
 					<BodyButton />
 				</div>
-                <div className='text-center' style={{marginBottom: 20}}>
+                <a href='#howto'className='homepage-scrolldown text-center pointer-cursor'>
                     <ScrollDownButton destination='' text='LEARN MORE'/>
-                </div>
+                </a>
 			</div>
 		);
 	}
@@ -65,7 +65,7 @@ var HowToDivTitle = React.createClass({
 var SectionHowTo = React.createClass({
     render: function(){
         return (
-            <div className='homepage-howto'>
+            <div id='howto' className='homepage-howto'>
                 <Headline value='How It Works' className='howto-title text-center text-grey'/>
                 <div className='howto-content'>
                     <div className='howto-div'>

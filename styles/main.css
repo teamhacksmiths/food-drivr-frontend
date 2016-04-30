@@ -16,9 +16,9 @@ a:focus {
 }
 
 button {
-		font-weight: bold;
-		color: white;
-		background-color: red;
+	font-weight: bold;
+	color: white;
+	background-color: red;
 }
 
 h1 {
@@ -63,7 +63,7 @@ ul {
 }
 
 .text-margin-left {
-		margin-left: auto;
+	margin-left: auto;
 }
 
 /* Main content */
@@ -72,7 +72,7 @@ ul {
 	min-height: 100%;
 	max-width: 1450px;
 	padding: 0;
-	background: #394969
+	background: #394969;
 }
 
 /* Header Section */
@@ -83,10 +83,10 @@ ul {
 }
 
 .header h3 {
-		font-size: 22px;
-		margin-top: 0;
-		margin-bottom: 0;
-		padding: 8px 0;
+	font-size: 22px;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 8px 0;
 }
 
 /* Homepage Elements */
@@ -100,12 +100,25 @@ ul {
 }
 
 .homepage-intro {
+	position: relative;
 	margin-top: 50px;
 	width: 100%;
+	height: calc( 100vh - 135px);
+}
+
+.homepage-logotitle {
+	margin-bottom: 15px;
+	font-size: 15px;
+}
+
+.homepage-powered {
+	width: 160px;
+	margin: auto;
+	font-size: 13px;
 }
 
 .homepage-title {
-	margin: 100px auto;
+	margin: 50px auto;
 	font-weight: bold;
 	font-size: 40px;
 	max-width: 300px;
@@ -114,12 +127,12 @@ ul {
 .homepage-content {
 	max-width: 530px;
 	margin: auto;
-	font-size: 18px;
+	font-size: 13px;
 	padding: 0 20px;
 }
 
 .button-container {
-	margin: 80px 0;
+	margin: 40px 0;
 }
 
 .button-home{
@@ -128,6 +141,13 @@ ul {
 	padding: 10px 77px;
 	background-color: #ff1e40;
 	border-radius: 25px;
+}
+
+.homepage-scrolldown {
+	margin-bottom: 20px;
+	position: absolute;
+	width: 100%;
+	bottom: 1%;
 }
 
 /* How It works Section*/
@@ -256,7 +276,7 @@ ul {
 	display: inline;
 	border-bottom: 1px solid #FFF;
 	padding-bottom: 3px;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .contacts-social {
@@ -274,10 +294,10 @@ ul {
 
 /* Custom page footer */
 .footer {
-	left:0px;
-	bottom:0px;
-	height:30px;
-	width:100%;
+	left: 0;
+	bottom: 0;
+	height: 30px;
+	width: 100%;
 	text-align: center;
 	color: white;
 }
@@ -364,11 +384,24 @@ ul {
 @media screen and (min-width: 768px) {
 	.homepage-intro {
 		margin-top: 0;
+		height: calc( 100vh - 95px);
+	}
+
+	.homepage-logotitle {
+		font-size: 18px;
+	}
+
+	.homepage-powered {
+		font-size: 14px;
 	}
 
 	.homepage-title {
 		font-size: 60px;
 		max-width: 900px;
+	}
+
+	.homepage-content {
+		font-size: 16px;
 	}
 
 	.howto-div {
