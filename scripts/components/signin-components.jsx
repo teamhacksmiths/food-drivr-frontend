@@ -29,9 +29,7 @@ var SignInForm = React.createClass({
                 <div className="form-group">
                     <input type="password" placeholder="Password" id="signup-password" className="form-signup"/>
                 </div>
-                <p className="text-center">
-                    <SignInButton />
-                </p>
+                <SignInButton />
             </form>
         );
     }
@@ -40,7 +38,9 @@ var SignInForm = React.createClass({
 var SignInButton = React.createClass({
     render: function(){
         return (
-                <Link to="/donation" role="button" className='btn-signup-register'>Enter</Link>
+                <Link to="/donation" role="button">
+                    <div className='btn-signup-register'>ENTER</div>
+                </Link>
             );
     }
 });

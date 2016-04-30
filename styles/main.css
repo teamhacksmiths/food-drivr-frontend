@@ -337,6 +337,7 @@ ul {
 }
 
 .btn-signup-register {
+	margin: auto;
 	padding-bottom: 30px;
 }
 
@@ -360,21 +361,21 @@ ul {
 	outline: none;
 }
 
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-  /*color: white;*/
-  opacity:  .8;
+.form-signup::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: white;
+  opacity: .8;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  /*color: white;*/
-  opacity:  .8;
+.form-signup:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: white;
+  opacity: .8;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-  /*color: white;*/
-  opacity:  .8;
+.form-signup::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: white;
+  opacity: .8;
 }
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  /*color: white;*/
-  opacity:  .8;
+.form-signup:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+  opacity: .8;
 }
 
 /*************************************************************/
@@ -396,7 +397,7 @@ ul {
 
 .donation-input-container {
 	display: flex;
-	width: 50%;
+	width: 95%;
 	margin: auto;
   border-bottom-width: 2px;
   border-bottom-style: solid;
@@ -407,14 +408,14 @@ ul {
 .donation-input {
 	border: none;
   height: 60px;
-  width: 85%;
+  width: 80%;
   margin-right: 22px;
   padding-left: 20px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .btn-add-donation {
-	width: 15%;
+	width: 20%;
 	background: #f7b32b;
 	border: none;
 }
@@ -428,7 +429,7 @@ ul {
 }
 
 .past-donations {
-	width: 50%;
+	width: 90%;
 	margin: auto;
 }
 
@@ -514,6 +515,7 @@ ul {
 	.button-container {
 		margin: 90px auto;
 	}
+
 }
 
 /* Responsive: Laptop and up */
@@ -556,6 +558,20 @@ ul {
 
 	.homepage-contacts {
 		padding: 55px 25% 0;
+	}
+
+	.donation-input-container,
+	.past-donations {
+		width: 50%;
+	}
+
+	.donation-input {
+	  width: 85%;
+	  font-size: 20px;
+	}
+
+	.btn-add-donation {
+		width: 15%;
 	}
 }
 
