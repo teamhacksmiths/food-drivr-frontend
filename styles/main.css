@@ -132,7 +132,7 @@ ul {
 }
 
 .button-container {
-	margin: 40px 0;
+	margin: 35px 0;
 }
 
 .button-home{
@@ -417,6 +417,18 @@ ul {
 		font-size: 20px;
 	}
 
+}
+
+
+@media screen and (min-height: 850px) {
+
+	.homepage-content {
+		font-size: 20px;
+	}
+
+	.button-container {
+		margin: 90px auto;
+	}
 }
 
 /* Responsive: Laptop and up */
