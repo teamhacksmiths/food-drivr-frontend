@@ -234,6 +234,10 @@ ul {
 	font-size: 20px;
 }
 
+.comments-container {
+	height: 280px;
+}
+
 .comments-author {
 	font-size: 16px;
 	margin: 60px 0 10px;
@@ -413,6 +417,10 @@ ul {
 		width: 60%;
 	}
 
+	.comments-container {
+		height: 260px;
+	}
+
 	.email {
 		font-size: 20px;
 	}
@@ -459,6 +467,10 @@ ul {
 	.becomedriver-content {
 		width: 40%;
 		padding:0 50px;
+	}
+
+	.comments-container {
+		height: 220px;
 	}
 
 	.homepage-contacts {
