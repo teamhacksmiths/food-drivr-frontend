@@ -7,8 +7,6 @@ import {ScrollDownButton} from './reusable-components.jsx';
 import {AppStoreIcon} from './reusable-components.jsx';
 
 
-
-
 var BodyButton = React.createClass({
 	render: function(){
 		return (
@@ -20,11 +18,6 @@ var BodyButton = React.createClass({
 });
 
 var SectionIntro = React.createClass({
-	scrollToHowTo: function() {
-		$('html, body').animate({
-	        scrollTop: $("#howto").offset().top
-	    }, 500);
-	},
 	render: function(){
 		return (
 			<div className='homepage-intro'>
@@ -50,9 +43,9 @@ var SectionIntro = React.createClass({
 				<div className='button-container text-center'>
 					<BodyButton />
 				</div>
-				<div className='homepage-scrolldown text-center text-white pointer-cursor' onClick={this.scrollToHowTo}>
+				<a href='#howto' className='homepage-scrolldown text-center text-white pointer-cursor'>
 					<ScrollDownButton destination='' color='white' text='LEARN MORE'/>
-				</div>
+				</a>
 			</div>
 		);
 	}
