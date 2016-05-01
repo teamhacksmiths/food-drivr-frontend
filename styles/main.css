@@ -15,12 +15,6 @@ a:focus {
 	outline: none;
 }
 
-button {
-	font-weight: bold;
-	color: white;
-	background-color: red;
-}
-
 h1 {
 	font-size: 48px;
 	font-weight: 400;
@@ -54,6 +48,10 @@ ul {
 	color: white;
 }
 
+.text-yellow {
+	color: #f7b32b;
+}
+
 .text-center{
 	text-align: center;
 }
@@ -66,6 +64,14 @@ ul {
 	margin-left: auto;
 }
 
+.text-flex {
+	display: flex;
+}
+
+.invisible-btn {
+	display: none;
+}
+
 /* Main content */
 .container {
 	width: 100%;
@@ -73,6 +79,7 @@ ul {
 	max-width: 1450px;
 	padding: 0;
 	background: #394969;
+	position: relative;
 }
 
 /* Header Section */
@@ -293,13 +300,13 @@ ul {
 }
 
 .copyright {
-	margin-top: 50px;
+	margin: 50px 0 30px;
 	font-size: 10px;
 }
 
 /* Custom page footer */
 .footer {
-	left: 0;
+	position: absolute;
 	bottom: 0;
 	height: 30px;
 	width: 100%;
@@ -317,6 +324,7 @@ ul {
 
 .btn-signup {
 	display: block;
+	background: transparent;
 	border: none;
 	margin: auto;
 	font-size: 25px;
@@ -329,6 +337,7 @@ ul {
 }
 
 .btn-signup-register {
+	margin: auto;
 	padding-bottom: 30px;
 }
 
@@ -352,23 +361,86 @@ ul {
 	outline: none;
 }
 
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+.form-signup::-webkit-input-placeholder { /* WebKit, Blink, Edge */
   color: white;
-  opacity:  .8;
+  opacity: .8;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+.form-signup:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
   color: white;
-  opacity:  .8;
+  opacity: .8;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
+.form-signup::-moz-placeholder { /* Mozilla Firefox 19+ */
   color: white;
-  opacity:  .8;
+  opacity: .8;
 }
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+.form-signup:-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: white;
-  opacity:  .8;
+  opacity: .8;
 }
 
+/*************************************************************/
+/*                         SIGNIN                            */
+/*************************************************************/
+.signin {
+	padding: 50px 0;
+	background-color: #ff1e40;
+}
+
+/*************************************************************/
+/*                       DONATION                            */
+/*************************************************************/
+
+.donations {
+	background: #f8f8f8;
+	padding: 50px 0;
+}
+
+.donation-input-container {
+	display: flex;
+	width: 95%;
+	margin: auto;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  padding-bottom: 40px;
+  border-color: #70767a;
+}
+
+.donation-input {
+	border: none;
+  height: 60px;
+  width: 80%;
+  margin-right: 22px;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.btn-add-donation {
+	width: 20%;
+	background: #f7b32b;
+	border: none;
+}
+
+.btn-add-donation:focus {
+	outline: none;
+}
+
+.donation-input:focus {
+	outline: none;
+}
+
+.past-donations {
+	width: 90%;
+	margin: auto;
+}
+
+.past-donations>h4 {
+	margin: 30px auto 40px;
+	font-size: 28px;
+}
+
+.donation-scrolldown {
+	margin-top: 30px;
+}
 /*************************************************************/
 /*                     MEDIA QUERIES                         */
 /*************************************************************/
@@ -443,6 +515,7 @@ ul {
 	.button-container {
 		margin: 90px auto;
 	}
+
 }
 
 /* Responsive: Laptop and up */
@@ -486,6 +559,20 @@ ul {
 	.homepage-contacts {
 		padding: 55px 25% 0;
 	}
+
+	.donation-input-container,
+	.past-donations {
+		width: 50%;
+	}
+
+	.donation-input {
+	  width: 85%;
+	  font-size: 20px;
+	}
+
+	.btn-add-donation {
+		width: 15%;
+	}
 }
 
 @media screen and (min-width: 1200px) {
@@ -500,142 +587,4 @@ ul {
 	.becomedriver-img {
 		background-size: auto 100%;
 	}
-}
-
-/*************************************************************/
-/* EVERYTHING AFTER THIS NEEDS TO BE REVIEWED AND REFACTORED */
-/*************************************************************/
-
-.foodtype {
-	font-size: 20px;
-	text-align: right;
-	color: $text-color-grey;
-}
-
-
-.browsehappy {
-	margin: .2em 0;
-	padding: .2em 0;
-	color: #000;
-	background: #ccc;
-}
-
-.section {
-	position: relative;
-	height: 100%;
-	width: 100%;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.marketing,
-.footer {
-		padding-right: 15px;
-		padding-left: 15px;
-}
-
-
-.container-narrow > hr
-{
-	margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron
-{
-	text-align: center;
-	border-bottom: 1px solid #e5e5e5;
-}
-
-.jumbotron .btn
-{
-	font-size: 21px;
-	padding: 14px 24px;
-}
-
-
-
-.text-grey h1 {
-	font-size: 130px;
-	font-family: 'Playfair Display SC', serif;
-	color: #FFFFFF;
-	text-rendering: optimizeLegibility;
-	font-weight: 400;
-	margin: 0;
-}
-
-.hero h2 {
-	font-size: 40px;
-	font-family: 'Playfair Display SC', serif;
-	color: #FFFFFF;
-	text-rendering: optimizeLegibility;
-	font-weight: 400;
-	margin: 0;
-	margin-left: 15px;
-}
-
-
-
-.name {
-	position: absolute;
-	left: 20%;
-	top: 40%;
-}
-
-
-.text-flex {
-	display: flex;
-}
-
-
-
-
-
-.invisible-btn {
-	display: none;
-}
-
-#add-donation
-{
-		margin-bottom: 65px;
-}
-
-.donation-box
-{
-		font-size: 30px;
-		height: 65px;
-		border-style: none;
-		border-color: #fff;
-		border-radius: 0;
-		background-color: $form-background;
-}
-
-/* Remove the bottom border on the jumbotron for visual effect */
-.jumbotron
-{
-		border-bottom: 0;
-}
-
-.signup
-{
-		background-color: #f7b32b;
-}
-
-.signin
-{
-		background-color: #ff1e40;
-}
-
-.donation
-{
-		background-color: #f9f9f9;
-}
-
-#past-donations-list
-{
-		font-weight: bold;
-}
-
-#past-donations-list h4
-{
-		color: #9fe9f2;
 }

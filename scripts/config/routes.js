@@ -11,7 +11,7 @@ import DonationList from '../components/donation-components.jsx';
 
 var routes = (
     <Router history={browserHistory}>
-      <Route path="/" component={App}> 
+      <Route path="/" component={App}>
         <IndexRoute component={HomePage} />
           <Route path="signin" component={SignInPage} />
           <Route path="signup" component={SignUpPage} />

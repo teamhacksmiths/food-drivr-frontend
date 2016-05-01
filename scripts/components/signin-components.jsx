@@ -5,11 +5,9 @@ import {Headline} from './reusable-components.jsx';
 var SignInPage = React.createClass({
     render: function(){
         return (
-			<div className="signin">
-				<div className="container">
-      				<Headline value="Sign In" />
-					<SignInForm />
-				</div>
+			<div className="signin text-center text-white">
+  				<Headline value="Sign In" />
+				<SignInForm />
 			</div>
 			);
 	}
@@ -26,14 +24,12 @@ var SignInForm = React.createClass({
         return (
             <form action="">
                 <div className="form-group">
-                    <input type="email" placeholder="Email" id="signup-email" className="form-control"/>
+                    <input type="email" placeholder="Email" id="signup-email" className="form-signup"/>
                 </div>
                 <div className="form-group">
-                    <input type="password" placeholder="Password" id="signup-password" className="form-control"/>
+                    <input type="password" placeholder="Password" id="signup-password" className="form-signup"/>
                 </div>
-                <p className="text-center">
-                    <SignInButton />
-                </p>
+                <SignInButton />
             </form>
         );
     }
@@ -42,7 +38,9 @@ var SignInForm = React.createClass({
 var SignInButton = React.createClass({
     render: function(){
         return (
-                <Link to="/donation" role="button" className='btn btn-info'>Enter</Link>
+                <Link to="/donation" role="button">
+                    <div className='btn-signup-register'>ENTER</div>
+                </Link>
             );
     }
 });

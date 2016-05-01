@@ -44,8 +44,8 @@ var ScrollDownButton = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<p className='text-white'>{this.props.text}</p>
-				<img src='images/down-arrow.svg' alt='down arrow'/>
+				<p>{this.props.text}</p>
+				<img src={this.props.color === 'white' ? 'images/down-arrow.svg' : 'images/down-arrow-yellow.svg'} alt='down arrow'/>
 			</div>
 		);
 	}
