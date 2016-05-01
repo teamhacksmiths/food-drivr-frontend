@@ -10,14 +10,27 @@ const Header = React.createClass({
         };
     },
 
+    updateAuth(loggedIn) {
+        this.setState({
+            loggedIn: loggedIn
+        })
+    },
+
+    componentWillMount() {
+        auth.onChange = this.updateAuth
+        if (this.state.loggedIn == true) {
+            auth.login()
+        }
+    },
+
     render: function() {
         return (
             <div className='header text-flex'>
-				<AppStoreIcon />
-				{this.state.loggedIn ? 
-					<Logout /> : <Login />
-				}
-			</div>
+                <AppStoreIcon />
+                {this.state.loggedIn ? 
+                    <Logout /> : <Login />
+                }
+            </div>
         );
     }
 });
@@ -34,8 +47,8 @@ const AppStoreIcon = React.createClass({
     render: function() {
         return (
             <Link to='' className={this.props.className}>
-				<img src='images/App-Store-Badge.png' alt='apple store icon'/>
-			</Link>
+                <img src='images/App-Store-Badge.png' alt='apple store icon'/>
+            </Link>
         );
     }
 });
@@ -44,29 +57,27 @@ const Login = React.createClass({
     render: function() {
         return (
             <h3 className='text-margin-left'>
-				<Link to='/signin' className='text-white'>Login</Link>
-			</h3>
+                <Link to='/signin' className='text-white'>Login</Link>
+            </h3>
         );
     }
 });
 
 const Logout = React.createClass({
-  componentDidMount() {
-    auth.logout()
-  },
-
-  render() {
-    return <p>You are now logged out</p>
-  }
+    render() {
+        return <h3 className='text-margin-left'>
+                    <Link to='/' onClick={auth.logout} className='text-white'>Logout</Link>
+                </h3>
+    }
 })
 
 const ScrollDownButton = React.createClass({
     render: function() {
         return (
             <div>
-				<p className='text-white'>{this.props.text}</p>
-				<img src='images/down-arrow.svg' alt='down arrow'/>
-			</div>
+                <p className='text-white'>{this.props.text}</p>
+                <img src='images/down-arrow.svg' alt='down arrow'/>
+            </div>
         );
     }
 });
@@ -75,8 +86,8 @@ const Footer = React.createClass({
     render: function() {
         return (
             <div className='footer'>
-				<p>Made with ♥ by <Link to='http://hacksmiths.io'>Team Hacksmiths</Link></p>
-			</div>
+                <p>Made with ♥ by <Link to='http://hacksmiths.io'>Team Hacksmiths</Link></p>
+            </div>
         );
     }
 });

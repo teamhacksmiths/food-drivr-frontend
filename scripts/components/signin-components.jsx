@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Headline } from './reusable-components.jsx';
 import Paper from 'material-ui/lib/paper';
@@ -58,13 +58,15 @@ class SignInPage extends Component {
         e.preventDefault();
         if (this.state.errorPassword == '' && this.state.errorEmail == '') {
             this.setState({ error: 'Signing in ...' });
-            console.log({'email': this.state.email, 'password': this.state.password});
+            console.log({ 'email': this.state.email, 'password': this.state.password });
             auth.login(this.state.email, this.state.password, (loggedIn) => {
                 if (!loggedIn)
                     return this.setState({ error: "Login Failed" })
             })
+            setTimeout(() => {
+                this.context.router.push('/donation');
+            }, 1000);
         }
-        this.context.router.push('/donation');
     }
 
     render() {

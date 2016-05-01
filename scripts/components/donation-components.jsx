@@ -61,36 +61,6 @@ var DonationsList = React.createClass({
         >
         View More
       </button>
-    </div><div id="past-donations well">
-        <h4 className="text-left">Past Donations</h4>
-      <ul id="past-donations-list"> on 
-          <li id="template" className="row">
-            <div className="col-xs-6">
-              <h4>ST JUDE</h4>
-              <p>March 22, 2016</p>
-            </div>
-            <div className="col-xs-6 foodtype">
-              <div id="food-item1">4 trays of lasagne</div>
-            </div>
-          </li>
-          <li id="template" className="row">
-            <div className="col-xs-6">
-              <h4>City Mission</h4>
-              <p>March 21, 2016</p>
-            </div>
-            <div className="col-xs-6 foodtype">
-              <div id="food-item1">3 dozen bagels</div>
-              <div id="food-item2">6 dozen donuts</div>
-            </div>
-          </li>
-        </ul>
-        <button
-          id="view-more"
-          className="btn-small center-block"
-          type="button"
-        >
-        View More
-      </button>
     </div>
     </div>
       );
