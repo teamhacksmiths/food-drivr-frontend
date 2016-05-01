@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 module.exports = {
   login(email, pass, cb) {
     // ensure callback is always last argument
@@ -31,6 +30,31 @@ module.exports = {
         });
     },
 
+    register(name, email, pass, passconf, cb) {
+    // ensure callback is always last argument
+      cb = arguments[arguments.length - 1];
+      // create new session, pass in email and password as object
+      axios.post({
+            url: '/users',
+            method: 'post',
+            baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
+            data: { 'name': name,
+                    'email': email,
+                    'password': pass,
+                    'password_confirmation': passconf
+                  },
+            responseType: 'json',
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((err) => {
+          if (cb) cb(false)
+          this.onChange(false)
+        });
+    },
+
     getToken() {
       return (typeof window !== "undefined") ? localStorage.token : undefined;
     },
@@ -48,8 +72,8 @@ module.exports = {
     },
 
     loggedIn() {
-      return !!((typeof window !== "undefined") ? localStorage.token : undefined)
+      return !!((typeof window !== "undefined") ? localStorage.token : undefined);
     },
 
     onChange() {}
-}
+};

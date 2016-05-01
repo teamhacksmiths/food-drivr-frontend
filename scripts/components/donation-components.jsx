@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { PropTypes } from 'react';
+import auth from '../utils/auth.js';
 
 var DonationsList = React.createClass({
     propTypes: {
@@ -13,7 +14,8 @@ var DonationsList = React.createClass({
       };
     },
     render: function() {
-        return (
+      const token = auth.getToken();
+      return (
       <div className="donations">    
         <div id="donation-list">
           <h1 className='business-title text-center'>{ this.props.value }</h1>
