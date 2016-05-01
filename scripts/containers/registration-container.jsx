@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
+import { Headline } from '../components/reusable-components.jsx';
 import Paper from 'material-ui/lib/paper';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
-import { Link } from 'react-router';
-import { Headline } from '../components/reusable-components.jsx';
+import CircularProgress from 'material-ui/lib/circular-progress';
 import auth from '../utils/auth.js';
-
 
 class Registration extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {};
+        this.state.error = '';
         this.state.userData = {};
-        this.state.authToken = "";
+        this.state.authToken = '';
         this.state.user = {};
         this.state.name = '';
         this.state.email = '';
@@ -23,19 +24,6 @@ class Registration extends React.Component {
         this._handlePasswordConfirmChange = this._handlePasswordConfirmChange.bind(this);
         this._handleEmailChange = this._handleEmailChange.bind(this);
         this._handleSubmitUser = this._handleSubmitUser.bind(this);
-    }
-
-    _handleSubmitUser(e) {
-        e.preventDefault();
-        if (this.state.errorName == '' &&
-            this.state.errorPassword == '' &&
-            this.state.errorEmail == '' &&
-            this.state.errorPasswordConfirm == '') {
-
-            this.setState({ error: 'Registering ...' });
-            auth.register(this.state.name, this.state.email, this.state.password, this.state.passwordConfirmation);
-        }
-        this.context.router.push('/donation');
     }
 
     _handleNameChange(e) {
@@ -78,7 +66,7 @@ class Registration extends React.Component {
         if (!e.target.value) {
             this.state.errorPassword = "This field is required.";
         } else if (e.target.value.length < 6) {
-            this.state.errorPassword = "Password needs more than 6 characters.";
+            this.state.errorPassword = "Passwords need more than 6 characters.";
         }
         this.setState({ errorPassword: this.state.errorPassword });
         this.setState({ password: e.target.value });
@@ -88,6 +76,8 @@ class Registration extends React.Component {
         this.state.errorPasswordConfirmation = "";
         if (!e.target.value) {
             this.state.errorPasswordConfirmation = "This field is required.";
+        } else if (e.target.value.length < 6) {
+            this.state.errorPasswordConfirmation = "Passwords need more than 6 characters.";
         } else if (e.target.value !== this.state.password) {
             this.state.errorPasswordConfirmation = "Passwords must match!";
         }
@@ -95,9 +85,23 @@ class Registration extends React.Component {
         this.setState({ passwordConfirmation: e.target.value });
     }
 
+    _handleSubmitUser(e) {
+        e.preventDefault();
+        if (this.state.errorName == '' &&
+            this.state.errorPassword == '' &&
+            this.state.errorEmail == '' &&
+            this.state.errorPasswordConfirmation == '') {
+            this.setState({ error: <CircularProgress /> });
+            auth.register(this.state.name, this.state.email, this.state.password, this.state.passwordConfirmation);
+
+        } else {
+            this.setState({ error: 'Can not send request.' })
+        }
+    }
+
     render() {
         return (
-           <div className='container'>
+            <div className='container'>
                 <Paper zDepth={1}>
                     <div>
                     <form style={this.state.style}>
@@ -110,7 +114,6 @@ class Registration extends React.Component {
                             />
                             <br/>
                         <TextField
-                            required={true}
                             hintText="Enter Email"
                             errorText={this.state.errorEmail}
                             floatingLabelText="Email"
@@ -141,10 +144,14 @@ class Registration extends React.Component {
                         secondary={true}
                         onClick={this._handleSubmitUser}
                         />
-                    <p>
+                        <br/>
+                    <span className="text-lightgrey">
                         {this.state.error}
-                    </p>
+                    </span>
                     </form>
+                    }
+                }
+                />
                 </div>
             </Paper>
         </div>
@@ -156,4 +163,4 @@ Registration.contextTypes = {
     router: React.PropTypes.object.isRequired
 };
 
-export default Registration;
+module.exports = Registration;

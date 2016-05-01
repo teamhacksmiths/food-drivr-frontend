@@ -11,18 +11,18 @@ module.exports = {
             return
         }
 
-        console.log(JSON.stringify({ session: {email: email, password: pass} }));
+        console.log(JSON.stringify({ session: { email: email, password: pass } }));
 
         // create new session, pass in email and password as object
         axios({
                 url: '/sessions',
                 method: 'post',
                 baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
-                transformRequest: [function (data) {
-                // Do whatever you want to transform the data
-                return JSON.stringify(data);
-            }],
-                data: { session: {email: email, password: pass} },
+                transformRequest: [function(data) {
+                    // Do whatever you want to transform the data
+                    return JSON.stringify(data);
+                }],
+                data: { session: { email: email, password: pass } },
                 responseType: 'json',
                 headers: { 'Content-Type': 'application/json' }
             })
@@ -42,21 +42,29 @@ module.exports = {
         // ensure callback is always last argument
         cb = arguments[arguments.length - 1];
         // create new session, pass in email and password as object
+
         axios({
                 url: '/users',
                 method: 'post',
                 baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
-                data: JSON.stringify({
-                    'name': name,
-                    'email': email,
-                    'password': pass,
-                    'password_confirmation': passconf
-                }),
+                transformRequest: [function(data) {
+                    // Do whatever you want to transform the data
+                    return JSON.stringify(data);
+                }],
+                data: {
+                    'user': {
+                        'name': name,
+                        'email': email,
+                        'password': pass,
+                        'password_confirmation': passconf
+                    }
+                },
                 responseType: 'json',
                 headers: { 'Content-Type': 'application/json' }
             })
-            .then((data) => {
-                console.log(data);
+            .then((response) => {
+                console.log(response.data);
+                this.login(email, pass);
             })
             .catch((err) => {
                 if (cb) cb(false)
@@ -64,25 +72,31 @@ module.exports = {
             });
     },
 
+  /*  registerAndLogin(name, email, pass, passconf, cb){
+      return axios.all([this.register(name, email, pass, passconf, cb), this.login(email, pass, cb)])
+      .then(axios.spread(function(){
+        console.log("successfully completed both calls");
+      }));
+    },*/
+
     getToken() {
         return (typeof window !== "undefined") ? localStorage.token : undefined;
     },
 
     // send a DELETE request with the auth_token as a URL parameter
-    logout(cb) {
+    logout() {
         axios({
-                url: `/sessions/${localStorage.token}`,
+                url: '/sessions/' + localStorage.token,
                 method: 'delete',
                 baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
                 responseType: 'json',
-                headers: {  'Content-Type': 'application/json',
-                            'Authorization': localStorage.token
-                           }
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': localStorage.token
+                }
             })
-            .then((g) => {
+            .then(() => {
                 delete localStorage.token
-                if (cb) cb()
-                this.onChange(false)
             }).catch((err) => {
                 console.log(err);
             });

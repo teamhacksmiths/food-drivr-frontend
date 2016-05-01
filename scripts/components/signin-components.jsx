@@ -4,6 +4,7 @@ import { Headline } from './reusable-components.jsx';
 import Paper from 'material-ui/lib/paper';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
+import CircularProgress from 'material-ui/lib/circular-progress';
 import auth from '../utils/auth.js';
 
 class SignInPage extends Component {
@@ -57,11 +58,12 @@ class SignInPage extends Component {
     _formSubmit(e) {
         e.preventDefault();
         if (this.state.errorPassword == '' && this.state.errorEmail == '') {
-            this.setState({ error: 'Signing in ...' });
+            this.setState({ error: <CircularProgress /> });
             console.log({ 'email': this.state.email, 'password': this.state.password });
             auth.login(this.state.email, this.state.password, (loggedIn) => {
-                if (!loggedIn)
-                    return this.setState({ error: "Login Failed" })
+                if (!loggedIn) {
+                    return this.setState({ error: "Login Failed" });
+                }
             })
             setTimeout(() => {
                 this.context.router.push('/donation');
@@ -98,9 +100,10 @@ class SignInPage extends Component {
                         secondary={true}
                         onClick={this._formSubmit}
                         />
-                    <p>
+                        <br/>
+                    <span>
                         {this.state.error}
-                    </p>
+                    </span>
                 </form>
                 </div>
             </Paper>
