@@ -1,7 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'react';
 import { Link } from 'react-router';
-import $ from 'jquery';
 import { Headline } from './reusable-components.jsx';
 
 function UserRegister(props) {
