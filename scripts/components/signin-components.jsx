@@ -60,11 +60,19 @@ class SignInPage extends Component {
         if (this.state.errorPassword == '' && this.state.errorEmail == '') {
             this.setState({ error: <CircularProgress /> });
             console.log({ 'email': this.state.email, 'password': this.state.password });
-            auth.login(this.state.email, this.state.password, (loggedIn) => {
+            auth.login(this.state.email, this.state.password)
+            .then((response) => {
+                console.log("hello from login");
+                localStorage.setItem('token', response.data.authtoken.auth_token);
+                auth.loggedIn();
                 if (!loggedIn) {
                     return this.setState({ error: "Login Failed" });
                 }
-            })
+            }
+            )
+            .catch((err) => {
+                console.log(err)
+            });
             setTimeout(() => {
                 this.context.router.push('/donation');
             }, 1000);

@@ -18,19 +18,22 @@ class SignUpPage extends React.Component {
     }
 
         onSubmitDonor() {
-            this.setState({ userType: 'Donor' });
-            this.setState({ userState: true });
-            this.setState({ class: 'invisible-btn' });
-            this.setState({ signupType: 'Donor ' });
-            this.setState({ style: { background: '#f7b32b' } });
+            this.setState({ userType: 'Donor',
+                            userState: true,
+                            class: 'invisible-btn',
+                            signupType: 'Donor ',
+                            signupType: 'Donor ',
+                            style: { background: '#f7b32b' }
+        })
         }
 
         onSubmitVolunteer() {
-            this.setState({ userType: 'Volunteer' });
-            this.setState({ userState: true });
-            this.setState({ class: 'invisible-btn' });
-            this.setState({ signupType: 'Volunteer ' });
-            this.setState({ style: { background: '#14cfe8' } });
+            this.setState({ userType: 'Volunteer',
+                            userState: true,
+                            class: 'invisible-btn',
+                            signupType: 'Volunteer ',
+                            style: { background: '#14cfe8' }
+        })
         }
 
         render() {

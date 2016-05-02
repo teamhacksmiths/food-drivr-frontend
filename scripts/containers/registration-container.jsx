@@ -86,13 +86,34 @@ class Registration extends React.Component {
     }
 
     _handleSubmitUser(e) {
+    	const { name, email, password, passwordConfirmation } = this.state;
         e.preventDefault();
         if (this.state.errorName == '' &&
             this.state.errorPassword == '' &&
             this.state.errorEmail == '' &&
             this.state.errorPasswordConfirmation == '') {
             this.setState({ error: <CircularProgress /> });
-            auth.register(this.state.name, this.state.email, this.state.password, this.state.passwordConfirmation);
+            auth.register(name, email, password, passwordConfirmation)
+            .then((response) => {
+            	console.log("hello from register")
+            	console.log(response.data);
+            	auth.login(email, password)
+            	.then((response) => {
+	                console.log("hello from login");
+	                localStorage.setItem('token', response.data.authtoken.auth_token);
+	                auth.loggedIn;
+	                if (!loggedIn) {
+	                    return this.setState({ error: "Registration Failed" });
+	                }
+	            }
+	            )
+	            .catch((err) => {
+	                console.log(err)
+	            });
+	            })
+            .catch((err) => {
+            	console.log(err);
+            })
 
         } else {
             this.setState({ error: 'Can not send request.' })
