@@ -39,15 +39,31 @@ var DonationsList = React.createClass({
 				{title: 'St Jude', date: 'March 22, 2016', items: [{quantity: 4, title: 'Tray of lasagne'}] },
 				{title: 'City Mission', date: 'March 21, 2016', items: [{quantity: 3, title: 'Dozen bagels'},
 																		{quantity: 3, title: 'Dozen donuts'}]}
-			]
+			],
+            date: ''
 		};
 	},
+    componentWillMount() {
+        var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+        ];
+
+        var date = new Date();
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+        var currentDate = monthNames[monthIndex] + ' ' + day + ', ' + year;
+        this.setState({ date: currentDate });
+    },
 	updateNewDonation: function() {
 		this.setState({currentDonation: document.getElementById('donation-name').value });
 	},
 	addDonation: function() {
 		var arrayvar = this.state.donations.slice()
-		arrayvar.push({title: this.state.currentDonation, date: 'April 29, 2016', items: [{quantity: 2, title: 'Test food 1'},
+		arrayvar.push({title: this.state.currentDonation, date: this.state.date, items: [{quantity: 2, title: 'Test food 1'},
 																						  {quantity: 5, title: 'Test food 2'}]});
 		this.setState({ donations: arrayvar })
 		document.getElementById('donation-name').value = '';
