@@ -78,8 +78,19 @@ ul {
 	min-height: 100%;
 	max-width: 1450px;
 	padding: 0;
-	background: #394969;
 	position: relative;
+}
+
+.blue-background {
+	background: #394969;
+}
+
+.red-background {
+	background: rgb(255, 30, 64);
+}
+
+.lightgrey-background {
+	background: #f8f8f8;
 }
 
 /* Header Section */

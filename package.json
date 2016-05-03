@@ -9,6 +9,7 @@
     "compile": "babel --presets react app/scripts/JSX --watch -d app/scripts/JSX-Compiled"
   },
   "dependencies": {
+    "classnames": "^2.0.0",
     "axios": "^0.11.0",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
