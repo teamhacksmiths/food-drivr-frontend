@@ -125,7 +125,7 @@ ul {
 }
 
 .homepage-title {
-	margin: 50px auto;
+	margin: 35px auto;
 	font-weight: bold;
 	font-size: 40px;
 	max-width: 300px;
@@ -445,6 +445,16 @@ ul {
 /*                     MEDIA QUERIES                         */
 /*************************************************************/
 
+@media screen and (min-width: 314px) and (min-height: 1080px) {
+	.homepage-title {
+		margin: 50px auto;
+	}
+
+	.homepage-content {
+		font-size: 20px;
+	}
+}
+
 /* Responsive: Portrait After Mobile Large and up */
 @media screen and (min-width: 426px) {
 	.howto-title {
@@ -455,6 +465,16 @@ ul {
 		font-size: 35px;
 	}
 
+}
+
+@media screen and (min-width: 426px) and (min-height: 1080px) {
+	.homepage-content {
+		font-size: 22px;
+	}
+
+	.button-container {
+		margin: 60px auto;
+	}
 }
 
 /* Responsive: Portrait tablets and up */
@@ -478,7 +498,7 @@ ul {
 	}
 
 	.homepage-content {
-		font-size: 16px;
+		font-size: 18px;
 	}
 
 	.howto-div {
@@ -502,20 +522,17 @@ ul {
 	.email {
 		font-size: 20px;
 	}
-
 }
 
-
-@media screen and (min-height: 850px) {
+@media screen and (min-width: 768px) and (min-height: 1080px) {
 
 	.homepage-content {
-		font-size: 20px;
+		font-size: 25px;
 	}
 
 	.button-container {
-		margin: 90px auto;
+		margin: 80px auto;
 	}
-
 }
 
 /* Responsive: Laptop and up */
@@ -586,5 +603,12 @@ ul {
 
 	.becomedriver-img {
 		background-size: auto 100%;
+	}
+}
+
+/* 4k and up not yet fully supported */
+@media screen and (min-width: 2560px) {
+	.homepage-content {
+		font-size: 25px;
 	}
 }
