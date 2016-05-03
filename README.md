@@ -28,6 +28,7 @@ ___
 * Webpack
 * React
 * jQuery
+
 ___
 ## Authors
 

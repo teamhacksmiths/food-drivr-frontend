@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { PropTypes } from 'react';
 import {ScrollDownButton} from './reusable-components.jsx';
+import auth from '../utils/auth.js';
 
 var Donation = React.createClass({
 	render: function(){
@@ -39,20 +40,38 @@ var DonationsList = React.createClass({
 				{title: 'St Jude', date: 'March 22, 2016', items: [{quantity: 4, title: 'Tray of lasagne'}] },
 				{title: 'City Mission', date: 'March 21, 2016', items: [{quantity: 3, title: 'Dozen bagels'},
 																		{quantity: 3, title: 'Dozen donuts'}]}
-			]
+			],
+            date: ''
 		};
 	},
+    componentWillMount() {
+        auth.onChange(true);
+        var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+        ];
+
+        var date = new Date();
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+        var currentDate = monthNames[monthIndex] + ' ' + day + ', ' + year;
+        this.setState({ date: currentDate });
+    },
 	updateNewDonation: function() {
 		this.setState({currentDonation: document.getElementById('donation-name').value });
 	},
 	addDonation: function() {
 		var arrayvar = this.state.donations.slice()
-		arrayvar.push({title: this.state.currentDonation, date: 'April 29, 2016', items: [{quantity: 2, title: 'Test food 1'},
+		arrayvar.push({title: this.state.currentDonation, date: this.state.date, items: [{quantity: 2, title: 'Test food 1'},
 																						  {quantity: 5, title: 'Test food 2'}]});
 		this.setState({ donations: arrayvar })
 		document.getElementById('donation-name').value = '';
 	},
 	render: function() {
+        const token = auth.getToken();
 		var donations = this.state.donations.map(function(donation){
 			return (
 				<Donation title={donation.title} date={donation.date}>
