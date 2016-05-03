@@ -1,6 +1,5 @@
 import React from 'react';
 import { Header, Footer } from './reusable-components.jsx';
-import classNames from 'classnames/bind';
 
 
 
