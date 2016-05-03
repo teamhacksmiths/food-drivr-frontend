@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { PropTypes } from 'react';
 import {ScrollDownButton} from './reusable-components.jsx';
+import auth from '../utils/auth.js';
 
 var Donation = React.createClass({
 	render: function(){
@@ -44,6 +45,7 @@ var DonationsList = React.createClass({
 		};
 	},
     componentWillMount() {
+        auth.onChange(true);
         var monthNames = [
             "January", "February", "March",
             "April", "May", "June", "July",
@@ -69,6 +71,7 @@ var DonationsList = React.createClass({
 		document.getElementById('donation-name').value = '';
 	},
 	render: function() {
+        const token = auth.getToken();
 		var donations = this.state.donations.map(function(donation){
 			return (
 				<Donation title={donation.title} date={donation.date}>

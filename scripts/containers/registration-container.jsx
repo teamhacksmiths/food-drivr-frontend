@@ -101,19 +101,25 @@ class Registration extends React.Component {
             	.then((response) => {
 	                console.log("hello from login");
 	                localStorage.setItem('token', response.data.authtoken.auth_token);
-	                auth.loggedIn;
-	                if (!loggedIn) {
-	                    return this.setState({ error: "Registration Failed" });
-	                }
-	            }
-	            )
+	                auth.loggedIn()
+	                .then(() => {if(false || null || undefined){
+	                		return this.setState({ error: "Registration Failed" });
+	                	}
+	            	})
+	            	.catch((err) => {
+	                	console.log(err);
+	            	});
+	            })
 	            .catch((err) => {
 	                console.log(err)
 	            });
 	            })
             .catch((err) => {
             	console.log(err);
-            })
+            });
+            setTimeout(() => {
+                this.context.router.push('/donation');
+            }, 1000);
 
         } else {
             this.setState({ error: 'Can not send request.' })

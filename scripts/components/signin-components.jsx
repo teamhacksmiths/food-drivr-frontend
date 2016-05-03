@@ -56,26 +56,33 @@ class SignInPage extends Component {
     }
 
     _formSubmit(e) {
+        const { email, password } = this.state;
         e.preventDefault();
         if (this.state.errorPassword == '' && this.state.errorEmail == '') {
             this.setState({ error: <CircularProgress /> });
-            console.log({ 'email': this.state.email, 'password': this.state.password });
-            auth.login(this.state.email, this.state.password)
-            .then((response) => {
-                console.log("hello from login");
-                localStorage.setItem('token', response.data.authtoken.auth_token);
-                auth.loggedIn();
-                if (!loggedIn) {
-                    return this.setState({ error: "Login Failed" });
-                }
-            }
-            )
-            .catch((err) => {
-                console.log(err)
-            });
+            console.log({ 'email': email, 'password': password });
+                auth.login(email, password)
+                .then((response) => {
+                    console.log("hello from login");
+                    localStorage.setItem('token', response.data.authtoken.auth_token);
+                    auth.loggedIn()
+                    .then(() => {if(false || null || undefined){
+                            return this.setState({ error: "Login Failed" });
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+                })
+                .catch((err) => {
+                    console.log(err)
+                });
             setTimeout(() => {
                 this.context.router.push('/donation');
             }, 1000);
+        }
+        else {
+            this.setState({ error: 'Can not send request.' })
         }
     }
 

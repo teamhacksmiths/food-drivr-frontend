@@ -5,6 +5,7 @@ module.exports = {
         // ensure callback is always last argument
         var token = (typeof window !== "undefined") ? localStorage.getItem('token') : undefined;
         if (token) {
+        	this.onChange(true);
             return
         }
 
@@ -74,7 +75,8 @@ module.exports = {
                 }
             })
             .then(() => {
-                delete localStorage.getItem('token')
+                delete localStorage.token;
+                this.onChange(false);
             }).catch((err) => {
                 console.log(err);
             });

@@ -4,19 +4,19 @@ import auth from '../utils/auth.js';
 
 const Header = React.createClass({
 
-    getInitialState() {
+    getInitialState: function() {
         return {
             loggedIn: auth.loggedIn()
         };
     },
 
-    updateAuth(loggedIn) {
+    updateAuth: function(loggedIn) {
         this.setState({
             loggedIn: loggedIn
         })
     },
 
-    componentWillMount() {
+    componentWillMount: function() {
         auth.onChange = this.updateAuth
         if (this.state.loggedIn == true) {
             auth.login()
@@ -75,9 +75,14 @@ const ScrollDownButton = React.createClass({
 });    
 
 const Logout = React.createClass({
-    render() {
+    toLogout: function() {
+        this.context.router.push('/');
+        auth.logout();
+        auth.onChange(true);
+    },
+    render: function() {
         return <h3 className='text-margin-left'>
-                    <Link to='/' onClick={auth.logout} className='text-white'>Logout</Link>
+                    <button onClick={this.toLogout} className='text-white'>Logout</button>
                 </h3>
     }
 });
@@ -91,6 +96,10 @@ const Footer = React.createClass({
         );
     }
 });
+
+Logout.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 module.exports = {
     Header: Header,
