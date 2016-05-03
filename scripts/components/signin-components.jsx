@@ -10,10 +10,11 @@ import auth from '../utils/auth.js';
 class SignInPage extends Component {
     constructor(props, context) {
         super(props, context);
-        this.state = {};
-        this.state.error = "";
-        this.state.email = "";
-        this.state.password = "";
+        this.state = {
+            error: "",
+            email: "",
+            password: ""
+        };
         this.history = props.history;
         this.showSessionMsg = props.location.query ? props.location.query.session : true;
         this._handlePasswordChange = this._handlePasswordChange.bind(this);
@@ -40,27 +41,26 @@ class SignInPage extends Component {
         } else if (!re.test(e.target.value)) {
             this.state.errorEmail = "Email is not valid.";
         }
-        this.setState({ errorEmail: this.state.errorEmail });
-        this.setState({ email: e.target.value });
+        this.setState({ errorEmail: this.state.errorEmail,
+                        email: e.target.value });
     }
 
     _handlePasswordChange(e) {
         this.state.errorPassword = "";
         if (!e.target.value) {
             this.state.errorPassword = "This field is required.";
-        } else if (e.target.value.length < 6) {
-            this.state.errorPassword = "Password needs more than 6 characters.";
+        } else if (e.target.value.length < 8) {
+            this.state.errorPassword = "Password needs more than 8 characters.";
         }
-        this.setState({ errorPassword: this.state.errorPassword });
-        this.setState({ password: e.target.value });
+        this.setState({ errorPassword: this.state.errorPassword,
+                        password: e.target.value });
     }
 
     _formSubmit(e) {
-        const { email, password } = this.state;
+        const { errorPassword, errorEmail, email, password } = this.state;
         e.preventDefault();
-        if (this.state.errorPassword == '' && this.state.errorEmail == '') {
+        if (errorPassword == '' && errorEmail == '') {
             this.setState({ error: <CircularProgress /> });
-            console.log({ 'email': email, 'password': password });
                 auth.login(email, password)
                 .then((response) => {
                     console.log("hello from login");
@@ -87,6 +87,7 @@ class SignInPage extends Component {
     }
 
     render() {
+        const { errorPassword, errorEmail, email, password, error } = this.state;
         return (
             <div className="signin text-center text-white">
             <Paper zDepth={1}>
@@ -95,18 +96,18 @@ class SignInPage extends Component {
                 <form>
                     <TextField
                         hintText="Enter Email"
-                        errorText={this.state.errorEmail}
+                        errorText={errorEmail}
                         floatingLabelText="Email"
                         onChange={this._handleEmailChange}
-                        value={this.state.email}
+                        value={email}
                         />
                     <br/>
                     <TextField
                         hintText="Enter Password"
-                        errorText={this.state.errorPassword}
+                        errorText={errorPassword}
                         floatingLabelText="Password"
                         onChange={this._handlePasswordChange}
-                        value={this.state.password}
+                        value={password}
                         type="password"
                         />
                     <br/>
@@ -117,7 +118,7 @@ class SignInPage extends Component {
                         />
                         <br/>
                     <span>
-                        {this.state.error}
+                        {error}
                     </span>
                 </form>
                 </div>

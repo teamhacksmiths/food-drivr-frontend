@@ -10,15 +10,16 @@ import auth from '../utils/auth.js';
 class Registration extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = {};
-        this.state.error = '';
-        this.state.userData = {};
-        this.state.authToken = '';
-        this.state.user = {};
-        this.state.name = '';
-        this.state.email = '';
-        this.state.password = '';
-        this.state.passwordConfirmation = '';
+        this.state = {
+            error: '',
+            userData: {},
+            authToken: '',
+            user: {},
+            name: '',
+            email: '',
+            password: '',
+            passwordConfirmation: ''
+        };
         this._handleNameChange = this._handleNameChange.bind(this);
         this._handlePasswordChange = this._handlePasswordChange.bind(this);
         this._handlePasswordConfirmChange = this._handlePasswordConfirmChange.bind(this);
@@ -34,8 +35,8 @@ class Registration extends React.Component {
         } else if (e.target.value < 3) {
             this.state.errorName = "Name needs more than 3 characters.";
         }
-        this.setState({ errorName: this.state.errorName });
-        this.setState({ name: e.target.value });
+        this.setState({ errorName: this.state.errorName,
+                        name: e.target.value });
     }
 
     _validateEmail(email) {
@@ -57,32 +58,32 @@ class Registration extends React.Component {
         } else if (!re.test(e.target.value)) {
             this.state.errorEmail = "Email is not valid.";
         }
-        this.setState({ errorEmail: this.state.errorEmail });
-        this.setState({ email: e.target.value });
+        this.setState({ errorEmail: this.state.errorEmail,
+                        email: e.target.value });
     }
 
     _handlePasswordChange(e) {
         this.state.errorPassword = "";
         if (!e.target.value) {
             this.state.errorPassword = "This field is required.";
-        } else if (e.target.value.length < 6) {
-            this.state.errorPassword = "Passwords need more than 6 characters.";
+        } else if (e.target.value.length < 8) {
+            this.state.errorPassword = "Passwords need more than 8 characters.";
         }
-        this.setState({ errorPassword: this.state.errorPassword });
-        this.setState({ password: e.target.value });
+        this.setState({ errorPassword: this.state.errorPassword,
+                        password: e.target.value });
     }
 
     _handlePasswordConfirmChange(e) {
         this.state.errorPasswordConfirmation = "";
         if (!e.target.value) {
             this.state.errorPasswordConfirmation = "This field is required.";
-        } else if (e.target.value.length < 6) {
-            this.state.errorPasswordConfirmation = "Passwords need more than 6 characters.";
+        } else if (e.target.value.length < 8) {
+            this.state.errorPasswordConfirmation = "Passwords need more than 8 characters.";
         } else if (e.target.value !== this.state.password) {
             this.state.errorPasswordConfirmation = "Passwords must match!";
         }
-        this.setState({ errorPasswordConfirmation: this.state.errorPasswordConfirmation });
-        this.setState({ passwordConfirmation: e.target.value });
+        this.setState({ errorPasswordConfirmation: this.state.errorPasswordConfirmation,
+                        passwordConfirmation: e.target.value });
     }
 
     _handleSubmitUser(e) {
@@ -127,42 +128,54 @@ class Registration extends React.Component {
     }
 
     render() {
+        const {
+        style, 
+        name,
+        errorName,
+        email,
+        errorEmail,
+        password,
+        errorPassword,
+        passwordConfirmation,
+        errorPasswordConfirmation,
+        error
+         } = this.state;
         return (
             <div className='container'>
                 <Paper zDepth={1}>
                     <div>
-                    <form style={this.state.style}>
+                    <form style={style}>
                         <TextField
                             hintText="Enter Name"
-                            errorText={this.state.errorName}
+                            errorText={errorName}
                             floatingLabelText="Name"
                             onChange={this._handleNameChange}
-                            value={this.state.name}
+                            value={name}
                             />
                             <br/>
                         <TextField
                             hintText="Enter Email"
-                            errorText={this.state.errorEmail}
+                            errorText={errorEmail}
                             floatingLabelText="Email"
                             onChange={this._handleEmailChange}
-                            value={this.state.email}
+                            value={email}
                             />
                             <br/>
                         <TextField
-                            hintText="6 or more characters."
-                            errorText={this.state.errorPassword}
+                            hintText="8 or more characters."
+                            errorText={errorPassword}
                             floatingLabelText="Password"
                             onChange={this._handlePasswordChange}
-                            value={this.state.password}
+                            value={password}
                             type='password'
                             />
                             <br/>
                         <TextField
-                            hintText="6 or more characters."
-                            errorText={this.state.errorPasswordConfirmation}
+                            hintText="8 or more characters."
+                            errorText={errorPasswordConfirmation}
                             floatingLabelText="Password Confirmation"
                             onChange={this._handlePasswordConfirmChange}
-                            value={this.state.passwordConfirmation}
+                            value={passwordConfirmation}
                             type='password'
                             />
                             <br/>
@@ -173,7 +186,7 @@ class Registration extends React.Component {
                         />
                         <br/>
                     <span className="text-lightgrey">
-                        {this.state.error}
+                        {error}
                     </span>
                     </form>
                     }
