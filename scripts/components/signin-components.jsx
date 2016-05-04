@@ -69,7 +69,8 @@ class SignInPage extends Component {
             else this.setState({ error: "Login Failed" });
             })
             .catch((err) => {
-                console.log(err)
+                console.log(err);
+                this.setState({ error: 'Login Failed' });
             });
         }
         else {
