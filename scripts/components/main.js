@@ -11,7 +11,9 @@ export default class App extends React.Component {
 	      container: true,
 	      'blue-background': window.location.pathname === '/',
 	      'red-background': window.location.pathname === '/signup' || window.location.pathname === '/signin',
-	      'lightgrey-background': window.location.pathname === '/donation'
+	      'lightgrey-background': window.location.pathname === '/donation',
+          'yellow-background': window.location.pathname === '/signup/donor',
+          'lightblue-background': window.location.pathname === '/signup/volunteer'
 	    });
         return (
             <div className={containerClass}>
