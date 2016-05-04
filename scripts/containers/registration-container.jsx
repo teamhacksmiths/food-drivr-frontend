@@ -94,34 +94,21 @@ class Registration extends React.Component {
             this.state.errorEmail == '' &&
             this.state.errorPasswordConfirmation == '') {
             this.setState({ error: <CircularProgress /> });
-            auth.register(name, email, password, passwordConfirmation)
-            .then((response) => {
-            	console.log("hello from register")
-            	console.log(response.data);
-            	auth.login(email, password)
-            	.then((response) => {
-	                console.log("hello from login");
-	                localStorage.setItem('token', response.data.authtoken.auth_token);
-	                auth.loggedIn()
-	                .then(() => {if(false || null || undefined){
-	                		return this.setState({ error: "Registration Failed" });
-	                	}
-	            	})
-	            	.catch((err) => {
-	                	console.log(err);
-	            	});
-	            })
-	            .catch((err) => {
-	                console.log(err)
-	            });
-	            })
-            .catch((err) => {
-            	console.log(err);
-            });
-            setTimeout(() => {
-                this.context.router.push('/donation');
-            }, 1000);
-
+                auth.register(name, email, password, passwordConfirmation)
+      .then((response) => {
+        console.log("hello from register")
+        console.log(response.data);
+        return auth.login(email, password);
+      })
+      .then((response) => {
+        console.log("hello from login");
+        localStorage.setItem('token', response.data.authtoken.auth_token);
+        if (auth.loggedIn()) this.context.router.push('/donation');
+        else this.setState({ error: "Registration Failed" });
+      })
+      .catch((err) => {
+        console.log(err)
+      });
         } else {
             this.setState({ error: 'Can not send request.' })
         }
