@@ -48,6 +48,10 @@ ul {
 	color: white;
 }
 
+.text-black {
+	color: black;
+}
+
 .text-yellow {
 	color: #f7b32b;
 }
@@ -70,6 +74,15 @@ ul {
 
 .invisible-btn {
 	display: none;
+}
+
+.btn-only-text {
+	border: none;
+    background: transparent;
+}
+
+.btn-only-text:focus {
+	outline: none;
 }
 
 /* Main content */
@@ -461,10 +474,25 @@ font-size: 16px;
     width: 50%;
     bottom: 1%;
 }
+
+/*************************************************************/
+/*                         FOOTER                            */
+/*************************************************************/
+.footer a{
+	color: white;
+}
+
+.footer a:visited{
+	color: white;
+}
+
+.footer a:hover{
+	text-decoration: underline;
+}
+
 /*************************************************************/
 /*                     MEDIA QUERIES                         */
 /*************************************************************/
-
 @media screen and (min-width: 314px) and (min-height: 1080px) {
 	.homepage-title {
 		margin: 50px auto;
