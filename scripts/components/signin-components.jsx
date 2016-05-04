@@ -82,7 +82,7 @@ class SignInPage extends Component {
             }, 1000);
         }
         else {
-            this.setState({ error: 'Can not send request.' })
+            this.setState({ error: 'Can not send request.' });
         }
     }
 
@@ -90,8 +90,6 @@ class SignInPage extends Component {
         const { errorPassword, errorEmail, email, password, error } = this.state;
         return (
             <div className="signin text-center text-white">
-            <Paper zDepth={1}>
-                <div className="container">
                 <Headline value="Sign In" />
                 <form>
                     <TextField
@@ -99,6 +97,8 @@ class SignInPage extends Component {
                         errorText={errorEmail}
                         floatingLabelText="Email"
                         onChange={this._handleEmailChange}
+                        style={{width: '80%', maxWidth: 350}}
+                        errorStyle={{color: 'white'}}
                         value={email}
                         />
                     <br/>
@@ -107,6 +107,8 @@ class SignInPage extends Component {
                         errorText={errorPassword}
                         floatingLabelText="Password"
                         onChange={this._handlePasswordChange}
+                        style={{width: '80%', maxWidth: 350}}
+                        errorStyle={{color: 'white'}}
                         value={password}
                         type="password"
                         />
@@ -115,14 +117,13 @@ class SignInPage extends Component {
                         label="Sign In"
                         secondary={true}
                         onClick={this._formSubmit}
+                        style={{marginTop: 100, minWidth: 250}}
                         />
                         <br/>
                     <span>
                         {error}
                     </span>
                 </form>
-                </div>
-            </Paper>
             </div>
         )
     }
