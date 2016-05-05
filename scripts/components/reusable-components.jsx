@@ -95,8 +95,13 @@ const Logout = React.createClass({
 
 const Footer = React.createClass({
     render: function() {
+        var footerClass = classNames({
+            footer: true,
+            'text-black': window.location.pathname === '/donation',
+            'text-white': window.location.pathname !== '/donation'
+        });
         return (
-            <div className='footer'>
+            <div className={footerClass}>
                 <p>Made with ♥ by <Link to='http://hacksmiths.io'>Team Hacksmiths</Link></p>
             </div>
         );
