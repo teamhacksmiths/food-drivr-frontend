@@ -37,6 +37,7 @@ ___
 * **[Ryan Collins](https://github.com/RyanCCollins)**
 * **[Jacob Bryan](https://github.com/bryanj4)**
 * **[Gabriele Cimato](https://github.com/Gabri3l)**
+
 ___
 ## License
 
