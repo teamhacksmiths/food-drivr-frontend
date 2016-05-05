@@ -48,7 +48,15 @@ ul {
 	color: white;
 }
 
+.text-white a:visited {
+	color: white;
+}
+
 .text-black {
+	color: black;
+}
+
+.text-black a:visited {
 	color: black;
 }
 
@@ -336,16 +344,6 @@ ul {
 	font-size: 10px;
 }
 
-/* Custom page footer */
-.footer {
-	position: absolute;
-	bottom: 0;
-	height: 30px;
-	width: 100%;
-	text-align: center;
-	color: white;
-}
-
 /*************************************************************/
 /*                       SIGNUP STYLE                        */
 /*************************************************************/
@@ -434,8 +432,29 @@ ul {
 	min-height: calc(100vh - 135px);
 }
 
+.donation {
+	width: 100%;
+    display: flex;
+}
+
+.donation-name {
+	width: 70%;
+}
+
+.donation-items {
+	width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 15px;
+}
+
+.donation-item {
+	width: 100%;
+}
+
 .donation-input-container {
 	display: flex;
+	flex-wrap: wrap;
 	width: 95%;
 	margin: auto;
 	border-bottom-width: 2px;
@@ -444,13 +463,50 @@ ul {
 	border-color: #70767a;
 }
 
-.donation-input {
+.donation-input-charity {
+    border: none;
+    height: 60px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    font-size: 16px;
+}
+.donation-input-name {
 	border: none;
 	height: 60px;
-	width: 80%;
+	width: 42%;
 	margin-right: 22px;
 	padding-left: 20px;
-font-size: 16px;
+	font-size: 16px;
+}
+
+.donation-input-qty {
+	border: none;
+	height: 60px;
+	width: 20%;
+	margin-right: 22px;
+	padding-left: 20px;
+	font-size: 16px;
+}
+
+.donation-input-measure {
+	border: none;
+	height: 60px;
+	width: 12%;
+	margin-right: 22px;
+	padding-left: 20px;
+	font-size: 16px;
+}
+
+.donation-new {
+	width: 50%;
+    margin: auto;
+    list-style: none;
+}
+
+.donation-input-measure option {
+	border: none;
+	font-size: 20px;
 }
 
 .btn-add-donation {
@@ -459,11 +515,16 @@ font-size: 16px;
 	border: none;
 }
 
-.btn-add-donation:focus {
-	outline: none;
+.btn-add-donation-disabled {
+	cursor: default;
+	opacity: 0.5;
 }
 
-.donation-input:focus {
+.btn-add-donation:focus,
+.donation-input-name:focus,
+.donation-input-qty,
+.donation-input-measure,
+.donation-input-charity {
 	outline: none;
 }
 
@@ -480,18 +541,18 @@ font-size: 16px;
 .donation-scrolldown {
 	position: absolute;
     width: 50%;
-    bottom: 1%;
+    bottom: 5%;
 }
 
 /*************************************************************/
 /*                         FOOTER                            */
 /*************************************************************/
-.footer a{
-	color: white;
-}
-
-.footer a:visited{
-	color: white;
+.footer {
+	position: absolute;
+	bottom: 0;
+	height: 30px;
+	width: 100%;
+	text-align: center;
 }
 
 .footer a:hover{
