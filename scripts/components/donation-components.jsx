@@ -100,7 +100,7 @@ class DonateItem extends React.Component {
         return (
         	<div className='text-flex'>
        			<input type="text"
-					   placeholder="Enter Donation Here"
+					   placeholder="What would you like to donate ?"
 					   className="new-donation-input new-donation-title text-lightgrey"
 					   onKeyUp={this.props.updateDonationName}
 					   id='donationTitle'/>

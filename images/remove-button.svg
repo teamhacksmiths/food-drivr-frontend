@@ -41,7 +41,7 @@
      showgrid="false"
      inkscape:zoom="11.321429"
      inkscape:cx="28"
-     inkscape:cy="28"
+     inkscape:cy="20.933754"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -69,7 +69,7 @@
            d="M27.4054054,25.2972973 L27.4054054,14.0540541 L26,14.0540541 L26,25.2972973 L14.0540541,25.2972973 L14.0540541,26.7027027 L26,26.7027027 L26,38.6486486 L27.4054054,38.6486486 L27.4054054,26.7027027 L38.6486486,26.7027027 L38.6486486,25.2972973 L27.4054054,25.2972973 Z"
            id="Combined-Shape"
            fill="#F7BD4B"
-           style="fill:#70767a;fill-opacity:1" />
+           style="fill:#cfcfcf;fill-opacity:1" />
       </g>
     </g>
   </g>

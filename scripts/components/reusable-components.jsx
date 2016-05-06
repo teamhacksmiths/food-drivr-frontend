@@ -57,7 +57,7 @@ const AppStoreIcon = React.createClass({
 const Login = React.createClass({
     render: function() {
         return (
-            <h3 className='text-margin-left'>
+            <h3 className='text-margin-left source-sans'>
                 <Link to='/signin' className='text-white'>Login</Link>
             </h3>
         );
@@ -87,7 +87,7 @@ const Logout = React.createClass({
           'text-white': window.location.pathname === '/',
           'text-black': window.location.pathname !== '/'
         });
-        return <h3 className='text-margin-left'>
+        return <h3 className='text-margin-left source-sans'>
                     <button onClick={this.toLogout} className={logoutClass}>Logout</button>
                 </h3>
     }
