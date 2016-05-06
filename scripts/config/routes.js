@@ -24,7 +24,10 @@ var routes = (
       <Route path="/" component={App}>
           <IndexRoute component={HomePage} />
           <Route path="signin" component={SignInPage} />
-          <Route path="signup" component={SignUpPage} />
+          <Route path="signup" component={SignUpPage} >
+          	<Route path="donor" component={SignUpPage} />
+          	<Route path="volunteer" component={SignUpPage} />
+          </Route>
           <Route path="donation" component={DonationList} onEnter={requireAuth}/>
       </Route>
     </Router>

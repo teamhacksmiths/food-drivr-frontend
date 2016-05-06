@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { Headline } from './reusable-components.jsx';
 import Registration from '../containers/registration-container.jsx';
 
@@ -24,7 +25,8 @@ class SignUpPage extends React.Component {
                             signupType: 'Donor ',
                             signupType: 'Donor ',
                             style: { background: '#f7b32b' }
-        })
+        });
+            this.context.router.push('/signup/donor');
         }
 
         onSubmitVolunteer() {
@@ -33,7 +35,8 @@ class SignUpPage extends React.Component {
                             class: 'invisible-btn',
                             signupType: 'Volunteer ',
                             style: { background: '#14cfe8' }
-        })
+        });
+            this.context.router.push('/signup/volunteer');
         }
 
         render() {
@@ -66,5 +69,9 @@ class SignUpPage extends React.Component {
             );
         }
 }
+
+SignUpPage.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 module.exports = SignUpPage;
