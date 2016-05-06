@@ -30,7 +30,7 @@ var SectionIntro = React.createClass({
 					</p>
 				</div>
 				<Headline value='WASTE NOT FOOD TAXI' className='homepage-title text-center text-white'/>
-				<p className='homepage-content text-center text-white'>
+				<p className='homepage-content text-center text-white source-sans'>
 					On a daily basis, businesess like catering facilities, restaurants, grocery stores, as well as individuals produce more food than what is necessary for them to meet their needs.
 					<br/>
 					<br/>
@@ -69,19 +69,19 @@ var SectionHowTo = React.createClass({
 				<div className='howto-content'>
 					<div className='howto-div'>
 						<HowToDivTitle title='DONATING' imgSrc='images/package.svg' imgAlt='donation package' />
-						<p className='text-lightgrey text-center'>
+						<p className='text-center source-sans'>
 							After signing up, donors can enter in items they wish to donate to those in need. Once items are donated, a notification is sent out to all drivers of a pending donation.
 						</p>
 					</div>
 					<div className='howto-div'>
 						<HowToDivTitle title='PICKUP' imgSrc='images/truck.svg' imgAlt='pickup truck' />
-						<p className='text-lightgrey text-center'>
+						<p className='text-center source-sans'>
 							Drivers receive notification of a pending donation and can choose to accept. Upon accepting, they will be given all of the information about the pending donation.
 						</p>
 					</div>
 					<div className='howto-div'>
 						<HowToDivTitle title='DELIVERY' imgSrc='images/delivery.svg' imgAlt='delivery truck' />
-						<p className='text-lightgrey text-center'>
+						<p className='text-center source-sans'>
 							After the pick up of a donation has been completed, drivers deliver the donation to the nearest pre-determined organization recipient.
 						</p>
 					</div>
@@ -101,10 +101,10 @@ var Arrow = React.createClass({
 	}
 });
 
-var DonorDescription = React.createClass({
+var DriverDescription = React.createClass({
 	render: function() {
 		return (
-			<div>
+			<div className='source-sans' style={{marginBottom: 40}}>
 				<p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
 				<p>As an extra benefit to all of our donors, we provide tax receipts to them so they can write their donations off when they do their taxes.</p>
 				<p>Food Drivr provides an easy way for both drivers and donors to help put an end to hunger in their communities.</p>
@@ -116,7 +116,7 @@ var DonorDescription = React.createClass({
 var VolunteerDescription = React.createClass({
 	render: function() {
 		return (
-			<div>
+			<div className='source-sans' style={{marginBottom: 40}}>
 				<p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
 				<p>Some other text for volunteers!</p>
 			</div>
@@ -127,12 +127,12 @@ var VolunteerDescription = React.createClass({
 var SectionBecomeDriver = React.createClass({
 	getInitialState: function() {
 		return {
-			userType: 'Donor',
+			userType: 'Driver',
 			description : ''
 		};
 	},
-	onSubmitDonor: function() {
-		this.setState({ userType: 'Donor' });
+	onSubmitDriver: function() {
+		this.setState({ userType: 'Driver' });
 	},
 	onSubmitVolunteer: function() {
 		this.setState({ userType: 'Volunteer' });
@@ -141,18 +141,18 @@ var SectionBecomeDriver = React.createClass({
 		return (
 			<div className='homepage-becomedriver'>
 				<AppStoreIcon className='becomedriver-appStoreIcon'/>
-				<Arrow direction='Left' onClick={this.state.userType === 'Donor' ? this.onSubmitVolunteer : this.onSubmitDonor}/>
+				<Arrow direction='Left' onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver}/>
 				<div className='becomedriver-content text-white'>
 					<Headline value={'Become a ' + this.state.userType} className='becomedriver-title'/>
-					{ this.state.userType === 'Donor' ?
-						<DonorDescription /> :
+					{ this.state.userType === 'Driver' ?
+						<DriverDescription /> :
 						<VolunteerDescription /> }
 					<div className='button-container'>
 						<BodyButton />
 					</div>
 				</div>
 				<div className='becomedriver-img' />
-				<Arrow direction='Right' onClick={this.state.userType === 'Donor' ? this.onSubmitVolunteer : this.onSubmitDonor}/>
+				<Arrow direction='Right' onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver}/>
 			</div>
 		);
 	}

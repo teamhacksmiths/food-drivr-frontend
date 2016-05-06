@@ -36,12 +36,17 @@ ul {
 	cursor: pointer;
 }
 
+.source-sans {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
 .text-grey {
 	color: #3c3d41;
 }
 
 .text-lightgrey {
-	color: #70767a;
+	/*color: #70767a;*/
+	color: #cfcfcf;
 }
 
 .text-white {
@@ -188,13 +193,17 @@ ul {
 	padding: 10px 55px;
 	background-color: #ff1e40;
 	border-radius: 25px;
+	font-weight: bold;
 }
 
 .homepage-scrolldown {
-	margin-bottom: 20px;
-	position: absolute;
-	width: 100%;
-	bottom: 1%;
+	font-size: 10px;
+    margin-bottom: 20px;
+    position: absolute;
+    width: 100%;
+    bottom: 1%;
+    letter-spacing: 2px;
+    font-weight: bold;
 }
 
 /* How It works Section*/
@@ -203,9 +212,22 @@ ul {
 	padding: 100px 0 50px;
 }
 
+.howto-divtitle {
+	font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
 .howto-title {
 	font-weight: bold;
-	font-size: 40px;
+	font-size: 52px;
+  	letter-spacing: -2px;
+}
+
+.howto-div>p {
+	font-size: 18px;
+    line-height: 1.1;
+    color: #70767a;
 }
 
 .howto-content {
@@ -235,11 +257,18 @@ ul {
 .becomedriver-content {
 	width: 65%;
 	margin: auto;
+	display: flex;
+    flex-direction: column;
+}
+
+.becomedriver-content p {
+	font-size: 18px;
 }
 
 .becomedriver-title {
 	font-weight: bold;
 	font-size: 40px;
+	letter-spacing: -2px;
 }
 
 .becomedriver-img {
@@ -429,7 +458,7 @@ ul {
 /*************************************************************/
 
 .btn-donation {
-	width: 60px;
+	width: 65px;
     height: 56px;
     cursor: pointer;
     background: transparent;
@@ -487,7 +516,13 @@ ul {
 	height: 55px;
     border: none;
     padding-left: 15px;
-    margin-right: 15px;
+    margin-right: 45px;
+    letter-spacing: 0.9px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    background: transparent;
+    border-bottom: solid 2px #b0aeae;
+    color:  #202020;
 }
 
 .new-donation-title,
@@ -502,9 +537,10 @@ ul {
 .donated-name {
 	padding-left: 15px;
     margin-top: 15px;
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 0.9px;
     color: #202020;
+    font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -545,7 +581,6 @@ ul {
 	.signup-container p{
 		font-size: 35px;
 	}
-
 }
 
 @media screen and (min-width: 426px) and (min-height: 1080px) {
