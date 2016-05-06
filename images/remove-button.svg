@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="56px"
+   height="56px"
+   viewBox="0 0 56 56"
+   version="1.1"
+   id="svg4136"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="remove-button.svg">
+  <metadata
+     id="metadata4151">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>46260BC5-163B-457A-99A8-833111097A86</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1536"
+     inkscape:window-height="801"
+     id="namedview4149"
+     showgrid="false"
+     inkscape:zoom="11.321429"
+     inkscape:cx="28"
+     inkscape:cy="28"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Add-Button" />
+  <!-- Generator: sketchtool 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title4138">46260BC5-163B-457A-99A8-833111097A86</title>
+  <desc
+     id="desc4140">Created with sketchtool.</desc>
+  <defs
+     id="defs4142" />
+  <g
+     id="Page-1"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd">
+    <g
+       id="Desktop-HD-Donor-Dashboard"
+       transform="translate(-1134.000000, -279.000000)">
+      <g
+         id="Add-Button"
+         transform="translate(1136.000000, 281.000000)">
+        <path
+           d="M27.4054054,25.2972973 L27.4054054,14.0540541 L26,14.0540541 L26,25.2972973 L14.0540541,25.2972973 L14.0540541,26.7027027 L26,26.7027027 L26,38.6486486 L27.4054054,38.6486486 L27.4054054,26.7027027 L38.6486486,26.7027027 L38.6486486,25.2972973 L27.4054054,25.2972973 Z"
+           id="Combined-Shape"
+           fill="#F7BD4B"
+           style="fill:#70767a;fill-opacity:1" />
+      </g>
+    </g>
+  </g>
+</svg>
