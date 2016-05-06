@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import auth from '../utils/auth.js';
+import classNames from 'classnames/bind';
 
 const Header = React.createClass({
 
@@ -13,11 +14,11 @@ const Header = React.createClass({
     updateAuth: function(loggedIn) {
         this.setState({
             loggedIn: loggedIn
-        })
+        });
     },
 
     componentWillMount: function() {
-        auth.onChange = this.updateAuth
+        auth.onChange = this.updateAuth;
         if (this.state.loggedIn == true) {
             auth.login()
         }
@@ -27,7 +28,7 @@ const Header = React.createClass({
         return (
             <div className='header text-flex'>
                 <AppStoreIcon />
-                {this.state.loggedIn ? 
+                {this.state.loggedIn ?
                     <Logout /> : <Login />
                 }
             </div>
@@ -72,7 +73,7 @@ const ScrollDownButton = React.createClass({
 			</div>
 		);
 	}
-});    
+});
 
 const Logout = React.createClass({
     toLogout: function() {
@@ -81,16 +82,26 @@ const Logout = React.createClass({
         auth.onChange(true);
     },
     render: function() {
+        var logoutClass = classNames({
+          'btn-only-text': true,
+          'text-white': window.location.pathname === '/',
+          'text-black': window.location.pathname !== '/'
+        });
         return <h3 className='text-margin-left'>
-                    <button onClick={this.toLogout} className='text-white'>Logout</button>
+                    <button onClick={this.toLogout} className={logoutClass}>Logout</button>
                 </h3>
     }
 });
 
 const Footer = React.createClass({
     render: function() {
+        var footerClass = classNames({
+            footer: true,
+            'text-black': window.location.pathname === '/donation',
+            'text-white': window.location.pathname !== '/donation'
+        });
         return (
-            <div className='footer'>
+            <div className={footerClass}>
                 <p>Made with ♥ by <Link to='http://hacksmiths.io'>Team Hacksmiths</Link></p>
             </div>
         );

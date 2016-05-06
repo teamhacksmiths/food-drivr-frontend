@@ -22,7 +22,7 @@ function requireAuth(nextState, replace) {
 var routes = (
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRoute component={HomePage} />
+          <IndexRoute component={HomePage} />
           <Route path="signin" component={SignInPage} />
           <Route path="signup" component={SignUpPage} >
           	<Route path="donor" component={SignUpPage} />

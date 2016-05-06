@@ -3,105 +3,128 @@ import { Link } from 'react-router';
 import { PropTypes } from 'react';
 import {ScrollDownButton} from './reusable-components.jsx';
 import auth from '../utils/auth.js';
+import SelectField from 'material-ui/lib/select-field';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import classNames from 'classnames/bind';
 
-var Donation = React.createClass({
-	render: function(){
-		return (
-			<li className="row donation">
-				<div className="col-xs-8">
-					<h4>{this.props.title}</h4>
-					<p>{this.props.date}</p>
-				</div>
-				{this.props.children}
-			</li>
-		);
+
+class Donation extends React.Component {
+	constructor(props) {
+        super(props);
+        this.displayName = 'DonationItem';
+        this.state = {
+        	newItemName: '',
+			itemsAdded: [],
+			enableAddItem: false,
+			enableDonation: false
+        };
+        this.updateDonationName = this.updateDonationName.bind(this);
+        this.addDonationItem = this.addDonationItem.bind(this);
+        this.removeItem = this.removeItem.bind(this);
+    }
+	updateDonationName() {
+		const newItemTitle = document.getElementById('donationTitle').value;
+		newItemTitle === '' ? this.setState({enableAddItem: false}) : this.setState({enableAddItem: true})
+		this.setState({newItemName: document.getElementById('donationTitle').value });
 	}
-});
-
-var DonationItem = React.createClass({
-	render: function() {
+	addDonationItem() {
+		if (this.state.enableAddItem) {
+			let newItemsArr = this.state.itemsAdded;
+			const newItemTitle = document.getElementById('donationTitle').value;
+			newItemsArr.push({name: this.state.newItemName});
+			this.setState({itemsAdded: newItemsArr});
+			this.setState({enableDonation: true});
+			{/* Restore default status of the item input */}
+			document.getElementById('donationTitle').value = '';
+			this.setState({enableAddItem: false});
+		}
+	}
+	removeItem(index){
+		let newItemsArr = this.state.itemsAdded;
+		newItemsArr.splice(index, 1);
+		this.setState({itemsAdded: newItemsArr});
+		if (this.state.itemsAdded.length === 0) {
+			this.setState({enableDonation: false});
+		}
+	}
+	makeDonation(){
+		console.log('hurray donation successfull!');
+	}
+	render() {
+		let donatedItems = this.state.itemsAdded.map(function(item, index){
+			var boundClick = this.removeItem.bind(this, index);
+			return (
+				<DonationItem key={index} name={item.name} removeItem={boundClick}/>
+			);
+		}, this);
 		return (
-			<div className="col-xs-4 text-right">
-				<div className='donation-item'>{this.props.quantity} x {this.props.title}</div>
+			<div className='donation-container'>
+				<DonateItem enableAddItem={this.state.enableAddItem}
+							addDonationItem={this.addDonationItem}
+							updateDonationName={this.updateDonationName}
+							updateDonationQty={this.updateDonationQty}
+							updateDonationMeasure={this.updateDonationMeasure}
+							/>
+				<div className='donation-list'>
+					{donatedItems}
+				</div>
+				<button className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'} onClick={this.makeDonation}>DONATE</button>
 			</div>
 		);
 	}
-});
+}
 
-var DonationsList = React.createClass({
-	propTypes: {
-		value: PropTypes.string.isRequired,
-		addDonation: PropTypes.func.isRequired
-	},
-	getInitialState: function(){
-		return {
-			currentDonationTitle: '',
-			donations: [
-				{title: 'St Jude', date: 'March 22, 2016', items: [{quantity: 4, title: 'Tray of lasagne'}] },
-				{title: 'City Mission', date: 'March 21, 2016', items: [{quantity: 3, title: 'Dozen bagels'},
-																		{quantity: 3, title: 'Dozen donuts'}]}
-			],
-            date: ''
-		};
-	},
-    componentWillMount() {
-        auth.onChange(true);
-        var monthNames = [
-            "January", "February", "March",
-            "April", "May", "June", "July",
-            "August", "September", "October",
-            "November", "December"
-        ];
 
-        var date = new Date();
-        var day = date.getDate();
-        var monthIndex = date.getMonth();
-        var year = date.getFullYear();
-        var currentDate = monthNames[monthIndex] + ' ' + day + ', ' + year;
-        this.setState({ date: currentDate });
-    },
-	updateNewDonation: function() {
-		this.setState({currentDonation: document.getElementById('donation-name').value });
-	},
-	addDonation: function() {
-		var arrayvar = this.state.donations.slice()
-		arrayvar.push({title: this.state.currentDonation, date: this.state.date, items: [{quantity: 2, title: 'Test food 1'},
-																						  {quantity: 5, title: 'Test food 2'}]});
-		this.setState({ donations: arrayvar })
-		document.getElementById('donation-name').value = '';
-	},
-	render: function() {
-        const token = auth.getToken();
-		var donations = this.state.donations.map(function(donation){
-			return (
-				<Donation title={donation.title} date={donation.date}>
-					{
-						donation.items.map(function(item){
-							return <DonationItem quantity={item.quantity} title={item.title} />;
-						})
-					}
-				</Donation>
-			);
-		});
+class DonationItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.displayName = 'DonationItem';
+    }
+    render() {
+        return (
+        	<div className='donated-item text-flex'>
+				<div className="donated-name text-lightgrey">{this.props.name}</div>
+				<button className="btn-del-donation" onClick={this.props.removeItem} />
+        	</div>
+        );
+    }
+}
+
+
+class DonateItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.displayName = 'DonateItem';
+    }
+    render() {
+        return (
+        	<div className='text-flex'>
+       			<input type="text"
+					   placeholder="Enter Donation Here"
+					   className="new-donation-input new-donation-title text-lightgrey"
+					   onKeyUp={this.props.updateDonationName}
+					   id='donationTitle'/>
+        		<button className={this.props.enableAddItem ? "btn-donation" : "btn-donation btn-disabled"} onClick={this.props.addDonationItem} />
+        	</div>
+        );
+    }
+}
+
+
+class DonationsList extends React.Component {
+	constructor(props) {
+		super(props);
+		this.displayName = 'DonationsList';
+	}
+	render() {
+		const token = auth.getToken();
 		return (
 			<div className="donations">
 				<h1 className='business-title text-center text-yellow'>BUSINESS NAME</h1>
-				<div className="donation-input-container">
-					<input type="text" placeholder="Enter Donation Here" className="donation-input text-lightgrey" id='donation-name' onKeyUp={this.updateNewDonation}/>
-					<button onClick={this.addDonation} className="btn-add-donation text-center text-white">ADD</button>
-				</div>
-				<div className="past-donations">
-					<h4 className="text-left">Donations to Date</h4>
-					<ul id='donations-list'>
-						{donations}
-					</ul>
-					<div className="donation-scrolldown text-center text-yellow pointer-cursor">
-						<ScrollDownButton destination='' color='yellow' text='VIEW MORE'/>
-					</div>
-				</div>
+				<Donation />
 			</div>
 		);
 	}
-});
+}
 
 module.exports = DonationsList;

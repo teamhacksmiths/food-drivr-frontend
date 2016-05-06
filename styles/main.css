@@ -48,6 +48,18 @@ ul {
 	color: white;
 }
 
+.text-white a:visited {
+	color: white;
+}
+
+.text-black {
+	color: black;
+}
+
+.text-black a:visited {
+	color: black;
+}
+
 .text-yellow {
 	color: #f7b32b;
 }
@@ -72,14 +84,42 @@ ul {
 	display: none;
 }
 
+.btn-only-text {
+	border: none;
+    background: transparent;
+}
+
+.btn-only-text:focus {
+	outline: none;
+}
+
 /* Main content */
 .container {
 	width: 100%;
 	min-height: 100%;
 	max-width: 1450px;
 	padding: 0;
-	background: #394969;
 	position: relative;
+}
+
+.blue-background {
+	background: #394969;
+}
+
+.red-background {
+	background: rgb(255, 30, 64);
+}
+
+.lightgrey-background {
+	background: #f8f8f8;
+}
+
+.yellow-background {
+	background: rgb(247, 179, 43);
+}
+
+.lightblue-background {
+	background: rgb(20, 207, 232);
 }
 
 /* Header Section */
@@ -125,7 +165,7 @@ ul {
 }
 
 .homepage-title {
-	margin: 50px auto;
+	margin: 35px auto;
 	font-weight: bold;
 	font-size: 40px;
 	max-width: 300px;
@@ -214,7 +254,7 @@ ul {
 .becomedriver-arrow {
 	position: relative;
 	width: 40px;
-  margin: 0 5px;
+	margin: 0 5px;
 }
 
 .becomedriver-arrow img {
@@ -227,7 +267,7 @@ ul {
 	display: none;
 	position: absolute;
 	top: 10%;
-  right: 11%;
+	right: 11%;
 }
 
 /* Comments Section */
@@ -304,19 +344,13 @@ ul {
 	font-size: 10px;
 }
 
-/* Custom page footer */
-.footer {
-	position: absolute;
-	bottom: 0;
-	height: 30px;
-	width: 100%;
-	text-align: center;
-	color: white;
-}
-
 /*************************************************************/
 /*                       SIGNUP STYLE                        */
 /*************************************************************/
+.signup-container {
+	min-height: calc(100vh - 135px);
+}
+
 .signup-container p{
 	padding: 80px 0;
 	font-size: 30px;
@@ -362,26 +396,30 @@ ul {
 }
 
 .form-signup::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-  color: white;
-  opacity: .8;
+	color: white;
+	opacity: .8;
 }
+
 .form-signup:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: white;
-  opacity: .8;
+	color: white;
+	opacity: .8;
 }
+
 .form-signup::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: white;
-  opacity: .8;
+	color: white;
+	opacity: .8;
 }
+
 .form-signup:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: white;
-  opacity: .8;
+	color: white;
+	opacity: .8;
 }
 
 /*************************************************************/
 /*                         SIGNIN                            */
 /*************************************************************/
 .signin {
+	min-height: calc(100vh - 135px);
 	padding: 50px 0;
 	background-color: #ff1e40;
 }
@@ -390,60 +428,113 @@ ul {
 /*                       DONATION                            */
 /*************************************************************/
 
-.donations {
-	background: #f8f8f8;
-	padding: 50px 0;
+.btn-donation {
+	width: 60px;
+    height: 56px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    background-image: url('../images/add-button.svg');
+    background-repeat: no-repeat;
 }
 
-.donation-input-container {
-	display: flex;
-	width: 95%;
-	margin: auto;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  padding-bottom: 40px;
-  border-color: #70767a;
+.btn-del-donation {
+	width: 60px;
+    height: 56px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    -webkit-transform: rotate(-315deg);
+    transform: rotate(-315deg);
+    background-image: url('../images/remove-button.svg');
 }
 
-.donation-input {
-	border: none;
-  height: 60px;
-  width: 80%;
-  margin-right: 22px;
-  padding-left: 20px;
-  font-size: 16px;
+.btn-donate {
+	width: 46%;
+    height: 70px;
+    background-color: #f7bd4b;
+    border: none;
+    color: white;
+    font-size: 24px;
+    margin: 50px auto;
+    display: block;
 }
 
-.btn-add-donation {
-	width: 20%;
-	background: #f7b32b;
-	border: none;
+.btn-disabled {
+	opacity: .5;
+	cursor: default;
 }
 
-.btn-add-donation:focus {
+.btn-donation:focus,
+.new-donation-input:focus,
+.btn-del-donation:focus,
+.btn-donate:focus {
 	outline: none;
 }
 
-.donation-input:focus {
-	outline: none;
+.donation-container {
+	width: 50%;
+    margin: auto;
 }
 
-.past-donations {
-	width: 90%;
-	margin: auto;
+.donation-list {
+	height: 47vh;
+    overflow-x: hidden;
+    margin-top: 20px;
 }
 
-.past-donations>h4 {
-	margin: 30px auto 40px;
-	font-size: 28px;
+.new-donation-input {
+	height: 55px;
+    border: none;
+    padding-left: 15px;
+    margin-right: 15px;
 }
 
-.donation-scrolldown {
+.new-donation-title,
+.donated-name {
+	width: 100%;
+}
+
+.donated-item {
 	margin-top: 30px;
 }
+
+.donated-name {
+	padding-left: 15px;
+    margin-top: 15px;
+    font-size: 18px;
+    letter-spacing: 0.9px;
+    color: #202020;
+}
+
+
+/*************************************************************/
+/*                         FOOTER                            */
+/*************************************************************/
+.footer {
+	position: absolute;
+	bottom: 0;
+	height: 30px;
+	width: 100%;
+	text-align: center;
+}
+
+.footer a:hover{
+	text-decoration: underline;
+}
+
 /*************************************************************/
 /*                     MEDIA QUERIES                         */
 /*************************************************************/
+@media screen and (min-width: 314px) and (min-height: 1080px) {
+	.homepage-title {
+		margin: 50px auto;
+	}
+
+	.homepage-content {
+		font-size: 20px;
+	}
+}
 
 /* Responsive: Portrait After Mobile Large and up */
 @media screen and (min-width: 426px) {
@@ -455,6 +546,16 @@ ul {
 		font-size: 35px;
 	}
 
+}
+
+@media screen and (min-width: 426px) and (min-height: 1080px) {
+	.homepage-content {
+		font-size: 22px;
+	}
+
+	.button-container {
+		margin: 60px auto;
+	}
 }
 
 /* Responsive: Portrait tablets and up */
@@ -478,7 +579,7 @@ ul {
 	}
 
 	.homepage-content {
-		font-size: 16px;
+		font-size: 18px;
 	}
 
 	.howto-div {
@@ -488,7 +589,7 @@ ul {
 
 	.becomedriver-arrow {
 		width: 74px;
-    margin: 0 20px;
+   		margin: 0 20px;
 	}
 
 	.comments-container p {
@@ -502,20 +603,17 @@ ul {
 	.email {
 		font-size: 20px;
 	}
-
 }
 
-
-@media screen and (min-height: 850px) {
+@media screen and (min-width: 768px) and (min-height: 1080px) {
 
 	.homepage-content {
-		font-size: 20px;
+		font-size: 25px;
 	}
 
 	.button-container {
-		margin: 90px auto;
+		margin: 80px auto;
 	}
-
 }
 
 /* Responsive: Laptop and up */
@@ -566,8 +664,8 @@ ul {
 	}
 
 	.donation-input {
-	  width: 85%;
-	  font-size: 20px;
+		width: 85%;
+		font-size: 20px;
 	}
 
 	.btn-add-donation {
@@ -586,5 +684,12 @@ ul {
 
 	.becomedriver-img {
 		background-size: auto 100%;
+	}
+}
+
+/* 4k and up not yet fully supported */
+@media screen and (min-width: 2560px) {
+	.homepage-content {
+		font-size: 25px;
 	}
 }
