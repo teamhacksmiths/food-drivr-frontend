@@ -56,6 +56,7 @@ const UserSignup = props=> (
 				secondary={true}
 				onClick={props.onSubmitUser}
 				style={{marginTop: 100, minWidth: 250}}
+				backgroundColor={props.userType === 'Volunteer' ? 'rgb(247, 179, 43)' : ''}
 				/>
 				<br/>
 			<span className="text-lightgrey">

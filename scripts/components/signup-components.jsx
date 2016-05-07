@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { Headline } from './reusable-components.jsx';
-import Registration from '../containers/registration-container.jsx';
 
 const SignupButton = props => (
 	<div onClick={props.onSubmit} className='btn-signup pointer-cursor'>
@@ -37,7 +34,7 @@ class SignUpPage extends React.Component {
 					onSubmit={this.handleSubmitVolunteer}
 					imageSrc='images/volunteer-icon.svg'
 					imgAlt='volounteer package'
-					title='Donor'
+					title='Volunteer'
 					/>
 	 		</div>
 		);
