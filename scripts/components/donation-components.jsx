@@ -18,58 +18,58 @@ class Donation extends React.Component {
 			enableAddItem: false,
 			enableDonation: false
 		};
-		this.updateDonationName = this.updateDonationName.bind(this);
-		this.addDonationItem = this.addDonationItem.bind(this);
-		this.removeItem = this.removeItem.bind(this);
+		this.handleUpdateItem = this.handleUpdateItem.bind(this);
+		this.handleAddItem = this.handleAddItem.bind(this);
+		this.handleRemoveItem = this.handleRemoveItem.bind(this);
+		this.handleDonate = this.handleDonate.bind(this);
 	}
-	updateDonationName() {
-		const newItemTitle = document.getElementById('donationTitle').value;
-		newItemTitle === '' ? this.setState({enableAddItem: false}) : this.setState({enableAddItem: true})
-		this.setState({newItemName: document.getElementById('donationTitle').value });
+	handleUpdateItem(e) {
+		e.target.value === '' ? this.setState({enableAddItem: false}) : this.setState({enableAddItem: true})
+		this.setState({newItemName: e.target.value });
 	}
-	addDonationItem() {
+	handleAddItem() {
 		if (this.state.enableAddItem) {
 			let newItemsArr = this.state.itemsAdded;
-			const newItemTitle = document.getElementById('donationTitle').value;
 			newItemsArr.push({name: this.state.newItemName});
-			this.setState({itemsAdded: newItemsArr});
-			this.setState({enableDonation: true});
+			this.setState({
+				itemsAdded: newItemsArr,
+				enableDonation: true
+			});
 			{/* Restore default status of the item input */}
 			document.getElementById('donationTitle').value = '';
-			this.setState({enableAddItem: false});
+			this.setState({
+				enableAddItem: false,
+				newItemName: ''
+			});
 		}
 	}
-	removeItem(index){
+	handleRemoveItem(index){
 		let newItemsArr = this.state.itemsAdded;
 		newItemsArr.splice(index, 1);
 		this.setState({itemsAdded: newItemsArr});
-		if (this.state.itemsAdded.length === 0) {
-			this.setState({enableDonation: false});
-		}
+		this.state.itemsAdded.length === 0 && this.setState({enableDonation: false});
 	}
-	makeDonation(){
+	handleDonate(){
 		console.log('hurray donation successfull!');
 	}
 	render() {
 		const token = auth.getToken();
 		let donatedItems = this.state.itemsAdded.map(function(item, index){
-			var boundClick = this.removeItem.bind(this, index);
+			var boundClick = this.handleRemoveItem.bind(this, index);
 			return (
-				<DonationItem key={index} name={item.name} removeItem={boundClick}/>
+				<DonationItem key={index} name={item.name} onRemoveItem={boundClick}/>
 			);
 		}, this);
 		return (
 			<div className='donation-container'>
 				<DonateItem enableAddItem={this.state.enableAddItem}
-							addDonationItem={this.addDonationItem}
-							updateDonationName={this.updateDonationName}
-							updateDonationQty={this.updateDonationQty}
-							updateDonationMeasure={this.updateDonationMeasure}
+							onAddItem={this.handleAddItem}
+							onUpdateItem={this.handleUpdateItem}
 							/>
 				<div className='donation-list'>
 					{donatedItems}
 				</div>
-				<button className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'} onClick={this.makeDonation}>DONATE</button>
+				<button className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'} onClick={this.handleDonate}>DONATE</button>
 			</div>
 		);
 	}
@@ -79,7 +79,7 @@ class Donation extends React.Component {
 const DonationItem = props => (
 	<div className='donated-item text-flex'>
 		<div className="donated-name text-lightgrey">{props.name}</div>
-		<button className="btn-del-donation" onClick={props.removeItem} />
+		<button className="btn-del-donation" onClick={props.onRemoveItem} />
 	</div>
 );
 
@@ -88,10 +88,11 @@ const DonateItem = props => (
 		<input type="text"
 			   placeholder="What would you like to donate ?"
 			   className="new-donation-input new-donation-title text-lightgrey"
-			   onKeyUp={props.updateDonationName}
-			   id='donationTitle'/>
+			   onKeyUp={props.onUpdateItem}
+			   id='donationTitle'
+			   />
 		<button className={props.enableAddItem ? "btn-donation" : "btn-donation btn-disabled"}
-				onClick={props.addDonationItem} />
+				onClick={props.onAddItem} />
 	</div>
 )
 
