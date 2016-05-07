@@ -9,11 +9,11 @@
     "compile": "babel --presets react app/scripts/JSX --watch -d app/scripts/JSX-Compiled"
   },
   "dependencies": {
-    "classnames": "^2.0.0",
     "axios": "^0.11.0",
     "classnames": "^2.2.4",
     "material-ui": "^0.14.4",
     "react": "^15.0.1",
+    "react-addons-css-transition-group": "^15.0.2",
     "react-dom": "^15.0.1",
     "react-router": "^2.1.1"
   },

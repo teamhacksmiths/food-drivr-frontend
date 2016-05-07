@@ -2,7 +2,7 @@ import React from 'react';
 import { Header, Footer } from './reusable-components.jsx';
 import auth from '../utils/auth.js';
 import classNames from 'classnames/bind';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default class App extends React.Component {
 	render() {
@@ -16,9 +16,11 @@ export default class App extends React.Component {
 		});
 		return (
 			<div className={containerClass}>
-					<Header />
-					{this.props.children}
-					<Footer />
+				<Header />
+				<ReactCSSTransitionGroup transitionName="appear" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+					{React.cloneElement(this.props.children, {key: this.props.location.pathname})}
+				</ReactCSSTransitionGroup>
+				<Footer />
 			</div>
 		);
 	}

@@ -513,6 +513,25 @@ ul {
 }
 
 /*************************************************************/
+/*                         ANIMATIONS                        */
+/*************************************************************/
+
+.appear-enter {
+	transition-duration: 1s;
+	transition-property: opacity;
+	opacity: 0;
+}
+
+.appear-enter.appear-enter-active {
+	opacity: 1;
+}
+
+.appear-leave {
+	opacity: 0;
+	display: none;
+}
+
+/*************************************************************/
 /*                     MEDIA QUERIES                         */
 /*************************************************************/
 @media screen and (min-width: 314px) and (min-height: 1080px) {
