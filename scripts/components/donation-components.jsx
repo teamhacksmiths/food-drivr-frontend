@@ -10,18 +10,18 @@ import classNames from 'classnames/bind';
 
 class Donation extends React.Component {
 	constructor(props) {
-        super(props);
-        this.displayName = 'DonationItem';
-        this.state = {
-        	newItemName: '',
+		super(props);
+		this.displayName = 'DonationItem';
+		this.state = {
+			newItemName: '',
 			itemsAdded: [],
 			enableAddItem: false,
 			enableDonation: false
-        };
-        this.updateDonationName = this.updateDonationName.bind(this);
-        this.addDonationItem = this.addDonationItem.bind(this);
-        this.removeItem = this.removeItem.bind(this);
-    }
+		};
+		this.updateDonationName = this.updateDonationName.bind(this);
+		this.addDonationItem = this.addDonationItem.bind(this);
+		this.removeItem = this.removeItem.bind(this);
+	}
 	updateDonationName() {
 		const newItemTitle = document.getElementById('donationTitle').value;
 		newItemTitle === '' ? this.setState({enableAddItem: false}) : this.setState({enableAddItem: true})
@@ -51,6 +51,7 @@ class Donation extends React.Component {
 		console.log('hurray donation successfull!');
 	}
 	render() {
+		const token = auth.getToken();
 		let donatedItems = this.state.itemsAdded.map(function(item, index){
 			var boundClick = this.removeItem.bind(this, index);
 			return (
@@ -75,56 +76,30 @@ class Donation extends React.Component {
 }
 
 
-class DonationItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'DonationItem';
-    }
-    render() {
-        return (
-        	<div className='donated-item text-flex'>
-				<div className="donated-name text-lightgrey">{this.props.name}</div>
-				<button className="btn-del-donation" onClick={this.props.removeItem} />
-        	</div>
-        );
-    }
-}
+const DonationItem = props => (
+	<div className='donated-item text-flex'>
+		<div className="donated-name text-lightgrey">{props.name}</div>
+		<button className="btn-del-donation" onClick={props.removeItem} />
+	</div>
+);
 
+const DonateItem = props => (
+	<div className='text-flex'>
+		<input type="text"
+			   placeholder="What would you like to donate ?"
+			   className="new-donation-input new-donation-title text-lightgrey"
+			   onKeyUp={props.updateDonationName}
+			   id='donationTitle'/>
+		<button className={props.enableAddItem ? "btn-donation" : "btn-donation btn-disabled"}
+				onClick={props.addDonationItem} />
+	</div>
+)
 
-class DonateItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'DonateItem';
-    }
-    render() {
-        return (
-        	<div className='text-flex'>
-       			<input type="text"
-					   placeholder="What would you like to donate ?"
-					   className="new-donation-input new-donation-title text-lightgrey"
-					   onKeyUp={this.props.updateDonationName}
-					   id='donationTitle'/>
-        		<button className={this.props.enableAddItem ? "btn-donation" : "btn-donation btn-disabled"} onClick={this.props.addDonationItem} />
-        	</div>
-        );
-    }
-}
-
-
-class DonationsList extends React.Component {
-	constructor(props) {
-		super(props);
-		this.displayName = 'DonationsList';
-	}
-	render() {
-		const token = auth.getToken();
-		return (
-			<div className="donations">
-				<h1 className='business-title text-center text-yellow'>BUSINESS NAME</h1>
-				<Donation />
-			</div>
-		);
-	}
-}
+const DonationsList = props => (
+	<div className="donations">
+		<h1 className='business-title text-center text-yellow'>BUSINESS NAME</h1>
+		<Donation />
+	</div>
+)
 
 module.exports = DonationsList;

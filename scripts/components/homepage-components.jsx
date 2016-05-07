@@ -6,15 +6,19 @@ import {ScrollDownButton} from './reusable-components.jsx';
 import {AppStoreIcon} from './reusable-components.jsx';
 
 
-var BodyButton = React.createClass({
-	render: function(){
+class BodyButton extends React.Component {
+	constructor(props) {
+		super(props);
+		this.displayName = 'BodyButton';
+	}
+	render() {
 		return (
 			<Link to='/signup' role='button' className='button-home'>
 				JOIN US
 			</Link>
 		);
 	}
-});
+}
 
 var SectionIntro = React.createClass({
 	render: function(){
