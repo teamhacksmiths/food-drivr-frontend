@@ -8,29 +8,29 @@ import HomePage from '../components/homepage-components.jsx';
 import SignInPage from '../components/signin-components.jsx';
 import SignUpPage from '../components/signup-components.jsx';
 import DonationList from '../components/donation-components.jsx';
+import Registration from '../containers/registration-container.jsx';
 import auth from '../utils/auth.js';
 
 function requireAuth(nextState, replace) {
-  if (!auth.loggedIn()) {
-    replace({
-      pathname: '/signin',
-      state: { nextPathname: nextState.location.pathname }
-    })
-  }
+	if (!auth.loggedIn()) {
+		replace({
+			pathname: '/signin',
+			state: { nextPathname: nextState.location.pathname }
+		})
+	}
 }
 
 var routes = (
-    <Router history={browserHistory}>
-      <Route path="/" component={App}>
-          <IndexRoute component={HomePage} />
-          <Route path="signin" component={SignInPage} />
-          <Route path="signup" component={SignUpPage} >
-          	<Route path="donor" component={SignUpPage} />
-          	<Route path="volunteer" component={SignUpPage} />
-          </Route>
-          <Route path="donation" component={DonationList} onEnter={requireAuth}/>
-      </Route>
-    </Router>
-  );
+	<Router history={browserHistory}>
+		<Route path="/" component={App}>
+			<IndexRoute component={HomePage} />
+			<Route path="signin" component={SignInPage} />
+			<Route path="signup" component={SignUpPage} />
+			<Route path="signup/donor" component={Registration} header="Donor"/>
+			<Route path="signup/volunteer" component={Registration} header="Volunteer"/>
+			<Route path="donation" component={DonationList} onEnter={requireAuth}/>
+		</Route>
+	</Router>
+);
 
 module.exports = routes;

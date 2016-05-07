@@ -1,10 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
-import { Headline } from '../components/reusable-components.jsx';
-import Paper from 'material-ui/lib/paper';
-import TextField from 'material-ui/lib/text-field';
-import RaisedButton from 'material-ui/lib/raised-button';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import React from 'react';
+import UserSignup from '../components/user-signup-component.jsx'
 import auth from '../utils/auth.js';
 
 class Registration extends React.Component {
@@ -35,8 +30,10 @@ class Registration extends React.Component {
 		} else if (e.target.value < 3) {
 			this.state.errorName = "Name needs more than 3 characters.";
 		}
-		this.setState({ errorName: this.state.errorName,
-						name: e.target.value });
+		this.setState({
+			errorName: this.state.errorName,
+			name: e.target.value
+		});
 	}
 
 	_validateEmail(email) {
@@ -58,8 +55,10 @@ class Registration extends React.Component {
 		} else if (!re.test(e.target.value)) {
 			this.state.errorEmail = "Email is not valid.";
 		}
-		this.setState({ errorEmail: this.state.errorEmail,
-						email: e.target.value });
+		this.setState({
+			errorEmail: this.state.errorEmail,
+			email: e.target.value
+		});
 	}
 
 	_handlePasswordChange(e) {
@@ -69,8 +68,10 @@ class Registration extends React.Component {
 		} else if (e.target.value.length < 8) {
 			this.state.errorPassword = "Passwords need more than 8 characters.";
 		}
-		this.setState({ errorPassword: this.state.errorPassword,
-						password: e.target.value });
+		this.setState({
+			errorPassword: this.state.errorPassword,
+			password: e.target.value
+		});
 	}
 
 	_handlePasswordConfirmChange(e) {
@@ -82,109 +83,73 @@ class Registration extends React.Component {
 		} else if (e.target.value !== this.state.password) {
 			this.state.errorPasswordConfirmation = "Passwords must match!";
 		}
-		this.setState({ errorPasswordConfirmation: this.state.errorPasswordConfirmation,
-						passwordConfirmation: e.target.value });
+		this.setState({
+			errorPasswordConfirmation: this.state.errorPasswordConfirmation,
+			passwordConfirmation: e.target.value
+		});
 	}
 
-    _handleSubmitUser(e) {
-    	const { name, email, password, passwordConfirmation } = this.state;
-        e.preventDefault();
-        if (this.state.errorName == '' &&
-            this.state.errorPassword == '' &&
-            this.state.errorEmail == '' &&
-            this.state.errorPasswordConfirmation == '') {
-            this.setState({ error: <CircularProgress /> });
-                auth.register(name, email, password, passwordConfirmation)
-      .then((response) => {
-        console.log("hello from register")
-        console.log(response.data);
-        return auth.login(email, password);
-      })
-      .then((response) => {
-        console.log("hello from login");
-        localStorage.setItem('token', response.data.authtoken.auth_token);
-        if (auth.loggedIn()) this.context.router.push('/donation');
-        else this.setState({ error: "Registration Failed" });
-      })
-      .catch((err) => {
-        console.log(err);
-        this.setState({ error: 'Registration Failed' });
-      });
-        } else {
-            this.setState({ error: 'Can not send request.' })
-        }
-    }
+	_handleSubmitUser(e) {
+		const { name, email, password, passwordConfirmation } = this.state;
+		e.preventDefault();
+		if (this.state.errorName == '' &&
+			this.state.errorPassword == '' &&
+			this.state.errorEmail == '' &&
+			this.state.errorPasswordConfirmation == '') {
+			this.setState({ error: <CircularProgress /> });
+				auth.register(name, email, password, passwordConfirmation)
+				.then((response) => {
+					console.log("hello from register")
+					console.log(response.data);
+					return auth.login(email, password);
+				})
+				.then((response) => {
+					console.log("hello from login");
+					localStorage.setItem('token', response.data.authtoken.auth_token);
+					if (auth.loggedIn()) this.context.router.push('/donation');
+					else this.setState({ error: "Registration Failed" });
+				})
+				.catch((err) => {
+					console.log(err);
+					this.setState({ error: 'Registration Failed' });
+				});
+		} else {
+			this.setState({ error: 'Can not send request.' })
+		}
+	}
 
 	render() {
 		const {
-		style,
-		name,
-		errorName,
-		email,
-		errorEmail,
-		password,
-		errorPassword,
-		passwordConfirmation,
-		errorPasswordConfirmation,
-		error
+			style,
+			name,
+			errorName,
+			email,
+			errorEmail,
+			password,
+			errorPassword,
+			passwordConfirmation,
+			errorPasswordConfirmation,
+			error
 		 } = this.state;
 		return (
-			<div>
-				<form style={style}>
-					<TextField
-						hintText="Enter Name"
-						errorText={errorName}
-						floatingLabelText="Name"
-						onChange={this._handleNameChange}
-						style={{width: '80%', maxWidth: 350}}
-                        errorStyle={{color: 'white'}}
-						value={name}
-						/>
-						<br/>
-					<TextField
-						hintText="Enter Email"
-						errorText={errorEmail}
-						floatingLabelText="Email"
-						onChange={this._handleEmailChange}
-						style={{width: '80%', maxWidth: 350}}
-                        errorStyle={{color: 'white'}}
-						value={email}
-						/>
-						<br/>
-					<TextField
-						hintText="8 or more characters."
-						errorText={errorPassword}
-						floatingLabelText="Password"
-						onChange={this._handlePasswordChange}
-						style={{width: '80%', maxWidth: 350}}
-                        errorStyle={{color: 'white'}}
-						value={password}
-						type='password'
-						/>
-						<br/>
-					<TextField
-						hintText="8 or more characters."
-						errorText={errorPasswordConfirmation}
-						floatingLabelText="Password Confirmation"
-						onChange={this._handlePasswordConfirmChange}
-						style={{width: '80%', maxWidth: 350}}
-                        errorStyle={{color: 'white'}}
-						value={passwordConfirmation}
-						type='password'
-						/>
-						<br/>
-				<RaisedButton
-					label="Sign Up"
-					secondary={true}
-					onClick={this._handleSubmitUser}
-					style={{marginTop: 100, minWidth: 250}}
-					/>
-					<br/>
-				<span className="text-lightgrey">
-					{error}
-				</span>
-				</form>
-			</div>
+			<UserSignup
+				onNameChange={this._handleNameChange}
+				onValidateEmail={this._validateEmail}
+				onEmailChange={this._handleEmailChange}
+				onPasswordChange={this._handlePasswordChange}
+				onPasswordConfirmChange={this._handlePasswordConfirmChange}
+				onSubmitUser={this._handleSubmitUser}
+				userType={this.props.route.header}
+				name={name}
+				email={email}
+				password={password}
+				passwordConfirmation={passwordConfirmation}
+				errorName={errorName}
+				errorEmail={errorEmail}
+				errorPassword={errorPassword}
+				errorPasswordConfirmation={errorPasswordConfirmation}
+				error={error}
+				/>
 		)
 	}
 }
