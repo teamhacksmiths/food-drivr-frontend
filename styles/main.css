@@ -97,6 +97,36 @@ ul {
 	outline: none;
 }
 
+/* Main content */
+.container {
+	width: 100%;
+	min-height: 100%;
+	max-width: 1450px;
+	padding: 0;
+	position: relative;
+	box-shadow: rgba(0, 0, 0, 0.247059) 0px 14px 45px, rgba(0, 0, 0, 0.219608) 0px 10px 18px;
+}
+
+.blue-background {
+	background: #394969;
+}
+
+.red-background {
+	background: rgb(255, 30, 64);
+}
+
+.lightgrey-background {
+	background: #f8f8f8;
+}
+
+.yellow-background {
+	background: rgb(247, 179, 43);
+}
+
+.lightblue-background {
+	background: rgb(20, 207, 232);
+}
+
 /* Header Section */
 .header {
 	margin: 45px auto 10px auto;
