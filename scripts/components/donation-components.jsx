@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { PropTypes } from 'react';
 import {ScrollDownButton} from './reusable-components.jsx';
 import auth from '../utils/auth.js';
-import SelectField from 'material-ui/lib/select-field';
+import TextField from 'material-ui/lib/text-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import classNames from 'classnames/bind';
 
@@ -27,21 +27,23 @@ class Donation extends React.Component {
 		e.target.value === '' ? this.setState({enableAddItem: false}) : this.setState({enableAddItem: true})
 		this.setState({newItemName: e.target.value });
 	}
-	handleAddItem() {
-		if (this.state.enableAddItem) {
-			let newItemsArr = this.state.itemsAdded;
-			newItemsArr.push({name: this.state.newItemName});
-			this.setState({
-				itemsAdded: newItemsArr,
-				enableDonation: true
-			});
-			{/* Restore default status of the item input */}
-			document.getElementById('donationTitle').value = '';
-			this.setState({
-				enableAddItem: false,
-				newItemName: ''
-			});
-		}
+	handleAddItem(e) {
+    if(e.keyCode === 13 || e.button === 0){
+  		if (this.state.enableAddItem) {
+  			let newItemsArr = this.state.itemsAdded;
+  			newItemsArr.push({name: this.state.newItemName});
+  			this.setState({
+  				itemsAdded: newItemsArr,
+  				enableDonation: true
+  			});
+  			{/* Restore default status of the item input */}
+  			document.getElementById('donationTitle').value = '';
+  			this.setState({
+  				enableAddItem: false,
+  				newItemName: ''
+  			});
+  		}
+    }
 	}
 	handleRemoveItem(index){
 		let newItemsArr = this.state.itemsAdded;
@@ -85,12 +87,14 @@ const DonationItem = props => (
 
 const DonateItem = props => (
 	<div className='text-flex'>
-		<input type="text"
-			   placeholder="What would you like to donate ?"
-			   className="new-donation-input new-donation-title text-lightgrey"
-			   onKeyUp={props.onUpdateItem}
-			   id='donationTitle'
-			   />
+		<TextField
+       type="text"
+		   hintText="What would you like to donate ?"
+		   className="new-donation-input new-donation-title text-lightgrey"
+		   onChange={props.onUpdateItem}
+       onKeyDown={props.onAddItem}
+		   id='donationTitle'
+		   />
 		<button className={props.enableAddItem ? "btn-donation" : "btn-donation btn-disabled"}
 				onClick={props.onAddItem} />
 	</div>

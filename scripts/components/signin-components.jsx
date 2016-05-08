@@ -57,24 +57,29 @@ class SignInPage extends Component {
     }
 
     _formSubmit(e) {
-        const { errorPassword, errorEmail, email, password } = this.state;
-        e.preventDefault();
-        if (errorPassword == '' && errorEmail == '') {
-            this.setState({ error: <CircularProgress /> });
-                auth.login(email, password)
-                    .then((response) => {
-            console.log("hello from login");
-            localStorage.setItem('token', response.data.authtoken.auth_token);
-            if (auth.loggedIn()) this.context.router.push('/donation');
-            else this.setState({ error: "Login Failed" });
-            })
-            .catch((err) => {
-                console.log(err);
-                this.setState({ error: 'Login Failed' });
-            });
-        }
-        else {
-            this.setState({ error: 'Can not send request.' });
+       if(e.keyCode === 13 || e.button === 0){
+            const { errorPassword, errorEmail, email, password } = this.state;
+            e.preventDefault();
+            if (errorPassword == '' && errorEmail == '') {
+                this.setState({ error: <CircularProgress /> });
+                    auth.login(email, password)
+                        .then((response) => {
+                console.log("hello from login");
+                localStorage.setItem('token', response.data.authtoken.auth_token);
+                if (auth.loggedIn()) {
+                    this.context.router.push('/donation');
+                    auth.onChange(true);
+                    }
+                else this.setState({ error: "Login Failed" });
+                })
+                .catch((err) => {
+                    console.log(err);
+                    this.setState({ error: 'Login Failed' });
+                });
+            }
+            else {
+                this.setState({ error: 'Can not send request.' });
+            }
         }
     }
 
@@ -89,6 +94,7 @@ class SignInPage extends Component {
                         errorText={errorEmail}
                         floatingLabelText="Email"
                         onChange={this._handleEmailChange}
+                        onKeyDown={this._formSubmit}
                         style={{width: '80%', maxWidth: 350}}
                         errorStyle={{color: 'white'}}
                         value={email}
@@ -99,6 +105,7 @@ class SignInPage extends Component {
                         errorText={errorPassword}
                         floatingLabelText="Password"
                         onChange={this._handlePasswordChange}
+                        onKeyDown={this._formSubmit}
                         style={{width: '80%', maxWidth: 350}}
                         errorStyle={{color: 'white'}}
                         value={password}

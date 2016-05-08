@@ -78,8 +78,14 @@ const ScrollDownButton = React.createClass({
 const Logout = React.createClass({
     toLogout: function() {
         this.context.router.push('/');
-        auth.logout();
-        auth.onChange(true);
+        auth.logout()
+            .then(() => {
+                delete localStorage.token;
+                auth.onChange(false);
+            }).catch((err) => {
+                console.log(err);
+            });;
+        auth.onChange(false);
     },
     render: function() {
         var logoutClass = classNames({
