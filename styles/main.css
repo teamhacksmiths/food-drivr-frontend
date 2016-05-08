@@ -141,6 +141,65 @@ ul {
 	padding: 8px 0;
 }
 
+.hide-menu {
+	display: none;
+}
+
+.user-container {
+	position: relative;
+}
+
+.user-menu-container {
+	top: 66px;
+    position: absolute;
+    right: calc( 50% - 70px);
+    text-align: right;
+    background: #ff1e40;
+    padding: 12px;
+    width: 140px;
+    border-style: solid;
+    font-size: 16px;
+    border-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
+    z-index: 99;
+}
+
+.user-menu-container>a {
+	display: block;
+}
+
+.user-menu-arrow {
+	width: 20px;
+    height: 20px;
+    position: absolute;
+    background: #ff1e40;
+    top: -11px;
+    -ms-transform: rotate(7deg);
+    -webkit-transform: rotate(7deg);
+    transform: rotate(45deg);
+    right: calc( 50% - 14px);
+    border-top-style: solid;
+    border-left-style: solid;
+    border-width: 1px;
+}
+
+.user-info {
+	margin-right: 20px;
+    margin-top: 18px;
+}
+
+.user-avatar>img {
+	border-radius: 50%;
+    width: 55px;
+}
+
+.logout {
+	border-top-style: solid;
+    border-width: 1px;
+    margin-top: 10px;
+    padding-top: 5px;
+}
+
 /* Homepage Elements */
 .homepage {
 	position: relative;
