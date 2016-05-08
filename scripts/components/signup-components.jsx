@@ -19,6 +19,7 @@ class SignUpPage extends React.Component {
 
         onSubmitDonor() {
             this.setState({ userType: 'Donor',
+                            role: 0,
                             userState: true,
                             class: 'invisible-btn',
                             style: { background: '#f7b32b' }
@@ -28,6 +29,7 @@ class SignUpPage extends React.Component {
 
         onSubmitVolunteer() {
             this.setState({ userType: 'Volunteer',
+                            role: 1,
                             userState: true,
                             class: 'invisible-btn',
                             style: { background: '#14cfe8' }
@@ -59,7 +61,7 @@ class SignUpPage extends React.Component {
                     </button>
                 </div>
                 {this.state.userState ?
-                    <Registration userType={this.state.userType} style={this.state.style}/> : null
+                    <Registration userType={this.state.userType} role={this.state.role} style={this.state.style}/> : null
                 }
           </div>
             );

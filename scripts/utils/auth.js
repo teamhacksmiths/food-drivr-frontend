@@ -6,7 +6,6 @@ module.exports = {
         var token = (typeof window !== "undefined") ? localStorage.getItem('token') : undefined;
         if (token) {
         	this.onChange(true);
-            return
         }
 
         console.log(JSON.stringify({ session: { email: email, password: pass } }));
@@ -26,9 +25,13 @@ module.exports = {
             });
     },
 
-    register(name, email, pass, passconf) {
+    register(name, email, pass, passconf, role) {
         // ensure callback is always last argument
         // create new session, pass in email and password as object
+
+        console.log(JSON.stringify({ user: { name: name, email: email, password: pass, 
+          password_confirmation: pass, role_id: role } }));
+
 
       return axios({
                 url: '/users',
@@ -43,7 +46,8 @@ module.exports = {
                         'name': name,
                         'email': email,
                         'password': pass,
-                        'password_confirmation': passconf
+                        'password_confirmation': passconf,
+                        'role_id': role
                     }
                 },
                 responseType: 'json',

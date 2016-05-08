@@ -2,6 +2,8 @@ import React from 'react';
 import { Header, Footer } from './reusable-components.jsx';
 import auth from '../utils/auth.js';
 import classNames from 'classnames/bind';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 export default class App extends React.Component {
@@ -15,11 +17,13 @@ export default class App extends React.Component {
 			'lightblue-background': window.location.pathname === '/signup/volunteer'
 		});
 		return (
-			<div className={containerClass}>
+			<MuiThemeProvider muiTheme={getMuiTheme()}>
+	  			<div className={containerClass}>
 					<Header />
 					{this.props.children}
 					<Footer />
-			</div>
+				</div>
+  			</MuiThemeProvider>
 		);
 	}
 }
