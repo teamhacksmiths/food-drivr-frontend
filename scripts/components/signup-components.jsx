@@ -10,7 +10,6 @@ class SignUpPage extends React.Component {
         this.state.userType = '';
         this.state.userState = false;
         this.state.class = 'btn-signup';
-        this.state.signupType = '';
         this.state.style = {
             background: '#ff1e40'
         };
@@ -22,8 +21,6 @@ class SignUpPage extends React.Component {
             this.setState({ userType: 'Donor',
                             userState: true,
                             class: 'invisible-btn',
-                            signupType: 'Donor ',
-                            signupType: 'Donor ',
                             style: { background: '#f7b32b' }
         });
             this.context.router.push('/signup/donor');
@@ -33,7 +30,6 @@ class SignUpPage extends React.Component {
             this.setState({ userType: 'Volunteer',
                             userState: true,
                             class: 'invisible-btn',
-                            signupType: 'Volunteer ',
                             style: { background: '#14cfe8' }
         });
             this.context.router.push('/signup/volunteer');
@@ -42,7 +38,7 @@ class SignUpPage extends React.Component {
         render() {
             return (
                 <div className='signup-container text-center text-white' style={this.state.style}>
-                <p>{this.state.signupType + 'Sign Up'}</p>
+                <p>{this.state.userType + ' Sign Up'}</p>
                 <div onClick={this.onSubmitDonor} className='pointer-cursor' className={this.state.class}>
                     <img src='images/donor-icon.svg' alt='donor package'/>
                     <button
@@ -63,7 +59,7 @@ class SignUpPage extends React.Component {
                     </button>
                 </div>
                 {this.state.userState ?
-                    <Registration style={this.state.style}/> : null
+                    <Registration userType={this.state.userType} style={this.state.style}/> : null
                 }
           </div>
             );

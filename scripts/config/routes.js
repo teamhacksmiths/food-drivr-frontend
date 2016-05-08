@@ -8,6 +8,7 @@ import HomePage from '../components/homepage-components.jsx';
 import SignInPage from '../components/signin-components.jsx';
 import SignUpPage from '../components/signup-components.jsx';
 import DonationList from '../components/donation-components.jsx';
+import ThankYou from '../components/thank-you-components.jsx';
 import auth from '../utils/auth.js';
 
 function requireAuth(nextState, replace) {
@@ -28,6 +29,7 @@ var routes = (
           	<Route path="donor" component={SignUpPage} />
           	<Route path="volunteer" component={SignUpPage} />
           </Route>
+          <Route path="thankyou" component={SignUpPage} />
           <Route path="donation" component={DonationList} onEnter={requireAuth}/>
       </Route>
     </Router>

@@ -50,13 +50,7 @@ module.exports = {
                 headers: { 'Content-Type': 'application/json' }
             });
     },
-
-  /*  registerAndLogin(name, email, pass, passconf, cb){
-      return axios.all([this.register(name, email, pass, passconf, cb), this.login(email, pass, cb)])
-      .then(axios.spread(function(){
-        console.log("successfully completed both calls");
-      }));
-    },*/
+         
 
     getToken() {
         return (typeof window !== "undefined") ? localStorage.getItem('token') : undefined;

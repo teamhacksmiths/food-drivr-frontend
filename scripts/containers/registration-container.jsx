@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Headline } from '../components/reusable-components.jsx';
+import ThankYou from '../components/thank-you-components.jsx';
 import Paper from 'material-ui/lib/paper';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
@@ -103,9 +104,15 @@ class Registration extends React.Component {
           })
           .then((response) => {
             console.log("hello from login");
-            localStorage.setItem('token', response.data.authtoken.auth_token);
-            if (auth.loggedIn()) this.context.router.push('/donation');
-            else this.setState({ error: "Registration Failed" });
+            if(this.props.userType === 'Donor'){   
+                localStorage.setItem('token', response.data.authtoken.auth_token);
+                if (auth.loggedIn()) {this.context.router.push('/donation'); auth.onChange(true);}
+                else this.setState({ error: "Registration Failed" });
+            }
+            else{
+                this.setState({ userType: 'Volunteer' });
+                this.context.router.push('/thankyou');
+            }
           })
           .catch((err) => {
             console.log(err);
@@ -132,6 +139,7 @@ class Registration extends React.Component {
 		 } = this.state;
 		return (
 			<div>
+            {this.state.userType === 'Volunteer' ? <ThankYou /> : 
 				<form style={style}>
 					<TextField
 						hintText="Enter Name"
@@ -190,6 +198,7 @@ class Registration extends React.Component {
 					{error}
 				</span>
 				</form>
+            }
 			</div>
 		)
 	}
