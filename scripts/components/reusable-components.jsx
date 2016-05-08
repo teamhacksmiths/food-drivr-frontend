@@ -2,10 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import auth from '../utils/auth.js';
 import classNames from 'classnames/bind';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import DropDownMenu from 'material-ui/lib/drop-down-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
-injectTapEventPlugin();
 
 const Header = React.createClass({
 
@@ -31,7 +29,9 @@ const Header = React.createClass({
 	render: function() {
 		return (
 			<div className='header text-flex'>
-				<AppStoreIcon />
+				{window.location.pathname === '/' ?
+					<AppStoreIcon /> : <BackButton />
+				}
 				{this.state.loggedIn ?
 					<UserHeader /> : <Login />
 				}
@@ -47,6 +47,22 @@ const Headline = React.createClass({
 		);
 	}
 });
+
+class BackButton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.displayName = 'BackButton';
+        this.handleGoBack = this.handleGoBack.bind(this);
+    }
+    handleGoBack(){
+    	this.context.router.goBack();
+    }
+    render() {
+        return (
+        	<div className='back-button' onClick={this.handleGoBack}></div>
+        );
+    }
+}
 
 const AppStoreIcon = React.createClass({
 	render: function() {
@@ -79,30 +95,6 @@ const ScrollDownButton = React.createClass({
 	}
 });
 
-const Logout = React.createClass({
-	toLogout: function() {
-		this.context.router.push('/');
-		auth.logout();
-		auth.onChange(true);
-	},
-	render: function() {
-		var logoutClass = classNames({
-		  'btn-only-text': true,
-		  'text-white': window.location.pathname === '/',
-		  'text-black': window.location.pathname !== '/'
-		});
-		return (
-			<DropDownMenu value={1}>
-				<MenuItem value={1} primaryText="Never" />
-				<MenuItem value={2} primaryText="Every Night" />
-				<MenuItem value={3} primaryText="Weeknights" />
-				<MenuItem value={4} primaryText="Weekends" />
-				<MenuItem value={5} primaryText="Weekly" />
-			</DropDownMenu>
-		);
-	}
-});
-
 
 class UserHeader extends React.Component {
     constructor(props) {
@@ -111,10 +103,11 @@ class UserHeader extends React.Component {
         this.state= {
         	showMenu: false
         }
+        this.toggleMenu = this.toggleMenu.bind(this)
     }
-    showMenu() {
+    toggleMenu() {
     	this.setState({
-    		showMenu: true
+    		showMenu: !this.state.showMenu
     	});
     }
     render() {
@@ -125,10 +118,10 @@ class UserHeader extends React.Component {
 		});
         return (
         	<div className={UserHeaderClass}>
-        		<div className='text-flex pointer-cursor' onClick={this.showMenu}>
+        		<div className='text-flex pointer-cursor' onClick={this.toggleMenu}>
         			<div className='user-info'>Name Lastname</div>
         			<div className='user-avatar'>
-        				<img src='https://avatars1.githubusercontent.com/u/1845384?v=3&s=460'/>
+        				<img src={this.props.avatar ? this.props.avatar : '../images/userProfilePlaceHolder.png'}/>
         			</div>
         		</div>
         		<UserMenu showMenu={this.state.showMenu}/>
@@ -143,6 +136,10 @@ class UserMenu extends React.Component {
         super(props);
         this.displayName = 'UserMenu';
     }
+    handleLogout() {
+		auth.logout();
+		auth.onChange(true);
+	}
     render() {
         return (
         	<div className={this.props.showMenu ? 'user-menu-container' : 'user-menu-container hide-menu'}>
@@ -150,7 +147,7 @@ class UserMenu extends React.Component {
         		<Link to='/'>Dashboard</Link>
         		<Link to='donation'>Donate</Link>
         		<Link to='/'>Settings</Link>
-        		<Link to='/' className='logout'>Logout</Link>
+        		<Link to='/' className='logout' onClick={this.handleLogout}>Logout</Link>
         	</div>
         );
     }
@@ -172,7 +169,11 @@ const Footer = React.createClass({
 	}
 });
 
-Logout.contextTypes = {
+UserMenu.contextTypes = {
+	router: React.PropTypes.object.isRequired
+};
+
+BackButton.contextTypes = {
 	router: React.PropTypes.object.isRequired
 };
 

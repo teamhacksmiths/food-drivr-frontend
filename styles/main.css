@@ -141,6 +141,14 @@ ul {
 	padding: 8px 0;
 }
 
+.back-button {
+	background-image: url("../images/back-arrow.svg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 55px;
+	cursor: pointer;
+}
+
 .hide-menu {
 	display: none;
 }
