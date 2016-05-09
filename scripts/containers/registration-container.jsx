@@ -90,31 +90,33 @@ class Registration extends React.Component {
 	}
 
 	_handleSubmitUser(e) {
-		const { name, email, password, passwordConfirmation } = this.state;
-		e.preventDefault();
-		if (this.state.errorName == '' &&
-			this.state.errorPassword == '' &&
-			this.state.errorEmail == '' &&
-			this.state.errorPasswordConfirmation == '') {
-			this.setState({ error: <CircularProgress /> });
-				auth.register(name, email, password, passwordConfirmation)
-				.then((response) => {
-					console.log("hello from register")
-					console.log(response.data);
-					return auth.login(email, password);
-				})
-				.then((response) => {
-					console.log("hello from login");
-					localStorage.setItem('token', response.data.authtoken.auth_token);
-					if (auth.loggedIn()) this.context.router.push('/donation');
-					else this.setState({ error: "Registration Failed" });
-				})
-				.catch((err) => {
-					console.log(err);
-					this.setState({ error: 'Registration Failed' });
-				});
-		} else {
-			this.setState({ error: 'Can not send request.' })
+		if (e.keyCode === 13 || e.button === 0) {
+			const { name, email, password, passwordConfirmation } = this.state;
+			e.preventDefault();
+			if (this.state.errorName == '' &&
+				this.state.errorPassword == '' &&
+				this.state.errorEmail == '' &&
+				this.state.errorPasswordConfirmation == '') {
+				this.setState({ error: <CircularProgress /> });
+					auth.register(name, email, password, passwordConfirmation)
+					.then((response) => {
+						console.log("hello from register")
+						console.log(response.data);
+						return auth.login(email, password);
+					})
+					.then((response) => {
+						console.log("hello from login");
+						localStorage.setItem('token', response.data.authtoken.auth_token);
+						if (auth.loggedIn()) this.context.router.push('/donation');
+						else this.setState({ error: "Registration Failed" });
+					})
+					.catch((err) => {
+						console.log(err);
+						this.setState({ error: 'Registration Failed' });
+					});
+			} else {
+				this.setState({ error: 'Can not send request.' })
+			}
 		}
 	}
 

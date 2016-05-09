@@ -64,22 +64,16 @@ module.exports = {
 
     // send a DELETE request with the auth_token as a URL parameter
     logout() {
-        axios({
-                url: '/sessions/' + localStorage.getItem('token'),
-                method: 'delete',
-                baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
-                responseType: 'json',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': localStorage.getItem('token')
-                }
-            })
-            .then(() => {
-                delete localStorage.token;
-                this.onChange(false);
-            }).catch((err) => {
-                console.log(err);
-            });
+        return axios({
+                    url: '/sessions/' + localStorage.getItem('token'),
+                    method: 'delete',
+                    baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
+                    responseType: 'json',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': localStorage.getItem('token')
+                    }
+                });
     },
 
     loggedIn() {

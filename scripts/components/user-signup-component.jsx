@@ -11,6 +11,7 @@ const UserSignup = props => (
 				errorText={props.errorName}
 				floatingLabelText="Name"
 				onChange={props.onNameChange}
+				onKeyUp={props.onSubmitUser}
 				style={{width: '80%', maxWidth: 350}}
 				errorStyle={{color: 'white'}}
 				value={props.name}
@@ -21,6 +22,7 @@ const UserSignup = props => (
 				errorText={props.errorEmail}
 				floatingLabelText="Email"
 				onChange={props.onEmailChange}
+				onKeyUp={props.onSubmitUser}
 				style={{width: '80%', maxWidth: 350}}
 				errorStyle={{color: 'white'}}
 				value={props.email}
@@ -31,6 +33,7 @@ const UserSignup = props => (
 				errorText={props.errorPassword}
 				floatingLabelText="Password"
 				onChange={props.onPasswordChange}
+				onKeyUp={props.onSubmitUser}
 				style={{width: '80%', maxWidth: 350}}
 				errorStyle={{color: 'white'}}
 				value={props.password}
@@ -42,6 +45,7 @@ const UserSignup = props => (
 				errorText={props.errorPasswordConfirmation}
 				floatingLabelText="Password Confirmation"
 				onChange={props.onPasswordConfirmChange}
+				onKeyUp={props.onSubmitUser}
 				style={{width: '80%', maxWidth: 350}}
 				errorStyle={{color: 'white'}}
 				value={props.passwordConfirmation}

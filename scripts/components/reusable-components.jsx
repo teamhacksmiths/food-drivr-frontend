@@ -36,7 +36,7 @@ const Header = React.createClass({
 		return (
 			<div className={window.location.pathname === '/donation' ? 'donation-header text-flex' : 'header text-flex'}>
 				{ headerButton }
-				{ this.state.loggedIn ? <UserHeader /> : <Login /> }
+				{ this.state.loggedIn || window.location.pathname === '/donation' ? <UserHeader /> : <Login /> }
 			</div>
 		);
 	}
@@ -116,8 +116,14 @@ class UserMenu extends React.Component {
 		this.displayName = 'UserMenu';
 	}
 	handleLogout() {
-		auth.logout();
-		auth.onChange(true);
+		auth.logout()
+			.then(() => {
+                delete localStorage.token;
+                auth.onChange(false);
+            }).catch((err) => {
+                console.log(err);
+            });
+        auth.onChange(false);
 	}
 	render() {
 		return (

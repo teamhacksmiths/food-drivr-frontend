@@ -25,8 +25,12 @@ class Donation extends React.Component {
 		this.handleDonate = this.handleDonate.bind(this);
 	}
 	handleUpdateItem(e) {
-		e.target.value === '' ? this.setState({enableAddItem: false}) : this.setState({enableAddItem: true})
-		this.setState({newItemName: e.target.value });
+		if(e.keyCode === 13) {
+			this.handleAddItem();
+		} else {
+			e.target.value === '' ? this.setState({enableAddItem: false}) : this.setState({enableAddItem: true})
+			this.setState({newItemName: e.target.value });
+		}
 	}
 	handleAddItem() {
 		if (this.state.enableAddItem) {
