@@ -1,4 +1,5 @@
 import React from 'react';
+import { Header } from './reusable-components.jsx';
 
 const SignupButton = props => (
 	<div onClick={props.onSubmit} className='btn-signup pointer-cursor'>
@@ -21,21 +22,24 @@ class SignUpPage extends React.Component {
 	}
 	render() {
 		return (
-			<div className='signup-container text-center text-white' style={{background: '#ff1e40'}}>
-				<p>Sign Up</p>
-				<SignupButton
-					onSubmit={this.handleSubmitDonor}
-					imageSrc='images/donor-icon.svg'
-					imgAlt='donor package'
-					title='Donor'
-					/>
-				<p className='btn-signup'>OR</p>
-				<SignupButton
-					onSubmit={this.handleSubmitVolunteer}
-					imageSrc='images/volunteer-icon.svg'
-					imgAlt='volounteer package'
-					title='Volunteer'
-					/>
+			<div>
+				<Header />
+				<div className='signup-container text-center text-white' style={{background: '#ff1e40'}}>
+					<p>Sign Up</p>
+					<SignupButton
+						onSubmit={this.handleSubmitDonor}
+						imageSrc='images/donor-icon.svg'
+						imgAlt='donor package'
+						title='Donor'
+						/>
+					<p className='btn-signup'>OR</p>
+					<SignupButton
+						onSubmit={this.handleSubmitVolunteer}
+						imageSrc='images/volunteer-icon.svg'
+						imgAlt='volounteer package'
+						title='Volunteer'
+						/>
+		 		</div>
 	 		</div>
 		);
 	}

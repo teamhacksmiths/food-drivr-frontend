@@ -6,6 +6,7 @@ import auth from '../utils/auth.js';
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import classNames from 'classnames/bind';
+import { Header } from './reusable-components.jsx';
 
 
 class Donation extends React.Component {
@@ -97,9 +98,12 @@ const DonateItem = props => (
 )
 
 const DonationsList = props => (
-	<div className="donations">
-		<h1 className='business-title text-center text-yellow'>BUSINESS NAME</h1>
-		<Donation />
+	<div>
+		<Header />
+		<div className="donations">
+			<h1 className='business-title text-center text-yellow'>BUSINESS NAME</h1>
+			<Donation />
+		</div>
 	</div>
 )
 

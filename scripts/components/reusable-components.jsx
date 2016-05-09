@@ -49,19 +49,19 @@ const Headline = React.createClass({
 });
 
 class BackButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'BackButton';
-        this.handleGoBack = this.handleGoBack.bind(this);
-    }
-    handleGoBack(){
-    	this.context.router.goBack();
-    }
-    render() {
-        return (
-        	<div className='back-button' onClick={this.handleGoBack}></div>
-        );
-    }
+	constructor(props) {
+		super(props);
+		this.displayName = 'BackButton';
+		this.handleGoBack = this.handleGoBack.bind(this);
+	}
+	handleGoBack(){
+		this.context.router.goBack();
+	}
+	render() {
+		return (
+			<div className='back-button' onClick={this.handleGoBack}></div>
+		);
+	}
 }
 
 const AppStoreIcon = React.createClass({
@@ -97,60 +97,60 @@ const ScrollDownButton = React.createClass({
 
 
 class UserHeader extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'UserHeader';
-        this.state= {
-        	showMenu: false
-        }
-        this.toggleMenu = this.toggleMenu.bind(this)
-    }
-    toggleMenu() {
-    	this.setState({
-    		showMenu: !this.state.showMenu
-    	});
-    }
-    render() {
-    	const UserHeaderClass = classNames({
+	constructor(props) {
+		super(props);
+		this.displayName = 'UserHeader';
+		this.state= {
+			showMenu: false
+		}
+		this.toggleMenu = this.toggleMenu.bind(this)
+	}
+	toggleMenu() {
+		this.setState({
+			showMenu: !this.state.showMenu
+		});
+	}
+	render() {
+		const UserHeaderClass = classNames({
 		  'user-container text-margin-left text-flex': true,
 		  'text-white': window.location.pathname === '/',
 		  'text-black': window.location.pathname !== '/'
 		});
-        return (
-        	<div className={UserHeaderClass}>
-        		<div className='text-flex pointer-cursor' onClick={this.toggleMenu}>
-        			<div className='user-info'>Name Lastname</div>
-        			<div className='user-avatar'>
-        				<img src={this.props.avatar ? this.props.avatar : '../images/userProfilePlaceHolder.png'}/>
-        			</div>
-        		</div>
-        		<UserMenu showMenu={this.state.showMenu}/>
-        	</div>
-        );
-    }
+		return (
+			<div className={UserHeaderClass}>
+				<div className='text-flex pointer-cursor' onClick={this.toggleMenu}>
+					<div className='user-info'>Name Lastname</div>
+					<div className='user-avatar'>
+						<img src={this.props.avatar ? this.props.avatar : '../images/userProfilePlaceHolder.png'}/>
+					</div>
+				</div>
+				<UserMenu showMenu={this.state.showMenu}/>
+			</div>
+		);
+	}
 }
 
 
 class UserMenu extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'UserMenu';
-    }
-    handleLogout() {
+	constructor(props) {
+		super(props);
+		this.displayName = 'UserMenu';
+	}
+	handleLogout() {
 		auth.logout();
 		auth.onChange(true);
 	}
-    render() {
-        return (
-        	<div className={this.props.showMenu ? 'user-menu-container' : 'user-menu-container hide-menu'}>
-        		<div className='user-menu-arrow'/>
-        		<Link to='/'>Dashboard</Link>
-        		<Link to='donation'>Donate</Link>
-        		<Link to='/'>Settings</Link>
-        		<Link to='/' className='logout' onClick={this.handleLogout}>Logout</Link>
-        	</div>
-        );
-    }
+	render() {
+		return (
+			<div className={this.props.showMenu ? 'user-menu-container' : 'user-menu-container hide-menu'}>
+				<div className='user-menu-arrow'/>
+				<Link to='/'>Dashboard</Link>
+				<Link to='donation'>Donate</Link>
+				<Link to='/'>Settings</Link>
+				<Link to='/' className='logout' onClick={this.handleLogout}>Logout</Link>
+			</div>
+		);
+	}
 }
 
 
