@@ -132,6 +132,7 @@ ul {
 	margin: 45px auto 10px auto;
 	width: 90%;
 	max-width: 1000px;
+	min-height: 55px;
 }
 
 .header h3 {
