@@ -8,6 +8,7 @@ import HomePage from '../components/homepage-components.jsx';
 import SignInPage from '../components/signin-components.jsx';
 import SignUpPage from '../components/signup-components.jsx';
 import DonationList from '../components/donation-components.jsx';
+import ThankYou from '../components/thank-you-components.jsx';
 import Registration from '../containers/registration-container.jsx';
 import auth from '../utils/auth.js';
 
@@ -29,6 +30,7 @@ var routes = (
 			<Route path="signup/donor" component={Registration} header="Donor"/>
 			<Route path="signup/volunteer" component={Registration} header="Volunteer"/>
 			<Route path="donation" component={DonationList} onEnter={requireAuth}/>
+			<Route path="thankyou" component={ThankYou} />
 		</Route>
 	</Router>
 );

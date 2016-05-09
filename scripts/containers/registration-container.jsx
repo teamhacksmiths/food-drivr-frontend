@@ -1,6 +1,7 @@
 import React from 'react';
 import UserSignup from '../components/user-signup-component.jsx'
 import auth from '../utils/auth.js';
+import CircularProgress from 'material-ui/lib/circular-progress';
 
 class Registration extends React.Component {
 	constructor(props, context) {
@@ -106,9 +107,17 @@ class Registration extends React.Component {
 					})
 					.then((response) => {
 						console.log("hello from login");
-						localStorage.setItem('token', response.data.authtoken.auth_token);
-						if (auth.loggedIn()) this.context.router.push('/donation');
-						else this.setState({ error: "Registration Failed" });
+						if(this.props.route.header === 'Donor'){
+			                localStorage.setItem('token', response.data.authtoken.auth_token);
+			                if (auth.loggedIn()) {
+			                	this.context.router.push('/donation');
+			                	auth.onChange(true);
+			                } else {
+			                	this.setState({ error: "Registration Failed" });
+			                }
+			            } else {
+			                this.context.router.push('/thankyou');
+			            }
 					})
 					.catch((err) => {
 						console.log(err);

@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
+import CircularProgress from 'material-ui/lib/circular-progress';
 
 const UserSignup = props => (
 	<div className='signup-container text-center'>
