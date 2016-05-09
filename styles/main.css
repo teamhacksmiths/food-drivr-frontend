@@ -557,7 +557,7 @@ ul {
     margin-top: 20px;
 }
 
-.new-donation-input {
+/*.new-donation-input {
 	height: 55px;
     border: none;
     padding-left: 15px;
@@ -568,7 +568,7 @@ ul {
     background: transparent;
     border-bottom: solid 2px #b0aeae;
     color:  #202020;
-}
+}*/
 
 .new-donation-title,
 .donated-name {
