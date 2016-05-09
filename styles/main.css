@@ -116,7 +116,7 @@ ul {
 }
 
 .lightgrey-background {
-	background: #f8f8f8;
+	background: #ebebeb;
 }
 
 .yellow-background {
@@ -129,10 +129,23 @@ ul {
 
 /* Header Section */
 .header {
-	margin: 45px auto 10px auto;
+	margin: 45px auto 10px;
 	width: 90%;
 	max-width: 1000px;
 	min-height: 55px;
+}
+
+.donation-header {
+    margin-bottom: 50px;
+    width: 100%;
+    min-height: 110px;
+    background: #f8f8f8;
+    box-shadow: 0 4px 4px 0 rgba(228, 228, 228, 0.5);
+}
+
+.donation-header-user {
+	margin-right: 200px;
+    margin-top: 30px;
 }
 
 .header h3 {
@@ -148,6 +161,15 @@ ul {
 	background-size: 100%;
 	width: 55px;
 	cursor: pointer;
+}
+
+.truck-button {
+	background-image: url("../images/food-drivr-logo-grey.svg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 55px;
+	margin-left: 200px;
+    margin-top: 30px;
 }
 
 .hide-menu {

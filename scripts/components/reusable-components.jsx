@@ -27,14 +27,16 @@ const Header = React.createClass({
 	},
 
 	render: function() {
+		let headerButton = <AppStoreIcon />;
+		if (window.location.pathname === '/donation') {
+			headerButton = <TruckButton />;
+		} else if (window.location.pathname !== '/') {
+			headerButton = <BackButton />;
+		}
 		return (
-			<div className='header text-flex'>
-				{window.location.pathname === '/' ?
-					<AppStoreIcon /> : <BackButton />
-				}
-				{this.state.loggedIn ?
-					<UserHeader /> : <Login />
-				}
+			<div className={window.location.pathname === '/donation' ? 'donation-header text-flex' : 'header text-flex'}>
+				{ headerButton }
+				{ this.state.loggedIn ? <UserHeader /> : <Login /> }
 			</div>
 		);
 	}
@@ -74,6 +76,19 @@ const AppStoreIcon = React.createClass({
 	}
 });
 
+class TruckButton extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className='truck-button'></div>
+    );
+  }
+}
+
+
 const Login = React.createClass({
 	render: function() {
 		return (
@@ -94,42 +109,6 @@ const ScrollDownButton = React.createClass({
 		);
 	}
 });
-
-
-class UserHeader extends React.Component {
-	constructor(props) {
-		super(props);
-		this.displayName = 'UserHeader';
-		this.state= {
-			showMenu: false
-		}
-		this.toggleMenu = this.toggleMenu.bind(this)
-	}
-	toggleMenu() {
-		this.setState({
-			showMenu: !this.state.showMenu
-		});
-	}
-	render() {
-		const UserHeaderClass = classNames({
-		  'user-container text-margin-left text-flex': true,
-		  'text-white': window.location.pathname === '/',
-		  'text-black': window.location.pathname !== '/'
-		});
-		return (
-			<div className={UserHeaderClass}>
-				<div className='text-flex pointer-cursor' onClick={this.toggleMenu}>
-					<div className='user-info'>Name Lastname</div>
-					<div className='user-avatar'>
-						<img src={this.props.avatar ? this.props.avatar : '../images/userProfilePlaceHolder.png'}/>
-					</div>
-				</div>
-				<UserMenu showMenu={this.state.showMenu}/>
-			</div>
-		);
-	}
-}
-
 
 class UserMenu extends React.Component {
 	constructor(props) {
@@ -153,6 +132,37 @@ class UserMenu extends React.Component {
 	}
 }
 
+class UserHeader extends React.Component {
+	constructor(props) {
+		super(props);
+		this.displayName = 'UserHeader';
+		this.state= {
+			showMenu: false
+		}
+		this.toggleMenu = this.toggleMenu.bind(this)
+	}
+	toggleMenu() {
+		this.setState({
+			showMenu: !this.state.showMenu
+		});
+	}
+	render() {
+		const UserHeaderClass = classNames({
+		  'user-container text-margin-left text-flex': true,
+		  'text-white': window.location.pathname === '/',
+		  'text-black': window.location.pathname !== '/',
+		  'donation-header-user': window.location.pathname === '/donation'
+		});
+		return (
+			<div className={UserHeaderClass}>
+				<div className='text-flex pointer-cursor' onClick={this.toggleMenu}>
+					<div className='user-info'>Name Lastname</div>
+				</div>
+				<UserMenu showMenu={this.state.showMenu}/>
+			</div>
+		);
+	}
+}
 
 const Footer = React.createClass({
 	render: function() {
