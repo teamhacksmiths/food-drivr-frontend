@@ -29,13 +29,14 @@ class Donation extends React.Component {
 	}
 	handleUpdateItem(e) {
 		if(e.keyCode === 13) {
-			this.handleAddItem();
+			this.handleAddItem(e);
 		} else {
 			e.target.value === '' ? this.setState({enableAddItem: false}) : this.setState({enableAddItem: true})
 			this.setState({newItemName: e.target.value });
 		}
 	}
 	handleAddItem(e) {
+		console.log(e.keyCode);
 		if(e.keyCode === 13 || e.button === 0){
 			if (this.state.enableAddItem) {
 				let newItemsArr = this.state.itemsAdded;
