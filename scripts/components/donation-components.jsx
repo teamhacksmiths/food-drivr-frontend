@@ -9,6 +9,7 @@ import FlatButton from 'material-ui/FlatButton';
 import DatePicker from 'material-ui/DatePicker';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
+import Snackbar from 'material-ui/Snackbar';
 
 class Donation extends React.Component {
 	constructor(props) {
@@ -19,14 +20,18 @@ class Donation extends React.Component {
 			itemsAdded: [],
 			enableAddItem: false,
 			enableDonation: false,
-			open: false
+			open: false,
+			openSnackBar: false
 		};
 		this.handleUpdateItem = this.handleUpdateItem.bind(this);
 		this.handleAddItem = this.handleAddItem.bind(this);
 		this.handleRemoveItem = this.handleRemoveItem.bind(this);
 		this.handleOpen = this.handleOpen.bind(this);
 		this.handleClose = this.handleClose.bind(this);
+		this.handleSnackOpen = this.handleSnackOpen.bind(this);
+		this.handleSnackClose = this.handleSnackClose.bind(this);
 	}
+
 	handleUpdateItem(e) {
 		if(e.keyCode === 13) {
 			this.handleAddItem(e);
@@ -69,6 +74,19 @@ class Donation extends React.Component {
 		this.setState({open: false});
 	}
 
+	handleDonate() {
+		this.setState({open: false});
+		return <SnackBar />
+	}
+
+	handleSnackOpen(){
+		this.setState({open: false, openSnackBar: true});
+	}
+
+	handleSnackClose() {
+		this.setState({openSnackBar: false});
+	}
+
 	render() {
 		const token = auth.getToken();
 		const actions = [
@@ -80,7 +98,7 @@ class Donation extends React.Component {
 			<FlatButton
 				label="Donate"
 				primary={true}
-				onTouchTap={this.handleClose}
+				onTouchTap={this.handleSnackOpen}
 			/>,
 		];
 
@@ -138,6 +156,12 @@ class Donation extends React.Component {
 						}
 					</List>
 				</Dialog>
+			<Snackbar
+	          open={this.state.openSnackBar}
+	          message="Donation Successful!"
+	          autoHideDuration={4000}
+	          onRequestClose={this.handleSnackClose}
+        	/>
 			</div>
 		);
 	}
