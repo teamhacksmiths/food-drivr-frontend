@@ -26,11 +26,11 @@ module.exports = {
             });
     },
 
-    register(name, email, pass, passconf) {
+    register(name, email, pass, passconf, role) {
         // ensure callback is always last argument
         // create new session, pass in email and password as object
-
-      return axios({
+        console.log(JSON.stringify({ user: { name: name, email: email, password: pass, password_confirmation: pass, role_id: role } }));
+        return axios({
                 url: '/users',
                 method: 'post',
                 baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
@@ -43,7 +43,8 @@ module.exports = {
                         'name': name,
                         'email': email,
                         'password': pass,
-                        'password_confirmation': passconf
+                        'password_confirmation': passconf,
+                        'role_id': role
                     }
                 },
                 responseType: 'json',

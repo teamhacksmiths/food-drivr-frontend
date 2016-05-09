@@ -3,10 +3,8 @@ import { Link } from 'react-router';
 import { PropTypes } from 'react';
 import {ScrollDownButton} from './reusable-components.jsx';
 import auth from '../utils/auth.js';
-import SelectField from 'material-ui/lib/select-field';
-import MenuItem from 'material-ui/lib/menus/menu-item';
 import classNames from 'classnames/bind';
-import { Header } from './reusable-components.jsx';
+import TextField from 'material-ui/TextField';
 
 
 class Donation extends React.Component {
@@ -90,11 +88,12 @@ const DonationItem = props => (
 
 const DonateItem = props => (
 	<div className='text-flex'>
-		<input type="text"
-			   placeholder="What would you like to donate ?"
-			   className="new-donation-input new-donation-title text-lightgrey"
-			   onKeyUp={props.onUpdateItem}
-			   id='donationTitle'
+		<TextField
+				type="text"
+			   	onKeyUp={props.onUpdateItem}
+			   	id='donationTitle'
+			   	hintText="What would you like to donate ?"
+				style={{width: '100%', height: 55, marginRight: 45, lineHeight: 1.7, letterSpacing: 1.9, fontFamily: "'Open Sans', sans-serif", fontSize: 20}}
 			   />
 		<button className={props.enableAddItem ? "btn-donation" : "btn-donation btn-disabled"}
 				onClick={props.onAddItem} />

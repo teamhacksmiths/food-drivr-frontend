@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 import auth from '../utils/auth.js';
 import classNames from 'classnames/bind';
-import DropDownMenu from 'material-ui/lib/drop-down-menu';
-import MenuItem from 'material-ui/lib/menus/menu-item';
 
 const Header = React.createClass({
 

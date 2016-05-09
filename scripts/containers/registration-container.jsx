@@ -1,7 +1,7 @@
 import React from 'react';
 import UserSignup from '../components/user-signup-component.jsx'
 import auth from '../utils/auth.js';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Registration extends React.Component {
 	constructor(props, context) {
@@ -93,13 +93,14 @@ class Registration extends React.Component {
 	_handleSubmitUser(e) {
 		if (e.keyCode === 13 || e.button === 0) {
 			const { name, email, password, passwordConfirmation } = this.state;
+			const role = this.props.route.header === 'Donor' ? 0 : 1;
 			e.preventDefault();
 			if (this.state.errorName == '' &&
 				this.state.errorPassword == '' &&
 				this.state.errorEmail == '' &&
 				this.state.errorPasswordConfirmation == '') {
 				this.setState({ error: <CircularProgress /> });
-					auth.register(name, email, password, passwordConfirmation)
+					auth.register(name, email, password, passwordConfirmation, role)
 					.then((response) => {
 						console.log("hello from register")
 						console.log(response.data);

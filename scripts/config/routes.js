@@ -11,6 +11,8 @@ import DonationList from '../components/donation-components.jsx';
 import ThankYou from '../components/thank-you-components.jsx';
 import Registration from '../containers/registration-container.jsx';
 import auth from '../utils/auth.js';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 function requireAuth(nextState, replace) {
 	if (!auth.loggedIn()) {

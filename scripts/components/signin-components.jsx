@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Headline } from './reusable-components.jsx';
-import Paper from 'material-ui/lib/paper';
-import TextField from 'material-ui/lib/text-field';
-import RaisedButton from 'material-ui/lib/raised-button';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import CircularProgress from 'material-ui/CircularProgress';
 import auth from '../utils/auth.js';
 
 class SignInPage extends Component {
@@ -66,8 +66,12 @@ class SignInPage extends Component {
                     .then((response) => {
                         console.log("hello from login");
                         localStorage.setItem('token', response.data.authtoken.auth_token);
-                        if (auth.loggedIn()) this.context.router.push('/donation');
-                        else this.setState({ error: "Login Failed" });
+                        if (auth.loggedIn()) {
+                            this.context.router.push('/donation');
+                            auth.onChange(true);
+                        } else {
+                            this.setState({ error: "Login Failed" });
+                        }
                     })
                     .catch((err) => {
                         console.log(err);

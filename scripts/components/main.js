@@ -3,6 +3,8 @@ import { Header, Footer } from './reusable-components.jsx';
 import auth from '../utils/auth.js';
 import classNames from 'classnames/bind';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export default class App extends React.Component {
 	render() {
@@ -15,13 +17,15 @@ export default class App extends React.Component {
 			'lightblue-background': window.location.pathname === '/signup/volunteer'
 		});
 		return (
-			<div className={containerClass}>
-				<Header />
-				<ReactCSSTransitionGroup transitionName="appear" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-					{React.cloneElement(this.props.children, {key: this.props.location.pathname})}
-				</ReactCSSTransitionGroup>
-				<Footer />
-			</div>
+			<MuiThemeProvider muiTheme={getMuiTheme()}>
+				<div className={containerClass}>
+					<Header />
+					<ReactCSSTransitionGroup transitionName="appear" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+						{React.cloneElement(this.props.children, {key: this.props.location.pathname})}
+					</ReactCSSTransitionGroup>
+					<Footer />
+				</div>
+			</MuiThemeProvider>
 		);
 	}
 }
