@@ -6,7 +6,6 @@ import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 import CircularProgress from 'material-ui/lib/circular-progress';
 import auth from '../utils/auth.js';
-import { Header } from './reusable-components.jsx';
 
 class SignInPage extends Component {
     constructor(props, context) {
@@ -81,44 +80,41 @@ class SignInPage extends Component {
     render() {
         const { errorPassword, errorEmail, email, password, error } = this.state;
         return (
-            <div>
-                <Header />
-                <div className="signin text-center text-white">
-                    <Headline value="Sign In" />
-                    <form>
-                        <TextField
-                            hintText="Enter Email"
-                            errorText={errorEmail}
-                            floatingLabelText="Email"
-                            onChange={this._handleEmailChange}
-                            style={{width: '80%', maxWidth: 350}}
-                            errorStyle={{color: 'white'}}
-                            value={email}
-                            />
+            <div className="signin text-center text-white">
+                <Headline value="Sign In" />
+                <form>
+                    <TextField
+                        hintText="Enter Email"
+                        errorText={errorEmail}
+                        floatingLabelText="Email"
+                        onChange={this._handleEmailChange}
+                        style={{width: '80%', maxWidth: 350}}
+                        errorStyle={{color: 'white'}}
+                        value={email}
+                        />
+                    <br/>
+                    <TextField
+                        hintText="Enter Password"
+                        errorText={errorPassword}
+                        floatingLabelText="Password"
+                        onChange={this._handlePasswordChange}
+                        style={{width: '80%', maxWidth: 350}}
+                        errorStyle={{color: 'white'}}
+                        value={password}
+                        type="password"
+                        />
+                    <br/>
+                    <RaisedButton
+                        label="Sign In"
+                        secondary={true}
+                        onClick={this._formSubmit}
+                        style={{marginTop: 100, minWidth: 250}}
+                        />
                         <br/>
-                        <TextField
-                            hintText="Enter Password"
-                            errorText={errorPassword}
-                            floatingLabelText="Password"
-                            onChange={this._handlePasswordChange}
-                            style={{width: '80%', maxWidth: 350}}
-                            errorStyle={{color: 'white'}}
-                            value={password}
-                            type="password"
-                            />
-                        <br/>
-                        <RaisedButton
-                            label="Sign In"
-                            secondary={true}
-                            onClick={this._formSubmit}
-                            style={{marginTop: 100, minWidth: 250}}
-                            />
-                            <br/>
-                        <span>
-                            {error}
-                        </span>
-                    </form>
-                </div>
+                    <span>
+                        {error}
+                    </span>
+                </form>
             </div>
         )
     }

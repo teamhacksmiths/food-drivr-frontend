@@ -98,12 +98,9 @@ const DonateItem = props => (
 )
 
 const DonationsList = props => (
-	<div>
-		<Header />
-		<div className="donations">
-			<h1 className='business-title text-center text-yellow'>BUSINESS NAME</h1>
-			<Donation />
-		</div>
+	<div className="donations">
+		<h1 className='business-title text-center text-yellow'>BUSINESS NAME</h1>
+		<Donation />
 	</div>
 )
 

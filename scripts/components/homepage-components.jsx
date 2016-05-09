@@ -4,7 +4,6 @@ import {Link} from 'react-router';
 import {Headline} from './reusable-components.jsx';
 import {ScrollDownButton} from './reusable-components.jsx';
 import {AppStoreIcon} from './reusable-components.jsx';
-import { Header } from './reusable-components.jsx';
 
 
 class BodyButton extends React.Component {
@@ -250,15 +249,12 @@ var SectionContacts = React.createClass({
 var HomePage = React.createClass({
 	render: function(){
 		return (
-			<div>
-				<Header />
-				<div className='homepage'>
-					<SectionIntro />
-					<SectionHowTo />
-					<SectionBecomeDriver />
-					<SectionComments />
-					<SectionContacts />
-				</div>
+			<div className='homepage'>
+				<SectionIntro />
+				<SectionHowTo />
+				<SectionBecomeDriver />
+				<SectionComments />
+				<SectionContacts />
 			</div>
 		);
 	}
