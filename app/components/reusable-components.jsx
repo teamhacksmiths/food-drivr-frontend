@@ -38,11 +38,11 @@ const Header = React.createClass({
 });
 
 const Headline = props => (
-	<h1 className={this.props.className}>{this.props.value}</h1>
+	<h1 className={props.className}>{props.value}</h1>
 );
 
 Headline.propTypes = {
-	className: React.PropTypes.string.isRequired,
+	className: React.PropTypes.string,
 	value: React.PropTypes.string.isRequired
 };
 
@@ -64,12 +64,12 @@ class BackButton extends React.Component {
 
 const AppStoreIcon = props => (
 	<Link to="" className={props.className}>
-		<img src="images/App-Store-Badge.png" alt="apple store icon" />
+		<img src="/images/App-Store-Badge.png" alt="apple store icon" />
 	</Link>
 );
 
 AppStoreIcon.propTypes = {
-	className: React.PropTypes.string.isRequired
+	className: React.PropTypes.string
 };
 
 const TruckButton = props => (
