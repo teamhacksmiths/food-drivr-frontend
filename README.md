@@ -27,7 +27,6 @@ ___
 * NodeJS
 * Webpack
 * React
-* jQuery
 
 ___
 ## Authors

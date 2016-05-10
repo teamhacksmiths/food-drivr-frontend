@@ -156,7 +156,7 @@ ul {
 }
 
 .back-button {
-	background-image: url("../images/back-arrow.svg");
+	background-image: url("/images/back-arrow.svg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 55px;
@@ -164,7 +164,7 @@ ul {
 }
 
 .truck-button {
-	background-image: url("../images/food-drivr-logo-grey.svg");
+	background-image: url("/images/food-drivr-logo-grey.svg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 55px;
@@ -364,7 +364,7 @@ ul {
 
 .becomedriver-img {
 	display: none;
-	background-image: url("../images/Food-Drivr-Driver-iphone.png");
+	background-image: url("/images/Food-Drivr-Driver-iphone.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 37%;
@@ -508,7 +508,7 @@ ul {
     cursor: pointer;
     background: transparent;
     border: none;
-    background-image: url('../images/add-button.svg');
+    background-image: url('/images/add-button.svg');
     background-repeat: no-repeat;
 }
 
@@ -520,7 +520,7 @@ ul {
     border: none;
     -webkit-transform: rotate(-315deg);
     transform: rotate(-315deg);
-    background-image: url('../images/remove-button.svg');
+    background-image: url('/images/remove-button.svg');
 }
 
 .btn-donate {

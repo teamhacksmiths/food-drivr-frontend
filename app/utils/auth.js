@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 module.exports = {
-    login(email, pass) {
+	login(email, pass) {
         // ensure callback is always last argument
         var token = (typeof window !== "undefined") ? localStorage.getItem('token') : undefined;
         if (token) {
