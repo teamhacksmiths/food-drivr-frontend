@@ -37,7 +37,6 @@ class Donation extends React.Component {
 		}
 	}
 	handleAddItem(e) {
-		console.log(e.keyCode);
 		if (e.keyCode === 13 || e.button === 0) {
 			if (this.state.enableAddItem) {
 				const newItemsArr = this.state.itemsAdded;
@@ -114,7 +113,7 @@ class Donation extends React.Component {
 					{donatedItems}
 				</div>
 				<button
-					className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'} 			onClick={this.handleOpen}
+					className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'}	onClick={this.handleOpen}
 				>
 					DONATE
 				</button>
@@ -152,12 +151,12 @@ class Donation extends React.Component {
 						))}
 					</List>
 				</Dialog>
-			<Snackbar
-				open={this.state.openSnackBar}
-				message="Donation Successful!"
-				autoHideDuration={4000}
-				onRequestClose={this.handleSnackClose}
-			/>
+				<Snackbar
+					open={this.state.openSnackBar}
+					message="Donation Successful!"
+					autoHideDuration={4000}
+					onRequestClose={this.handleSnackClose}
+				/>
 			</div>
 		);
 	}
