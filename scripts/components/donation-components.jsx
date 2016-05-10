@@ -1,13 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { PropTypes } from 'react';
-import {ScrollDownButton} from './reusable-components.jsx';
-import auth from '../utils/auth.js';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import DatePicker from 'material-ui/DatePicker';
-import {List, ListItem} from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 
 class Donation extends React.Component {
@@ -28,23 +24,23 @@ class Donation extends React.Component {
 		this.handleClose = this.handleClose.bind(this);
 	}
 	handleUpdateItem(e) {
-		if(e.keyCode === 13) {
+		if (e.keyCode === 13) {
 			this.handleAddItem();
 		} else {
-			e.target.value === '' ? this.setState({enableAddItem: false}) : this.setState({enableAddItem: true})
-			this.setState({newItemName: e.target.value });
+			this.setState({ enableAddItem: e.target.value !== '' });
+			this.setState({ newItemName: e.target.value });
 		}
 	}
 	handleAddItem(e) {
-		if(e.keyCode === 13 || e.button === 0){
+		if (e.keyCode === 13 || e.button === 0) {
 			if (this.state.enableAddItem) {
-				let newItemsArr = this.state.itemsAdded;
-				newItemsArr.push({name: this.state.newItemName});
+				const newItemsArr = this.state.itemsAdded;
+				newItemsArr.push({ name: this.state.newItemName });
 				this.setState({
 					itemsAdded: newItemsArr,
 					enableDonation: true
 				});
-				{/* Restore default status of the item input */}
+
 				document.getElementById('donationTitle').value = '';
 				this.setState({
 					enableAddItem: false,
@@ -53,88 +49,88 @@ class Donation extends React.Component {
 			}
 		}
 	}
-	handleRemoveItem(index){
-		let newItemsArr = this.state.itemsAdded;
+	handleRemoveItem(index) {
+		const newItemsArr = this.state.itemsAdded;
 		newItemsArr.splice(index, 1);
-		this.setState({itemsAdded: newItemsArr});
-		this.state.itemsAdded.length === 0 && this.setState({enableDonation: false});
+		this.setState({ itemsAdded: newItemsArr });
+		if (this.state.itemsAdded.length === 0) this.setState({ enableDonation: false });
 	}
 
-	handleOpen(){
-		this.setState({open: true});
+	handleOpen() {
+		this.setState({ open: true });
 	}
 
 	handleClose() {
-		this.setState({open: false});
+		this.setState({ open: false });
 	}
 
 	render() {
-		const token = auth.getToken();
 		const actions = [
 			<FlatButton
 				label="Cancel"
-				primary={true}
+				primary
 				onTouchTap={this.handleClose}
 			/>,
 			<FlatButton
 				label="Donate"
-				primary={true}
+				primary
 				onTouchTap={this.handleClose}
 			/>,
 		];
 
-		let donatedItems = this.state.itemsAdded.map(function(item, index){
-		var boundClick = this.handleRemoveItem.bind(this, index);
-		return (
-				<DonationItem key={index} name={item.name} onRemoveItem={boundClick}/>
+		let donatedItems = this.state.itemsAdded.map(function getDonationList(item, index) {
+			const boundClick = this.handleRemoveItem.bind(this, index);
+			return (
+				<DonationItem key={index} name={item.name} onRemoveItem={boundClick} />
 			);
 		}, this);
 		return (
-			<div className='donation-container'>
-				<DonateItem enableAddItem={this.state.enableAddItem}
-							onAddItem={this.handleAddItem}
-							onUpdateItem={this.handleUpdateItem}
-							/>
-				<div className='donation-list'>
+			<div className="donation-container">
+				<DonateItem
+					enableAddItem={this.state.enableAddItem}
+					onAddItem={this.handleAddItem}
+					onUpdateItem={this.handleUpdateItem}
+				/>
+				<div className="donation-list">
 					{donatedItems}
 				</div>
-				<button className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'} onClick={this.handleOpen}>DONATE</button>
-				<Dialog
-				  title="Donation Confirmation"
-				  actions={actions}
-				  modal={false}
-				  open={this.state.open}
-				  onRequestClose={this.handleClose}
-				  autoScrollBodyContent={true}
+				<button
+					className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'} 			onClick={this.handleOpen}
 				>
-					<br/>
-						Where?
-					<br/>
+					DONATE
+				</button>
+				<Dialog
+					title="Donation Confirmation"
+					actions={actions}
+					modal={false}
+					open={this.state.open}
+					onRequestClose={this.handleClose}
+					autoScrollBodyContent
+				>
+					<br />
+					Where?
+					<br />
 					<TextField
-					   type="text"
-					   hintText="What's Your Address?"
-					   id='address'
-					   />
-					<br/>
-					<br/>
+						type="text"
+						hintText="What's Your Address?"
+						id="address"
+					/>
+					<br />
+					<br />
 					When?
-					<DatePicker hintText="Date Picker"/>
+					<DatePicker hintText="Date Picker" />
 					Notes For The Driver?
-					<br/>
+					<br />
 					<TextField
 						type="text"
 						hintText="Special Notes For The Driver?"
-						id='driverNote'
-						/>
+						id="driverNote"
+					/>
 					<List>
 						<Subheader>Items</Subheader>
-						{this.state.itemsAdded.map(function(item, index){
-							return <ListItem
-							key={index}
-							disabled={true}
-							>{item.name}</ListItem>;
-							})
-						}
+						{this.state.itemsAdded.map((item, index) => (
+							<ListItem key={index} disabled>{item.name}</ListItem>
+						))}
 					</List>
 				</Dialog>
 			</div>
@@ -144,31 +140,43 @@ class Donation extends React.Component {
 
 
 const DonationItem = props => (
-	<div className='donated-item text-flex'>
+	<div className="donated-item text-flex">
 		<div className="donated-name text-lightgrey">{props.name}</div>
 		<button className="btn-del-donation" onClick={props.onRemoveItem} />
 	</div>
 );
 
+DonationItem.propTypes = {
+	name: React.PropTypes.string.isRequired,
+	onRemoveItem: React.PropTypes.func.isRequired
+};
 const DonateItem = props => (
-	<div className='text-flex'>
+	<div className="text-flex">
 		<TextField
-				type="text"
-				onKeyUp={props.onUpdateItem}
-				id='donationTitle'
-				hintText="What would you like to donate ?"
-				style={{width: '100%', height: 55, marginRight: 45, lineHeight: 1.7, letterSpacing: 1.9, fontFamily: "'Open Sans', sans-serif", fontSize: 20}}
-			   />
-		<button className={props.enableAddItem ? "btn-donation" : "btn-donation btn-disabled"}
-				onClick={props.onAddItem} />
+			type="text"
+			onKeyUp={props.onUpdateItem}
+			id="donationTitle"
+			hintText="What would you like to donate ?"
+			style={{ width: '100%', height: 55, marginRight: 45, lineHeight: 1.7, letterSpacing: 1.9, fontFamily: "'Open Sans', sans-serif", fontSize: 20 }}
+		/>
+		<button
+			className={props.enableAddItem ? 'btn-donation' : 'btn-donation btn-disabled'}
+			onClick={props.onAddItem}
+		/>
 	</div>
-)
+);
+
+DonateItem.propTypes = {
+	onUpdateItem: React.PropTypes.func.isRequired,
+	enableAddItem: React.PropTypes.bool.isRequired,
+	onAddItem: React.PropTypes.func.isRequired
+};
 
 const DonationsList = props => (
 	<div className="donations">
-		<h1 className='business-title text-center text-yellow'>BUSINESS NAME</h1>
+		<h1 className="business-title text-center text-yellow">BUSINESS NAME</h1>
 		<Donation />
 	</div>
-)
+);
 
 module.exports = DonationsList;
