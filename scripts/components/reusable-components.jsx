@@ -63,7 +63,7 @@ class BackButton extends React.Component {
 }
 
 const AppStoreIcon = props => (
-	<Link to="">
+	<Link to="" className={props.className}>
 		<img src="images/App-Store-Badge.png" alt="apple store icon" />
 	</Link>
 );
