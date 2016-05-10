@@ -4,27 +4,24 @@ import auth from '../utils/auth.js';
 import classNames from 'classnames/bind';
 
 const Header = React.createClass({
-
-	getInitialState: function() {
+	getInitialState() {
 		return {
 			loggedIn: auth.loggedIn()
 		};
 	},
 
-	updateAuth: function(loggedIn) {
-		this.setState({
-			loggedIn: loggedIn
-		});
-	},
-
-	componentWillMount: function() {
+	componentWillMount() {
 		auth.onChange = this.updateAuth;
-		if (this.state.loggedIn == true) {
-			auth.login()
+		if (this.state.loggedIn === true) {
+			auth.login();
 		}
 	},
 
-	render: function() {
+	updateAuth(loggedIn) {
+		this.setState({ loggedIn });
+	},
+
+	render() {
 		let headerButton = <AppStoreIcon />;
 		if (window.location.pathname === '/donation') {
 			headerButton = <TruckButton />;
@@ -33,20 +30,21 @@ const Header = React.createClass({
 		}
 		return (
 			<div className={window.location.pathname === '/donation' ? 'donation-header text-flex' : 'header text-flex'}>
-				{ headerButton }
-				{ this.state.loggedIn || window.location.pathname === '/donation' ? <UserHeader /> : <Login /> }
+				{headerButton}
+				{this.state.loggedIn || window.location.pathname === '/donation' ? <UserHeader /> : <Login />}
 			</div>
 		);
 	}
 });
 
-const Headline = React.createClass({
-	render: function() {
-		return (
-			<h1 className={this.props.className}>{this.props.value}</h1>
-		);
-	}
-});
+const Headline = props => (
+	<h1 className={this.props.className}>{this.props.value}</h1>
+);
+
+Headline.propTypes = {
+	className: React.PropTypes.string.isRequired,
+	value: React.PropTypes.string.isRequired
+};
 
 class BackButton extends React.Component {
 	constructor(props) {
@@ -54,59 +52,48 @@ class BackButton extends React.Component {
 		this.displayName = 'BackButton';
 		this.handleGoBack = this.handleGoBack.bind(this);
 	}
-	handleGoBack(){
+	handleGoBack() {
 		this.context.router.goBack();
 	}
 	render() {
 		return (
-			<div className='back-button' onClick={this.handleGoBack}></div>
+			<div className="back-button" onClick={this.handleGoBack}></div>
 		);
 	}
 }
 
-const AppStoreIcon = React.createClass({
-	render: function() {
-		return (
-			<Link to='' className={this.props.className}>
-				<img src='images/App-Store-Badge.png' alt='apple store icon'/>
-			</Link>
-		);
-	}
-});
+const AppStoreIcon = props => (
+	<Link to="" className={props.className}>
+		<img src="images/App-Store-Badge.png" alt="apple store icon" />
+	</Link>
+);
 
-class TruckButton extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+AppStoreIcon.propTypes = {
+	className: React.PropTypes.string.isRequired
+};
 
-  render() {
-    return (
-      <div className='truck-button'></div>
-    );
-  }
-}
+const TruckButton = props => (
+	<div className="truck-button"></div>
+);
 
 
-const Login = React.createClass({
-	render: function() {
-		return (
-			<h3 className='text-margin-left source-sans'>
-				<Link to='/signin' className='text-white'>Login</Link>
-			</h3>
-		);
-	}
-});
+const Login = props => (
+		<h3 className="text-margin-left source-sans">
+			<Link to="/signin" className="text-white">Login</Link>
+		</h3>
+);
 
-const ScrollDownButton = React.createClass({
-	render: function() {
-		return (
-			<div>
-				<p>{this.props.text}</p>
-				<img src={this.props.color === 'white' ? 'images/down-arrow.svg' : 'images/down-arrow-yellow.svg'} alt='down arrow'/>
-			</div>
-		);
-	}
-});
+const ScrollDownButton = props => (
+	<div>
+		<p>{props.text}</p>
+		<img src={props.color === 'white' ? 'images/down-arrow.svg' : 'images/down-arrow-yellow.svg'} alt="down arrow" />
+	</div>
+);
+
+ScrollDownButton.propTypes = {
+	text: React.PropTypes.string.isRequired,
+	color: React.PropTypes.string.isRequired
+};
 
 class UserMenu extends React.Component {
 	constructor(props) {
@@ -116,34 +103,38 @@ class UserMenu extends React.Component {
 	handleLogout() {
 		auth.logout()
 			.then(() => {
-                delete localStorage.token;
-                auth.onChange(false);
-            }).catch((err) => {
-                console.log(err);
-            });
-        auth.onChange(false);
+				delete localStorage.token;
+				auth.onChange(false);
+			}).catch((err) => {
+				console.log(err);
+			});
+		auth.onChange(false);
 	}
 	render() {
 		return (
 			<div className={this.props.showMenu ? 'user-menu-container' : 'user-menu-container hide-menu'}>
-				<div className='user-menu-arrow'/>
-				<Link to='/'>Dashboard</Link>
-				<Link to='donation'>Donate</Link>
-				<Link to='/'>Settings</Link>
-				<Link to='/' className='logout' onClick={this.handleLogout}>Logout</Link>
+				<div className="user-menu-arrow" />
+				<Link to="/">Dashboard</Link>
+				<Link to="donation">Donate</Link>
+				<Link to="/">Settings</Link>
+				<Link to="/" className="logout" onClick={this.handleLogout}>Logout</Link>
 			</div>
 		);
 	}
 }
 
+UserMenu.propTypes = {
+	showMenu: React.PropTypes.bool.isRequired
+};
+
 class UserHeader extends React.Component {
 	constructor(props) {
 		super(props);
 		this.displayName = 'UserHeader';
-		this.state= {
+		this.state = {
 			showMenu: false
-		}
-		this.toggleMenu = this.toggleMenu.bind(this)
+		};
+		this.toggleMenu = this.toggleMenu.bind(this);
 	}
 	toggleMenu() {
 		this.setState({
@@ -152,32 +143,32 @@ class UserHeader extends React.Component {
 	}
 	render() {
 		const UserHeaderClass = classNames({
-		  'user-container text-margin-left text-flex': true,
-		  'text-white': window.location.pathname === '/',
-		  'text-black': window.location.pathname !== '/',
-		  'donation-header-user': window.location.pathname === '/donation'
+			'user-container text-margin-left text-flex': true,
+			'text-white': window.location.pathname === '/',
+			'text-black': window.location.pathname !== '/',
+			'donation-header-user': window.location.pathname === '/donation'
 		});
 		return (
 			<div className={UserHeaderClass}>
-				<div className='text-flex pointer-cursor' onClick={this.toggleMenu}>
-					<div className='user-info'>Name Lastname</div>
+				<div className="text-flex pointer-cursor" onClick={this.toggleMenu}>
+					<div className="user-info">Name Lastname</div>
 				</div>
-				<UserMenu showMenu={this.state.showMenu}/>
+				<UserMenu showMenu={this.state.showMenu} />
 			</div>
 		);
 	}
 }
 
 const Footer = React.createClass({
-	render: function() {
-		var footerClass = classNames({
+	render() {
+		const footerClass = classNames({
 			footer: true,
 			'text-black': window.location.pathname === '/donation',
 			'text-white': window.location.pathname !== '/donation'
 		});
 		return (
 			<div className={footerClass}>
-				<p>Made with ♥ by <Link to='http://hacksmiths.io'>Team Hacksmiths</Link></p>
+				<p>Made with ♥ by <Link to="http://hacksmiths.io">Team Hacksmiths</Link></p>
 			</div>
 		);
 	}
@@ -192,9 +183,9 @@ BackButton.contextTypes = {
 };
 
 module.exports = {
-	Header: Header,
-	Footer: Footer,
-	Headline: Headline,
-	ScrollDownButton: ScrollDownButton,
-	AppStoreIcon: AppStoreIcon
-}
+	Header,
+	Footer,
+	Headline,
+	ScrollDownButton,
+	AppStoreIcon
+};
