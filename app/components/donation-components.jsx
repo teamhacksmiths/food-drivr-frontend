@@ -89,6 +89,7 @@ class Donation extends React.Component {
 				label="Cancel"
 				primary
 				onTouchTap={this.handleClose}
+				keyboardFocused={true}
 			/>,
 			<FlatButton
 				label="Donate"

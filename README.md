@@ -1,4 +1,4 @@
-# Food Drivr Platform
+# Food Drivr Web App
 ___
 
 ## Getting Started
@@ -27,6 +27,8 @@ ___
 * NodeJS
 * Webpack
 * React
+* Material-UI
+* Axios
 
 ___
 ## Authors
@@ -43,3 +45,5 @@ ___
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 ___
 ## Acknowledgments
+
+ Thank you to all of the brilliant people involved in this project. You've all worked hard to accomplish something really amazing! A big thank you to Udacity students and staff. None of this would have been possible without this phenomenal and exremely supportive community!
