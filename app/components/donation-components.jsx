@@ -200,11 +200,7 @@ DonateItem.propTypes = {
 class DonationsList extends React.Component {
 	constructor(props, context) {
 		super(props, context);
-	    if(localStorage.getItem('role') !== 0)
-	    	{
-				this.context.router.push('/');
-	    	}
-		}
+	}
 	render() {
 		return(
 		<div className="donations">

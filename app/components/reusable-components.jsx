@@ -96,20 +96,23 @@ ScrollDownButton.propTypes = {
 };
 
 class UserMenu extends React.Component {
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 		this.displayName = 'UserMenu';
+		this.handleLogout = this.handleLogout.bind(this);
 	}
 	handleLogout() {
 		auth.logout()
 			.then(() => {
+				console.log("You have been logged out!");
+				localStorage.clear();
 				auth.onChange(false);
+				this.context.router.push('/');
 			}).catch((err) => {
 				console.log(err);
 			});
 		auth.onChange(false);
-		delete localStorage.getItem('token');
-		delete localStorage.getItem('role');
+		localStorage.clear();
 	}
 	render() {
 		return (
@@ -118,7 +121,7 @@ class UserMenu extends React.Component {
 				<Link to="/">Dashboard</Link>
 				<Link to="donation">Donate</Link>
 				<Link to="/">Settings</Link>
-				<Link to="/" className="logout" onClick={this.handleLogout}>Logout</Link>
+				<a className="logout" onClick={this.handleLogout}>Logout</a>
 			</div>
 		);
 	}

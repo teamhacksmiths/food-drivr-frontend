@@ -5,7 +5,7 @@ import { Headline } from '../components/reusable-components.jsx';
 class ThankYou extends React.Component {
 	constructor(props, context) {
 		super(props, context);
-		if(localStorage.getItem('role') == 0)
+		if(localStorage.getItem('role') != 1)
 	    	{
 				this.context.router.push('/');
 	    	}

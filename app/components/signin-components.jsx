@@ -73,10 +73,11 @@ class SignInPage extends Component {
                         console.log(response);
                         console.log(response.data.user.role_id);
                         localStorage.setItem('role', response.data.user.role_id);
-                        if (auth.loggedIn() && localStorage.getItem('role') == 0) {
+                        var role = response.data.user.role_id;
+                        if (auth.loggedIn() && role != 1) {
                             this.context.router.push('/donation');
                             auth.onChange(true);
-                        } else if (auth.loggedIn() && localStorage.getItem('role') == 1) {
+                        } else {
                             this.context.router.push('/thankyou');
                             auth.onChange(true);
                         }
