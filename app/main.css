@@ -8,6 +8,10 @@ body {
 	height: 100vh;
 }
 
+.hidden {
+	display: none;
+}
+
 a:hover,
 a:focus {
 	text-decoration: none;
@@ -793,7 +797,7 @@ ul {
 	}
 }
 
-
+/* Donor profile dashboard components */
 .donor-profile-container {
 	min-height: calc(100vh - 135px);
 	text-align: center;

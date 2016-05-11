@@ -2,6 +2,7 @@ import React from 'react';
 import Geosuggest from 'react-geosuggest';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import Styles from './DonorDashboard.css';
 
 class DonorDashboard extends React.Component {
@@ -9,7 +10,8 @@ class DonorDashboard extends React.Component {
     super(props);
     this.state = {
       isEditing: false,
-      editingButtonTitle: ''
+      editingButtonTitle: '',
+      editingAddress: false
     };
   }
   componentDidMount() {
@@ -40,6 +42,10 @@ class DonorDashboard extends React.Component {
     }
   }
 
+  handleCancelButtonClick() {
+
+  }
+
   handleSubmit(data) {
     console.log(data)
   }
@@ -49,6 +55,9 @@ class DonorDashboard extends React.Component {
   }
 
   render() {
+    const buttonMarginStyle = {
+      margin: 12,
+    };
     return (
       <div className="donor-profile-container">
         <div className="donor-avatar-frame">
@@ -97,6 +106,7 @@ class DonorDashboard extends React.Component {
           </div>
           <div className=".geosuggest__group">
             <Geosuggest
+              className={this.state.edittingAddress ? '' : 'hidden'}
               placeholder="Start typing!"
               initialValue="Portland"
               onSuggestSelect={this.onSuggestSelect}
@@ -107,15 +117,28 @@ class DonorDashboard extends React.Component {
             <span className="geosuggest__highlight"></span>
             <span className="geosuggest__bar"></span>
           </div>
-          <FlatButton
+          <RaisedButton
+            style={buttonMarginStyle}
+            primary={true}
             onClick={this.handleEditButtonClick.bind(this)}
             label={this.state.editingButtonTitle}
             />
+          <div className={this.state.isEditing ? 'cancel-button' : 'hidden'}>
+            <RaisedButton
+              style={buttonMarginStyle}
+              secondary={true}
+              hidden={!this.props.isEditing}
+              onClick={this.handleCancelButtonClick.bind(this)}
+              label="Cancel"
+              />
+          </div>
         </form>
       </div>
     );
   }
 }
+
+
 
 DonorDashboard.propTypes = {
   donor: React.PropTypes.object.isRequired
