@@ -70,6 +70,19 @@ module.exports = {
                 });
     },
 
+    getUser() {
+        return axios({
+                    url: '/users/' + localStorage.getItem('token'),
+                    method: 'get',
+                    baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
+                    responseType: 'json',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': localStorage.getItem('token')
+                    }
+                });
+    },
+    
     loggedIn() {
         return !!((typeof window !== "undefined") ? localStorage.getItem('token') : undefined);
     },

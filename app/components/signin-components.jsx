@@ -65,12 +65,20 @@ class SignInPage extends Component {
                 auth.login(email, password)
                     .then((response) => {
                         console.log("hello from login");
+                        console.log(response);
                         localStorage.setItem('token', response.data.authtoken.auth_token);
-                        if (auth.loggedIn()) {
+                        return auth.getUser();
+                    })
+                    .then((response) => {
+                        console.log(response);
+                        console.log(response.data.user.role_id);
+                        localStorage.setItem('role', response.data.user.role_id);
+                        if (auth.loggedIn() && localStorage.getItem('role') == 0) {
                             this.context.router.push('/donation');
                             auth.onChange(true);
-                        } else {
-                            this.setState({ error: "Login Failed" });
+                        } else if (auth.loggedIn() && localStorage.getItem('role') == 1) {
+                            this.context.router.push('/thankyou');
+                            auth.onChange(true);
                         }
                     })
                     .catch((err) => {

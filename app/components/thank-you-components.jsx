@@ -3,8 +3,12 @@ import { Link } from 'react-router';
 import { Headline } from '../components/reusable-components.jsx';
 
 class ThankYou extends React.Component {
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
+		if(localStorage.getItem('role') == 0)
+	    	{
+				this.context.router.push('/');
+	    	}
 	};
 	render() {
 		return (
@@ -14,4 +18,9 @@ class ThankYou extends React.Component {
 		);
 	}
 }
+
+ThankYou.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
+
 module.exports = ThankYou;

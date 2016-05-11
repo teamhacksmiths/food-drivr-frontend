@@ -103,16 +103,17 @@ class UserMenu extends React.Component {
 	handleLogout() {
 		auth.logout()
 			.then(() => {
-				delete localStorage.token;
 				auth.onChange(false);
 			}).catch((err) => {
 				console.log(err);
 			});
 		auth.onChange(false);
+		delete localStorage.getItem('token');
+		delete localStorage.getItem('role');
 	}
 	render() {
 		return (
-			<div className={this.props.showMenu ? 'user-menu-container' : 'user-menu-container hide-menu'}>
+			<div refs="userMenu" className={this.props.showMenu ? 'user-menu-container' : 'user-menu-container hide-menu'}>
 				<div className="user-menu-arrow" />
 				<Link to="/">Dashboard</Link>
 				<Link to="donation">Donate</Link>
@@ -135,11 +136,27 @@ class UserHeader extends React.Component {
 			showMenu: false
 		};
 		this.toggleMenu = this.toggleMenu.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 	toggleMenu() {
-		this.setState({
-			showMenu: !this.state.showMenu
-		});
+			this.setState({
+				showMenu: !this.state.showMenu
+			});
+	}
+	handleClick(event) {
+		if (event.target.className !== 'user-info' && event.target.className !== 'user-menu-container') {
+    			console.log(event.target);
+        	// hide the menu
+      		this.setState({
+				showMenu: false
+			});
+    		}
+	}
+	componentDidMount() {
+	    document.addEventListener('click', this.handleClick);
+	}
+	componentWillUnmount() {
+	    document.removeEventListener('click', this.handleClick);  
 	}
 	render() {
 		const UserHeaderClass = classNames({

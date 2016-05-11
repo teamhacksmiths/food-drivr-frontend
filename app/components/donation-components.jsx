@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -196,11 +197,26 @@ DonateItem.propTypes = {
 	onAddItem: React.PropTypes.func.isRequired
 };
 
-const DonationsList = props => (
-	<div className="donations">
-		<h1 className="business-title text-center text-yellow">BUSINESS NAME</h1>
-		<Donation />
-	</div>
-);
+class DonationsList extends React.Component {
+	constructor(props, context) {
+		super(props, context);
+	    if(localStorage.getItem('role') !== 0)
+	    	{
+				this.context.router.push('/');
+	    	}
+		}
+	render() {
+		return(
+		<div className="donations">
+			<h1 className="business-title text-center text-yellow">BUSINESS NAME</h1>
+			<Donation />
+		</div>
+		);
+	}
+}
+
+DonationsList.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 module.exports = DonationsList;
