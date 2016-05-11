@@ -9,8 +9,8 @@ const HtmlwebpackPlugin = require('html-webpack-plugin');
 const PRODUCTION = process.env.NODE_ENV === 'production';
 const env = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 8080;
-const HOST = process.env.HOST || '0.0.0.0'
-const URL = `${HOST}:${PORT}`
+const HOST = process.env.HOST || 'localhost'; // Set to 0.0.0.0 on cloud9 if needed
+const URL = `http://${HOST}:${PORT}`
 
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
