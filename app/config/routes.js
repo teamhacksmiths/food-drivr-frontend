@@ -33,6 +33,7 @@ var routes = (
 				<Route path="signup/volunteer" component={Registration} header="Volunteer"/>
 			<Route path="donation" component={DonationList} onEnter={requireAuth}/>
 			<Route path="thankyou" component={ThankYou} />
+			<Route path="dashboard" component={DonorDashboard} />
 		</Route>
 	</Router>
 );

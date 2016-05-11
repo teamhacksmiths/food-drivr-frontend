@@ -4,10 +4,10 @@
   "description": "A charity project to help reduce food waste",
   "main": "index.js",
   "scripts": {
-	"setup": "npm install",
+    "setup": "npm install",
     "build": "webpack",
     "start": "webpack-dev-server --progress --colors --inline && npm run build",
-	"compile": "babel --presets react app/scripts/JSX --watch -d app/scripts/JSX-Compiled"
+    "compile": "babel --presets react app/scripts/JSX --watch -d app/scripts/JSX-Compiled"
   },
   "repository": {
     "type": "git",
@@ -42,10 +42,12 @@
   "dependencies": {
     "axios": "^0.11.0",
     "classnames": "^2.2.5",
+    "html-webpack-plugin": "^2.16.1",
     "material-ui": "^0.15.0",
     "react": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
     "react-dom": "^15.0.2",
+    "react-geosuggest": "^1.22.0",
     "react-router": "^2.4.0",
     "react-tap-event-plugin": "^1.0.0"
   }

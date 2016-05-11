@@ -2,6 +2,15 @@ const path = require('path');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const HtmlwebpackPlugin = require('html-webpack-plugin');
+
+//Standard Node environment variables for determining if we are in PRODUCTION
+//To enable / disable the hot module replacement.
+const PRODUCTION = process.env.NODE_ENV === 'production';
+const env = process.env.NODE_ENV || 'development';
+const PORT = process.env.PORT || 8080;
+const HOST = process.env.HOST || '0.0.0.0'
+const URL = `${HOST}:${PORT}`
 
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
@@ -54,8 +63,8 @@ const common = {
 // Default configuration. We will return this if
 // Webpack is called outside of npm.
 if(TARGET === 'start' || !TARGET) {
-	module.exports = merge(common, {
-	  devtool: 'eval-source-map',
+  module.exports = merge(common, {
+    devtool: 'eval-source-map',
       devServer: {
         contentBase: PATHS.build,
 
@@ -70,21 +79,35 @@ if(TARGET === 'start' || !TARGET) {
         // Display only errors to reduce the amount of output.
         stats: 'errors-only',
 
-        // Parse host and port from env so this is easy to customize.
-        //
-        // If you use Vagrant or Cloud9, set
-        // host: process.env.HOST || '0.0.0.0';
-        //
-        // 0.0.0.0 is available to all network devices unlike default
-        // localhost
-        host: process.env.HOST,
-        port: process.env.PORT
+        // Constants defined above take care of logic
+        // For setting host and port
+        host: HOST,
+        port: PORT
       },
-      plugins: [
-		  new webpack.HotModuleReplacementPlugin(),
-		  new OpenBrowserPlugin({
-			url: 'http://localhost:8080'
-		  })
+      plugins: PRODUCTION ? [
+        new webpack.optimize.UglifyJsPlugin({
+
+        }),
+        new webpack.DefinePlugin({
+          'process.env': Object.keys(process.env).reduce(function(o, k) {
+            o[k] = JSON.stringify(process.env[k]);
+            return o;
+          }, {})
+        }),
+        new HtmlwebpackPlugin({
+          title: 'Food Drivr',
+          template: 'index.html'
+        })
+      ] :
+       [
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlwebpackPlugin({
+          title: 'Food Drivr',
+          template: 'index.html'
+        }),
+        new OpenBrowserPlugin({
+          url: URL
+        })
       ]
     });
 }
