@@ -920,3 +920,7 @@ ul {
 .geosuggest-item--active:focus {
   background: #ccc;
 }
+
+.geosuggest-address-select-field {
+		
+}

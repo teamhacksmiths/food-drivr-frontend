@@ -1,50 +1,51 @@
 import React from 'react';
 import Geosuggest from 'react-geosuggest';
 import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Styles from './DonorDashboard.css';
+import ReactSelect from 'react-select';
 
 class DonorDashboard extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       isEditing: false,
-      editingButtonTitle: '',
       editingAddress: false
     };
   }
+
   componentDidMount() {
-    this.setState({
-      isEditing: false,
-      editingButtonTitle: 'Edit Profile'
-    })
+    this.disableEditing()
   }
+
   enableEditing() {
     this.setState({
       isEditing: true,
-      editingButtonTitle: 'Save Profile'
     });
   }
 
   disableEditing() {
     this.setState({
       isEditing: false,
-      editingButtonTitle: 'Edit Profile'
     });
   }
 
   handleEditButtonClick() {
     if (this.state.isEditing) {
-      this.disableEditing()()
+      this.disableEditing()
     } else {
       this.enableEditing()
     }
   }
 
+  getDefaultAddress() {
+
+  }
+
   handleCancelButtonClick() {
 
   }
+
 
   handleSubmit(data) {
     console.log(data)
@@ -102,9 +103,18 @@ class DonorDashboard extends React.Component {
               disabled={!this.state.isEditing}
               type="text"
               hintText="Company Name (Optional)"
+              onEnter={this.handleSubmit.bind(this)}
             />
           </div>
+          <ReactSelect
+            className="geosuggest-address-select-field"
+            name="address-list"
+            value={this.getDefaultAddress.bind(this)}
+            options={this.props.donor.addresses}
+            onChange={this.logChange}
+            />
           <div className=".geosuggest__group">
+
             <Geosuggest
               className={this.state.edittingAddress ? '' : 'hidden'}
               placeholder="Start typing!"
@@ -121,7 +131,7 @@ class DonorDashboard extends React.Component {
             style={buttonMarginStyle}
             primary={true}
             onClick={this.handleEditButtonClick.bind(this)}
-            label={this.state.editingButtonTitle}
+            label={this.state.isEditing ? 'Save Profile' : 'Edit Profile'}
             />
           <div className={this.state.isEditing ? 'cancel-button' : 'hidden'}>
             <RaisedButton
@@ -137,8 +147,6 @@ class DonorDashboard extends React.Component {
     );
   }
 }
-
-
 
 DonorDashboard.propTypes = {
   donor: React.PropTypes.object.isRequired
