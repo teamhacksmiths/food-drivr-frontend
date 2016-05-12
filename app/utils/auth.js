@@ -1,29 +1,27 @@
 import axios from 'axios';
 
 module.exports = {
-	login(email, pass) {
-        // ensure callback is always last argument
-        var token = (typeof window !== "undefined") ? localStorage.getItem('token') : undefined;
-        if (token) {
-        	this.onChange(true);
-            return
-        }
+    login(email, pass) {
+    // ensure callback is always last argument
+    const token = (typeof window !== "undefined") ? localStorage.getItem('token') : undefined;
+    return axios({
+                  url: '/sessions',
+                  method: 'post',
+                  baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
+                  transformRequest: [function(data) {
+                      // Do whatever you want to transform the data
+                      return JSON.stringify(data);
+                  }],
+                  data: { session: { email: email, password: pass } },
+                  responseType: 'json',
+                  headers: { 'Content-Type': 'application/json' }
+              });
 
-        console.log(JSON.stringify({ session: { email: email, password: pass } }));
+    if (token) return this.onChange(true);
 
-        // create new session, pass in email and password as object
-        return axios({
-                url: '/sessions',
-                method: 'post',
-                baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
-                transformRequest: [function(data) {
-                    // Do whatever you want to transform the data
-                    return JSON.stringify(data);
-                }],
-                data: { session: { email: email, password: pass } },
-                responseType: 'json',
-                headers: { 'Content-Type': 'application/json' }
-            });
+    console.log(JSON.stringify({ session: { email: email, password: pass } }));
+
+
     },
 
     register(name, email, pass, passconf, role) {
@@ -70,6 +68,19 @@ module.exports = {
                 });
     },
 
+    getUser() {
+        return axios({
+                    url: '/users/' + localStorage.getItem('token'),
+                    method: 'get',
+                    baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
+                    responseType: 'json',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': localStorage.getItem('token')
+                    }
+                });
+    },
+    
     loggedIn() {
         return !!((typeof window !== "undefined") ? localStorage.getItem('token') : undefined);
     },

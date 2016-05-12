@@ -17,7 +17,7 @@ injectTapEventPlugin();
 function requireAuth(nextState, replace) {
 	if (!auth.loggedIn()) {
 		replace({
-			pathname: '/signin',
+			pathname: '/',
 			state: { nextPathname: nextState.location.pathname }
 		})
 	}
