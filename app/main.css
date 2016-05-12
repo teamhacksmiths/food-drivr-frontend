@@ -99,8 +99,8 @@ ul {
 
 /* Main content */
 .container {
-	width: 100%;
-	min-height: 100%;
+	width: 100vw;
+	min-height: 100vh;
 	max-width: 1450px;
 	padding: 0;
 	position: relative;
