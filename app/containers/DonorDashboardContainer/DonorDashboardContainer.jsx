@@ -33,12 +33,12 @@ export default class DonorDashboardContainer extends React.Component {
   }
 
   componentWillMount() {
-    foodDrivrAPIHelpers.getUserData().then(function(donor){
+    foodDrivrAPIHelpers.getUserData().then(function(user){
+      console.log("Got the user's data: ", user);
       this.setState({
         isLoading: false,
-        donor: donor
       })
-    })
+    }.bind(this))
   }
   render() {
     return (
@@ -48,7 +48,7 @@ export default class DonorDashboardContainer extends React.Component {
        /> :
       <div>
         <DonorDashboard
-          donor={this.donor}
+          donor={this.state.donor}
         />
       </div>
     );

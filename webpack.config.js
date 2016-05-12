@@ -15,7 +15,8 @@ const URL = `http://${HOST}:${PORT}`
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
+  images: path.join(__dirname, 'assets/images')
 };
 
 process.env.BABEL_ENV = TARGET;
@@ -46,14 +47,19 @@ const common = {
           // Parse only app files! Without this it will go through entire project.
           // In addition to being slow, that will most likely result in an error.
           include: PATHS.app
-	  },
+      },
       {
         // Test expects a RegExp! Note the slashes!
         test: /\.css$/,
         loaders: ['style', 'css'],
         // Include accepts either a path or an array of paths.
         include: PATHS.app
-      }
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'file-loader?name=images/[name].[ext]',
+        path: PATHS.images
+      },
 
     ]
   }

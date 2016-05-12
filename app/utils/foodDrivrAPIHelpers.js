@@ -18,7 +18,8 @@ const APIHelpers = {
     return axios.get('https://wastenotfoodtaxi.herokuapp.com/api/v1/users/xtvPuVF5mGE89Vb6nZKU', {
       config
     }).then(function(response){
-      console.log(response);
+      let user = response.data.user;
+      return user;
     }).catch(function(error){
       console.warn('Error: ', error);
     })

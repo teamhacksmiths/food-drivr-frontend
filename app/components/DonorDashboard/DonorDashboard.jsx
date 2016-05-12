@@ -4,6 +4,9 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Styles from './DonorDashboard.css';
 import ReactSelect from 'react-select';
+import AvatarMissing from '../../assets/images/avatar-missing.png';
+import Checkbox from 'material-ui/Checkbox';
+import Toggle from 'material-ui/Toggle';
 
 class DonorDashboard extends React.Component {
   constructor(props){
@@ -62,9 +65,9 @@ class DonorDashboard extends React.Component {
     return (
       <div className="donor-profile-container">
         <div className="donor-avatar-frame">
-          <img class="donor-avatar-image" src={this.props.donor.avatar} />
+          <img class="donor-avatar-image" src={this.props.donor.avatar ? this.props.donor.avatar : AvatarMissing} />
         </div>
-        <form onSubmit={this.handleSubmit}>
+        <form className="donor-dashboard-form" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <TextField
               id="email"
@@ -108,6 +111,12 @@ class DonorDashboard extends React.Component {
               hintText="Company Name (Optional)"
               onEnter={this.handleSubmit.bind(this)}
               authocomplet="organization"
+            />
+          </div>
+          <div className="form-group toggle-block">
+            <Toggle
+              className="toggle"
+              label="Toggle Notifications"
             />
           </div>
           <ReactSelect

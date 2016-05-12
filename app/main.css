@@ -803,11 +803,17 @@ ul {
 	text-align: center;
 }
 
+.donor-dashboard-form {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
 /* Donor dashboard / profile */
 .donor-avatar-image {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
 }
 
 .donor-avatar-frame{
@@ -876,22 +882,22 @@ ul {
 	outline: none;
 }
 .geosuggest__suggests {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  max-height: 25em;
-  padding: 0;
-  margin-top: -1px;
-  background: #fff;
-  border: 2px solid rgb(0, 188, 212);
-  border-top-width: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  list-style: none;
-  z-index: 5;
-  -webkit-transition: max-height 0.2s, border 0.2s;
-          transition: max-height 0.2s, border 0.2s;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	max-height: 25em;
+	padding: 0;
+	margin-top: -1px;
+	background: #fff;
+	border: 2px solid rgb(0, 188, 212);
+	border-top-width: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	list-style: none;
+	z-index: 5;
+	-webkit-transition: max-height 0.2s, border 0.2s;
+					transition: max-height 0.2s, border 0.2s;
 }
 .geosuggest__suggests--hidden {
   max-height: 0;
@@ -925,6 +931,13 @@ ul {
 
 }
 
+.toggle-block {
+	max-width: 250px;
+}
+
+.toggle {
+	margin-bottom: 16px;
+}
 
 /* Loading indicator */
 .fullscreen-loader {
