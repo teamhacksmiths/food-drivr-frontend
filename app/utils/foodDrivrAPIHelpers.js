@@ -3,7 +3,7 @@ const auth_token = 'xtvPuVF5mGE89Vb6nZKU';
 const baseURL = 'https://wastenotfoodtaxi.herokuapp.com/api/v1/';
 const userPath = 'users/'
 const sessionPath = 'sessions/'
-const
+
 
 const config = {
   headers: {'Content-Type': 'application/json'}
@@ -25,7 +25,7 @@ const APIHelpers = {
   },
   postUserData(data) {
     return axios.post(`${baseURL}${userPath}#{auth_token}`, config).then(function(response) {
-      
+
     })
   }
 

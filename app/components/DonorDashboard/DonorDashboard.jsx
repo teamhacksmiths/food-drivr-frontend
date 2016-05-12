@@ -73,6 +73,7 @@ class DonorDashboard extends React.Component {
               disabled={!this.state.isEditing}
               hintText="Email Address"
               required
+              autocomplete="email"
             />
           </div>
           <div className="form-group">
@@ -83,6 +84,7 @@ class DonorDashboard extends React.Component {
               disabled={!this.state.isEditing}
               type="password"
               hintText="Password"
+
             />
           </div>
           <div className="form-group">
@@ -93,6 +95,7 @@ class DonorDashboard extends React.Component {
               disabled={!this.state.isEditing}
               type="phone"
               hintText="Contact Phone"
+              autocomplete="tel"
             />
           </div>
           <div className="form-group">
@@ -104,6 +107,7 @@ class DonorDashboard extends React.Component {
               type="text"
               hintText="Company Name (Optional)"
               onEnter={this.handleSubmit.bind(this)}
+              authocomplet="organization"
             />
           </div>
           <ReactSelect
