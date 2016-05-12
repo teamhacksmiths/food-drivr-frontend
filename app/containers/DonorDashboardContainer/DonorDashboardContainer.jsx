@@ -3,7 +3,7 @@ import DonorDashboard from '../../components/DonorDashboard/DonorDashboard';
 import foodDrivrAPIHelpers from '../../utils/foodDrivrAPIHelpers';
 import FullscreenLoading from '../../components/FullscreenLoading/FullscreenLoading';
 
-const donor = {
+const dummyDonor = {
   name: "Ryan Collins",
   email: 'admin@ryancollins.io',
   phone: '222-222-2222',
@@ -27,7 +27,7 @@ export default class DonorDashboardContainer extends React.Component {
     super(props);
     this.state = {
       isLoading: true,
-      donor: {}
+      donor: dummyDonor
     }
 
   }

@@ -13,7 +13,7 @@ class DonorDashboard extends React.Component {
     super(props);
     this.state = {
       isEditing: false,
-      editingAddress: false
+      isAddingAddress: false
     };
   }
 
@@ -25,6 +25,21 @@ class DonorDashboard extends React.Component {
     this.setState({
       isEditing: true,
     });
+  }
+
+  getAddressList() {
+    let addresses = this.props.donor.addresses;
+    let optionsList = addresses.map((addressObject) => {
+      return {
+        option: addressObject.address,
+        label: addressObject.address,
+        default: addressObject.default
+      };
+    })
+    optionsList.sort(function(a, b) {
+      return (a["default"] === b["default"]) ? 0 : a? -1 : 1;
+    })
+    return optionsList;
   }
 
   disableEditing() {
@@ -87,7 +102,6 @@ class DonorDashboard extends React.Component {
               disabled={!this.state.isEditing}
               type="password"
               hintText="Password"
-
             />
           </div>
           <div className="form-group">
@@ -122,12 +136,11 @@ class DonorDashboard extends React.Component {
           <ReactSelect
             className="geosuggest-address-select-field"
             name="address-list"
-            value={this.getDefaultAddress.bind(this)}
-            options={this.props.donor.addresses}
+            loadOptions={this.getAddressList.bind(this)}
             onChange={this.logChange}
-            />
+            enabled={this.state.isEditing && this.state.isAddingAddress}
+          />
           <div className=".geosuggest__group">
-
             <Geosuggest
               className={this.state.edittingAddress ? '' : 'hidden'}
               placeholder="Start typing!"
@@ -136,7 +149,7 @@ class DonorDashboard extends React.Component {
               location={new google.maps.LatLng(45.523062, -122.676482)}
               radius="20"
               enabled={!this.state.isEditing}
-              />
+            />
             <span className="geosuggest__highlight"></span>
             <span className="geosuggest__bar"></span>
           </div>
@@ -145,7 +158,7 @@ class DonorDashboard extends React.Component {
             primary={true}
             onClick={this.handleEditButtonClick.bind(this)}
             label={this.state.isEditing ? 'Save Profile' : 'Edit Profile'}
-            />
+          />
           <div className={this.state.isEditing ? 'cancel-button' : 'hidden'}>
             <RaisedButton
               style={buttonMarginStyle}
@@ -153,7 +166,7 @@ class DonorDashboard extends React.Component {
               hidden={!this.props.isEditing}
               onClick={this.handleCancelButtonClick.bind(this)}
               label="Cancel"
-              />
+            />
           </div>
         </form>
       </div>
