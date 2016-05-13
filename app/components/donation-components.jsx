@@ -63,7 +63,10 @@ class Donation extends React.Component {
 	}
 
 	handleOpen() {
+		const el = document.getElementsByClassName('btn-disabled')[1];
+		if (!el.classList.contains('btn-disabled')){
 		this.setState({ open: true });
+		}
 	}
 
 	handleClose() {
@@ -114,10 +117,8 @@ class Donation extends React.Component {
 				<div className="donation-list">
 					{donatedItems}
 				</div>
-				{// need a unique class for btn-disabled to prevent btn click for state change ie: snackbar popup
-				}
 				<button
-					className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'}	onClick={this.handleOpen}
+					className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'} onClick={this.handleOpen}
 				>
 					DONATE
 				</button>
