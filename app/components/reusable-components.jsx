@@ -131,11 +131,11 @@ class UserMenu extends React.Component {
 	}
 	render() {
 		return (
-			<div refs="userMenu" className={this.props.showMenu ? 'user-menu-container' : 'user-menu-container hide-menu'}>
+			<div refs="userMenu" className={this.props.showMenu ? 'user-menu-container text-black' : 'user-menu-container hide-menu'}>
 				<div className="user-menu-arrow" />
-				<Link to="/">Dashboard</Link>
-				<Link to="donation">Donate</Link>
-				<Link to="/">Settings</Link>
+				<Link to="/" className="menu-item">Dashboard</Link>
+				<Link to="donation" className="menu-item">Donate</Link>
+				<Link to="/" className="menu-item">Settings</Link>
 				<a className="logout" onClick={this.handleLogout}>Logout</a>
 			</div>
 		);
@@ -183,9 +183,13 @@ class UserHeader extends React.Component {
 			'text-black': window.location.pathname !== '/',
 			'donation-header-user': window.location.pathname === '/donation'
 		});
+		const UserInfoContainerClass = classNames({
+			'text-flex pointer-cursor': true,
+			'text-yellow': window.location.pathname === '/donation'
+		});
 		return (
 			<div className={UserHeaderClass}>
-				<div className="text-flex pointer-cursor" onClick={this.toggleMenu}>
+				<div className={UserInfoContainerClass} onClick={this.toggleMenu}>
 					<div className="user-info">Name Lastname</div>
 				</div>
 				<UserMenu showMenu={this.state.showMenu} />
