@@ -100,36 +100,36 @@ class Registration extends React.Component {
 				this.state.errorEmail == '' &&
 				this.state.errorPasswordConfirmation == '') {
 				this.setState({ error: <CircularProgress /> });
-					auth.register(name, email, password, passwordConfirmation, userRole)
-					.then((response) => {
-						console.log("hello from register")
-						console.log(response.data);
-						console.log(response.status);
-					return auth.login(email, pass);
-					})
-					.then((response) => {
-						console.log("hello from login");
-						console.log(response);
-			            localStorage.setItem('token', response.data.authtoken.auth_token);
-			          	return auth.getUser();
-					})
-					.then((response) => {
-                        console.log(response);
-                        console.log(response.data.user.role_id);
-                        localStorage.setItem('role', response.data.user.role_id);
-                        var role = localStorage.getItem('role');
-                        if (auth.loggedIn() && role !== 1) {
-                            this.context.router.push('/donation');
-                            auth.onChange(true);
-                        } else {
-                            this.context.router.push('/thankyou');
-                            auth.onChange(true);
-                        }
-                    })
-					.catch((err) => {
-						console.log(err);
-						this.setState({ error: 'Registration Failed' });
-					});
+				auth.register(name, email, password, passwordConfirmation, userRole)
+				.then((response) => {
+					console.log("hello from register")
+					console.log(response.data);
+					console.log(response.status);
+					return auth.login(email, password);
+				})
+				.then((response) => {
+					console.log('hello from login');
+					console.log(response);
+					localStorage.setItem('token', response.data.authtoken.auth_token);
+					return auth.getUser();
+				})
+				.then((response) => {
+					console.log(response);
+					console.log(response.data.user.role_id);
+					localStorage.setItem('role', response.data.user.role_id);
+					const role = localStorage.getItem('role');
+					if (auth.loggedIn() && role !== 1) {
+						this.context.router.push('/thankyou?userType=donor');
+						auth.onChange(true);
+					} else {
+						this.context.router.push('/thankyou?userType=volunteer');
+						auth.onChange(true);
+					}
+				})
+				.catch((err) => {
+					console.log(err);
+					this.setState({ error: 'Registration Failed' });
+				});
 			} else {
 				this.setState({ error: 'Can not send request.' })
 			}
