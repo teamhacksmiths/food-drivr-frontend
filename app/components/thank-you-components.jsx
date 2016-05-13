@@ -14,9 +14,9 @@ class ThankYou extends React.Component {
 	componentWillMount() {
 		console.log("Hello from Thank You!");
 		console.log("Current role is " + this.state.role);
-		if (parseInt(this.state.role, 10) !== 1) {
+		if (this.state.role !== 1) {
 			this.context.router.push('/thankyou?userType=donor');
-		} else if (parseInt(this.state.role, 10) !== 0) {
+		} else if (this.state.role !== 0) {
 			this.context.router.push('/thankyou?userType=volunteer');
 		} else {
 			console.log("No Role?");
@@ -25,7 +25,7 @@ class ThankYou extends React.Component {
 	}
 	handleClick() {
 		console.log(this.state.role + " and " + this.props.location.query.userType);
-		if (parseInt(this.state.role, 10) !== 1) {
+		if (this.state.role !== 1) {
 			auth.login(localStorage.getItem('email'), localStorage.getItem('password'))
 				.then((response) => {
 					console.log('hello from login');
@@ -37,7 +37,6 @@ class ThankYou extends React.Component {
 					console.log(response);
 					console.log(response.data.user.role_id);
 					localStorage.setItem('role', response.data.user.role_id);
-					const userRole = localStorage.getItem('role');
 					if (auth.loggedIn()) {
 						this.context.router.push('/donation');
 						auth.onChange(true);
@@ -47,18 +46,18 @@ class ThankYou extends React.Component {
 					console.log(err);
 					this.context.router.push('/');
 				});
-		} else
+		} else {
 			this.context.router.push('/');
+		}
 	}
 	render() {
-		const userType = this.props.location.query.userType;
 		return (
 			<div className="text-center text-white">
 				<WhiteTruckButton />
 				<Headline className="thankyou-header" value="Thank You!" />
-				{parseInt(this.state.role, 10) !== 0 ? <VolunteerThankYou /> : <DonorThankYou />}
-				{parseInt(this.state.role, 10) ? '' : <DonateButton onClick={this.handleClick} />}
-				{parseInt(this.state.role, 10) !==1 ? '' : <AppStoreIcon className="thankyou-appstore-icon" />}
+				{this.state.role !== 0 ? <VolunteerThankYou /> : <DonorThankYou />}
+				{this.state.role ? '' : <DonateButton onClick={this.handleClick} />}
+				{this.state.role !==1 ? '' : <AppStoreIcon className="thankyou-appstore-icon" />}
 			</div>
 		);
 	}
