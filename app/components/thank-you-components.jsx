@@ -12,18 +12,43 @@ class ThankYou extends React.Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 	componentWillMount() {
-		if (!this.state.loggedIn || !this.props.location.query.userType) {
-			this.context.router.push('/');
-		} else if (this.state.role && this.props.location.query.userType !== 'volunteer') {
-			this.context.router.push('/thankyou?userType=volunteer');
-		} else if (!this.state.role && this.props.location.query.userType !== 'donor') {
+		console.log("Hello from Thank You!");
+		console.log("Current role is " + this.state.role);
+		if (parseInt(this.state.role, 10) !== 1) {
 			this.context.router.push('/thankyou?userType=donor');
+		} else if (parseInt(this.state.role, 10) !== 0) {
+			this.context.router.push('/thankyou?userType=volunteer');
 		} else {
+			console.log("No Role?");
 			this.context.router.push('/');
 		}
 	}
 	handleClick() {
-		this.context.router.push('/donation');
+		console.log(this.state.role + " and " + this.props.location.query.userType);
+		if (parseInt(this.state.role, 10) !== 1) {
+			auth.login(localStorage.getItem('email'), localStorage.getItem('password'))
+				.then((response) => {
+					console.log('hello from login');
+					console.log(response);
+					localStorage.setItem('token', response.data.authtoken.auth_token);
+					return auth.getUser();
+				})
+				.then((response) => {
+					console.log(response);
+					console.log(response.data.user.role_id);
+					localStorage.setItem('role', response.data.user.role_id);
+					const userRole = localStorage.getItem('role');
+					if (auth.loggedIn()) {
+						this.context.router.push('/donation');
+						auth.onChange(true);
+					}
+				})
+				.catch((err) => {
+					console.log(err);
+					this.context.router.push('/');
+				});
+		} else
+			this.context.router.push('/');
 	}
 	render() {
 		const userType = this.props.location.query.userType;
@@ -31,9 +56,9 @@ class ThankYou extends React.Component {
 			<div className="text-center text-white">
 				<WhiteTruckButton />
 				<Headline className="thankyou-header" value="Thank You!" />
-				{this.state.role ? <VolunteerThankYou /> : <DonorThankYou />}
-				{this.state.role ? '' : <DonateButton onClick={this.handleClick} />}
-				<AppStoreIcon className="thankyou-appstore-icon" />
+				{parseInt(this.state.role, 10) !== 0 ? <VolunteerThankYou /> : <DonorThankYou />}
+				{parseInt(this.state.role, 10) ? '' : <DonateButton onClick={this.handleClick} />}
+				{parseInt(this.state.role, 10) !==1 ? '' : <AppStoreIcon className="thankyou-appstore-icon" />}
 			</div>
 		);
 	}
@@ -75,7 +100,7 @@ const DonorThankYou = props => (
 
 const DonateButton = props => (
 	<button className="thankyou-btn-donate" onClick={props.onClick}>
-		DONATE
+		GET STARTED
 	</button>
 );
 

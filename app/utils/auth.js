@@ -17,9 +17,6 @@ module.exports = {
             data: { session: { email: email, password: pass } },
             responseType: 'json',
             headers: { 'Content-Type': 'application/json' },
-            validateStatus: function (status) {
-               return status === 200; // default
-            }
         });
 
         if (token) return this.onChange(true)

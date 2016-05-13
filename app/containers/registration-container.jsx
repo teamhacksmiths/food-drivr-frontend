@@ -92,6 +92,7 @@ class Registration extends React.Component {
 
 	_handleSubmitUser(e) {
 		if (e.keyCode === 13 || e.button === 0) {
+			console.log(this.props.route.header);
 			const { name, email, password, passwordConfirmation } = this.state;
 			const userRole = this.props.route.header === 'Donor' ? 0 : 1;
 			e.preventDefault();
@@ -105,25 +106,11 @@ class Registration extends React.Component {
 					console.log("hello from register")
 					console.log(response.data);
 					console.log(response.status);
-					return auth.login(email, password);
-				})
-				.then((response) => {
-					console.log('hello from login');
-					console.log(response);
-					localStorage.setItem('token', response.data.authtoken.auth_token);
-					return auth.getUser();
-				})
-				.then((response) => {
-					console.log(response);
-					console.log(response.data.user.role_id);
-					localStorage.setItem('role', response.data.user.role_id);
-					const role = localStorage.getItem('role');
-					if (auth.loggedIn() && role !== 1) {
-						this.context.router.push('/thankyou?userType=donor');
-						auth.onChange(true);
-					} else {
-						this.context.router.push('/thankyou?userType=volunteer');
-						auth.onChange(true);
+					localStorage.setItem('email', email);
+					localStorage.setItem('password', password);
+					const role = localStorage.setItem('role', userRole);
+					if (parseInt(role, 10) !== 1) {
+						this.context.router.push('/thankyou');
 					}
 				})
 				.catch((err) => {
