@@ -86,7 +86,9 @@ const TruckButton = props => (
 );
 
 const WhiteTruckButton = props => (
-	<div className="white-truck-button"></div>
+	<Link to="/">
+		<div className="white-truck-button"></div>
+	</Link>
 );
 
 
