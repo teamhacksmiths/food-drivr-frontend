@@ -2,13 +2,13 @@ import React from 'react';
 import Geosuggest from 'react-geosuggest';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import Styles from './DonorDashboard.css';
 import ReactSelect from 'react-select';
 import AvatarMissing from '../../assets/images/avatar-missing.png';
 import Checkbox from 'material-ui/Checkbox';
 import Toggle from 'material-ui/Toggle';
+import AddressListMenu from '../AddressListMenu/AddressListMenu';
 
-class DonorDashboard extends React.Component {
+class SettingsDashboard extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -133,13 +133,8 @@ class DonorDashboard extends React.Component {
               label="Toggle Notifications"
             />
           </div>
-          <ReactSelect
-            className="geosuggest-address-select-field"
-            name="address-list"
-            loadOptions={this.getAddressList.bind(this)}
-            onChange={this.logChange}
-            enabled={this.state.isEditing && this.state.isAddingAddress}
-          />
+
+          <AddressListMenu />
           <div className=".geosuggest__group">
             <Geosuggest
               className={this.state.edittingAddress ? '' : 'hidden'}
@@ -174,8 +169,8 @@ class DonorDashboard extends React.Component {
   }
 }
 
-DonorDashboard.propTypes = {
+SettingsDashboard.propTypes = {
   donor: React.PropTypes.object.isRequired
 }
 
-export default DonorDashboard;
+export default SettingsDashboard;

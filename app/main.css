@@ -508,12 +508,12 @@ ul {
 
 .btn-donation {
 	width: 65px;
-    height: 56px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    background-image: url('/images/add-button.svg');
-    background-repeat: no-repeat;
+	height: 56px;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	background-image: url('/images/add-button.svg');
+	background-repeat: no-repeat;
 }
 
 .btn-del-donation {
@@ -529,13 +529,13 @@ ul {
 
 .btn-donate {
 	width: 46%;
-    height: 70px;
-    background-color: #f7bd4b;
-    border: none;
-    color: white;
-    font-size: 24px;
-    margin: 50px auto;
-    display: block;
+	height: 70px;
+	background-color: #f7bd4b;
+	border: none;
+	color: white;
+	font-size: 24px;
+	margin: 50px auto;
+	display: block;
 }
 
 .btn-disabled {
@@ -832,12 +832,12 @@ ul {
  * The geosuggest module
  */
 .geosuggest {
-  font-size: 18px;
-  font-size: 1rem;
-  position: relative;
-  width: 50%;
-  margin: 1em auto;
-  text-align: left;
+	font-size: 18px;
+	font-size: 1rem;
+	position: relative;
+	width: 50%;
+	margin: 1em auto;
+	text-align: left;
 }
 .geosuggest__input {
 	font-size: 18px;
@@ -929,7 +929,7 @@ ul {
 
 /* Customizing the address select field*/
 .geosuggest-address-select-field {
-	
+
 }
 
 .toggle-block {
@@ -957,6 +957,17 @@ ul {
 
 }
 
+
+/* Add an address button */
+.btn-add-address {
+	width: 65px;
+	height: 56px;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	background-image: url('/images/add-button.svg');
+	background-repeat: no-repeat;
+}
 
 /**
  * React Select

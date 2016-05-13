@@ -116,7 +116,7 @@ class UserMenu extends React.Component {
 				<div className="user-menu-arrow" />
 				<Link to="/">Dashboard</Link>
 				<Link to="donation">Donate</Link>
-				<Link to="/">Settings</Link>
+				<Link to="/dashboard">Settings</Link>
 				<Link to="/" className="logout" onClick={this.handleLogout}>Logout</Link>
 			</div>
 		);

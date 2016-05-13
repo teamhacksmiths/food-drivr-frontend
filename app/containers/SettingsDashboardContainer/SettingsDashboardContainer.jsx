@@ -1,5 +1,5 @@
 import React from 'react';
-import DonorDashboard from '../../components/DonorDashboard/DonorDashboard';
+import SettingsDashboard from '../../components/SettingsDashboard/SettingsDashboard';
 import foodDrivrAPIHelpers from '../../utils/foodDrivrAPIHelpers';
 import FullscreenLoading from '../../components/FullscreenLoading/FullscreenLoading';
 
@@ -11,17 +11,17 @@ const dummyDonor = {
   password: 'password123',
   addresses: [
     {
-      address: "123 Main St., Corolla NC, 27927",
+      fullAddress: "123 Main St., Corolla NC, 27927",
       default: true
     },
     {
-      address: '2121 Main St. Springfield, OH, 20202',
+      fullAddress: '2121 Main St. Springfield, OH, 20202',
       default: false
     }
   ]
 };
 
-export default class DonorDashboardContainer extends React.Component {
+export default class SettingsDashboardContainer extends React.Component {
 
   constructor(props) {
     super(props);
@@ -33,12 +33,16 @@ export default class DonorDashboardContainer extends React.Component {
   }
 
   componentWillMount() {
-    foodDrivrAPIHelpers.getUserData().then(function(user){
-      console.log("Got the user's data: ", user);
-      this.setState({
-        isLoading: false,
-      })
-    }.bind(this))
+    this.setState({
+      isLoading: false,
+      donor: dummyDonor
+    });
+    // foodDrivrAPIHelpers.getUserData().then(function(user){
+    //   console.log("Got the user's data: ", user);
+    //   this.setState({
+    //     isLoading: false,
+    //   })
+    // }.bind(this))
   }
   render() {
     return (
@@ -47,7 +51,7 @@ export default class DonorDashboardContainer extends React.Component {
         isLoading={this.state.isLoading}
        /> :
       <div>
-        <DonorDashboard
+        <SettingsDashboard
           donor={this.state.donor}
         />
       </div>
