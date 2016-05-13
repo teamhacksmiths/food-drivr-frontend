@@ -23,15 +23,24 @@ const Header = React.createClass({
 
 	render() {
 		let headerButton = <AppStoreIcon />;
+		let logInButton = <Login />;
 		if (window.location.pathname === '/donation') {
 			headerButton = <TruckButton />;
+		} else if (window.location.pathname === '/thankyou') {
+			headerButton = '';
 		} else if (window.location.pathname !== '/') {
 			headerButton = <BackButton />;
+		}
+
+		if (window.location.pathname !== '/thankyou' && (this.state.loggedIn || window.location.pathname === '/donation')) {
+			logInButton = <UserHeader />;
+		} else if (window.location.pathname === '/thankyou') {
+			logInButton = '';
 		}
 		return (
 			<div className={window.location.pathname === '/donation' ? 'donation-header text-flex' : 'header text-flex'}>
 				{headerButton}
-				{this.state.loggedIn || window.location.pathname === '/donation' ? <UserHeader /> : <Login />}
+				{logInButton}
 			</div>
 		);
 	}
@@ -74,6 +83,10 @@ AppStoreIcon.propTypes = {
 
 const TruckButton = props => (
 	<div className="truck-button"></div>
+);
+
+const WhiteTruckButton = props => (
+	<div className="white-truck-button"></div>
 );
 
 
@@ -159,7 +172,7 @@ class UserHeader extends React.Component {
 	    document.addEventListener('click', this.handleClick);
 	}
 	componentWillUnmount() {
-	    document.removeEventListener('click', this.handleClick);  
+	    document.removeEventListener('click', this.handleClick);
 	}
 	render() {
 		const UserHeaderClass = classNames({
@@ -207,5 +220,6 @@ module.exports = {
 	Footer,
 	Headline,
 	ScrollDownButton,
-	AppStoreIcon
+	AppStoreIcon,
+	WhiteTruckButton
 };

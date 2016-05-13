@@ -13,8 +13,8 @@ export default class App extends React.Component {
 			'blue-background': window.location.pathname === '/',
 			'red-background': window.location.pathname === '/signup' || window.location.pathname === '/signin',
 			'lightgrey-background': window.location.pathname === '/donation',
-			'yellow-background': window.location.pathname === '/signup/donor',
-			'lightblue-background': window.location.pathname === '/signup/volunteer'
+			'yellow-background': window.location.href.indexOf('donor') > -1,
+			'lightblue-background': window.location.href.indexOf('volunteer') > -1
 		});
 		return (
 			<MuiThemeProvider muiTheme={getMuiTheme()}>
