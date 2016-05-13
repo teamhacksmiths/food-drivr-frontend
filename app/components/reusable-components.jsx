@@ -183,10 +183,13 @@ class UserHeader extends React.Component {
 			'text-black': window.location.pathname !== '/',
 			'donation-header-user': window.location.pathname === '/donation'
 		});
+		const UserInfoContainerClass = classNames({
 			'text-flex pointer-cursor': true,
+			'text-yellow': window.location.pathname === '/donation'
 		});
 		return (
 			<div className={UserHeaderClass}>
+				<div className={UserInfoContainerClass} onClick={this.toggleMenu}>
 					<div className="user-info">Name Lastname</div>
 				</div>
 				<UserMenu showMenu={this.state.showMenu} />
