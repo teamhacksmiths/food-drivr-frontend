@@ -557,19 +557,6 @@ ul {
     margin-top: 20px;
 }
 
-/*.new-donation-input {
-	height: 55px;
-    border: none;
-    padding-left: 15px;
-    margin-right: 45px;
-    letter-spacing: 0.9px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
-    background: transparent;
-    border-bottom: solid 2px #b0aeae;
-    color:  #202020;
-}*/
-
 .new-donation-title,
 .donated-name {
 	width: 100%;
@@ -588,6 +575,39 @@ ul {
     font-family: 'Open Sans', sans-serif;
 }
 
+/*************************************************************/
+/*                         THANK YOU                         */
+/*************************************************************/
+.thankyou-header {
+	font-family: "OpenSans", sans-serif;
+	margin-top: 70px;
+}
+
+.thankyou-appstore-icon>img {
+	margin-bottom: 80px;
+}
+
+.white-truck-button {
+	background-image: url("/images/food-drivr-logo.svg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 55px;
+	height: 55px;
+	margin: auto;
+}
+
+.thankyou-btn-donate {
+	width: 46%;
+	max-width: 300px;
+	min-width: 200px;
+    height: 70px;
+    background-color: white;
+    border: none;
+    color: rgb(247, 179, 43);
+    font-size: 24px;
+    margin: 50px auto;
+    display: block;
+}
 
 /*************************************************************/
 /*                         FOOTER                            */
