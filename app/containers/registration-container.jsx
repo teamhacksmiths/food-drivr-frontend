@@ -93,18 +93,19 @@ class Registration extends React.Component {
 	_handleSubmitUser(e) {
 		if (e.keyCode === 13 || e.button === 0) {
 			const { name, email, password, passwordConfirmation } = this.state;
-			const role = this.props.route.header === 'Donor' ? 0 : 1;
+			const userRole = this.props.route.header === 'Donor' ? 0 : 1;
 			e.preventDefault();
 			if (this.state.errorName == '' &&
 				this.state.errorPassword == '' &&
 				this.state.errorEmail == '' &&
 				this.state.errorPasswordConfirmation == '') {
 				this.setState({ error: <CircularProgress /> });
-					auth.register(name, email, password, passwordConfirmation, role)
+					auth.register(name, email, password, passwordConfirmation, userRole)
 					.then((response) => {
 						console.log("hello from register")
 						console.log(response.data);
-						return auth.login(email, password);
+						console.log(response.status);
+					return auth.login(email, pass);
 					})
 					.then((response) => {
 						console.log("hello from login");
@@ -116,8 +117,8 @@ class Registration extends React.Component {
                         console.log(response);
                         console.log(response.data.user.role_id);
                         localStorage.setItem('role', response.data.user.role_id);
-                        var role = response.data.user.role_id;
-                        if (auth.loggedIn() && role != 1) {
+                        var role = localStorage.getItem('role');
+                        if (auth.loggedIn() && role !== 1) {
                             this.context.router.push('/donation');
                             auth.onChange(true);
                         } else {

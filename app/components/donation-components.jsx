@@ -89,12 +89,12 @@ class Donation extends React.Component {
 				label="Cancel"
 				primary
 				onTouchTap={this.handleClose}
-				keyboardFocused={true}
 			/>,
 			<FlatButton
 				label="Donate"
 				primary
 				onTouchTap={this.handleClose}
+				keyboardFocused={true}
 			/>,
 		];
 
@@ -114,6 +114,8 @@ class Donation extends React.Component {
 				<div className="donation-list">
 					{donatedItems}
 				</div>
+				{// need a unique class for btn-disabled to prevent btn click for state change ie: snackbar popup
+				}
 				<button
 					className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'}	onClick={this.handleOpen}
 				>
@@ -201,6 +203,12 @@ DonateItem.propTypes = {
 class DonationsList extends React.Component {
 	constructor(props, context) {
 		super(props, context);
+	}
+	componentWillMount() {
+		var role = localStorage.getItem('role');
+		if (parseInt(role) !== 0 ) {
+		this.context.router.push('/');
+		}
 	}
 	render() {
 		return(
