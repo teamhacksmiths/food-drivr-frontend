@@ -9,7 +9,7 @@ const Header = React.createClass({
 			loggedIn: auth.loggedIn()
 		};
 	},
-
+e
 	componentWillMount() {
 		auth.onChange = this.updateAuth;
 		if (this.state.loggedIn === true) {
@@ -23,15 +23,24 @@ const Header = React.createClass({
 
 	render() {
 		let headerButton = <AppStoreIcon />;
+		let logInButton = <Login />;
 		if (window.location.pathname === '/donation') {
 			headerButton = <TruckButton />;
+		} else if (window.location.pathname === '/thankyou') {
+			headerButton = '';
 		} else if (window.location.pathname !== '/') {
 			headerButton = <BackButton />;
+		}
+
+		if (window.location.pathname !== '/thankyou' && (this.state.loggedIn || window.location.pathname === '/donation')) {
+			logInButton = <UserHeader />;
+		} else if (window.location.pathname === '/thankyou') {
+			logInButton = '';
 		}
 		return (
 			<div className={window.location.pathname === '/donation' ? 'donation-header text-flex' : 'header text-flex'}>
 				{headerButton}
-				{this.state.loggedIn || window.location.pathname === '/donation' ? <UserHeader /> : <Login />}
+				{logInButton}
 			</div>
 		);
 	}
@@ -76,6 +85,12 @@ const TruckButton = props => (
 	<div className="truck-button"></div>
 );
 
+const WhiteTruckButton = props => (
+	<Link to="/">
+		<div className="white-truck-button"></div>
+	</Link>
+);
+
 
 const Login = props => (
 		<h3 className="text-margin-left source-sans">
@@ -96,28 +111,32 @@ ScrollDownButton.propTypes = {
 };
 
 class UserMenu extends React.Component {
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 		this.displayName = 'UserMenu';
+		this.handleLogout = this.handleLogout.bind(this);
 	}
 	handleLogout() {
 		auth.logout()
 			.then(() => {
-				delete localStorage.token;
+				console.log("You have been logged out!");
+				localStorage.clear();
 				auth.onChange(false);
+				this.context.router.push('/');
 			}).catch((err) => {
 				console.log(err);
 			});
 		auth.onChange(false);
+		localStorage.clear();
 	}
 	render() {
 		return (
-			<div className={this.props.showMenu ? 'user-menu-container' : 'user-menu-container hide-menu'}>
+			<div refs="userMenu" className={this.props.showMenu ? 'user-menu-container text-black' : 'user-menu-container hide-menu'}>
 				<div className="user-menu-arrow" />
-				<Link to="/">Dashboard</Link>
-				<Link to="donation">Donate</Link>
-				<Link to="/dashboard">Settings</Link>
-				<Link to="/" className="logout" onClick={this.handleLogout}>Logout</Link>
+				<Link to="/" className="menu-item">Dashboard</Link>
+				<Link to="donation" className="menu-item">Donate</Link>
+				<Link to="/dashboard" className="menu-item">Settings</Link>
+				<a className="logout" onClick={this.handleLogout}>Logout</a>
 			</div>
 		);
 	}
@@ -135,11 +154,27 @@ class UserHeader extends React.Component {
 			showMenu: false
 		};
 		this.toggleMenu = this.toggleMenu.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 	toggleMenu() {
-		this.setState({
-			showMenu: !this.state.showMenu
-		});
+			this.setState({
+				showMenu: !this.state.showMenu
+			});
+	}
+	handleClick(event) {
+		if (event.target.className !== 'user-info' && event.target.className !== 'user-menu-container') {
+    			console.log(event.target);
+        	// hide the menu
+      		this.setState({
+				showMenu: false
+			});
+    		}
+	}
+	componentDidMount() {
+	    document.addEventListener('click', this.handleClick);
+	}
+	componentWillUnmount() {
+	    document.removeEventListener('click', this.handleClick);
 	}
 	render() {
 		const UserHeaderClass = classNames({
@@ -148,9 +183,13 @@ class UserHeader extends React.Component {
 			'text-black': window.location.pathname !== '/',
 			'donation-header-user': window.location.pathname === '/donation'
 		});
+		const UserInfoContainerClass = classNames({
+			'text-flex pointer-cursor': true,
+			'text-yellow': window.location.pathname === '/donation'
+		});
 		return (
 			<div className={UserHeaderClass}>
-				<div className="text-flex pointer-cursor" onClick={this.toggleMenu}>
+				<div className={UserInfoContainerClass} onClick={this.toggleMenu}>
 					<div className="user-info">Name Lastname</div>
 				</div>
 				<UserMenu showMenu={this.state.showMenu} />
@@ -187,5 +226,6 @@ module.exports = {
 	Footer,
 	Headline,
 	ScrollDownButton,
-	AppStoreIcon
+	AppStoreIcon,
+	WhiteTruckButton
 };

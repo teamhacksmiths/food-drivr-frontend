@@ -103,7 +103,7 @@ ul {
 
 /* Main content */
 .container {
-	width: 100vw;
+	width: 100%;
 	min-height: 100vh;
 	max-width: 1450px;
 	padding: 0;
@@ -186,17 +186,16 @@ ul {
 
 .user-menu-container {
 	top: 66px;
-    position: absolute;
-    right: calc( 50% - 70px);
-    text-align: right;
-    background: #ff1e40;
-    padding: 12px;
-    width: 140px;
-    border-style: solid;
-    font-size: 16px;
-    border-width: 1px;
-    box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
-    z-index: 99;
+	position: absolute;
+	right: calc( 50% - 70px);
+	text-align: right;
+	background: white;
+	padding: 12px;
+	width: 200px;
+	font-size: 16px;
+	box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
+	border: solid 1px #979797;
+	z-index: 99;
 }
 
 .user-menu-container>a {
@@ -207,20 +206,24 @@ ul {
 	width: 20px;
     height: 20px;
     position: absolute;
-    background: #ff1e40;
-    top: -11px;
+    background: white;
+	border-top: solid 1px #979797;
+	border-left: solid 1px #979797;
+	top: -11px;
     -ms-transform: rotate(7deg);
     -webkit-transform: rotate(7deg);
     transform: rotate(45deg);
-    right: calc( 50% - 14px);
-    border-top-style: solid;
-    border-left-style: solid;
-    border-width: 1px;
+    right: 20%;
+	box-shadow: -2px -2px 4px -1px rgba(0,0,0,0.2);
 }
 
 .user-info {
 	margin-right: 20px;
     margin-top: 18px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	letter-spacing: 4px;
+	font-weight: bold;
 }
 
 .user-avatar>img {
@@ -230,9 +233,30 @@ ul {
 
 .logout {
 	border-top-style: solid;
-    border-width: 1px;
-    margin-top: 10px;
-    padding-top: 5px;
+	border-width: 3px;
+	margin-top: 10px;
+	border-color: #979797;
+	padding: 12px 0;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	letter-spacing: 4px;
+	font-weight: bold;
+	color: black;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.logout:hover {
+	color: black;
+}
+
+.menu-item {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	letter-spacing: 4px;
+    margin-bottom: 20px;
+	color: black;
+	text-transform: uppercase;
 }
 
 /* Homepage Elements */
@@ -556,23 +580,10 @@ ul {
 }
 
 .donation-list {
-	height: 47vh;
+	height: 45vh;
     overflow-x: hidden;
     margin-top: 20px;
 }
-
-/*.new-donation-input {
-	height: 55px;
-    border: none;
-    padding-left: 15px;
-    margin-right: 45px;
-    letter-spacing: 0.9px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
-    background: transparent;
-    border-bottom: solid 2px #b0aeae;
-    color:  #202020;
-}*/
 
 .new-donation-title,
 .donated-name {
@@ -592,6 +603,39 @@ ul {
     font-family: 'Open Sans', sans-serif;
 }
 
+/*************************************************************/
+/*                         THANK YOU                         */
+/*************************************************************/
+.thankyou-header {
+	font-family: "OpenSans", sans-serif;
+	margin-top: 70px;
+}
+
+.thankyou-appstore-icon>img {
+	margin-bottom: 80px;
+}
+
+.white-truck-button {
+	background-image: url("/images/food-drivr-logo.svg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 55px;
+	height: 55px;
+	margin: auto;
+}
+
+.thankyou-btn-donate {
+	width: 46%;
+	max-width: 300px;
+	min-width: 200px;
+    height: 70px;
+    background-color: white;
+    border: none;
+    color: rgb(247, 179, 43);
+    font-size: 24px;
+    margin: 50px auto;
+    display: block;
+}
 
 /*************************************************************/
 /*                         FOOTER                            */

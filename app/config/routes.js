@@ -18,7 +18,7 @@ injectTapEventPlugin();
 function requireAuth(nextState, replace) {
 	if (!auth.loggedIn()) {
 		replace({
-			pathname: '/signin',
+			pathname: '/',
 			state: { nextPathname: nextState.location.pathname }
 		})
 	}
@@ -31,10 +31,11 @@ var routes = (
 			<Route path="signin" component={SignInPage} />
 			<Route path="signup" component={SignUpPage} />
 			<Route path="signup/donor" component={Registration} header="Donor"/>
-				<Route path="signup/volunteer" component={Registration} header="Volunteer"/>
+			<Route path="signup/volunteer" component={Registration} header="Volunteer"/>
 			<Route path="donation" component={DonationList} onEnter={requireAuth}/>
 			<Route path="thankyou" component={ThankYou} />
 			<Route path="dashboard" component={SettingsDashboardContainer} />
+			<Route path="thankyou/:userType" component={ThankYou} />
 		</Route>
 	</Router>
 );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -62,7 +63,10 @@ class Donation extends React.Component {
 	}
 
 	handleOpen() {
+		const el = document.getElementsByClassName('btn-disabled')[1];
+		if (!el.classList.contains('btn-disabled')){
 		this.setState({ open: true });
+		}
 	}
 
 	handleClose() {
@@ -93,6 +97,7 @@ class Donation extends React.Component {
 				label="Donate"
 				primary
 				onTouchTap={this.handleClose}
+				keyboardFocused={true}
 			/>,
 		];
 
@@ -113,7 +118,7 @@ class Donation extends React.Component {
 					{donatedItems}
 				</div>
 				<button
-					className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'}	onClick={this.handleOpen}
+					className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'} onClick={this.handleOpen}
 				>
 					DONATE
 				</button>
@@ -196,11 +201,28 @@ DonateItem.propTypes = {
 	onAddItem: React.PropTypes.func.isRequired
 };
 
-const DonationsList = props => (
-	<div className="donations">
-		<h1 className="business-title text-center text-yellow">BUSINESS NAME</h1>
-		<Donation />
-	</div>
-);
+class DonationsList extends React.Component {
+	constructor(props, context) {
+		super(props, context);
+	}
+	componentWillMount() {
+		var role = localStorage.getItem('role');
+		if (parseInt(role) !== 0 ) {
+		this.context.router.push('/');
+		}
+	}
+	render() {
+		return(
+		<div className="donations">
+			<h1 className="business-title text-center text-yellow">BUSINESS NAME</h1>
+			<Donation />
+		</div>
+		);
+	}
+}
+
+DonationsList.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 module.exports = DonationsList;
