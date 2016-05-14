@@ -10,10 +10,10 @@ import SignUpPage from '../components/signup-components.jsx';
 import DonationList from '../components/donation-components.jsx';
 import ThankYou from '../components/thank-you-components.jsx';
 import Registration from '../containers/registration-container.jsx';
-import SettingsDashboardContainer from '../containers/SettingsDashboardContainer/SettingsDashboardContainer';
 import auth from '../utils/auth.js';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import * as Pages from '../pages';
+import { UserProfilePage } from 'pages';
+
 injectTapEventPlugin();
 
 function requireAuth(nextState, replace) {
@@ -35,7 +35,7 @@ var routes = (
 			<Route path="signup/volunteer" component={Registration} header="Volunteer"/>
 			<Route path="donation" component={DonationList} onEnter={requireAuth}/>
 			<Route path="thankyou" component={ThankYou} />
-			<Route path="user/profile" component={Pages.UserProfilePage} />
+			<Route path="profile" component={UserProfilePage} onEnter={requireAuth} />
 			<Route path="thankyou/:userType" component={ThankYou} />
 		</Route>
 	</Router>

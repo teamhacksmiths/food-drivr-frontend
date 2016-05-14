@@ -1,6 +1,8 @@
 import React from 'react';
 import SettingsDashboard from '../../components/SettingsDashboard/SettingsDashboard';
 import FullscreenLoading from '../../components/FullscreenLoading/FullscreenLoading';
+import auth from '../../utils/auth.js';
+
 
 const dummyUser = {
   name: "Ryan Collins",
@@ -11,10 +13,12 @@ const dummyUser = {
   password: 'password123',
   addresses: [
     {
+      key: 1,
       fullAddress: "123 Main St., Corolla NC, 27927",
       default: true
     },
     {
+      key: 2,
       fullAddress: '2121 Main St. Springfield, OH, 20202',
       default: false
     }
@@ -22,15 +26,17 @@ const dummyUser = {
 };
 
 class UserProfilePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: true,
-      user: dummyDonor
-    }
+  constructor(props, context) {
+    super(props, context);
+      this.state = {
+        role: parseInt(localStorage.getItem('role'), 10),
+        loggedIn: auth.loggedIn(),
+        isLoading: true,
+        user: dummyUser
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubit(params) {
+  handleSubmit(params) {
 
   }
   render() {
@@ -42,6 +48,7 @@ class UserProfilePage extends React.Component {
       <div>
         <SettingsDashboard
           user={this.state.user}
+          handleSubmit={this.handleSubmit}
         />
       </div>
     )
