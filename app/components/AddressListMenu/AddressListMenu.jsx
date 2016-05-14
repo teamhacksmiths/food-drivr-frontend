@@ -18,7 +18,7 @@ const iconButtonElement = (
     <MoreVertIcon color={grey400} />
   </IconButton>
 )
-
+{/* Right menu item for each address */}
 class RightMenuItem extends React.Component {
   render() {
     return (
@@ -33,7 +33,6 @@ class RightMenuItem extends React.Component {
   }
 }
 
-
 class AddressListItem extends React.Component {
   render() {
     return(
@@ -44,8 +43,11 @@ class AddressListItem extends React.Component {
   }
 }
 
-
 export default class AddressListMenu extends React.Component {
+  constructor(props) {
+    super(props);
+    this.renderAddressNodes = () => this.renderAddressNodes();
+  }
   renderAddressNodes() {
     return(
       this.props.addresses.map((address, i) => {
@@ -61,7 +63,7 @@ export default class AddressListMenu extends React.Component {
   render() {
     return(
       <List>
-        {this.renderAddressNodes()}
+        {this.renderAddressNodes}
       </List>
     );
   }
