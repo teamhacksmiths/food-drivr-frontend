@@ -54,7 +54,7 @@ export default class AddressListMenu extends React.Component {
             key={i}
             address={address}
           />
-      )
+        )
       })
     )
   }
