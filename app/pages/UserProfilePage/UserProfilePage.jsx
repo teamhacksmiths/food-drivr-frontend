@@ -1,12 +1,12 @@
 import React from 'react';
 import SettingsDashboard from '../../components/SettingsDashboard/SettingsDashboard';
-import foodDrivrAPIHelpers from '../../utils/foodDrivrAPIHelpers';
 import FullscreenLoading from '../../components/FullscreenLoading/FullscreenLoading';
 
-const dummyDonor = {
+const dummyUser = {
   name: "Ryan Collins",
   email: 'admin@ryancollins.io',
   phone: '222-222-2222',
+  role_id: 0,
   avatar: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAQyAAAAJDU3YWY4Nzk1LWQ0YzEtNGIyMy1iOWI3LTBmMTllMmI1Y2Q5NQ.jpg',
   password: 'password123',
   addresses: [
@@ -21,40 +21,36 @@ const dummyDonor = {
   ]
 };
 
-export default class SettingsDashboardContainer extends React.Component {
-
+class UserProfilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
-      donor: dummyDonor
+      user: dummyDonor
     }
-
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+  handleSubit(params) {
 
-  componentWillMount() {
-    this.setState({
-      isLoading: false,
-      donor: dummyDonor
-    });
-    // foodDrivrAPIHelpers.getUserData().then(function(user){
-    //   console.log("Got the user's data: ", user);
-    //   this.setState({
-    //     isLoading: false,
-    //   })
-    // }.bind(this))
   }
   render() {
-    return (
+    return(
       this.state.isLoading ?
       <FullscreenLoading
         isLoading={this.state.isLoading}
        /> :
       <div>
         <SettingsDashboard
-          donor={this.state.donor}
+          user={this.state.user}
         />
       </div>
-    );
+    )
   }
 }
+
+UserProfilePage.propTypes = {
+  errors: React.PropTypes.array,
+  user: React.PropTypes.object.isRequired
+}
+
+export default UserProfilePage;

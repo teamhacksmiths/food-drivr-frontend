@@ -9,7 +9,6 @@ const Header = React.createClass({
 			loggedIn: auth.loggedIn()
 		};
 	},
-e
 	componentWillMount() {
 		auth.onChange = this.updateAuth;
 		if (this.state.loggedIn === true) {

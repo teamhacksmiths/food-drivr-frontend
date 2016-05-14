@@ -26,6 +26,9 @@ class SettingsDashboard extends React.Component {
       isEditing: false,
       addresses: addressList
     };
+    this.handleEditButtonClick = this.handleEditButtonClick.bind(this);
+    this.handleCancelButtonClick = this.handleCancelButtonClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -88,22 +91,29 @@ class SettingsDashboard extends React.Component {
 
   render() {
     const {
-      donor,
+      user,
+      fields: {
+        emailInput,
+        passwordInput,
+        phoneInput,
+        companyInput
+      },
+      handleSubmit,
     } = this.props;
     const buttonMarginStyle = {
       margin: 12,
     };
     return (
-      <div className="donor-profile-container">
-        <div className="donor-avatar-frame">
-          <img class="donor-avatar-image" src={donor.avatar ? donor.avatar : AvatarMissing} />
+      <div className="user-profile-container">
+        <div className="user-avatar-frame">
+          <img class="user-avatar-image" src={user.avatar ? user.avatar : AvatarMissing} />
         </div>
-        <form className="donor-dashboard-form" onSubmit={this.handleSubmit}>
+        <form className="user-dashboard-form" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <TextField
               id="email"
               name="email"
-              defaultValue={donor.email}
+              defaultValue={user.email}
               disabled={!this.state.isEditing}
               hintText="Email Address"
               required
@@ -114,7 +124,7 @@ class SettingsDashboard extends React.Component {
             <TextField
               id="password"
               name="password"
-              defaultValue={donor.password}
+              defaultValue={user.password}
               disabled={!this.state.isEditing}
               type="password"
               hintText="Password"
@@ -124,7 +134,7 @@ class SettingsDashboard extends React.Component {
             <TextField
               id="phone"
               name="phone"
-              defaultValue={donor.phone}
+              defaultValue={user.phone}
               disabled={!this.state.isEditing}
               type="phone"
               hintText="Contact Phone"
@@ -135,11 +145,11 @@ class SettingsDashboard extends React.Component {
             <TextField
               id="company"
               name="company"
-              defaultValue={donor.company}
+              defaultValue={user.company}
               disabled={!this.state.isEditing}
               type="text"
               hintText="Company Name (Optional)"
-              onEnter={this.handleSubmit.bind(this)}
+              onEnter={this.handleSubmit}
               autocomplete="organization"
             />
           </div>
@@ -158,7 +168,7 @@ class SettingsDashboard extends React.Component {
           />*/}
           <div className=".geosuggest__group">
             <Geosuggest
-              className={this.state.edittingAddress ? '' : 'hidden'}
+              className={this.state.editingAddress ? '' : 'hidden'}
               placeholder="Start typing!"
               initialValue="Portland"
               onSuggestSelect={this.onSuggestSelect}
@@ -172,14 +182,14 @@ class SettingsDashboard extends React.Component {
           <RaisedButton
             style={buttonMarginStyle}
             primary={true}
-            onClick={this.handleEditButtonClick.bind(this)}
+            onClick={this.handleEditButtonClick}
             label={this.state.isEditing ? 'Save Profile' : 'Edit Profile'}
           />
           <div className={this.state.isEditing ? 'cancel-button' : 'hidden'}>
             <RaisedButton
               style={buttonMarginStyle}
               secondary={true}
-              onClick={this.handleCancelButtonClick.bind(this)}
+              onClick={this.handleCancelButtonClick}
               label="Cancel"
             />
           </div>
@@ -190,7 +200,9 @@ class SettingsDashboard extends React.Component {
 }
 
 SettingsDashboard.propTypes = {
-  donor: React.PropTypes.object.isRequired
+  fields: React.PropTypes.object.isRequired,
+  user: React.PropTypes.object.isRequired,
+  handleSubmit: React.PropTypes.func.isRequired,
 }
 
 export default SettingsDashboard;

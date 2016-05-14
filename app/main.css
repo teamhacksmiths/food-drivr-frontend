@@ -841,29 +841,29 @@ ul {
 	}
 }
 
-/* Donor profile dashboard components */
-.donor-profile-container {
+/* user profile dashboard components */
+.user-profile-container {
 	min-height: calc(100vh - 135px);
 
 }
 
-.donor-dashboard-form {
+.user-dashboard-form {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 }
 
-/* Donor dashboard / profile */
-.donor-avatar-image {
+/* user dashboard / profile */
+.user-avatar-image {
 	border-radius: 50%;
 	width: 100px;
 	height: 100px;
 }
 
-.donor-avatar-frame{
+.user-avatar-frame{
 	border: 2px solid #fff;
 }
-.donor-avatar-frame,.donor-avatar-frame img{
+.user-avatar-frame,.user-avatar-frame img{
 	width: 100px;
 	height: 100px;
 	-webkit-border-radius: 50px; /* Saf3+, Chrome */
