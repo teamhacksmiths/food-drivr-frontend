@@ -8,12 +8,23 @@ import Checkbox from 'material-ui/Checkbox';
 import Toggle from 'material-ui/Toggle';
 import AddressListMenu from '../AddressListMenu/AddressListMenu';
 
+const addressList = [{
+    key: 1,
+    address: "1213 Coral Lane Corolla, NC 27927",
+    default: false
+  },
+  {
+    key: 2,
+    address: "123 Main St. Somewhere, OH 13223",
+    default: true
+  }];
+
 class SettingsDashboard extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       isEditing: false,
-      isAddingAddress: false
+      addresses: addressList
     };
   }
 
@@ -25,21 +36,6 @@ class SettingsDashboard extends React.Component {
     this.setState({
       isEditing: true,
     });
-  }
-
-  getAddressList() {
-    let addresses = this.props.donor.addresses;
-    let optionsList = addresses.map((addressObject) => {
-      return {
-        option: addressObject.address,
-        label: addressObject.address,
-        default: addressObject.default
-      };
-    })
-    optionsList.sort(function(a, b) {
-      return (a["default"] === b["default"]) ? 0 : a? -1 : 1;
-    })
-    return optionsList;
   }
 
   disableEditing() {
@@ -56,14 +52,9 @@ class SettingsDashboard extends React.Component {
     }
   }
 
-  getDefaultAddress() {
-
-  }
-
   handleCancelButtonClick() {
 
   }
-
 
   handleSubmit(data) {
     console.log(data)
@@ -73,21 +64,46 @@ class SettingsDashboard extends React.Component {
 
   }
 
+  handleAddAddress(address) {
+    this.state.addresses.push({
+      address
+    });
+    this.setState({
+      addresses: this.state.addresses
+    });
+  }
+
+  handleEditAddress(newAddress, index) {
+    let address = this.state.addresses[index];
+
+  }
+
+  handleSetAddressAsDefault() {
+
+  }
+
+  handleDeleteAddress() {
+
+  }
+
   render() {
+    const {
+      donor,
+    } = this.props;
     const buttonMarginStyle = {
       margin: 12,
     };
     return (
       <div className="donor-profile-container">
         <div className="donor-avatar-frame">
-          <img class="donor-avatar-image" src={this.props.donor.avatar ? this.props.donor.avatar : AvatarMissing} />
+          <img class="donor-avatar-image" src={donor.avatar ? donor.avatar : AvatarMissing} />
         </div>
         <form className="donor-dashboard-form" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <TextField
               id="email"
               name="email"
-              defaultValue={this.props.donor.email}
+              defaultValue={donor.email}
               disabled={!this.state.isEditing}
               hintText="Email Address"
               required
@@ -98,7 +114,7 @@ class SettingsDashboard extends React.Component {
             <TextField
               id="password"
               name="password"
-              defaultValue={this.props.donor.password}
+              defaultValue={donor.password}
               disabled={!this.state.isEditing}
               type="password"
               hintText="Password"
@@ -108,7 +124,7 @@ class SettingsDashboard extends React.Component {
             <TextField
               id="phone"
               name="phone"
-              defaultValue={this.props.donor.phone}
+              defaultValue={donor.phone}
               disabled={!this.state.isEditing}
               type="phone"
               hintText="Contact Phone"
@@ -119,12 +135,12 @@ class SettingsDashboard extends React.Component {
             <TextField
               id="company"
               name="company"
-              defaultValue={this.props.donor.company}
+              defaultValue={donor.company}
               disabled={!this.state.isEditing}
               type="text"
               hintText="Company Name (Optional)"
               onEnter={this.handleSubmit.bind(this)}
-              authocomplet="organization"
+              autocomplete="organization"
             />
           </div>
           <div className="form-group toggle-block">
@@ -133,8 +149,13 @@ class SettingsDashboard extends React.Component {
               label="Toggle Notifications"
             />
           </div>
-
-          <AddressListMenu />
+          {/*<AddressListMenu
+            addresses={this.state.addresses}
+            handleAddAddress={this.handleAddAddress.bind(this)}
+            handleEditAddress={this.handleEditAddress.bind(this)}
+            handleSetAddressAsDefault={this.handleSetAddressAsDefault.bind(this)}
+            handleDeleteAddress={this.handleDeleteAddress.bind(this)}
+          />*/}
           <div className=".geosuggest__group">
             <Geosuggest
               className={this.state.edittingAddress ? '' : 'hidden'}
@@ -158,7 +179,6 @@ class SettingsDashboard extends React.Component {
             <RaisedButton
               style={buttonMarginStyle}
               secondary={true}
-              hidden={!this.props.isEditing}
               onClick={this.handleCancelButtonClick.bind(this)}
               label="Cancel"
             />
