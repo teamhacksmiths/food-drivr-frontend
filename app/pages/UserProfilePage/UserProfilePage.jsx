@@ -20,20 +20,14 @@ class UserProfilePage extends React.Component {
   }
 
   fetchUserData() {
-    foodDrivrAPI.getUserData().then((userData) => {
-      const data = userData;
-      console.log(data);
+    foodDrivrAPI.getUserData().then((response) => {
       this.setState({
         isLoading: false,
-        userData: data
-      });
+        userData: response.userData
+      })
     }).catch((error) => {
-      if (error) {
-        this.handleOpenSnackBar('Received a failure response from the server. Error code: ', error);
-      } else {
-        this.handleOpenSnackBar('Received a failure response from the server.');
-      }
-      this.setState({ isLoading: false });
+      this.setState({ loading: false })
+      handleOpenSnackBar("An unknown error occured while loading the network data.")
     });
   }
 
@@ -89,7 +83,7 @@ class UserProfilePage extends React.Component {
       this.state.isLoading ? <FullscreenLoading isLoading={this.state.isLoading} /> :
         <div>
           <UserProfile
-            userData={this.state.userData ? this.state.userData : null}
+            userData={this.state.userData}
             handleSendFormData={this.handleSendFormData}
             handleFormReset={this.handleFormReset}
           />

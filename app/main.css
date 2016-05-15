@@ -1001,6 +1001,15 @@ ul {
 
 }
 
+.error-card-wrapper {
+
+}
+
+.error-card {
+	height: 400px;
+	width: 800px;
+}
+
 .Aligner {
 	display: flex;
 	align-items: center;

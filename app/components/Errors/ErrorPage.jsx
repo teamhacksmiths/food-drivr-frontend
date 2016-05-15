@@ -4,10 +4,6 @@ import FlatButton from 'material-ui/FlatButton';
 import Error404 from '../../assets/images/404-error.jpg';
 
 const styles = {
-  card: {
-    maxWidth: 600,
-    maxHeight: 400
-  },
   imageResponsive: {
     height: 337,
     width: 600
@@ -16,7 +12,7 @@ const styles = {
 
 const ErrorPage = (props) => (
   <div className="error-card-wrapper Aligner">
-    <div className="Aligner-item">
+    <div className="error-card Aligner-item">
       <Card>
         <CardHeader
           title="Something went terribly wrong"

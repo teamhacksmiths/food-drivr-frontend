@@ -1,11 +1,12 @@
 class UserModel {
-  constructor(data){
-    this.email = data.email;
-    this.company = data["company"];
-    this.type = data["type"];
-    this.role = data["role_id"];
-    this.avatar = data["avatar"];
-    this.notifications = data["settings"]["notifications"];
+  constructor(data) {
+    const user = data.user;
+    this.email = user.email;
+    this.company = user.company;
+    this.type = user.type;
+    this.roleId = user["role_id"];
+    this.avatar = user.avatar;
+    this.notifications = user.settings.notifications;
   }
 }
 
