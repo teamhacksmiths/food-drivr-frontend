@@ -1,14 +1,17 @@
-module.exports = {
-    "extends": "airbnb",
-    "plugins": [
-        "react"
-    ],
-    "rules" : {
-        "indent": [1, 'tab'],
-        "react/jsx-indent": 0,
-        "react/jsx-indent-props": 0,
-        "max-len": [1, 200],
-		"comma-dangle": 0,
-		"no-underscore-dangle": 0
-    }
-};
+{
+  "extends": "eslint-config-airbnb",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "comma-dangle": [2, "never"],
+    "func-names": 0,
+    "eol-last": 0
+  },
+  "plugins": [
+    "react",
+  ]
+}

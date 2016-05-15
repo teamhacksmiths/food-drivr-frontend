@@ -35,10 +35,6 @@ class UserProfilePage extends React.Component {
     });
   }
 
-  handleParseUserFromData(data) {
-
-  }
-
   handleFormReset() {
     this.setState({
       userData: foodDrivrAPI.getDummyUser()
