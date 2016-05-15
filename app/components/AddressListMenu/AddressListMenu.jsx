@@ -1,7 +1,7 @@
 import React from 'react';
-import {List, ListItem} from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
-import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
+import { grey400, darkBlack, lightBlack } from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import MapsAddLocation from 'material-ui/svg-icons/maps/add-location';
