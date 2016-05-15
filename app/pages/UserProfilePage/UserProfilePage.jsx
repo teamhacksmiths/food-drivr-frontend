@@ -14,15 +14,29 @@ class UserProfilePage extends React.Component {
         snackBarIsOpen: false,
         snackBarMessage: ''
       };
+    this.fetchUserData();
     this.handleSendFormData = this.handleSendFormData.bind(this);
     this.handleFormReset = this.handleFormReset.bind(this);
     this.handleCloseSnackBar = this.handleCloseSnackBar.bind(this);
   }
-  componentDidMount() {
-    this.setState({
-      isLoading: false,
-      userData: foodDrivrAPI.getDummyUser()
-    })
+
+  fetchUserData() {
+    foodDrivrAPI.getUserData().then((userData) => {
+      console.log(userData)
+      this.setState({
+        isLoading: false,
+        userData: userData
+      })
+    }).catch((error) => {
+      this.setState({
+        isLoading: false,
+      });
+      this.handleOpenSnackBar("Received a failure response from the server")
+    });
+  }
+
+  handleParseUserFromData(data) {
+
   }
 
   handleFormReset() {

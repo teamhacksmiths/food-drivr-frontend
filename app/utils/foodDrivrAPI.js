@@ -1,37 +1,30 @@
 import axios from 'axios';
 import auth from './auth';
+import UserModel from '../models/UserModel';
 
-const dummyUser = {
-    name: "Ryan Collins",
-    email: 'admin@ryancollins.io',
-    phone: '222-222-2222',
-    role_id: 0,
-    avatar: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAQyAAAAJDU3YWY4Nzk1LWQ0YzEtNGIyMy1iOWI3LTBmMTllMmI1Y2Q5NQ.jpg',
-    password: 'password123',
-    notifications: true,
-    addresses: [
-      {
-        key: 1,
-        fullAddress: "123 Main St., Corolla NC, 27927",
-        default: true
-      },
-      {
-        key: 2,
-        fullAddress: '2121 Main St. Springfield, OH, 20202',
-        default: false
-      }
-    ]
+const baseURL = 'https://wastenotfoodtaxi.herokuapp.com/api/v1/users';
+const getAuthToken = () => { return localStorage.getItem('token'); };
+const authToken = getAuthToken();
+const getUserURL = `${baseURL}/${authToken}`;
+
+const config = {
+  headers: {  'Content-Type': 'application/json', 'Authorization': authToken }
 };
 
 const foodDrivrAPI = {
-  getDummyUser() {
-    return dummyUser;
+  getUserData() {
+    return axios
+      .get(getUserURL, config)
+      .then((response) => {
+        const data = respose.data;
+        let user = new UserModel(data);
+        console.log("Created a new user: ", user)
+        return user;
+      });
   },
   postUserDataToAPI(userData) {
     const authToken = localStorage.getItem('token');
-    const config = {
-      headers: {'Content-Type': 'application/json', 'Authorization': authToken}
-    };
+
     const requestURL = `https://wastenotfoodtaxi.herokuapp.com/api/v1/users/${authToken}`
     return axios
       .post(requestURL, config)

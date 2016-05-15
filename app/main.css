@@ -844,24 +844,24 @@ ul {
 /* user profile dashboard components */
 .user-profile-container {
 	min-height: calc(100vh - 135px);
-
 }
 
 .user-dashboard-form {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	margin-top: 50px;
 }
 
 /* user dashboard / profile */
 .user-avatar-image {
 	border-radius: 50%;
-	width: 100px;
-	height: 100px;
+	width: 75px;
+	height: 75px;
 }
 
 .user-avatar-frame{
-	border: 2px solid #fff;
+	border: 2px solid white;
 }
 .user-avatar-frame,.user-avatar-frame img{
 	width: 100px;
