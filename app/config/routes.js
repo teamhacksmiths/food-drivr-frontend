@@ -13,7 +13,7 @@ import Registration from '../containers/registration-container.jsx';
 import auth from '../utils/auth.js';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { UserProfilePage } from 'pages';
-
+import foodDrivrAPI from '../utils/foodDrivrAPI';
 injectTapEventPlugin();
 
 function requireAuth(nextState, replace) {

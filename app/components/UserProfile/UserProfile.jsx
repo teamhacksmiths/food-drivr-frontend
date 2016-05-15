@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Geosuggest from 'react-geosuggest';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -8,31 +9,33 @@ import Checkbox from 'material-ui/Checkbox';
 import Toggle from 'material-ui/Toggle';
 import AddressListMenu from '../AddressListMenu/AddressListMenu';
 
-const addressList = [{
-    key: 1,
-    address: "1213 Coral Lane Corolla, NC 27927",
-    default: false
-  },
-  {
-    key: 2,
-    address: "123 Main St. Somewhere, OH 13223",
-    default: true
-  }];
-
-class SettingsDashboard extends React.Component {
+class UserProfile extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       isEditing: false,
-      addresses: addressList
+      formData: {
+        email: '',
+        password: '',
+        phone: '',
+        company: '',
+        notifications: false
+      },
+      errors: {},
     };
     this.handleEditButtonClick = this.handleEditButtonClick.bind(this);
-    this.handleCancelButtonClick = this.handleCancelButtonClick.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFormSubmission = this.handleFormSubmission.bind(this);
+  }
+
+  handleFormSubmission() {
+    this.props.handleSendFormData(this.state.formData);
   }
 
   componentDidMount() {
     this.disableEditing()
+    this.setState({
+      formData: this.props.userData
+    })
   }
 
   enableEditing() {
@@ -47,24 +50,40 @@ class SettingsDashboard extends React.Component {
     });
   }
 
-  handleEditButtonClick() {
-    if (this.state.isEditing) {
-      this.disableEditing()
-    } else {
-      this.enableEditing()
+  validateField(name, e) {
+    switch (name) {
+      case 'email':
+        const email = e.target.value;
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const emailIsValid = re.test(email);
+        var error = null;
+        if (emailIsValid) {
+          error = null;
+        } else {
+          error = "Email must be valid."
+        }
+        return error;
+      case 'password':
+      case 'phone':
+      default:
+
     }
   }
 
-  handleCancelButtonClick() {
-
+  handleEditButtonClick(e) {
+    if (this.state.isEditing) {
+      this.handleFormSubmission()
+    } else {
+      this.enableEditing()
+    }
+    e.preventDefault();
   }
 
-  handleSubmit(data) {
-    console.log(data)
-  }
 
-  handleChangeValue() {
-
+  handleFormUpdate(name, e) {
+    var formData = this.state.formData;
+    formData[name] = e.target.value;
+    this.setState(formData);
   }
 
   handleAddAddress(address) {
@@ -76,29 +95,19 @@ class SettingsDashboard extends React.Component {
     });
   }
 
-  handleEditAddress(newAddress, index) {
-    let address = this.state.addresses[index];
-
-  }
-
-  handleSetAddressAsDefault() {
-
-  }
-
-  handleDeleteAddress() {
-
+  handleNotificationToggle() {
+    const formData = this.state.formData;
+    const toggled = !formData.notifications;
+    formData["notifications"] = toggled;
+    this.setState(formData)
   }
 
   render() {
     const {
-      user,
-      fields: {
-        emailInput,
-        passwordInput,
-        phoneInput,
-        companyInput
-      },
-      handleSubmit,
+      handleFormSubmission,
+      handleFormUpdate,
+      userData,
+      handleFormReset,
     } = this.props;
     const buttonMarginStyle = {
       margin: 12,
@@ -106,14 +115,16 @@ class SettingsDashboard extends React.Component {
     return (
       <div className="user-profile-container">
         <div className="user-avatar-frame">
-          <img class="user-avatar-image" src={user.avatar ? user.avatar : AvatarMissing} />
+          <img class="user-avatar-image" src={userData.avatar ? userData.avatar : AvatarMissing} />
         </div>
-        <form className="user-dashboard-form" onSubmit={this.handleSubmit}>
+        <form className="user-dashboard-form" ref="form" onSubmit={handleFormSubmission}>
           <div className="form-group">
             <TextField
               id="email"
               name="email"
-              defaultValue={user.email}
+              value={this.state.formData.email}
+              onChange={this.handleFormUpdate.bind(this, 'email')}
+              errorText={this.state.errors.emailError}
               disabled={!this.state.isEditing}
               hintText="Email Address"
               required
@@ -123,8 +134,11 @@ class SettingsDashboard extends React.Component {
           <div className="form-group">
             <TextField
               id="password"
+              ref="passwordInput"
               name="password"
-              defaultValue={user.password}
+              value={this.state.formData.password}
+              errorText={this.state.errors.passwordError}
+              onChange={this.handleFormUpdate.bind(this, 'password')}
               disabled={!this.state.isEditing}
               type="password"
               hintText="Password"
@@ -133,8 +147,11 @@ class SettingsDashboard extends React.Component {
           <div className="form-group">
             <TextField
               id="phone"
+              ref="phoneInput"
               name="phone"
-              defaultValue={user.phone}
+              value={this.state.formData.phone}
+              errorText={this.state.errors.phoneError}
+              onChange={this.handleFormUpdate.bind(this, 'phone')}
               disabled={!this.state.isEditing}
               type="phone"
               hintText="Contact Phone"
@@ -145,17 +162,23 @@ class SettingsDashboard extends React.Component {
             <TextField
               id="company"
               name="company"
-              defaultValue={user.company}
+              ref="companyInput"
+              value={this.state.formData.company}
+              onChange={this.handleFormUpdate.bind(this, 'company')}
               disabled={!this.state.isEditing}
               type="text"
               hintText="Company Name (Optional)"
-              onEnter={this.handleSubmit}
               autocomplete="organization"
             />
           </div>
           <div className="form-group toggle-block">
             <Toggle
               className="toggle"
+              onToggle={this.handleNotificationToggle.bind(this)}
+              toggled={this.state.formData.notifications}
+              disabled={!this.state.isEditing}
+              ref="notificationInput"
+              id="notification-toggle"
               label="Toggle Notifications"
             />
           </div>
@@ -189,7 +212,7 @@ class SettingsDashboard extends React.Component {
             <RaisedButton
               style={buttonMarginStyle}
               secondary={true}
-              onClick={this.handleCancelButtonClick}
+              onClick={handleFormReset}
               label="Cancel"
             />
           </div>
@@ -199,10 +222,10 @@ class SettingsDashboard extends React.Component {
   }
 }
 
-SettingsDashboard.propTypes = {
-  fields: React.PropTypes.object.isRequired,
-  user: React.PropTypes.object.isRequired,
-  handleSubmit: React.PropTypes.func.isRequired,
+UserProfile.propTypes = {
+  userData: React.PropTypes.object.isRequired,
+  handleSendFormData: React.PropTypes.func.isRequired,
+  handleFormReset: React.PropTypes.func.isRequired
 }
 
-export default SettingsDashboard;
+export default UserProfile;

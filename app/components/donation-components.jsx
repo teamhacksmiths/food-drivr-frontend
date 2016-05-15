@@ -222,7 +222,7 @@ class DonationsList extends React.Component {
 }
 
 DonationsList.contextTypes = {
-    router: React.PropTypes.object.isRequired
+	router: React.PropTypes.object.isRequired
 };
 
 module.exports = DonationsList;
