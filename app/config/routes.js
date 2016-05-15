@@ -13,32 +13,31 @@ import Registration from '../containers/registration-container.jsx';
 import auth from '../utils/auth.js';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import * as Pages from 'pages';
-import foodDrivrAPI from '../utils/foodDrivrAPI';
 injectTapEventPlugin();
 
 function requireAuth(nextState, replace) {
-	if (!auth.loggedIn()) {
-		replace({
-			pathname: '/',
-			state: { nextPathname: nextState.location.pathname }
-		})
-	}
+  if (!auth.loggedIn()) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname }
+    });
+  }
 }
 
-var routes = (
-	<Router history={browserHistory}>
-		<Route path="/" component={App}>
-			<IndexRoute component={HomePage} />
-			<Route path="signin" component={SignInPage} />
-			<Route path="signup" component={SignUpPage} />
-			<Route path="signup/donor" component={Registration} header="Donor"/>
-			<Route path="signup/volunteer" component={Registration} header="Volunteer"/>
-			<Route path="donation" component={DonationList} onEnter={requireAuth}/>
-			<Route path="thankyou" component={ThankYou} />
-			<Route path="profile" component={Pages.UserProfilePage} onEnter={requireAuth} />
-			<Route path="thankyou/:userType" component={ThankYou} />
-		</Route>
-	</Router>
+const routes = (
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={HomePage} />
+      <Route path="signin" component={SignInPage} />
+      <Route path="signup" component={SignUpPage} />
+      <Route path="signup/donor" component={Registration} header="Donor" />
+      <Route path="signup/volunteer" component={Registration} header="Volunteer" />
+      <Route path="donation" component={DonationList} onEnter={requireAuth} />
+      <Route path="thankyou" component={ThankYou} />
+      <Route path="profile" component={Pages.UserProfilePage} onEnter={requireAuth} />
+      <Route path="thankyou/:userType" component={ThankYou} />
+    </Route>
+  </Router>
 );
 
 module.exports = routes;

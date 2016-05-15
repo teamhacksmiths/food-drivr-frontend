@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, ListItem } from 'material-ui/List';
-import Divider from 'material-ui/Divider';
-import { grey400, darkBlack, lightBlack } from 'material-ui/styles/colors';
+// import Divider from 'material-ui/Divider';
+import { grey400 } from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import MapsAddLocation from 'material-ui/svg-icons/maps/add-location';
@@ -14,7 +14,7 @@ const iconButtonElement = (
     touch={true}
     tooltip="Edit"
     tooltipPosition="bottom-left"
-    >
+  >
     <MoreVertIcon color={grey400} />
   </IconButton>
 )
