@@ -260,7 +260,7 @@ class DonationsList extends React.Component {
 		}
 	}
 	componentDidMount() {
-		auth.getDonation().then((response) =>{			
+		auth.getDonation().then((response) =>{
 			console.log(response);
 			this.setState({ donations: response.data.donations });
 			})
@@ -283,9 +283,8 @@ class DonationsList extends React.Component {
 		return (
 		<div className="donations">
 			<h1 className="business-title text-center text-yellow">BUSINESS NAME</h1>
-			<Donation/>
-			<hr />
-			{donationList};
+			<Donation />
+			{donationList}
 		</div>
 		);
 	}
