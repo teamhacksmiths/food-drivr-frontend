@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Geosuggest from 'react-geosuggest';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import ReactSelect from 'react-select';
 import AvatarMissing from '../../assets/images/avatar-missing.png';
 import Checkbox from 'material-ui/Checkbox';
 import Toggle from 'material-ui/Toggle';
