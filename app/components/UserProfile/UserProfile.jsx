@@ -10,10 +10,20 @@ import FlatButton from 'material-ui/FlatButton';
 import PasswordForm from './PasswordForm';
 import Paper from 'material-ui/Paper';
 
-const style = {
-  margin: 20,
-  textAlign: 'center'
-};
+const Styles = {
+  paperStyle: {
+    margin: 20,
+    textAlign: 'center'
+  },
+  formGroup: {
+    width: 350
+  },
+  buttonStyle: {
+    float: 'left',
+    marginRight: 5
+  },
+
+}
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -28,8 +38,10 @@ class UserProfile extends React.Component {
         password: 'helloworld',
         phone: this.props.userData.phone || '',
         company: this.props.userData.company || '',
-        notifications: this.props.userData.notifications || false
+        notifications: this.props.userData.notifications || false,
+        isValid: true
       },
+      hasErrors: false,
       errors: {}
     };
     this.handleEditButtonClick = this.handleEditButtonClick.bind(this);
@@ -48,7 +60,13 @@ class UserProfile extends React.Component {
   }
 
   handleFormSubmission() {
-    this.props.handleSendFormData(this.state.formData);
+    if (this.state.formData.isValid) {
+      this.props.handleSendFormData(this.state.formData);
+    } else {
+      this.setState({
+        hasErrors: true
+      })
+    }
   }
 
   enableEditing() {
@@ -82,15 +100,6 @@ class UserProfile extends React.Component {
     this.setState(formData);
   }
 
-  handleAddAddress(address) {
-    this.state.addresses.push({
-      address
-    });
-    this.setState({
-      addresses: this.state.addresses
-    });
-  }
-
   handleNotificationToggle() {
     const formData = this.state.formData;
     const toggled = !formData.notifications;
@@ -105,12 +114,10 @@ class UserProfile extends React.Component {
       userData,
       handleFormReset
     } = this.props;
-    const buttonMarginStyle = {
-      margin: 12
-    };
     return (
-      <Paper style={style} z-depth={2}>
-        <div className="user-profile-container">
+      <Paper style={Styles.paperStyle} z-depth={2}>
+        <div className="user-profile-container lightgrey-background">
+          <h1 className="giant-title text-center text-yellow">Hello, {this.props.userData.name}</h1>
           <div className="user-avatar-frame">
             <img
               className="user-avatar-image"
@@ -123,9 +130,11 @@ class UserProfile extends React.Component {
               <TextField
                 id="email"
                 name="email"
+                style={Styles.formGroup}
                 value={this.state.formData.email}
                 onChange={this.handleFormUpdate.bind(this, 'email')}
                 errorText={this.state.errors.emailError}
+                floatingLabelText="Email"
                 disabled={!this.state.isEditing}
                 hintText="Email Address"
                 required
@@ -137,10 +146,12 @@ class UserProfile extends React.Component {
                 id="phone"
                 ref="phoneInput"
                 name="phone"
+                style={Styles.formGroup}
                 value={this.state.formData.phone}
                 errorText={this.state.errors.phoneError}
                 onChange={this.handleFormUpdate.bind(this, 'phone')}
                 disabled={!this.state.isEditing}
+                floatingLabelText="Phone"
                 type="phone"
                 hintText="Contact Phone"
                 autocomplete="tel"
@@ -148,8 +159,10 @@ class UserProfile extends React.Component {
             </div>
             <div className="form-group">
               <TextField
+                style={Styles.formGroup}
                 id="company"
                 name="company"
+                floatingLabelText="Company"
                 ref="companyInput"
                 value={this.state.formData.company}
                 onChange={this.handleFormUpdate.bind(this, 'company')}
@@ -173,7 +186,6 @@ class UserProfile extends React.Component {
             <AddressListMenu
               addresses={this.state.addresses}
             />
-
             <div className=".geosuggest__group">
               <Geosuggest
                 className={this.state.editingAddress ? '' : 'hidden'}
@@ -189,14 +201,14 @@ class UserProfile extends React.Component {
             </div>
             <Divider />
             <RaisedButton
-              style={buttonMarginStyle}
+              style={Styles.buttonStyle}
               primary
               onClick={this.handleEditButtonClick}
               label={this.state.isEditing ? 'Save Profile' : 'Edit Profile'}
             />
             <div className={this.state.isEditing ? 'cancel-button' : 'hidden'}>
               <RaisedButton
-                style={buttonMarginStyle}
+                style={Styles.buttonStyle}
                 secondary
                 onClick={handleFormReset}
                 label="Cancel"
@@ -206,7 +218,7 @@ class UserProfile extends React.Component {
           <div className={this.state.isEditing ? 'change-password-reveal' : 'hidden'} >
             <FlatButton
               primary
-              label="Edit Password"
+              label="Change Password"
               onClick={this.handleChangePasswordClick}
             />
           </div>
@@ -223,6 +235,7 @@ class UserProfile extends React.Component {
 
 UserProfile.propTypes = {
   userData: React.PropTypes.shape({
+    name: React.PropTypes.string.isRequired,
     email: React.PropTypes.string.isRequired,
     company: React.PropTypes.string,
     avatar: React.PropTypes.string,

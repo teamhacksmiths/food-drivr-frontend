@@ -1,5 +1,4 @@
 import axios from 'axios';
-import UserModel from '../models/UserModel';
 const baseURL = 'https://wastenotfoodtaxi.herokuapp.com/api/v1/users';
 const getAuthToken = () => { return localStorage.getItem('token'); };
 const authToken = getAuthToken();
@@ -13,7 +12,33 @@ const parseUser = (data) => {
   return new UserModel(data);
 };
 
+class UserModel {
+  constructor(data) {
+    const user = data.user;
+    this.name = user.name;
+    this.email = user.email;
+    this.phone = user.phone;
+    this.company = user.company;
+    this.type = user.type;
+    this.roleId = user["role_id"];
+    this.avatar = user.avatar;
+    this.notifications = user.settings.notifications;
+  }
+}
+
 const foodDrivrAPI = {
+  enocedUserData(data){
+    const user = {
+      email: data.email,
+      phone: data.phone,
+      company: data.company,
+      setting_attributes: {
+        notifications: data.notifications
+      }
+    };
+
+    return user;
+  },
   parseUser(data) {
     return new UserModel(data);
   },
@@ -27,9 +52,10 @@ const foodDrivrAPI = {
       });
   },
   postUserDataToAPI(userData) {
-    const requestURL = `https://wastenotfoodtaxi.herokuapp.com/api/v1/users/${authToken}`
+    const requestURL = `https://wastenotfoodtaxi.herokuapp.com/api/v1/users/${authToken}`;
+    const encodedData = encodedUserData(userData);
     return axios
-      .post(requestURL, { userData }, config)
+      .post(requestURL, { encodedData }, config)
       .then((response) => {
         console.log("Success! ", response)
       });
