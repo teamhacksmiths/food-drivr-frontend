@@ -34,10 +34,9 @@ ___
 ## Authors
 
 * **[Frank Robert](https://github.com/OfficialPhrank)**
-* **[Cody Perry](https://github.com/cperry24)**
+* **[Gabriele Cimato](https://github.com/Gabri3l)**
 * **[Ryan Collins](https://github.com/RyanCCollins)**
 * **[Jacob Bryan](https://github.com/bryanj4)**
-* **[Gabriele Cimato](https://github.com/Gabri3l)**
 
 ___
 ## License
