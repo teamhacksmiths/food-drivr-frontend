@@ -1,5 +1,5 @@
 import React from 'react';
-import UserSignup from '../components/user-signup-component.jsx'
+import UserSignup from '../components/user-signup-component.jsx';
 import auth from '../utils/auth.js';
 import CircularProgress from 'material-ui/CircularProgress';
 

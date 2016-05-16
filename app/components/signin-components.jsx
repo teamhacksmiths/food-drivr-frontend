@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
-import { Headline } from './reusable-components.jsx';
+import React from 'react';
+import Headline from './Reusable/Headline.jsx';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 import auth from '../utils/auth.js';
 
-class SignInPage extends Component {
+class SignInPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
@@ -56,30 +56,30 @@ class SignInPage extends Component {
 				this.setState({ error: <CircularProgress /> });
 				auth.login(email, password)
                     .then((response) => {
-						console.log('hello from login');
-						console.log(response);
-						localStorage.setItem('token', response.data.authtoken.auth_token);
-						localStorage.setItem('email', email);
-						localStorage.setItem('password', password);
-						return auth.getUser();
+	console.log('hello from login');
+	console.log(response);
+	localStorage.setItem('token', response.data.authtoken.auth_token);
+	localStorage.setItem('email', email);
+	localStorage.setItem('password', password);
+	return auth.getUser();
                     })
                     .then((response) => {
-						console.log(response);
-						console.log(response.data.user.role_id);
-						localStorage.setItem('role', response.data.user.role_id);
-						localStorage.setItem('name', response.data.user.name);
-						const role = localStorage.getItem('role');
-						if (auth.loggedIn() && parseInt(role, 10) !== 1) {
-							this.context.router.push('/donation');
-							auth.onChange(true);
-						} else {
-							this.context.router.push('/thankyou?userType=volunteer');
-							auth.onChange(true);
-						}
+	console.log(response);
+	console.log(response.data.user.role_id);
+	localStorage.setItem('role', response.data.user.role_id);
+	localStorage.setItem('name', response.data.user.name);
+	const role = localStorage.getItem('role');
+	if (auth.loggedIn() && parseInt(role, 10) !== 1) {
+		this.context.router.push('/donation');
+		auth.onChange(true);
+	} else {
+		this.context.router.push('/thankyou?userType=volunteer');
+		auth.onChange(true);
+	}
                     })
                     .catch((err) => {
-						console.log(err);
-						this.setState({ error: 'Login Failed' });
+	console.log(err);
+	this.setState({ error: 'Login Failed' });
                     });
 			} else {
 				this.setState({ error: 'Can not send request.' });
@@ -118,7 +118,7 @@ class SignInPage extends Component {
                     <br />
                     <RaisedButton
                         label="Sign In"
-                        secondary={true}
+                        secondary
                         onClick={this._formSubmit}
                         style={{ marginTop: 100, minWidth: 250 }}
                     />
@@ -131,6 +131,11 @@ class SignInPage extends Component {
 		);
 	}
 }
+
+SignInPage.propTypes = {
+	history: React.PropTypes.string.isRequired,
+	location: React.PropTypes.string.isRequired
+};
 
 SignInPage.contextTypes = {
 	router: React.PropTypes.object.isRequired

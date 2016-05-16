@@ -3,7 +3,6 @@ import UserProfile from '../../components/UserProfile/UserProfile';
 import FullscreenLoading from '../../components/FullscreenLoading/FullscreenLoading';
 import foodDrivrAPI from '../../utils/foodDrivrAPI.js';
 import Snackbar from 'material-ui/Snackbar';
-import axios from 'axios';
 
 class UserProfilePage extends React.Component {
   constructor(props, context) {
