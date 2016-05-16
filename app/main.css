@@ -1060,3 +1060,10 @@ ul {
 .giant-title {
 	padding: 50px;
 }
+
+/* Inner dialog hack for changing the dialog's background color without
+ * Changing the screen's background color.  Set as contentClassname on dialog in PasswordForm
+ */
+.dialog-grey > div:first-child {
+	background-color: #ebebeb !important;
+}

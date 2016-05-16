@@ -55,15 +55,16 @@ class UserProfile extends React.Component {
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
     this.handleNotificationToggle = this.handleNotificationToggle.bind(this);
     this.handleChangePasswordClick = this.handleChangePasswordClick.bind(this);
-    this.handlePasswordEditSubmit = this.handlePasswordEditSubmit.bind(this);
+    this.handlePasswordFormSubmission = this.handlePasswordFormSubmission.bind(this);
+    this.handlePasswordCancel = this.handlePasswordCancel.bind(this);
   }
 
   componentDidMount() {
     this.disableEditing();
   }
 
-  handlePasswordEditSubmit() {
-    console.log("Edited Password")
+  handlePasswordFormSubmission(params) {
+    this.props.handleSendPasswordReset(params);
   }
 
   handleFormSubmission() {
@@ -237,7 +238,7 @@ class UserProfile extends React.Component {
           />
           <div className={this.state.password.isEditing ? 'edit-password-form' : 'hidden'}>
             <PasswordForm
-              onSubmit={this.handlePasswordEditSubmit}
+              onSubmit={this.handlePasswordFormSubmission}
               isOpen={this.state.password.isEditing}
               onCancel={this.handlePasswordCancel}
             />
@@ -258,7 +259,8 @@ UserProfile.propTypes = {
     notifications: React.PropTypes.bool.isRequired
   }),
   handleSendFormData: React.PropTypes.func.isRequired,
-  handleFormReset: React.PropTypes.func.isRequired
+  handleFormReset: React.PropTypes.func.isRequired,
+  handleSendPasswordReset: React.PropTypes.func.isRequired
 };
 
 export default UserProfile;

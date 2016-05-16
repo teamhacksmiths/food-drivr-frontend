@@ -17,6 +17,7 @@ class UserProfilePage extends React.Component {
     this.handleSendFormData = this.handleSendFormData.bind(this);
     this.handleFormReset = this.handleFormReset.bind(this);
     this.handleCloseSnackBar = this.handleCloseSnackBar.bind(this);
+    this.handleSendPasswordReset = this.handleSendPasswordReset.bind(this);
   }
 
   fetchUserData() {
@@ -24,7 +25,7 @@ class UserProfilePage extends React.Component {
       this.setState({
         isLoading: false,
         userData: response.userData
-      })
+      });
     }).catch((error) => {
       this.setState({ loading: false })
       handleOpenSnackBar("An unknown error occured while loading the network data.")
@@ -45,6 +46,14 @@ class UserProfilePage extends React.Component {
       this.handleOpenSnackBar(
         'An error occured while submitting data to the network. Error Code: ', error
       );
+    });
+  }
+
+  handleSendPasswordReset(params){
+    foodDrivrAPI.updatePassword(params).then((response) => {
+      this.handleOpenSnackBar("Successfully updated your password");
+    }).catch((error) => {
+      this.handleOpenSnackBar("Please check that your password is correct and try again.")
     });
   }
 
@@ -86,6 +95,7 @@ class UserProfilePage extends React.Component {
             userData={this.state.userData}
             handleSendFormData={this.handleSendFormData}
             handleFormReset={this.handleFormReset}
+            handleSendPasswordReset={this.handleSendPasswordReset}
           />
           <Snackbar
             open={this.state.snackBarIsOpen}
