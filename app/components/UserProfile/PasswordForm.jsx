@@ -1,70 +1,109 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
+import Dialog from 'material-ui/Dialog';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const Styles = {
-  hidden: {
-    display: 'none'
-  }
+  formGroup: {
+    width: 350
+  },
 };
 
 class PasswordForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      errors: []
+      open: this.props.isOpen,
+      errors: {
+        currentPassword: null
+      }
     };
-    this.handleFormUpdate = this.handleFormUpdate.bind(this);
-  }
+  };
+  componentDidUpdate() {
+    this.setState({
+      open: this.props.isOpen
+    })
+  };
+  handleOpen(){
+    this.setState({open: true});
+  };
+  handleClose() {
+    this.setState({open: false});
+  };
+  handleSubmit(name, e) {
+
+  };
   handleFormUpdate(name, e) {
 
-  }
+  };
   render() {
+    const actions = [
+      <RaisedButton
+        label="Cancel"
+        secondary
+        onTouchTap={this.handleClose}
+      />,
+      <RaisedButton
+        label="Submit"
+        primary
+        onTouchTap={this.handleSubmit}
+      />,
+    ];
     return (
-      <form
-        className="password-form"
-        onSubmit={this.props.onSubmit}
+      <Dialog
+        title="Update Password"
+        actions={actions}
+        modal={false}
+        open={this.state.open}
       >
-        <div className="form-group">
-          <TextField
-            id="current-password"
-            ref="currentPasswordInput"
-            name="currentPassword"
-            errorText={this.state.errors.currentPassword}
-            disabled={!this.state.isEditing}
-            type="password"
-            hintText="Current Password"
-          />
-        </div>
-        <div className="form-group">
-          <TextField
-            id="password"
-            ref="passwordInput"
-            name="password"
-            errorText={this.state.errors.passwordError}
-            disabled={!this.state.isEditing}
-            type="password"
-            hintText="New Password"
-          />
-        </div>
-        <div className="form-group">
-          <TextField
-            id="passwordConfirmation"
-            ref="passwordConfirmationInput"
-            name="passwordConfirmation"
-            errorText={this.state.errors.passwordError}
-            onChange={this.handleFormUpdate.bind(this, 'password')}
-            disabled={!this.state.isEditing}
-            type="password"
-            hintText="Confirm Password"
-          />
-        </div>
-      </form>
+        <form
+          className="password-form"
+          onSubmit={this.props.onSubmit}
+        >
+          <div className="form-group">
+            <TextField
+              style={Styles.formGroup}
+              id="current-password"
+              ref="currentPasswordInput"
+              name="currentPassword"
+              errorText={this.state.errors.currentPassword}
+              type="password"
+              hintText="Current Password"
+            />
+          </div>
+          <div className="form-group">
+            <TextField
+              id="password"
+              style={Styles.formGroup}
+              ref="passwordInput"
+              name="password"
+              errorText={this.state.errors.passwordError}
+              type="password"
+              hintText="New Password"
+            />
+          </div>
+          <div className="form-group">
+            <TextField
+              style={Styles.formGroup}
+              id="passwordConfirmation"
+              ref="passwordConfirmationInput"
+              name="passwordConfirmation"
+              errorText={this.state.errors.passwordError}
+              onChange={this.handleFormUpdate.bind(this, 'password')}
+              type="password"
+              hintText="Confirm Password"
+            />
+          </div>
+        </form>
+      </Dialog>
     );
   }
 }
 
 PasswordForm.PropTypes = {
-  onSubmit: React.PropTypes.func.isRequired
+  onSubmit: React.PropTypes.func.isRequired,
+  onCancel: React.PropTypes.func.isRequired,
+  isOpen: React.PropTypes.bool.isRequired
 };
 
 export default PasswordForm;
