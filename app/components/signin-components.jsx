@@ -59,12 +59,15 @@ class SignInPage extends Component {
 						console.log('hello from login');
 						console.log(response);
 						localStorage.setItem('token', response.data.authtoken.auth_token);
+						localStorage.setItem('email', email);
+						localStorage.setItem('password', password);
 						return auth.getUser();
                     })
                     .then((response) => {
 						console.log(response);
 						console.log(response.data.user.role_id);
 						localStorage.setItem('role', response.data.user.role_id);
+						localStorage.setItem('name', response.data.user.name);
 						const role = localStorage.getItem('role');
 						if (auth.loggedIn() && parseInt(role, 10) !== 1) {
 							this.context.router.push('/donation');

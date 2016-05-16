@@ -37,6 +37,7 @@ class ThankYou extends React.Component {
 					console.log(response);
 					console.log(response.data.user.role_id);
 					localStorage.setItem('role', response.data.user.role_id);
+					localStorage.setItem('name', response.data.user.name);
 					if (auth.loggedIn()) {
 						this.context.router.push('/donation');
 						auth.onChange(true);

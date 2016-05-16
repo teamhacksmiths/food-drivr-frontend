@@ -11,8 +11,18 @@ const Header = React.createClass({
 	},
 	componentWillMount() {
 		auth.onChange = this.updateAuth;
+		const email = localStorage.getItem('email');
+		const pass = localStorage.getItem('password');
 		if (this.state.loggedIn === true) {
-			auth.onChange(true);
+			auth.login(email, pass).
+			then((response) => {
+				console.log(response);
+				auth.onChange(true);
+			})
+			.catch((err) => {
+				console.log(err);
+				auth.onChange(false);
+			});
 		}
 	},
 
@@ -185,10 +195,11 @@ class UserHeader extends React.Component {
 			'text-flex pointer-cursor': true,
 			'text-yellow': window.location.pathname === '/donation'
 		});
+		const name = localStorage.getItem('name');
 		return (
 			<div className={UserHeaderClass}>
 				<div className={UserInfoContainerClass} onClick={this.toggleMenu}>
-					<div className="user-info">Name Lastname</div>
+					<div className="user-info">{name}</div>
 				</div>
 				<UserMenu showMenu={this.state.showMenu} />
 			</div>
