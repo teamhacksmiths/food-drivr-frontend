@@ -12,7 +12,7 @@ const Header = React.createClass({
 	componentWillMount() {
 		auth.onChange = this.updateAuth;
 		if (this.state.loggedIn === true) {
-			auth.login();
+			auth.onChange(true);
 		}
 	},
 
@@ -162,7 +162,6 @@ class UserHeader extends React.Component {
 	}
 	handleClick(event) {
 		if (event.target.className !== 'user-info' && event.target.className !== 'user-menu-container') {
-    			console.log(event.target);
         	// hide the menu
       		this.setState({
 				showMenu: false
