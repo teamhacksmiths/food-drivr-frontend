@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const Styles = {
   formGroup: {
-    width: 350,
+    width: 350
   },
   formCentered: {
     display: 'flex',
@@ -23,18 +23,18 @@ const Styles = {
   formHeader: {
     textAlign: 'center',
     fontSize: 26
-  },
+  }
 };
 
 class PasswordForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasErrors: false,
+      canSubmit: false,
       errors: {
-        currentPassword: '',
         password: '',
-        passwordConfirmation: ''
+        passwordConfirmation: '',
+        passwordsDontMatch: false
       },
       formData: {
         password: '',
@@ -44,11 +44,11 @@ class PasswordForm extends React.Component {
     };
     this.handleClose = this.handleClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  };
+  }
 
-  handleOpen(){
-    this.setState({open: true});
-  };
+  handleOpen() {
+    this.setState({ open: true });
+  }
   handleClose() {
     this.setState({
       formData: {
@@ -56,43 +56,77 @@ class PasswordForm extends React.Component {
         passwordConfirmation: '',
         currentPassword: ''
       }
-    })
+    });
     this.props.onCancel();
-  };
+  }
   handleSubmit() {
     const params = this.state.formData;
-    this.props.onSubmit(params);
-  };
+    if (this.state.canSubmit === true) {
+      this.props.onSubmit(params);
+    }
+  }
   handleFormUpdate(name, e) {
     const formData = this.state.formData;
-    const passwordRE = new RegExp("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$");
+    const passwordRE = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
     const newPassword = e.target.value;
     const regExpTest = passwordRE.test(newPassword);
     const errors = this.state.errors;
-    if (regExpTest !== true){
-      const errorMessage = "Minimum 8 characters at least 1 Alpha and 1 Numeric."
+    if (regExpTest !== true && newPassword.length > 0) {
+      const errorMessage = 'Minimum 8 characters, 1 Upper, 1 Lower, 1 Special and 1 Number'
       errors[name] = errorMessage;
     } else {
-      errors[name] = "";
+      errors[name] = null;
     }
+
     formData[name] = newPassword
     this.setState({
-      formData: formData
-      errors: errors
-    })
-  };
+      formData: formData,
+      errors: errors,
+      hasErrors: true,
+      canSubmit: this.checkCanSubmit()
+    });
+  }
+  checkPasswordsDontMatch() {
+    const formData = this.state.formData;
+    return formData.password !== formData.passwordConfirmation;
+  }
+  checkCanSubmit() {
+    let canSubmit = false;
+    let passwordMatchError = this.checkPasswordsDontMatch()
+    const formData = this.state.formData;
+    const password = formData.password;
+    const passwordConfirmation = formData.passwordConfirmation;
+    const currentPassword = formData.currentPassword;
+    if (!passwordMatchError) {
+      if (currentPassword.length > 0) {
+        const passwordRE = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
+        const passwordTest = passwordRE.test(password)
+        const passwordConfTest = passwordRE.test(passwordConfirmation);
+        canSubmit = passwordTest && passwordConfTest;
+      }
+    } else {
+      /* I hate that I am redoing this and am altering state here, but I need to submit this */
+      const errors = this.state.errors;
+      errors.passwordConfirmation = 'Passwords do not match.'
+      this.setState({
+        errors: errors
+      })
+    }
+    return canSubmit;
+  }
   render() {
     const actions = [
-      <RaisedButton
-        label="Submit"
-        primary
-        onTouchTap={this.handleSubmit}
-        style={Styles.buttonGroup}
-      />,
       <RaisedButton
         label="Cancel"
         secondary
         onTouchTap={this.handleClose}
+        style={Styles.buttonGroup}
+      />,
+      <RaisedButton
+        label="Submit"
+        disabled={!this.state.canSubmit}
+        primary
+        onTouchTap={this.handleSubmit}
         style={Styles.buttonGroup}
       />,
     ];
@@ -125,7 +159,6 @@ class PasswordForm extends React.Component {
                   name="currentPassword"
                   floatingLabelText="Current Password"
                   value={this.state.formData.currentPassword}
-                  errorText={this.state.errors.currentPassword}
                   onChange={this.handleFormUpdate.bind(this, 'currentPassword')}
                   type="password"
                   hintText="Current Password"
@@ -154,7 +187,7 @@ class PasswordForm extends React.Component {
                   name="passwordConfirmation"
                   floatingLabelText="Confirm New Password"
                   value={this.state.formData.passwordConfirmation}
-                  errorText={this.state.errors.passwordError}
+                  errorText={this.state.errors.passwordConfirmation}
                   onChange={this.handleFormUpdate.bind(this, 'passwordConfirmation')}
                   type="password"
                   hintText="Confirm Password"
