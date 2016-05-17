@@ -132,8 +132,7 @@ class UserProfile extends React.Component {
     const {
       handleFormSubmission,
       handleFormUpdate,
-      userData,
-      handleFormReset
+      userData
     } = this.props;
     return (
       <div className="user-profile-container lightgrey-background" style={Styles.containerStyle}>
