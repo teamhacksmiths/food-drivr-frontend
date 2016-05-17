@@ -862,6 +862,11 @@ ul {
 	min-height: calc(100vh - 135px);
 }
 
+.user-profile-container p {
+	padding: 80px 0;
+	font-size: 30px;
+}
+
 .user-dashboard-form {
 	display: flex;
 	align-items: center;
@@ -877,7 +882,7 @@ ul {
 }
 
 .user-avatar-frame{
-	border: 2px solid white;
+	border: 2px solid #ebebeb;
 }
 .user-avatar-frame,.user-avatar-frame img{
 	width: 100px;
@@ -913,7 +918,6 @@ ul {
 	display: block;
 	width: 300px;
 }
-
 
 .geosuggest__bar:before, .geosuggest__bar:after {
 	content:'';
@@ -1015,4 +1019,51 @@ ul {
 
 .fullscreen-loader .spinner {
 
+}
+
+.error-card-wrapper {
+
+}
+
+.button-inline {
+	display:inline-block;
+	margin-right:5px;
+}
+
+.error-card {
+	height: 400px;
+	width: 800px;
+}
+
+.Aligner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Aligner-item {
+	max-width: 50%;
+}
+
+.Aligner-item--top {
+	align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+	align-self: flex-end;
+}
+
+.form-group {
+	width: 350px;
+}
+
+.giant-title {
+	padding: 50px;
+}
+
+/* Inner dialog hack for changing the dialog's background color without
+ * Changing the screen's background color.  Set as contentClassname on dialog in PasswordForm
+ */
+.dialog-grey > div:first-child {
+	background-color: #ebebeb !important;
 }
