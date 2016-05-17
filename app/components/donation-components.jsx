@@ -271,7 +271,7 @@ class DonationsList extends React.Component {
 	render() {
 		var donationList = this.state.donations.map(function(donation){
 			return (
-				<itemList title={donation.recipient.name} date={donation.created_at}>
+				<itemList title={donation.participants.donor.name} date={donation.created_at}>
 					{
 						donation.items.map(function(item){
 							return <DonatedItem quantity={item.quantity} unit={item.unit} title={item.description} />;
