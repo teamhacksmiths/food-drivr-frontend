@@ -92,7 +92,7 @@ class PasswordForm extends React.Component {
   }
   checkCanSubmit() {
     let canSubmit = false;
-    let passwordMatchError = this.checkPasswordsDontMatch()
+    const passwordMatchError = this.checkPasswordsDontMatch();
     const formData = this.state.formData;
     const password = formData.password;
     const passwordConfirmation = formData.passwordConfirmation;
@@ -100,17 +100,15 @@ class PasswordForm extends React.Component {
     if (!passwordMatchError) {
       if (currentPassword.length > 0) {
         const passwordRE = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
-        const passwordTest = passwordRE.test(password)
+        const passwordTest = passwordRE.test(password);
         const passwordConfTest = passwordRE.test(passwordConfirmation);
         canSubmit = passwordTest && passwordConfTest;
       }
     } else {
       /* I hate that I am redoing this and am altering state here, but I need to submit this */
       const errors = this.state.errors;
-      errors.passwordConfirmation = 'Passwords do not match.'
-      this.setState({
-        errors: errors
-      })
+      errors.passwordConfirmation = 'Passwords do not match.';
+      this.setState({ errors: errors });
     }
     return canSubmit;
   }
@@ -128,7 +126,7 @@ class PasswordForm extends React.Component {
         primary
         onTouchTap={this.handleSubmit}
         style={Styles.buttonGroup}
-      />,
+      />
     ];
     return (
       <Dialog

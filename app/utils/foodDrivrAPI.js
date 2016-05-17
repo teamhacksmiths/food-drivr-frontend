@@ -57,7 +57,7 @@ const foodDrivrAPI = {
   postUserDataToAPI(userData) {
     const encodedData = this.encodedUserData(userData);
     return axios
-      .post(userURLWithAuthToken, { encodedData }, config)
+      .patch(userURLWithAuthToken, encodedData, config)
       .then((response) => {
         return response;
       });

@@ -1,10 +1,10 @@
 import React from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Error404 from '../../assets/images/404-error.jpg';
 
 const styles = {
-  imageResponsive: {
+  image: {
     height: 337,
     width: 600
   }
@@ -21,12 +21,12 @@ const ErrorPage = (props) => (
         <CardMedia>
           <img
             src={Error404}
-            style={styles.imageResponsive}
+            style={styles.image}
             alt="error"
           />
         </CardMedia>
         <CardText>
-          {props.errorMessage ? props.errorMessage : "An unknown error occured"}
+          {props.errorMessage ? props.errorMessage : 'An unknown error occured'}
         </CardText>
         <CardActions>
           <FlatButton

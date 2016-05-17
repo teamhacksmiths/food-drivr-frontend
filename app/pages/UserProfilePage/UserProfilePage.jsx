@@ -11,7 +11,8 @@ class UserProfilePage extends React.Component {
       role: parseInt(localStorage.getItem('role'), 10),
       isLoading: true,
       snackBarIsOpen: false,
-      snackBarMessage: ''
+      snackBarMessage: '',
+      isEditing: false
     };
     this.fetchUserData();
     this.handleSendFormData = this.handleSendFormData.bind(this);
@@ -27,34 +28,34 @@ class UserProfilePage extends React.Component {
         userData: response.userData
       });
     }).catch((error) => {
-      this.setState({ loading: false })
-      handleOpenSnackBar("An unknown error occured while loading the network data.")
+      this.setState({ loading: false });
+      this.handleOpenSnackBar('An unknown error occured while loading the network data.');
     });
   }
 
   handleFormReset() {
-    this.setState({
-      userData: foodDrivrAPI.getDummyUser()
-    });
+    this.fetchUserData();
   }
 
   submitDataToAPI(data) {
-    foodDrivrAPI.postUserDataToAPI(data).then((response) => {
-      console.log(response);
-      this.handleOpenSnackBar('Successfully updated your profile!');
-    }).catch((error) => {
-      this.handleOpenSnackBar(
-        'An error occured while submitting data to the network. Error Code: ', error
-      );
-    });
+    foodDrivrAPI.postUserDataToAPI(data)
+      .then((response) => {
+        this.setState({ isEditing: false });
+        this.handleOpenSnackBar('Successfully updated your profile!');
+      }).catch((error) => {
+        this.handleOpenSnackBar(
+          'An error occured while submitting data to the network.'
+        );
+      });
   }
 
-  handleSendPasswordReset(params){
-    foodDrivrAPI.updatePassword(params).then((response) => {
-      this.handleOpenSnackBar("Successfully updated your password");
-    }).catch((error) => {
-      this.handleOpenSnackBar("Please check that your password is correct and try again.")
-    });
+  handleSendPasswordReset(params) {
+    foodDrivrAPI.updatePassword(params)
+      .then((response) => {
+        this.handleOpenSnackBar('Successfully updated your password');
+      }).catch((error) => {
+        this.handleOpenSnackBar('Please check that your password is correct and try again.')
+      });
   }
 
   handleSendFormData(params) {
@@ -95,6 +96,7 @@ class UserProfilePage extends React.Component {
             userData={this.state.userData}
             handleSendFormData={this.handleSendFormData}
             handleFormReset={this.handleFormReset}
+            isEditing={this.state.isEditing}
             handleSendPasswordReset={this.handleSendPasswordReset}
           />
           <Snackbar
@@ -111,7 +113,6 @@ class UserProfilePage extends React.Component {
 }
 
 UserProfilePage.propTypes = {
-  errors: React.PropTypes.array,
   handleCloseSnackBar: React.PropTypes.func
 };
 

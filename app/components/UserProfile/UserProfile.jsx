@@ -4,11 +4,9 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import AvatarMissing from '../../assets/images/avatar-missing.png';
 import Toggle from 'material-ui/Toggle';
-import AddressListMenu from '../AddressListMenu/AddressListMenu';
 import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
 import PasswordForm from './PasswordForm';
-import Paper from 'material-ui/Paper';
 
 
 const Styles = {
@@ -29,24 +27,23 @@ const Styles = {
     margin: 10,
     textAlign: 'center',
     padding: 20
-  },
-}
+  }
+};
 
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isEditing: false,
+      isEditing: this.props.isEditing,
       password: {
         isEditing: false
       },
       formData: {
         email: this.props.userData.email || '',
-        password: 'helloworld',
         phone: this.props.userData.phone || '',
         company: this.props.userData.company || '',
         notifications: this.props.userData.notifications || false,
-        isValid: true
+        emailIsValid: true
       },
       hasErrors: false,
       errors: {}
@@ -57,23 +54,28 @@ class UserProfile extends React.Component {
     this.handleChangePasswordClick = this.handleChangePasswordClick.bind(this);
     this.handlePasswordFormSubmission = this.handlePasswordFormSubmission.bind(this);
     this.handlePasswordCancel = this.handlePasswordCancel.bind(this);
-  }
-
-  componentDidMount() {
-    this.disableEditing();
+    this.validateEmail = this.validateEmail.bind(this);
+    this.handleCancelClick = this.handleCancelClick.bind(this);
   }
 
   handlePasswordFormSubmission(params) {
     this.props.handleSendPasswordReset(params);
   }
 
+  validateEmail() {
+    const formData = this.state.formData;
+    const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    const test = re.test(formData.email);
+    return test || formData.email.length === 0;
+  }
+
   handleFormSubmission() {
-    if (this.state.formData.isValid) {
+    if (this.state.formData.emailIsValid) {
       this.props.handleSendFormData(this.state.formData);
     } else {
       this.setState({
         hasErrors: true
-      })
+      });
     }
   }
 
@@ -94,23 +96,28 @@ class UserProfile extends React.Component {
     e.preventDefault();
   }
 
-  handlePasswordCancel(){
+  handlePasswordCancel() {
     this.setState({
       password: { isEditing: false }
     });
   }
 
-  handleChangePasswordClick(e) {
+  handleCancelClick() {
+    this.disableEditing();
+    this.props.handleFormReset();
+  }
+
+  handleChangePasswordClick() {
     this.setState({
-      password: {
-        isEditing: true
-      }
+      password: { isEditing: true }
     });
   }
 
   handleFormUpdate(name, e) {
+    const emailIsValid = this.validateEmail();
     const formData = this.state.formData;
     formData[name] = e.target.value;
+    formData.emailIsValid = emailIsValid;
     this.setState(formData);
   }
 
@@ -149,6 +156,7 @@ class UserProfile extends React.Component {
               errorText={this.state.errors.emailError}
               floatingLabelText="Email"
               disabled={!this.state.isEditing}
+              errorText={this.state.formData.emailIsValid ? '' : 'Please enter a valid email address.'}
               hintText="Email Address"
               required
               autocomplete="email"
@@ -196,9 +204,6 @@ class UserProfile extends React.Component {
               label="Toggle Notifications"
             />
           </div>
-          <AddressListMenu
-            addresses={this.state.addresses}
-          />
           <div className=".geosuggest__group">
             <Geosuggest
               className={this.state.editingAddress ? '' : 'hidden'}
@@ -218,7 +223,7 @@ class UserProfile extends React.Component {
               <RaisedButton
                 style={Styles.buttonStyle}
                 secondary
-                onClick={handleFormReset}
+                onTouchTap={this.handleCancelClick}
                 label="Cancel"
               />
             </div>
@@ -230,7 +235,10 @@ class UserProfile extends React.Component {
             />
           </div>
         </form>
-        <div style={Styles.changePasswordGroup} className={this.state.isEditing ? 'change-password-reveal' : 'hidden'} >
+        <div
+          style={Styles.changePasswordGroup}
+          className={this.state.isEditing ? 'change-password-reveal' : 'hidden'}
+        >
           <FlatButton
             primary
             label="Change Password"
@@ -250,6 +258,7 @@ class UserProfile extends React.Component {
 }
 
 UserProfile.propTypes = {
+  isEditing: React.PropTypes.bool,
   userData: React.PropTypes.shape({
     name: React.PropTypes.string.isRequired,
     email: React.PropTypes.string.isRequired,
