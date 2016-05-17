@@ -7,7 +7,9 @@ import Snackbar from 'material-ui/Snackbar';
 class UserProfilePage extends React.Component {
   constructor(props, context) {
     super(props, context);
+
     this.setInitialState = this.setInitialState.bind(this);
+    this.setInitialState();
     this.handleSendFormData = this.handleSendFormData.bind(this);
     this.handleFormReset = this.handleFormReset.bind(this);
     this.handleCloseSnackBar = this.handleCloseSnackBar.bind(this);
@@ -38,8 +40,9 @@ class UserProfilePage extends React.Component {
   }
 
   handleFormReset() {
-
-    this.fetchUserData();
+    /* Zero out data and set initial state back to the way it was */
+    this.setState({ isLoading: true });
+    this.setInitialState();
   }
 
   submitDataToAPI(data) {
