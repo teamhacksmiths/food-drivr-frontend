@@ -7,6 +7,14 @@ import Snackbar from 'material-ui/Snackbar';
 class UserProfilePage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.setInitialState = this.setInitialState.bind(this);
+    this.handleSendFormData = this.handleSendFormData.bind(this);
+    this.handleFormReset = this.handleFormReset.bind(this);
+    this.handleCloseSnackBar = this.handleCloseSnackBar.bind(this);
+    this.handleSendPasswordReset = this.handleSendPasswordReset.bind(this);
+  }
+
+  setInitialState(){
     this.state = {
       role: parseInt(localStorage.getItem('role'), 10),
       isLoading: true,
@@ -15,10 +23,6 @@ class UserProfilePage extends React.Component {
       isEditing: false
     };
     this.fetchUserData();
-    this.handleSendFormData = this.handleSendFormData.bind(this);
-    this.handleFormReset = this.handleFormReset.bind(this);
-    this.handleCloseSnackBar = this.handleCloseSnackBar.bind(this);
-    this.handleSendPasswordReset = this.handleSendPasswordReset.bind(this);
   }
 
   fetchUserData() {
@@ -34,6 +38,7 @@ class UserProfilePage extends React.Component {
   }
 
   handleFormReset() {
+
     this.fetchUserData();
   }
 
