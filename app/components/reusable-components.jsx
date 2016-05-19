@@ -47,10 +47,10 @@ const Header = React.createClass({
 			logInButton = '';
 		}
 		return (
-			<div className={window.location.pathname === '/donation' ? 'donation-header text-flex' : 'header text-flex'}>
+			<header className={window.location.pathname === '/donation' ? 'donation-header text-flex' : 'header text-flex'}>
 				{headerButton}
 				{logInButton}
-			</div>
+			</header>
 		);
 	}
 });

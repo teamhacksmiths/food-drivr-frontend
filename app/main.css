@@ -89,10 +89,6 @@ ul {
 	text-align: right;
 }
 
-.text-margin-left {
-	margin-left: auto;
-}
-
 .text-flex {
 	display: flex;
 }
@@ -149,10 +145,11 @@ ul {
 
 /* Header Section */
 .header {
-	margin: 45px auto 10px;
 	width: 90%;
 	max-width: 1000px;
-	min-height: 55px;
+	margin: 20px auto;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .donation-header {
@@ -170,8 +167,6 @@ ul {
 
 .header h3 {
 	font-size: 22px;
-	margin-top: 0;
-	margin-bottom: 0;
 	padding: 8px 0;
 }
 
