@@ -1,7 +1,7 @@
 import React from 'react';
 import Headline from '../Reusable/Headline.jsx';
-import BodyButton from '../Reusable/BodyButton.jsx';
-import ScrollDownButton from '../Ruesable/ScrollDownButton.jsx';
+import BodyButton from './BodyButton.jsx';
+import ScrollDownButton from '../Reusable/ScrollDownButton.jsx';
 
 const SectionIntro = () => (
 	<div className="homepage-intro">
@@ -28,7 +28,7 @@ const SectionIntro = () => (
 			<BodyButton />
 		</div>
 		<a href="#howto" className="homepage-scrolldown text-center text-white pointer-cursor">
-			<ScrollDownButton destination="" color="white" text="LEARN MORE" />
+			<ScrollDownButton color="white" text="LEARN MORE" />
 		</a>
 	</div>
 );

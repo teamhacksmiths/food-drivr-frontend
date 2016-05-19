@@ -1,7 +1,7 @@
 import React from 'react';
 import { browserHistory, Router, Route, IndexRoute } from 'react-router';
-import App from '../components/main.js';
-import HomePage from '../components/homepage-components.jsx';
+import App from '../pages/main.jsx';
+import HomePage from '../pages/HomePage.jsx';
 import SignInPage from '../components/signin-components.jsx';
 import SignUpPage from '../components/signup-components.jsx';
 import DonationList from '../components/donation-components.jsx';

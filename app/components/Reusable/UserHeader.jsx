@@ -50,7 +50,7 @@ class UserHeader extends React.Component {
 		});
 
 		const name = localStorage.getItem('name');
-		
+
 		return (
 			<div className={UserHeaderClass}>
 				<div className={UserInfoContainerClass} onClick={this.toggleMenu}>

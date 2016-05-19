@@ -8,6 +8,7 @@ import TruckButton from './TruckButton.jsx';
 
 class Header extends React.Component {
 	constructor() {
+		super();
 		this.state = {
 			loggedIn: auth.loggedIn()
 		};

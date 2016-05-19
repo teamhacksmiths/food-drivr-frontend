@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const SectionContacts = () => (
 	<div className="homepage-contacts text-white">

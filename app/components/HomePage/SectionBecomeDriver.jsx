@@ -8,6 +8,7 @@ import VolunteerDescription from './VolunteerDescription.jsx';
 
 class SectionBecomeDriver extends React.Component {
 	constructor() {
+		super();
 		this.state = {
 			userType: 'Driver',
 			description: ''

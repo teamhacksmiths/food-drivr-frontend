@@ -1,7 +1,8 @@
 import React from 'react';
 
 class SectionComments extends React.Component {
-	constructor(){
+	constructor() {
+		super();
 		this.state = {
 			text: "We're so happy you came in! We've been throwing away hundreds of cupcakes and it just makes us sick. Thank you for what you're doing.",
 			author: 'CARLOS ESTRADA',
@@ -28,7 +29,7 @@ class SectionComments extends React.Component {
 	}
 
 	isActive(value) {
-		return ((this.state.item === value) ? 'active-bullet ' : '') + 'bullet pointer-cursor';
+		return (`${(this.state.item === value) ? 'active-bullet ' : ''} + bullet pointer-cursor`);
 	}
 
 	render() {
@@ -36,13 +37,13 @@ class SectionComments extends React.Component {
 			<div className="homepage-comments text-center text-white">
 				<Comment text={this.state.text} author={this.state.author} company={this.state.company} />
 				<div className="comments-dots">
-					<div className={this.isActive(0)} onClick={this.selectItem.bind(this,0)} />
-					<div className={this.isActive(1)} onClick={this.selectItem.bind(this,1)} />
-					<div className={this.isActive(2)} onClick={this.selectItem.bind(this,2)} />
+					<div className={this.isActive(0)} onClick={this.selectItem.bind(this, 0)} />
+					<div className={this.isActive(1)} onClick={this.selectItem.bind(this, 1)} />
+					<div className={this.isActive(2)} onClick={this.selectItem.bind(this, 2)} />
 				</div>
 			</div>
 		);
 	}
-});
+}
 
 module.exports = SectionComments;

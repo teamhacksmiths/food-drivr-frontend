@@ -1,5 +1,7 @@
 import React from 'react';
-import { Headline, AppStoreIcon, WhiteTruckButton } from '../components/reusable-components.jsx';
+import Headline from './Reusable/Headline.jsx';
+import AppStoreIcon from './Reusable/AppStoreIcon.jsx';
+import WhiteTruckButton from './Reusable/WhiteTruckButton.jsx';
 import auth from '../utils/auth.js';
 
 class ThankYou extends React.Component {
@@ -12,19 +14,18 @@ class ThankYou extends React.Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 	componentWillMount() {
-		console.log("Hello from Thank You!");
-		console.log("Current role is " + this.state.role);
+		console.log('Hello from Thank You!');
+		console.log(`Current role is ${this.state.role}`);
 		if (this.state.role !== 1) {
 			this.context.router.push('/thankyou?userType=donor');
 		} else if (this.state.role !== 0) {
 			this.context.router.push('/thankyou?userType=volunteer');
 		} else {
-			console.log("No Role?");
+			console.log('No Role?');
 			this.context.router.push('/');
 		}
 	}
 	handleClick() {
-		console.log(this.state.role + " and " + this.props.location.query.userType);
 		if (this.state.role !== 1) {
 			auth.login(localStorage.getItem('email'), localStorage.getItem('password'))
 				.then((response) => {
@@ -58,13 +59,13 @@ class ThankYou extends React.Component {
 				<Headline className="thankyou-header" value="Thank You!" />
 				{this.state.role !== 0 ? <VolunteerThankYou /> : <DonorThankYou />}
 				{this.state.role ? '' : <DonateButton onClick={this.handleClick} />}
-				{this.state.role !==1 ? '' : <AppStoreIcon className="thankyou-appstore-icon" />}
+				{this.state.role !== 1 ? '' : <AppStoreIcon className="thankyou-appstore-icon" />}
 			</div>
 		);
 	}
 }
 
-const VolunteerThankYou = props => (
+const VolunteerThankYou = () => (
 	<div style={{ maxWidth: 500, width: '80%', margin: 'auto', marginBottom: 50, fontSize: '2em', fontFamily: 'Open Sans, sans-serif', letterSpacing: 1 }}>
 		<p>
 			We really apprecaite you taking the time to sign up and offering your time and effort in helping us eliminate food waste.
@@ -81,7 +82,7 @@ const VolunteerThankYou = props => (
 	</div>
 );
 
-const DonorThankYou = props => (
+const DonorThankYou = () => (
 	<div style={{ maxWidth: 500, width: '80%', margin: 'auto', marginBottom: 50, fontSize: '2em', fontFamily: 'Open Sans, sans-serif', letterSpacing: 1 }}>
 		<p>
 			We really apprecaite you taking the time to sign up and offering your time and effort in helping us eliminate food waste.
@@ -98,8 +99,8 @@ const DonorThankYou = props => (
 	</div>
 );
 
-const DonateButton = props => (
-	<button className="thankyou-btn-donate" onClick={props.onClick}>
+const DonateButton = (props) => (
+	<button className="thankyou-btn-donate" onClick={this.props.onClick}>
 		GET STARTED
 	</button>
 );

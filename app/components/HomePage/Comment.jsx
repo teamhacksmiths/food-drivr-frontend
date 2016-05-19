@@ -2,12 +2,12 @@ import React from 'react';
 
 const Comment = (props) => (
 	<div className="comments-container">
-		<p>{this.props.text}</p>
+		<p>{props.text}</p>
 		<div className="comments-author">
-			{this.props.author}
+			{props.author}
 		</div>
 		<div className="comments-company">
-			{this.props.company}
+			{props.company}
 		</div>
 	</div>
 );
