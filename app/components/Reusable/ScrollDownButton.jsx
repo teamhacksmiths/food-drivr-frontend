@@ -11,3 +11,5 @@ ScrollDownButton.propTypes = {
 	text: React.PropTypes.string.isRequired,
 	color: React.PropTypes.string.isRequired
 };
+
+module.exports = ScrollDownButton;

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import classNames from 'classnames/bind';
 
 const Footer = () => {
-	let footerClass = classNames({
+	const footerClass = classNames({
 		footer: true,
 		'text-black': window.location.pathname === '/donation',
 		'text-white': window.location.pathname !== '/donation'

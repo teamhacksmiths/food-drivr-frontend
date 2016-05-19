@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Comment = (props) => (
+const Comment = ({ text, author, company }) => (
 	<div className="comments-container">
-		<p>{props.text}</p>
+		<p>{text}</p>
 		<div className="comments-author">
-			{props.author}
+			{author}
 		</div>
 		<div className="comments-company">
-			{props.company}
+			{company}
 		</div>
 	</div>
 );
