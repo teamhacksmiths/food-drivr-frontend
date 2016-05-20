@@ -106,7 +106,7 @@ const Login = props => (
 );
 
 const ScrollDownButton = props => (
-	<div>
+	<div className="uppercase">
 		<p>{props.text}</p>
 		<img src={props.color === 'white' ? 'images/down-arrow.svg' : 'images/down-arrow-yellow.svg'} alt="down arrow" />
 	</div>

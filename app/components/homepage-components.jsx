@@ -10,8 +10,8 @@ class BodyButton extends React.Component {
 	}
 	render() {
 		return (
-			<Link to="/signup" role="button" className="button-home">
-				JOIN US
+			<Link to="/signup" role="button" className="uppercase btn-round btn-red">
+				Join us
 			</Link>
 		);
 	}
@@ -20,33 +20,35 @@ class BodyButton extends React.Component {
 var SectionIntro = React.createClass({
 	render() {
 		return (
-			<div className="homepage-intro">
-				<div className="text-center text-white">
-					<img src="images/fd-logo.svg" alt="food drivr logo" className="fd-logo" />
-					<p className="homepage-logotitle">
-						FOOD DRIVR
+			<article className="intro">
+				<header className="text-center text-white">
+					<div title="food drivr logo" className="intro-truckWhite"></div>
+					<p className="uppercase">
+						Food drivr
 					</p>
-					<p className="homepage-powered">
+					<p className="intro-powered">
 						Powering Donations For
 					</p>
-				</div>
-				<Headline value="WASTE NOT FOOD TAXI" className="homepage-title text-center text-white" />
-				<p className="homepage-content text-center text-white source-sans">
-					On a daily basis, businesess like catering facilities, restaurants, grocery stores, as well as individuals produce more food than what is necessary for them to meet their needs.
-					<br />
-					<br />
-					Organizations that utilize Food Drivr help deliver this excess to people in need.
-					<br />
-					Join us and help end hunger.
-				</p>
-				<br />
-				<div className="button-container text-center">
+					<Headline value="Waste not food taxi" className="uppercase intro-title text-center text-white" />
+				</header>
+				<section className="intro-content flex-grow-1 text-center text-white source-sans">
+					<p>
+						On a daily basis, businesess like catering facilities, restaurants, grocery stores, as well as individuals produce more food than what is necessary for them to meet their needs.
+					</p>
+					<p>
+						Organizations that utilize Food Drivr help deliver this excess to people in need.
+					</p>
+					<p>
+						Join us and help end hunger.
+					</p>
+				</section>
+				<section className="flex-grow-3 text-center">
 					<BodyButton />
-				</div>
-				<a href="#howto" className="homepage-scrolldown text-center text-white pointer-cursor">
-					<ScrollDownButton destination="" color="white" text="LEARN MORE" />
-				</a>
-			</div>
+				</section>
+				<footer href="#howto" className="intro-scrolldown text-center text-white pointer-cursor">
+					<ScrollDownButton destination="" color="white" text="Learn more" />
+				</footer>
+			</article>
 		);
 	}
 });
@@ -260,7 +262,7 @@ var SectionContacts = React.createClass({
 var HomePage = React.createClass({
 	render() {
 		return (
-			<div className="homepage">
+			<div>
 				<SectionIntro />
 				<SectionHowTo />
 				<SectionBecomeDriver />

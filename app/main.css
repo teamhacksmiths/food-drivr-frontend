@@ -110,6 +110,36 @@ ul {
 	outline: none;
 }
 
+.uppercase {
+	text-transform: uppercase;
+}
+.btn-round {
+	padding: 10px 55px;
+	border-radius: 25px;
+	font-size: 20px;
+	font-weight: bold;
+	box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
+}
+.btn-red {
+	color: white;
+	background-color: #ff1e40;
+}
+
+.flex-grow-1 {
+	flex-grow: 1;
+}
+
+.flex-grow-3 {
+	flex-grow: 3;
+}
+
+.fontSize-small {
+	font-size: 13px;
+}
+
+.fontSize-medium {
+	font-size: 16px;
+}
 /* Main content */
 .container {
 	width: 100%;
@@ -249,66 +279,36 @@ ul {
 }
 
 /* Homepage Elements */
-.homepage {
-	position: relative;
-	width: 100%;
-}
-
-.fd-logo {
-	margin: 10px;
-}
-
-.homepage-intro {
+.intro {
 	display: flex;
 	flex-direction: column;
 	height: calc( 100vh - 120px);
 }
-
-.homepage-logotitle {
-	margin-bottom: 15px;
-	font-size: 15px;
-}
-
-.homepage-powered {
-	width: 160px;
+.intro-truckWhite {
+	background: url("/images/fd-logo.svg");
+	background-repeat: no-repeat;
+	width: 50px;
+	height: 50px;
 	margin: auto;
+}
+.intro-powered {
 	font-size: 13px;
 }
-
-.homepage-title {
+.intro-title {
 	margin: 35px auto;
 	font-weight: bold;
 	font-size: 40px;
 	max-width: 300px;
 }
-
-.homepage-content {
+.intro-content {
 	max-width: 530px;
-	flex-grow: 1;
 	margin: auto;
 	font-size: 15px;
 	padding: 0 20px;
 }
-
-.button-container {
-	margin: 35px 0;
-	flex-grow: 3;
-}
-
-.button-home {
-	font-size: 20px;
-	color: white;
-	padding: 10px 55px;
-	background-color: #ff1e40;
-	border-radius: 25px;
-	font-weight: bold;
-	box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
-}
-
-.homepage-scrolldown {
+.intro-scrolldown {
 	font-size: 10px;
     margin-bottom: 20px;
-    width: 100%;
     letter-spacing: 2px;
     font-weight: bold;
 }
