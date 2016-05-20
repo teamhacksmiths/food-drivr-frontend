@@ -47,7 +47,7 @@ const Header = React.createClass({
 			logInButton = '';
 		}
 		return (
-			<header className={window.location.pathname === '/donation' ? 'donation-header text-flex' : 'header text-flex'}>
+			<header className={window.location.pathname === '/donation' ? 'header--donation text-flex' : 'header text-flex'}>
 				{headerButton}
 				{logInButton}
 			</header>
@@ -75,15 +75,13 @@ class BackButton extends React.Component {
 	}
 	render() {
 		return (
-			<div className="back-button" onClick={this.handleGoBack}></div>
+			<div className="header-back pointer-cursor" onClick={this.handleGoBack}></div>
 		);
 	}
 }
 
 const AppStoreIcon = props => (
-	<Link to="" className={props.className}>
-		<img src="/images/App-Store-Badge.png" alt="apple store icon" />
-	</Link>
+	<Link to="" className={`header-appstore ${props.className}`} alt="apple store icon" />
 );
 
 AppStoreIcon.propTypes = {
@@ -102,7 +100,7 @@ const WhiteTruckButton = props => (
 
 
 const Login = props => (
-		<h3 className="text-margin-left source-sans">
+		<h3 className="source-sans">
 			<Link to="/signin" className="text-white">Login</Link>
 		</h3>
 );
@@ -186,13 +184,13 @@ class UserHeader extends React.Component {
 	}
 	render() {
 		const UserHeaderClass = classNames({
-			'user-container text-margin-left text-flex': true,
+			'user-container': true,
 			'text-white': window.location.pathname === '/',
 			'text-black': window.location.pathname !== '/',
 			'donation-header-user': window.location.pathname === '/donation'
 		});
 		const UserInfoContainerClass = classNames({
-			'text-flex pointer-cursor': true,
+			'pointer-cursor': true,
 			'text-yellow': window.location.pathname === '/donation'
 		});
 		const name = localStorage.getItem('name');

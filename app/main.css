@@ -144,38 +144,48 @@ ul {
 }
 
 /* Header Section */
-.header {
+header {
 	width: 90%;
 	max-width: 1000px;
-	margin: 20px auto;
+	margin: 30px auto 20px;
 	justify-content: space-between;
 	align-items: center;
 }
-
-.donation-header {
-    margin-bottom: 50px;
-    width: 100%;
-    min-height: 110px;
+.header--donation {
+	width: 100%;
+	max-width: 1450px;
+	min-height: 110px;
+    margin: 0;
     background: #f8f8f8;
     box-shadow: 0 4px 4px 0 rgba(228, 228, 228, 0.5);
 }
-
-.donation-header-user {
-	margin-right: 200px;
-    margin-top: 30px;
+/* Probably needs renaming since it is reused multiple times in different scenarios */
+.header-appstore {
+	width: 135px;
+	height: 40px;
+	background: url("/images/App-Store-Badge.png") no-repeat;
 }
-
-.header h3 {
-	font-size: 22px;
-	padding: 8px 0;
-}
-
-.back-button {
-	background-image: url("/images/back-arrow.svg");
-	background-repeat: no-repeat;
+.header-back {
+	background-image: url("/images/back-arrow.svg") no-repeat;
 	background-size: 100%;
 	width: 55px;
-	cursor: pointer;
+	height: 55px;
+}
+
+.header-user {
+
+}
+
+.header-userName {
+
+}
+
+.header-userMenu {
+	
+}
+
+.donation-header-user {
+	margin-right: 15%;
 }
 
 .truck-button {
@@ -183,9 +193,16 @@ ul {
 	background-repeat: no-repeat;
 	background-size: 100%;
 	width: 55px;
-	margin-left: 200px;
-    margin-top: 30px;
+	height: 55px;
+	margin-left: 15%;
 }
+
+.header h3 {
+	font-size: 22px;
+	padding: 8px 0;
+}
+
+
 
 .hide-menu {
 	display: none;
@@ -229,8 +246,6 @@ ul {
 }
 
 .user-info {
-	margin-right: 20px;
-    margin-top: 18px;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 20px;
 	letter-spacing: 4px;
