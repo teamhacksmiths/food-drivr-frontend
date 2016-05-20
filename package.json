@@ -18,6 +18,10 @@
   "bugs": {
     "url": "https://github.com/teamhacksmiths/food-drivr-frontend/issues"
   },
+  "engines": {
+    "node": "4.2.4",
+    "npm": "3.8.8"
+  },
   "homepage": "https://github.com/teamhacksmiths/food-drivr-frontend#readme",
   "devDependencies": {
     "babel-core": "^6.8.0",
