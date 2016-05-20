@@ -1067,3 +1067,9 @@ ul {
 .dialog-grey > div:first-child {
 	background-color: #ebebeb !important;
 }
+
+/* Change color of auto fill */
+/* Change the white to any color ;) */
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px #FF1E40 inset;
+}
