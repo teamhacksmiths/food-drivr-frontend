@@ -227,7 +227,7 @@ ul {
 	line-height: 70px;
 }
 .header-menu {
-	top: 50px;
+	top: 100%;
 	position: absolute;
 	right: 0;
 	text-align: right;
@@ -503,17 +503,13 @@ ul {
 /*                       DONATION                            */
 /*************************************************************/
 .donations {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	width: 90%;
+	margin: auto;
 }
 .donations-title {
 	font-size: 40px;
 }
-.donation {
-	width: 90%;
-}
-.donateItem {
+.donation form {
 	display: flex;
 	justify-content: center;
 	font-size: 16px;
@@ -521,70 +517,59 @@ ul {
 .btn-addDonation {
 	width: 55px;
 	height: 55px;
-	cursor: pointer;
-	background: transparent;
 	border: none;
+	background: transparent;
 	background-image: url('/images/add-button.svg');
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
 .btn-delDonation {
-	width: 60px;
-    height: 56px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    -webkit-transform: rotate(-315deg);
-    transform: rotate(-315deg);
-    background-image: url('/images/remove-button.svg');
-}
-.btn-donate {
-	width: 70%;
-	max-width: 350px;
-	height: 70px;
-	background-color: #f7bd4b;
+	width: 25px;
+    height: 25px;
 	border: none;
-	color: white;
-	font-size: 24px;
-	margin: 50px auto;
-	display: block;
+    background: transparent;
+    background-image: url('/images/btn-del-donation.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
-
 .btn-disabled {
 	opacity: .5;
 	cursor: default;
 }
-
-.btn-delDonation:focus,
-.btn-donate:focus,
-.btn-addDonation:focus {
-	outline: none;
+.donation ul {
+	overflow-x: hidden;
+	max-height: 40vh;
+	max-width: 540px;
+	width: 95%;
+	margin: auto;
+	margin-top: 20px;
 }
-
-
-
-.donation-list {
-	height: 45vh;
-    overflow-x: hidden;
-    margin-top: 20px;
+.donation li {
+	align-items: flex-end;
+	justify-content: space-between;
 }
-
-.new-donation-title,
 .donated-name {
-	width: 100%;
-}
-
-.donated-item {
-	margin-top: 30px;
-}
-
-.donated-name {
-	padding-left: 15px;
     margin-top: 15px;
     font-size: 20px;
     letter-spacing: 0.9px;
     color: #202020;
     font-family: 'Open Sans', sans-serif;
+}
+.btn-delDonation:focus,
+.btn-donate:focus,
+.btn-addDonation:focus {
+	outline: none;
+}
+.btn-donate {
+	display: block;
+	width: 60%;
+	max-width: 250px;
+	height: 50px;
+	margin: 25px auto;font-size: 21px;
+	color: white;
+	background-color: #f7bd4b;
+	border: none;
+	box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
 }
 
 /*************************************************************/
@@ -638,7 +623,6 @@ ul {
 	width: 100%;
 	text-align: center;
 }
-
 .footer a:hover{
 	text-decoration: underline;
 }
@@ -652,11 +636,9 @@ ul {
 	transition-property: opacity;
 	opacity: 0;
 }
-
 .appear-enter.appear-enter-active {
 	opacity: 1;
 }
-
 .appear-leave {
 	opacity: 0;
 	display: none;
@@ -692,9 +674,9 @@ ul {
 	.contacts-email {
 		font-size: 20px;
 	}
-	.donateItem-input {
-		line-height: 2.1 !important;
-		font-size: 20px !important;
+	.donation form div {
+		line-height: 2.1;
+		font-size: 20px;
 	}
 }
 
@@ -705,9 +687,9 @@ ul {
 	.becomeA-arrow img {
 		width: 60px;
 	}
-	.donateItem-input {
-	    line-height: 2 !important;
-	    font-size: 22px !important;
+	.donation form div {
+	    line-height: 2;
+	    font-size: 22px;
 	}
 }
 
@@ -741,20 +723,6 @@ ul {
 	}
 	.thankyou-text {
 		font-size: 26px;
-	}
-
-	.donation-input-container,
-	.past-donations {
-		width: 50%;
-	}
-
-	.donation-input {
-		width: 85%;
-		font-size: 20px;
-	}
-
-	.btn-add-donation {
-		width: 15%;
 	}
 }
 

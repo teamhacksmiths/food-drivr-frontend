@@ -42,6 +42,7 @@ class Donation extends React.Component {
 		}
 	}
 	handleAddItem(e) {
+		e.preventDefault();
 		if (e.keyCode === 13 || e.button === 0) {
 			if (this.state.enableAddItem) {
 				const newItemsArr = this.state.itemsAdded;
@@ -127,15 +128,13 @@ class Donation extends React.Component {
 			);
 		}, this);
 		return (
-			<article className="donation">
+			<section className="donation">
 				<DonateItem
 					enableAddItem={this.state.enableAddItem}
 					onAddItem={this.handleAddItem}
 					onUpdateItem={this.handleUpdateItem}
 				/>
-				<div className="donation-list">
-					{donatedItems}
-				</div>
+				<ul>{donatedItems}</ul>
 				<button
 					className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'} onClick={this.handleOpen}
 				>
@@ -185,17 +184,17 @@ class Donation extends React.Component {
 					autoHideDuration={4000}
 					onRequestClose={this.handleSnackClose}
 				/>
-		</article>
+		</section>
 		);
 	}
 }
 
 
 const DonationItem = props => (
-	<div className="donated-item text-flex">
+	<li className="text-flex">
 		<div className="donated-name text-lightgrey">{props.name}</div>
-		<button className="delDonation" onClick={props.onRemoveItem} />
-	</div>
+		<button className="pointer-cursor btn-delDonation" onClick={props.onRemoveItem} />
+	</li>
 );
 
 var itemList = React.createClass({
@@ -241,20 +240,19 @@ const styles = {
 };
 
 const DonateItem = props => (
-	<div className="donateItem">
+	<form>
 		<TextField
 			type="text"
 			onKeyUp={props.onUpdateItem}
 			id="donationTitle"
 			hintText="What would you like to donate ?"
-			className="donateItem-input"
 			style={styles.textField}
 		/>
 		<button
-			className={props.enableAddItem ? 'btn-addDonation' : 'btn-addDonation btn-disabled'}
+			className={props.enableAddItem ? 'pointer-cursor btn-addDonation' : 'pointer-cursor btn-addDonation btn-disabled'}
 			onClick={props.onAddItem}
 		/>
-	</div>
+	</form>
 );
 
 DonateItem.propTypes = {
@@ -298,11 +296,11 @@ class DonationsList extends React.Component {
 			);
 		});
 		return (
-		<div className="donations">
+		<article className="donations">
 			<h1 className="donations-title text-center text-yellow">BUSINESS NAME</h1>
 			<Donation />
 			{donationList}
-		</div>
+		</article>
 		);
 	}
 }

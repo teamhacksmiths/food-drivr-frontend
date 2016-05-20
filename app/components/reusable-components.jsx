@@ -170,7 +170,6 @@ class UserHeader extends React.Component {
 	}
 	handleClick(e) {
 		if (!e.target.classList.contains('header-userName') && !e.target.classList.contains('header-menu')) {
-			console.log('click else');
 			this.setState({
 				showMenu: false
 			});
