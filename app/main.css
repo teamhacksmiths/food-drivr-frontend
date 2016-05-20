@@ -662,54 +662,14 @@ ul {
 /*************************************************************/
 /*                     MEDIA QUERIES                         */
 /*************************************************************/
-@media screen and (min-width: 314px) and (min-height: 1080px) {
-	.homepage-title {
-		margin: 50px auto;
-	}
-
-	.homepage-content {
-		font-size: 20px;
-	}
-}
-
-/* Responsive: Portrait After Mobile Large and up */
-@media screen and (min-width: 426px) {
-	.howto-title {
-		font-size: 48px;
-	}
-
-	.signup-container p{
-		font-size: 35px;
-	}
-}
-
-@media screen and (min-width: 426px) and (min-height: 1080px) {
-	.homepage-content {
-		font-size: 22px;
-	}
-
-	.button-container {
-		margin: 60px auto;
-	}
-}
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-	.homepage-logotitle {
-		font-size: 18px;
-	}
-
-	.homepage-powered {
-		font-size: 14px;
-	}
-
-	.homepage-title {
-		font-size: 60px;
+	.intro-title {
 		max-width: 900px;
+		font-size: 60px;
 	}
-
-	.homepage-content {
-		font-size: 18px;
+	.intro-content {
+		font-size: 17px;
 	}
 
 	.howto-div {
@@ -735,25 +695,16 @@ ul {
 	}
 }
 
-@media screen and (min-width: 768px) and (min-height: 1080px) {
-
-	.homepage-content {
-		font-size: 25px;
-	}
-
-	.button-container {
-		margin: 80px auto;
-	}
-}
 
 /* Responsive: Laptop and up */
-@media screen and (min-width: 1024px) {
-	.homepage-title {
+@media screen and (min-width: 1440px) {
+	.intro-title {
 		font-size: 70px;
-		max-width: 900px;
 	}
-
-	.button-home {
+	.intro-content {
+		font-size: 22px;
+	}
+	.btn-round {
 		padding: 10px 77px;
 	}
 
