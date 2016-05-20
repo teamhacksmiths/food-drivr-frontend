@@ -39,11 +39,11 @@ const common = {
     filename: 'bundle.js'
   },
   module: {
-    preLoaders: [{
-      test: /\.jsx?$/,
-      loaders: PRODUCTION ? [] : ['eslint'],
-      include: PATHS.app
-    }],
+    // preLoaders: [{
+    //   test: /\.jsx?$/,
+    //   loaders: PRODUCTION ? [] : ['eslint'],
+    //   include: PATHS.app
+    // }],
     loaders: [
         // Set up jsx. This accepts js too thanks to RegExp
         {
