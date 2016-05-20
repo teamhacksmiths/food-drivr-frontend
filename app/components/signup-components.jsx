@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SignupButton = props => (
-	<div onClick={props.onSubmit} className='btn-signup pointer-cursor'>
-		<img src={props.imageSrc} alt={props.imageAlt}/>
-		<button className='btn-signup' type='submit'>{props.title}</button>
-	</div>
-)
+const SignupButton = ({ title, onSubmit, imgSrc, imgAlt }) => (
+	<section className="signup-selection flex-grow-1 text-center">
+		<img onClick={onSubmit} src={imgSrc} alt={imgAlt} />
+		<span onClick={onSubmit}>{title}</span>
+	</section>
+);
 
 class SignUpPage extends React.Component {
 	constructor(context) {
@@ -21,22 +21,22 @@ class SignUpPage extends React.Component {
 	}
 	render() {
 		return (
-			<div className='signup-container text-center text-white' style={{background: '#ff1e40'}}>
-				<p>Sign Up</p>
+			<article className="signup-container text-center text-white">
+				<h1 className="uppercase">Sign Up</h1>
 				<SignupButton
 					onSubmit={this.handleSubmitDonor}
-					imageSrc='images/donor-icon.svg'
-					imgAlt='donor package'
-					title='Donor'
-					/>
-				<p className='btn-signup'>OR</p>
+					imgSrc="images/donor-icon.svg"
+					imgAlt="donor package"
+					title="Donor"
+				/>
+			<p className="signup-or flex-grow-1">OR</p>
 				<SignupButton
 					onSubmit={this.handleSubmitVolunteer}
-					imageSrc='images/volunteer-icon.svg'
-					imgAlt='volounteer package'
-					title='Volunteer'
-					/>
-	 		</div>
+					imgSrc="images/volunteer-icon.svg"
+					imgAlt="volounteer package"
+					title="Volunteer"
+				/>
+		</article>
 		);
 	}
 }

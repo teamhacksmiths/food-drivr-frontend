@@ -357,7 +357,6 @@ ul {
 	position: relative;
 	background: #4b4c4e;
 }
-
 .becomeA-arrow {
 	align-self: center;
 }
@@ -469,18 +468,20 @@ ul {
 .signup-container h1 {
 	margin-bottom: 50px;
 }
-.signup-container p{
+.signup-or {
 	font-size: 36px;
-	flex-grow: 1;
 }
 .signup-selection {
 	display: flex;
 	flex-direction: column;
 	font-size: 25px;
-	flex-grow: 1;
 }
 .signup-selection>*{
 	cursor: pointer;
+}
+.signup-form {
+	width: 90%;
+	max-width: 350px;
 }
 
 /*************************************************************/
@@ -490,6 +491,11 @@ ul {
 	min-height: calc(100vh - 135px);
 	padding: 50px 0;
 	background-color: #ff1e40;
+}
+.signin form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 /*************************************************************/

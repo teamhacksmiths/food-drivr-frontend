@@ -90,7 +90,7 @@ class SignInPage extends Component {
 	render() {
 		const { errorPassword, errorEmail, email, password, error } = this.state;
 		return (
-            <div className="signin text-center text-white">
+            <article className="signin text-center text-white">
                 <Headline value="Sign In" />
                 <form>
                     <TextField
@@ -103,7 +103,6 @@ class SignInPage extends Component {
                         errorStyle={{ color: 'white' }}
                         value={email}
                     />
-                    <br />
                     <TextField
                         hintText="Enter Password"
                         errorText={errorPassword}
@@ -115,19 +114,17 @@ class SignInPage extends Component {
                         value={password}
                         type="password"
                     />
-                    <br />
                     <RaisedButton
                         label="Sign In"
-                        secondary={true}
+                        primary
                         onClick={this._formSubmit}
                         style={{ marginTop: 100, minWidth: 250 }}
                     />
-                    <br />
-                    <span>
+                    <h4 className="text-white">
                         {error}
-                    </span>
+                    </h4>
                 </form>
-            </div>
+            </article>
 		);
 	}
 }
