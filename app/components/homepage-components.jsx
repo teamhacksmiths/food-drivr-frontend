@@ -77,9 +77,9 @@ var HowItWorksSection = React.createClass({
 var HowItWorks = React.createClass({
 	render() {
 		return (
-			<div id="howto" className="howItWorks bg-white">
+			<article id="howItWorks" className="howItWorks bg-white">
 				<Headline value="How it works" className="howItWorks-title text-center text-grey" />
-				<article className="howItWorks-content">
+				<div className="howItWorks-content">
 					<HowItWorksSection title="donating" imgSrc="images/package.svg" imgAlt="donation package">
 						After signing up, donors can enter in items they wish to donate to those in need. Once items are donated, a notification is sent out to all drivers of a pending donation.
 					</HowItWorksSection>
@@ -89,8 +89,8 @@ var HowItWorks = React.createClass({
 					<HowItWorksSection title="delivery" imgSrc="images/delivery.svg" imgAlt="delivery truck">
 						After the pick up of a donation has been completed, drivers deliver the donation to the nearest pre-determined organization recipient.
 					</HowItWorksSection>
-				</article>
-			</div>
+				</div>
+			</article>
 		);
 	}
 });
@@ -163,20 +163,20 @@ var Comment = React.createClass({
 	},
 	render() {
 		return (
-			<div className="comments-container">
+			<section className="comment-container">
 				<p>{this.props.text}</p>
-				<div className="comments-author">
+				<div className="comment-author">
 					{this.props.author}
 				</div>
-				<div className="comments-company">
+				<div className="comment-company">
 					{this.props.company}
 				</div>
-			</div>
+			</section>
 		);
 	}
 });
 
-var SectionComments = React.createClass({
+var Comments = React.createClass({
 	getInitialState() {
 		return {
 			text: "We're so happy you came in! We've been throwing away hundreds of cupcakes and it just makes us sick. Thank you for what you're doing.",
@@ -206,14 +206,14 @@ var SectionComments = React.createClass({
 	},
 	render() {
 		return (
-			<div className="homepage-comments text-center text-white">
+			<article className="comments text-center text-white">
 				<Comment text={this.state.text} author={this.state.author} company={this.state.company} />
 				<div className="comments-dots">
 					<div className={this.isActive(0)} onClick={this.selectItem.bind(this,0)} />
 					<div className={this.isActive(1)} onClick={this.selectItem.bind(this,1)} />
 					<div className={this.isActive(2)} onClick={this.selectItem.bind(this,2)} />
 				</div>
-			</div>
+			</article>
 		);
 	}
 });
@@ -251,7 +251,7 @@ var HomePage = React.createClass({
 				<Intro />
 				<HowItWorks />
 				<BecomeA />
-				<SectionComments />
+				<Comments />
 				<SectionContacts />
 			</div>
 		);
