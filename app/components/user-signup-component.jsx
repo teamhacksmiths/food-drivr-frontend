@@ -79,7 +79,9 @@ const UserSignup = props => (
 				style={{marginTop: 100, minWidth: 250}}
 				backgroundColor={props.userType === 'Volunteer' ? '#f7b32b' : '#14cfe8'}
 			/>
+			<h4 className="text-white">
 				{props.error}
+			</h4>
 		</form>
 	</article>
 )

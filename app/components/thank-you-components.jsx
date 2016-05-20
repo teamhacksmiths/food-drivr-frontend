@@ -53,19 +53,19 @@ class ThankYou extends React.Component {
 	}
 	render() {
 		return (
-			<div className="text-center text-white">
+			<article className="thankyou text-center text-white">
 				<WhiteTruckButton />
 				<Headline className="thankyou-header" value="Thank You!" />
 				{this.state.role !== 0 ? <VolunteerThankYou /> : <DonorThankYou />}
 				{this.state.role ? '' : <DonateButton onClick={this.handleClick} />}
 				{this.state.role !==1 ? '' : <AppStoreIcon className="thankyou-appstore-icon" />}
-			</div>
+			</article>
 		);
 	}
 }
 
 const VolunteerThankYou = props => (
-	<div style={{ maxWidth: 500, width: '80%', margin: 'auto', marginBottom: 50, fontSize: '2em', fontFamily: 'Open Sans, sans-serif', letterSpacing: 1 }}>
+	<section className="thankyou-text">
 		<p>
 			We really apprecaite you taking the time to sign up and offering your time and effort in helping us eliminate food waste.
 		</p>
@@ -78,11 +78,11 @@ const VolunteerThankYou = props => (
 		<p>
 			Thank you again!
 		</p>
-	</div>
+	</section>
 );
 
 const DonorThankYou = props => (
-	<div style={{ maxWidth: 500, width: '80%', margin: 'auto', marginBottom: 50, fontSize: '2em', fontFamily: 'Open Sans, sans-serif', letterSpacing: 1 }}>
+	<section className="thankyou-text">
 		<p>
 			We really apprecaite you taking the time to sign up and offering your time and effort in helping us eliminate food waste.
 		</p>
@@ -95,11 +95,11 @@ const DonorThankYou = props => (
 		<p>
 			Thank you again!
 		</p>
-	</div>
+	</section>
 );
 
 const DonateButton = props => (
-	<button className="thankyou-btn-donate" onClick={props.onClick}>
+	<button className="thankyou-start" onClick={props.onClick}>
 		GET STARTED
 	</button>
 );

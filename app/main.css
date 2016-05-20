@@ -224,6 +224,7 @@ ul {
 	font-size: 20px;
 	letter-spacing: 4px;
 	font-weight: bold;
+	line-height: 70px;
 }
 .header-menu {
 	top: 50px;
@@ -578,16 +579,25 @@ ul {
 /*************************************************************/
 /*                         THANK YOU                         */
 /*************************************************************/
+.thankyou {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.thankyou-text {
+	max-width: 500px;
+	width: 80%;
+	margin-bottom: 25px;
+	font-size: 20px;
+	font-family: "OpenSans", sans-serif;
+	letter-spacing: 1px;
+}
 .thankyou-header {
 	font-family: "OpenSans", sans-serif;
-	margin-top: 70px;
+	text-transform: uppercase;
+	margin: 40px 0 0;
 }
-
-.thankyou-appstore-icon>img {
-	margin-bottom: 80px;
-}
-
-.white-truck-button {
+.thankyou-truck {
 	background-image: url("/images/food-drivr-logo.svg");
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -595,8 +605,7 @@ ul {
 	height: 55px;
 	margin: auto;
 }
-
-.thankyou-btn-donate {
+.thankyou-start {
 	width: 46%;
 	max-width: 300px;
 	min-width: 200px;
@@ -605,7 +614,6 @@ ul {
     border: none;
     color: rgb(247, 179, 43);
     font-size: 24px;
-    margin: 50px auto;
     display: block;
 }
 
@@ -711,6 +719,9 @@ ul {
 	}
 	.contacts {
 		padding: 55px 25% 0;
+	}
+	.thankyou-text {
+		font-size: 26px;
 	}
 
 	.donation-input-container,
