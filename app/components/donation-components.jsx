@@ -127,7 +127,7 @@ class Donation extends React.Component {
 			);
 		}, this);
 		return (
-			<div className="donation-container">
+			<article className="donation">
 				<DonateItem
 					enableAddItem={this.state.enableAddItem}
 					onAddItem={this.handleAddItem}
@@ -141,6 +141,8 @@ class Donation extends React.Component {
 				>
 					DONATE
 				</button>
+
+
 				<Dialog
 					title="Donation Confirmation"
 					actions={actions}
@@ -183,7 +185,7 @@ class Donation extends React.Component {
 					autoHideDuration={4000}
 					onRequestClose={this.handleSnackClose}
 				/>
-			</div>
+		</article>
 		);
 	}
 }
@@ -192,7 +194,7 @@ class Donation extends React.Component {
 const DonationItem = props => (
 	<div className="donated-item text-flex">
 		<div className="donated-name text-lightgrey">{props.name}</div>
-		<button className="btn-del-donation" onClick={props.onRemoveItem} />
+		<button className="delDonation" onClick={props.onRemoveItem} />
 	</div>
 );
 
@@ -200,7 +202,7 @@ var itemList = React.createClass({
 	render: function(){
 		return (
 			<li className="row donation">
-				<div className="col-xs-8">
+				<div>
 					<h4>{this.props.title}</h4>
 					<p>{this.props.date}</p>
 				</div>
@@ -213,7 +215,7 @@ var itemList = React.createClass({
 var DonatedItem = React.createClass({
 	render: function() {
 		return (
-			<div className="col-xs-4 text-right">
+			<div className="text-right">
 				<div className='donation-item'>{this.props.quantity} {this.props.unit} x {this.props.title}</div>
 			</div>
 		);
@@ -224,17 +226,32 @@ DonationItem.propTypes = {
 	name: React.PropTypes.string.isRequired,
 	onRemoveItem: React.PropTypes.func.isRequired
 };
+
+const styles = {
+	textField: {
+		width: '100%',
+		maxWidth: 500,
+		height: 55,
+		marginRight: 15,
+		lineHeight: 2.7,
+		paddingBottom: 30,
+		letterSpacing: 1.9,
+		fontFamily: "'Open Sans', sans-serif"
+	}
+};
+
 const DonateItem = props => (
-	<div className="text-flex">
+	<div className="donateItem">
 		<TextField
 			type="text"
 			onKeyUp={props.onUpdateItem}
 			id="donationTitle"
 			hintText="What would you like to donate ?"
-			style={{ width: '100%', height: 55, marginRight: 45, lineHeight: 1.7, letterSpacing: 1.9, fontFamily: "'Open Sans', sans-serif", fontSize: 20 }}
+			className="donateItem-input"
+			style={styles.textField}
 		/>
 		<button
-			className={props.enableAddItem ? 'btn-donation' : 'btn-donation btn-disabled'}
+			className={props.enableAddItem ? 'btn-addDonation' : 'btn-addDonation btn-disabled'}
 			onClick={props.onAddItem}
 		/>
 	</div>
@@ -282,7 +299,7 @@ class DonationsList extends React.Component {
 		});
 		return (
 		<div className="donations">
-			<h1 className="business-title text-center text-yellow">BUSINESS NAME</h1>
+			<h1 className="donations-title text-center text-yellow">BUSINESS NAME</h1>
 			<Donation />
 			{donationList}
 		</div>
