@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ScrollDownButton = (props) => (
+const ScrollDownButton = ({ text, color }) => (
 	<div>
-		<p>{props.text}</p>
-		<img src={props.color === 'white' ? 'images/down-arrow.svg' : 'images/down-arrow-yellow.svg'} alt="down arrow" />
+		<p>{text}</p>
+		<img src={color === 'white' ? 'images/down-arrow.svg' : 'images/down-arrow-yellow.svg'} alt="down arrow" />
 	</div>
 );
 

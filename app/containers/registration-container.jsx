@@ -24,12 +24,12 @@ class Registration extends React.Component {
 	}
 
 	_handleNameChange(e) {
-		this.state.errorName = "";
+		this.state.errorName = '';
 
 		if (!e.target.value) {
-			this.state.errorName = "This field is required.";
+			this.state.errorName = 'This field is required.';
 		} else if (e.target.value < 3) {
-			this.state.errorName = "Name needs more than 3 characters.";
+			this.state.errorName = 'Name needs more than 3 characters.';
 		}
 		this.setState({
 			errorName: this.state.errorName,
@@ -46,15 +46,15 @@ class Registration extends React.Component {
 	}
 
 	_handleEmailChange(e) {
-		this.state.errorEmail = "";
+		this.state.errorEmail = '';
 		var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		if (!e.target.value) {
-			this.state.errorEmail = "This field is required.";
+			this.state.errorEmail = 'This field is required.';
 		} else if (!re.test(e.target.value)) {
-			this.state.errorEmail = "Email is not valid.";
+			this.state.errorEmail = 'Email is not valid.';
 		}
 		this.setState({
 			errorEmail: this.state.errorEmail,
@@ -63,11 +63,11 @@ class Registration extends React.Component {
 	}
 
 	_handlePasswordChange(e) {
-		this.state.errorPassword = "";
+		this.state.errorPassword = '';
 		if (!e.target.value) {
-			this.state.errorPassword = "This field is required.";
+			this.state.errorPassword = 'This field is required.';
 		} else if (e.target.value.length < 8) {
-			this.state.errorPassword = "Passwords need more than 8 characters.";
+			this.state.errorPassword = 'Passwords need more than 8 characters.';
 		}
 		this.setState({
 			errorPassword: this.state.errorPassword,
@@ -76,13 +76,13 @@ class Registration extends React.Component {
 	}
 
 	_handlePasswordConfirmChange(e) {
-		this.state.errorPasswordConfirmation = "";
+		this.state.errorPasswordConfirmation = '';
 		if (!e.target.value) {
-			this.state.errorPasswordConfirmation = "This field is required.";
+			this.state.errorPasswordConfirmation = 'This field is required.';
 		} else if (e.target.value.length < 8) {
-			this.state.errorPasswordConfirmation = "Passwords need more than 8 characters.";
+			this.state.errorPasswordConfirmation = 'Passwords need more than 8 characters.';
 		} else if (e.target.value !== this.state.password) {
-			this.state.errorPasswordConfirmation = "Passwords must match!";
+			this.state.errorPasswordConfirmation = 'Passwords must match!';
 		}
 		this.setState({
 			errorPasswordConfirmation: this.state.errorPasswordConfirmation,
@@ -103,7 +103,7 @@ class Registration extends React.Component {
 				this.setState({ error: <CircularProgress /> });
 				auth.register(name, email, password, passwordConfirmation, userRole)
 				.then((response) => {
-					console.log("hello from register")
+					console.log('hello from register');
 					console.log(response.data);
 					console.log(response.status);
 					localStorage.setItem('email', email);
@@ -118,7 +118,7 @@ class Registration extends React.Component {
 					this.setState({ error: 'Registration Failed' });
 				});
 			} else {
-				this.setState({ error: 'Can not send request.' })
+				this.setState({ error: 'Can not send request.' });
 			}
 		}
 	}
@@ -155,7 +155,7 @@ class Registration extends React.Component {
 				errorPasswordConfirmation={errorPasswordConfirmation}
 				error={error}
 				/>
-		)
+		);
 	}
 }
 

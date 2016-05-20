@@ -1,4 +1,5 @@
 import React from 'react';
+import Comment from './Comment.jsx';
 
 class SectionComments extends React.Component {
 	constructor() {

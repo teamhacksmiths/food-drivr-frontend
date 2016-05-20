@@ -1,9 +1,9 @@
 import React from 'react';
 
-const HowToDivTitle = (props) => (
+const HowToDivTitle = ({ imgSrc, imgAlt, title }) => (
 	<div className="howto-divtitle text-center">
-		<img src={props.imgSrc} alt={props.imgAlt} className="howto-img" />
-		<p>{props.title}</p>
+		<img src={imgSrc} alt={imgAlt} className="howto-img" />
+		<p>{title}</p>
 	</div>
 );
 

@@ -1,9 +1,7 @@
 import React from 'react';
-import Headline from './Reusable/Headline.jsx';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import CircularProgress from 'material-ui/CircularProgress';
 import auth from '../utils/auth.js';
+import SignInUser from '../components/SignInPage/SignInUser.jsx';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class SignInPage extends React.Component {
 	constructor(props, context) {
@@ -15,12 +13,12 @@ class SignInPage extends React.Component {
 		};
 		this.history = props.history;
 		this.showSessionMsg = props.location.query ? props.location.query.session : true;
-		this._handlePasswordChange = this._handlePasswordChange.bind(this);
-		this._handleEmailChange = this._handleEmailChange.bind(this);
-		this._formSubmit = this._formSubmit.bind(this);
+		this.handlePasswordChange = this.handlePasswordChange.bind(this);
+		this.handleEmailChange = this.handleEmailChange.bind(this);
+		this.formSubmit = this.formSubmit.bind(this);
 	}
 
-	_handleEmailChange(e) {
+	handleEmailChange(e) {
 		this.state.errorEmail = '';
 		const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
@@ -35,7 +33,7 @@ class SignInPage extends React.Component {
 		});
 	}
 
-	_handlePasswordChange(e) {
+	handlePasswordChange(e) {
 		this.state.errorPassword = '';
 		if (!e.target.value) {
 			this.state.errorPassword = 'This field is required.';
@@ -48,7 +46,7 @@ class SignInPage extends React.Component {
 		});
 	}
 
-	_formSubmit(e) {
+	formSubmit(e) {
 		if (e.keyCode === 13 || e.button === 0) {
 			const { errorPassword, errorEmail, email, password } = this.state;
 			e.preventDefault();
@@ -90,44 +88,16 @@ class SignInPage extends React.Component {
 	render() {
 		const { errorPassword, errorEmail, email, password, error } = this.state;
 		return (
-            <div className="signin text-center text-white">
-                <Headline value="Sign In" />
-                <form>
-                    <TextField
-                        hintText="Enter Email"
-                        errorText={errorEmail}
-                        floatingLabelText="Email"
-                        onChange={this._handleEmailChange}
-                        onKeyUp={this._formSubmit}
-                        style={{ width: '80%', maxWidth: 350 }}
-                        errorStyle={{ color: 'white' }}
-                        value={email}
-                    />
-                    <br />
-                    <TextField
-                        hintText="Enter Password"
-                        errorText={errorPassword}
-                        floatingLabelText="Password"
-                        onChange={this._handlePasswordChange}
-                        onKeyUp={this._formSubmit}
-                        style={{ width: '80%', maxWidth: 350 }}
-                        errorStyle={{ color: 'white' }}
-                        value={password}
-                        type="password"
-                    />
-                    <br />
-                    <RaisedButton
-                        label="Sign In"
-                        secondary
-                        onClick={this._formSubmit}
-                        style={{ marginTop: 100, minWidth: 250 }}
-                    />
-                    <br />
-                    <span>
-                        {error}
-                    </span>
-                </form>
-            </div>
+            <SignInUser
+            email={email}
+            password={password}
+            error={error}
+            errorEmail={errorEmail}
+            errorPassword={errorPassword}
+            onEmailChange={this.handleEmailChange}
+            onPasswordChange={this.handlePasswordChange}
+            onFormSubmit={this.formSubmit}
+            />
 		);
 	}
 }
