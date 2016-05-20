@@ -14,10 +14,6 @@ body {
 	height: 100vh;
 }
 
-.hidden {
-	display: none;
-}
-
 a {
 	text-decoration: none;
 }
@@ -47,6 +43,14 @@ ul {
 /* Generic Classes */
 .pointer-cursor {
 	cursor: pointer;
+}
+
+.relative {
+	position: relative;
+}
+
+.hidden {
+	display: none;
 }
 
 .source-sans {
@@ -144,12 +148,15 @@ ul {
 }
 
 /* Header Section */
-header {
+.header {
 	width: 90%;
 	max-width: 1000px;
 	margin: 30px auto 20px;
 	justify-content: space-between;
 	align-items: center;
+}
+.header h3 {
+	font-size: 22px;
 }
 .header--donation {
 	width: 100%;
@@ -159,36 +166,10 @@ header {
     background: #f8f8f8;
     box-shadow: 0 4px 4px 0 rgba(228, 228, 228, 0.5);
 }
-/* Probably needs renaming since it is reused multiple times in different scenarios */
-.header-appstore {
-	width: 135px;
-	height: 40px;
-	background: url("/images/App-Store-Badge.png") no-repeat;
-}
-.header-back {
-	background-image: url("/images/back-arrow.svg") no-repeat;
-	background-size: 100%;
-	width: 55px;
-	height: 55px;
-}
-
-.header-user {
-
-}
-
-.header-userName {
-
-}
-
-.header-userMenu {
-	
-}
-
-.donation-header-user {
+.header--donation-userName {
 	margin-right: 15%;
 }
-
-.truck-button {
+.header--donation-truck {
 	background-image: url("/images/food-drivr-logo-grey.svg");
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -196,26 +177,30 @@ header {
 	height: 55px;
 	margin-left: 15%;
 }
-
-.header h3 {
-	font-size: 22px;
-	padding: 8px 0;
+/* Probably needs renaming since it is reused multiple times in different scenarios */
+.header-appstore {
+	width: 135px;
+	height: 40px;
+	background: url("/images/App-Store-Badge.png");
+	background-repeat: no-repeat;
 }
-
-
-
-.hide-menu {
-	display: none;
+.header-back {
+	background-image: url("/images/back-arrow.svg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 55px;
+	height: 55px;
 }
-
-.user-container {
-	position: relative;
+.header-userName {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	letter-spacing: 4px;
+	font-weight: bold;
 }
-
-.user-menu-container {
-	top: 66px;
+.header-menu {
+	top: 50px;
 	position: absolute;
-	right: calc( 50% - 70px);
+	right: 0;
 	text-align: right;
 	background: white;
 	padding: 12px;
@@ -225,12 +210,10 @@ header {
 	border: solid 1px #979797;
 	z-index: 99;
 }
-
-.user-menu-container>a {
+.header-menu a {
 	display: block;
 }
-
-.user-menu-arrow {
+.header-menuArrow {
 	width: 20px;
     height: 20px;
     position: absolute;
@@ -238,50 +221,30 @@ header {
 	border-top: solid 1px #979797;
 	border-left: solid 1px #979797;
 	top: -11px;
+	right: 20%;
     -ms-transform: rotate(7deg);
     -webkit-transform: rotate(7deg);
+	-o-transform: rotate(7deg);
     transform: rotate(45deg);
-    right: 20%;
 	box-shadow: -2px -2px 4px -1px rgba(0,0,0,0.2);
 }
-
-.user-info {
+.header-menuItem {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 20px;
 	letter-spacing: 4px;
-	font-weight: bold;
+    margin-bottom: 20px;
+	text-transform: uppercase;
 }
-
-.user-avatar>img {
-	border-radius: 50%;
-    width: 55px;
-}
-
-.logout {
+.header-logout {
 	border-top-style: solid;
-	border-width: 3px;
-	margin-top: 10px;
+	border-width: 2px;
 	border-color: #979797;
+	margin-top: 10px;
 	padding: 12px 0;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 20px;
 	letter-spacing: 4px;
 	font-weight: bold;
-	color: black;
-	text-transform: uppercase;
-	cursor: pointer;
-}
-
-.logout:hover {
-	color: black;
-}
-
-.menu-item {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 20px;
-	letter-spacing: 4px;
-    margin-bottom: 20px;
-	color: black;
 	text-transform: uppercase;
 }
 
@@ -296,10 +259,9 @@ header {
 }
 
 .homepage-intro {
-	position: relative;
-	margin-top: 50px;
-	width: 100%;
-	height: calc( 100vh - 135px);
+	display: flex;
+	flex-direction: column;
+	height: calc( 100vh - 120px);
 }
 
 .homepage-logotitle {
@@ -322,13 +284,15 @@ header {
 
 .homepage-content {
 	max-width: 530px;
+	flex-grow: 1;
 	margin: auto;
-	font-size: 13px;
+	font-size: 15px;
 	padding: 0 20px;
 }
 
 .button-container {
 	margin: 35px 0;
+	flex-grow: 3;
 }
 
 .button-home {
@@ -344,9 +308,7 @@ header {
 .homepage-scrolldown {
 	font-size: 10px;
     margin-bottom: 20px;
-    position: absolute;
     width: 100%;
-    bottom: 1%;
     letter-spacing: 2px;
     font-weight: bold;
 }
@@ -733,11 +695,6 @@ header {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-	.homepage-intro {
-		margin-top: 0;
-		height: calc( 100vh - 95px);
-	}
-
 	.homepage-logotitle {
 		font-size: 18px;
 	}

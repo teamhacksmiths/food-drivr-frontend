@@ -47,7 +47,7 @@ const Header = React.createClass({
 			logInButton = '';
 		}
 		return (
-			<header className={window.location.pathname === '/donation' ? 'header--donation text-flex' : 'header text-flex'}>
+			<header className={window.location.pathname === '/donation' ? 'header header--donation text-flex' : 'header text-flex'}>
 				{headerButton}
 				{logInButton}
 			</header>
@@ -88,8 +88,8 @@ AppStoreIcon.propTypes = {
 	className: React.PropTypes.string
 };
 
-const TruckButton = props => (
-	<div className="truck-button"></div>
+const TruckButton = () => (
+	<div className="header--donation-truck"></div>
 );
 
 const WhiteTruckButton = props => (
@@ -138,12 +138,12 @@ class UserMenu extends React.Component {
 	}
 	render() {
 		return (
-			<div refs="userMenu" className={this.props.showMenu ? 'user-menu-container text-black' : 'user-menu-container hide-menu'}>
-				<div className="user-menu-arrow" />
-				<Link to="/" className="menu-item">Dashboard</Link>
-				<Link to="donation" className="menu-item">Donate</Link>
-				<Link to="/profile" className="menu-item">Settings</Link>
-				<a className="logout" onClick={this.handleLogout}>Logout</a>
+			<div refs="userMenu" className={this.props.showMenu ? 'header-menu text-black' : 'header-menu hidden'}>
+				<div className="header-menuArrow" />
+				<Link to="/" className="header-menuItem">Dashboard</Link>
+				<Link to="donation" className="header-menuItem">Donate</Link>
+				<Link to="/profile" className="header-menuItem">Settings</Link>
+				<a className="header-logout pointer-cursor" onClick={this.handleLogout}>Logout</a>
 			</div>
 		);
 	}
@@ -168,13 +168,13 @@ class UserHeader extends React.Component {
 				showMenu: !this.state.showMenu
 			});
 	}
-	handleClick(event) {
-		if (event.target.className !== 'user-info' && event.target.className !== 'user-menu-container') {
-        	// hide the menu
-      		this.setState({
+	handleClick(e) {
+		if (!e.target.classList.contains('header-userName') && !e.target.classList.contains('header-menu')) {
+			console.log('click else');
+			this.setState({
 				showMenu: false
 			});
-    		}
+		}
 	}
 	componentDidMount() {
 	    document.addEventListener('click', this.handleClick);
@@ -184,10 +184,10 @@ class UserHeader extends React.Component {
 	}
 	render() {
 		const UserHeaderClass = classNames({
-			'user-container': true,
+			relative: true,
 			'text-white': window.location.pathname === '/',
 			'text-black': window.location.pathname !== '/',
-			'donation-header-user': window.location.pathname === '/donation'
+			'header--donation-userName': window.location.pathname === '/donation'
 		});
 		const UserInfoContainerClass = classNames({
 			'pointer-cursor': true,
@@ -196,8 +196,10 @@ class UserHeader extends React.Component {
 		const name = localStorage.getItem('name');
 		return (
 			<div className={UserHeaderClass}>
-				<div className={UserInfoContainerClass} onClick={this.toggleMenu}>
-					<div className="user-info">{name}</div>
+				<div
+					className={`header-userName ${UserInfoContainerClass}`} onClick={this.toggleMenu}
+				>
+					{name}
 				</div>
 				<UserMenu showMenu={this.state.showMenu} />
 			</div>
