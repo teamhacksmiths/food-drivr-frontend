@@ -17,7 +17,7 @@ class BodyButton extends React.Component {
 	}
 }
 
-var SectionIntro = React.createClass({
+var Intro = React.createClass({
 	render() {
 		return (
 			<article className="intro">
@@ -53,7 +53,7 @@ var SectionIntro = React.createClass({
 	}
 });
 
-var HowToDivTitle = React.createClass({
+var HowItWorksSection = React.createClass({
 	propTypes: {
 		imgSrc: React.PropTypes.string.isRequired,
 		imgAlt: React.PropTypes.string.isRequired,
@@ -61,39 +61,35 @@ var HowToDivTitle = React.createClass({
 	},
 	render() {
 		return (
-			<div className="howto-divtitle text-center">
-				<img src={this.props.imgSrc} alt={this.props.imgAlt} className="howto-img" />
-				<p>{this.props.title}</p>
-			</div>
+			<section className="howItWorks-section">
+				<header className="text-center">
+					<img src={this.props.imgSrc} alt={this.props.imgAlt} className="howItWorks-img" />
+					<p className="uppercase">{this.props.title}</p>
+				</header>
+				<p className="text-center source-sans">
+					{this.props.children}
+				</p>
+			</section>
 		);
 	}
 });
 
-var SectionHowTo = React.createClass({
+var HowItWorks = React.createClass({
 	render() {
 		return (
-			<div id="howto" className="homepage-howto">
-				<Headline value="How It Works" className="howto-title text-center text-grey" />
-				<div className="howto-content">
-					<div className="howto-div">
-						<HowToDivTitle title="DONATING" imgSrc="images/package.svg" imgAlt="donation package" />
-						<p className="text-center source-sans">
-							After signing up, donors can enter in items they wish to donate to those in need. Once items are donated, a notification is sent out to all drivers of a pending donation.
-						</p>
-					</div>
-					<div className="howto-div">
-						<HowToDivTitle title="PICKUP" imgSrc="images/truck.svg" imgAlt="pickup truck" />
-						<p className="text-center source-sans">
-							Drivers receive notification of a pending donation and can choose to accept. Upon accepting, they will be given all of the information about the pending donation.
-						</p>
-					</div>
-					<div className="howto-div">
-						<HowToDivTitle title="DELIVERY" imgSrc="images/delivery.svg" imgAlt="delivery truck" />
-						<p className="text-center source-sans">
-							After the pick up of a donation has been completed, drivers deliver the donation to the nearest pre-determined organization recipient.
-						</p>
-					</div>
-				</div>
+			<div id="howto" className="howItWorks bg-white">
+				<Headline value="How it works" className="howItWorks-title text-center text-grey" />
+				<article className="howItWorks-content">
+					<HowItWorksSection title="donating" imgSrc="images/package.svg" imgAlt="donation package">
+						After signing up, donors can enter in items they wish to donate to those in need. Once items are donated, a notification is sent out to all drivers of a pending donation.
+					</HowItWorksSection>
+					<HowItWorksSection title="pickup" imgSrc="images/truck.svg" imgAlt="pickup truck">
+						Drivers receive notification of a pending donation and can choose to accept. Upon accepting, they will be given all of the information about the pending donation.
+					</HowItWorksSection>
+					<HowItWorksSection title="delivery" imgSrc="images/delivery.svg" imgAlt="delivery truck">
+						After the pick up of a donation has been completed, drivers deliver the donation to the nearest pre-determined organization recipient.
+					</HowItWorksSection>
+				</article>
 			</div>
 		);
 	}
@@ -106,41 +102,32 @@ var Arrow = React.createClass({
 	},
 	render() {
 		return (
-			<div className="becomedriver-arrow">
-				<img className="pointer-cursor" onClick={this.props.onClick} src={"images/" + this.props.direction + "-Arrow.svg"} alt={this.props.direction + " arrow"} />
+			<div className="becomeA-arrow">
+				<img className="pointer-cursor" onClick={this.props.onClick} src={`images/${this.props.direction}-Arrow.svg`} alt={`${this.props.direction} arrow`} />
 			</div>
 		);
 	}
 });
 
-var DriverDescription = React.createClass({
-	render() {
-		return (
-			<div className="source-sans" style={{ marginBottom: 40 }}>
-				<p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
-				<p>As an extra benefit to all of our donors, we provide tax receipts to them so they can write their donations off when they do their taxes.</p>
-				<p>Food Drivr provides an easy way for both drivers and donors to help put an end to hunger in their communities.</p>
-			</div>
-		);
-	}
-});
+const DriverDescription = () => (
+	<div className="source-sans" style={{ marginBottom: 40 }}>
+		<p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
+		<p>As an extra benefit to all of our donors, we provide tax receipts to them so they can write their donations off when they do their taxes.</p>
+		<p>Food Drivr provides an easy way for both drivers and donors to help put an end to hunger in their communities.</p>
+	</div>
+);
 
-var VolunteerDescription = React.createClass({
-	render() {
-		return (
-			<div className="source-sans" style={{ marginBottom: 40 }}>
-				<p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
-				<p>Some other text for volunteers!</p>
-			</div>
-		);
-	}
-});
+const VolunteerDescription = () => (
+	<div className="source-sans" style={{ marginBottom: 40 }}>
+		<p>There are people who would rather see their extra food do some good instead of going to waste! We accept donations from business such as catering companies & facilites, restaurants and forcery stores, as well as donations from individuals.</p>
+		<p>Some other text for volunteers!</p>
+	</div>
+);
 
-var SectionBecomeDriver = React.createClass({
+var BecomeA = React.createClass({
 	getInitialState() {
 		return {
-			userType: 'Driver',
-			description: ''
+			userType: 'Driver'
 		};
 	},
 	onSubmitDriver() {
@@ -151,21 +138,19 @@ var SectionBecomeDriver = React.createClass({
 	},
 	render() {
 		return (
-			<div className="homepage-becomedriver">
-				<AppStoreIcon className="becomedriver-appStoreIcon" />
+			<article className="becomeA">
 				<Arrow direction="Left" onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver} />
-				<div className="becomedriver-content text-white">
-					<Headline value={'Become a ' + this.state.userType} className="becomedriver-title" />
+				<section className="becomeA-section text-white">
+					<Headline value={`Become a ${this.state.userType}`} className="becomeA-title" />
 					{this.state.userType === 'Driver' ?
 						<DriverDescription /> :
 						<VolunteerDescription />}
-					<div className="button-container">
-						<BodyButton />
-					</div>
-				</div>
-				<div className="becomedriver-img" />
+					<BodyButton />
+				</section>
+				<AppStoreIcon className="becomeA-appstore" />
+				<div className="becomeA-img" />
 				<Arrow direction="Right" onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver} />
-			</div>
+			</article>
 		);
 	}
 });
@@ -263,9 +248,9 @@ var HomePage = React.createClass({
 	render() {
 		return (
 			<div>
-				<SectionIntro />
-				<SectionHowTo />
-				<SectionBecomeDriver />
+				<Intro />
+				<HowItWorks />
+				<BecomeA />
 				<SectionComments />
 				<SectionContacts />
 			</div>

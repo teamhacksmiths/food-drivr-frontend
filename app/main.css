@@ -25,9 +25,8 @@ a:focus {
 }
 
 h1 {
-	font-size: 48px;
-	font-weight: 400;
-	margin-bottom: 60px;
+	font-size: 46px;
+	font-weight: bold;
 }
 
 h4 {
@@ -177,6 +176,10 @@ ul {
 	background: rgb(20, 207, 232);
 }
 
+.bg-white {
+	background: rgb(255, 255, 255);
+}
+
 /* Header Section */
 .header {
 	width: 90%;
@@ -314,97 +317,90 @@ ul {
 }
 
 /* How It works Section*/
-.homepage-howto {
-	background: white;
-	padding: 100px 0 50px;
+.howItWorks {
+	display: flex;
+	flex-direction: column;
+	padding: 50px 0 80px;
 }
-
-.howto-divtitle {
+.howItWorks-title {
+	font-weight: bold;
+	margin: 40px 0;
+	font-size: 46px;
+  	letter-spacing: -2px;
+	text-transform: capitalize;
+}
+.howItWorks-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 0 30px;
+}
+.howItWorks-section {
+	padding: 20px;
+	max-width: 350px;
+}
+.howItWorks-section header {
 	font-size: 11px;
     letter-spacing: 2px;
     font-weight: bold;
 }
-
-.howto-title {
-	font-weight: bold;
-	font-size: 52px;
-  	letter-spacing: -2px;
-}
-
-.howto-div>p {
+.howItWorks-section>p {
 	font-size: 18px;
     line-height: 1.1;
     color: #70767a;
 }
-
-.howto-content {
-	display: flex;
-	flex-wrap: wrap;
-	margin: 0 30px;
-}
-
-.howto-img {
+.howItWorks-img {
 	margin: 20px;
 }
 
-.howto-div {
-	padding: 20px;
-	width: 100%;
-}
-
 /* Become a Driver Section */
-.homepage-becomedriver {
+.becomeA {
 	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;;
 	position: relative;
-	padding-top: 55px;
 	background: #4b4c4e;
-	min-height: 700px;
 }
 
-.becomedriver-content {
-	width: 65%;
-	margin: auto;
-	display: flex;
-    flex-direction: column;
+.becomeA-arrow {
+	align-self: center;
 }
-
-.becomedriver-content p {
+.becomeA-arrow img {
+	margin: 0 5px;
+	width: 40px;
+}
+.becomeA-section {
+	margin: 50px 0;
+	padding: 0 10px;
+	max-width: 600px;
+}
+.becomeA-section p {
 	font-size: 18px;
 }
 
-.becomedriver-title {
-	font-weight: bold;
-	font-size: 40px;
+.becomeA-title {
 	letter-spacing: -2px;
 }
-
-.becomedriver-img {
-	display: none;
-	background-image: url("/images/Food-Drivr-Driver-iphone.png");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	width: 37%;
-	background-position: center bottom;
-}
-
-.becomedriver-arrow {
-	position: relative;
-	width: 40px;
-	margin: 0 5px;
-}
-
-.becomedriver-arrow img {
-	position: absolute;
-	top: 38%;
-	width: 100%;
-}
-
-.becomedriver-appStoreIcon {
+.becomeA-appstore {
 	display: none;
 	position: absolute;
 	top: 10%;
 	right: 11%;
 }
+.becomeA-img {
+	display: none;
+	margin-top: 50px;
+	background-image: url("/images/Food-Drivr-Driver-iphone.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	height: 638px;
+	width: 490px;
+}
+
+
+
+
 
 /* Comments Section */
 .homepage-comments {
@@ -671,16 +667,15 @@ ul {
 	.intro-content {
 		font-size: 17px;
 	}
-
-	.howto-div {
-		padding: 7%;
-		width: 33%;
+	.howItWorks-content {
+		flex-direction: row;
+	}
+	.becomeA-arrow img {
+		width: 50px;
 	}
 
-	.becomedriver-arrow {
-		width: 74px;
-   		margin: 0 20px;
-	}
+
+
 
 	.comments-container p {
 		width: 60%;
@@ -695,6 +690,14 @@ ul {
 	}
 }
 
+@media screen and (min-width: 1024px) {
+	h1 {
+		font-size: 52px;
+	}
+	.becomeA-arrow img {
+		width: 60px;
+	}
+}
 
 /* Responsive: Laptop and up */
 @media screen and (min-width: 1440px) {
@@ -707,29 +710,20 @@ ul {
 	.btn-round {
 		padding: 10px 77px;
 	}
+	.becomeA-arrow,
+	.becomeA-appstore,
+	.becomeA-img{
+		display: block;
+	}
+	.becomeA-section {
+		padding:0 50px;
+	}
 
 	.comments-container p {
 		width: 40%;
 	}
 
-	.homepage-becomedriver {
-		padding-top: 70px;
-	}
 
-	.becomedriver-title {
-		font-size: 32px;
-	}
-
-	.becomedriver-arrow,
-	.becomedriver-appStoreIcon,
-	.becomedriver-img{
-		display: block;
-	}
-
-	.becomedriver-content {
-		width: 40%;
-		padding:0 50px;
-	}
 
 	.comments-container {
 		height: 220px;
@@ -754,26 +748,13 @@ ul {
 	}
 }
 
-@media screen and (min-width: 1200px) {
-	.homepage-becomedriver {
-		padding-top: 100px;
-	}
 
-	.becomedriver-title {
-		font-size: 42px;
-	}
 
-	.becomedriver-img {
-		background-size: auto 100%;
-	}
-}
 
-/* 4k and up not yet fully supported */
-@media screen and (min-width: 2560px) {
-	.homepage-content {
-		font-size: 25px;
-	}
-}
+
+
+
+
 
 /* user profile dashboard components */
 .user-profile-container {
