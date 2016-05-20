@@ -89,14 +89,14 @@ class SignInPage extends React.Component {
 		const { errorPassword, errorEmail, email, password, error } = this.state;
 		return (
             <SignInUser
-            email={email}
-            password={password}
-            error={error}
-            errorEmail={errorEmail}
-            errorPassword={errorPassword}
-            onEmailChange={this.handleEmailChange}
-            onPasswordChange={this.handlePasswordChange}
-            onFormSubmit={this.formSubmit}
+				email={email}
+				password={password}
+				error={error}
+				errorEmail={errorEmail}
+				errorPassword={errorPassword}
+				onEmailChange={this.handleEmailChange}
+				onPasswordChange={this.handlePasswordChange}
+				onFormSubmit={this.formSubmit}
             />
 		);
 	}
