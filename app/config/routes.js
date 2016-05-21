@@ -7,9 +7,9 @@ import SignInPage from '../pages/SignInPage.jsx';
 import RegistrationPage from '../pages/RegistrationPage.jsx';
 import DonationPage from '../pages/DonationPage.jsx';
 import ThankYouPage from '../pages/ThankYouPage.jsx';
+import UserProfilePage from '../pages/UserProfilePage.jsx';
 import auth from '../utils/auth.js';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import * as Pages from '../pages';
 injectTapEventPlugin();
 
 function requireAuth(nextState, replace) {
@@ -32,7 +32,7 @@ const routes = (
 			<Route path="thankyou" component={ThankYouPage} />
 			<Route path="thankyou/:userType" component={ThankYouPage} />
 			<Route path="donation" component={DonationPage} onEnter={requireAuth} />
-			<Route path="profile" component={Pages.UserProfilePage} onEnter={requireAuth} />
+			<Route path="profile" component={UserProfilePage} onEnter={requireAuth} />
 		</Route>
 	</Router>
 );

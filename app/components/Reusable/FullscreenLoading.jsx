@@ -1,12 +1,14 @@
 import React from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 
-const FullscreenLoading = props => {
-  return(
+const FullscreenLoading = props => (
     <div className={props.isLoading ? 'fullscreen-loader' : 'fullscreen-loader hidden'}>
       <CircularProgress />
     </div>
-  );
-}
+);
 
-export default FullscreenLoading;
+FullscreenLoading.propTypes = {
+	isLoading: React.PropTypes.bool.isRequired
+};
+
+module.exports = FullscreenLoading;
