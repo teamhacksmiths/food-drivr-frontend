@@ -185,8 +185,7 @@ class UserHeader extends React.Component {
 		const UserHeaderClass = classNames({
 			relative: true,
 			'text-white': window.location.pathname === '/',
-			'text-black': window.location.pathname !== '/',
-			'user-name': window.location.pathname === '/donation'
+			'text-black': window.location.pathname !== '/'
 		});
 		const UserInfoContainerClass = classNames({
 			'pointer-cursor': true,

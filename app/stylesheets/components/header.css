@@ -62,14 +62,11 @@
 	min-height: 110px;
     margin: 0;
     box-shadow: 0 4px 4px 0 rgba(228, 228, 228, 0.5);
-	& .user-name {
-		margin-right: 15%;
-	}
+	padding: 0 15%;
 
 	& .truck {
 		background: url("/images/food-drivr-logo-grey.svg") no-repeat 100%;
 		@mixin square 55px;
-		margin-left: 15%;
 	}
 }
 /* Probably needs renaming since it is reused multiple times in different scenarios */
