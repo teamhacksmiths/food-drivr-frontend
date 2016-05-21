@@ -1,6 +1,7 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
+const postcssImport = require('postcss-import');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 
@@ -16,7 +17,7 @@ const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
-  images: path.join(__dirname, 'assets/images')
+  images: path.join(__dirname, 'assets/images'),
 };
 
 process.env.BABEL_ENV = TARGET;
@@ -59,9 +60,8 @@ const common = {
       {
         // Test expects a RegExp! Note the slashes!
         test: /\.css$/,
-        loaders: ['style', 'css'],
+        loader: "style-loader!css-loader!postcss-loader",
         // Include accepts either a path or an array of paths.
-        include: PATHS.app
       },
       {
         test: /\.(png|jpg)$/,
@@ -69,6 +69,15 @@ const common = {
         path: PATHS.images
       }
     ]
+  },
+  postcss: function (webpack) {
+    return [
+        postcssImport({
+            addDependencyTo: webpack
+        }),
+		require('autoprefixer'),
+		require('precss')
+    ];
   }
 };
 
