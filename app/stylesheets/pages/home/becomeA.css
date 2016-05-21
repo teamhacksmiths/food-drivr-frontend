@@ -1,69 +1,80 @@
+@import "../../base/fonts.css";
+@import "../../base/colors.css";
+@import "../../utils/mixins.css";
+
 .becomeA {
-	display: flex;
-	justify-content: space-around;
-	align-items: flex-start;;
+	@mixin flex *, flex-start, *, space-around;
 	position: relative;
-	background: #4b4c4e;
-}
-.becomeA-arrow {
-	align-self: center;
-}
-.becomeA-arrow img {
-	margin: 0 5px;
-	width: 40px;
-}
-.becomeA-section {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: center;
-	margin: 50px 0;
-	padding: 0 5px;
-	max-width: 600px;
-	min-height: 761px;
-}
-.becomeA-section p {
-	font-size: 18px;
+
+	& .arrow {
+		align-self: center;
+
+		& img {
+			margin: 0 5px;
+			@mixin square 45px;
+		}
+	}
+
+	& section {
+		@mixin flex column, flex-start, *, center;
+		margin: 50px 0;
+		padding: 0 5px;
+		max-width: 600px;
+		min-height: 761px;
+
+		& .title {
+			letter-spacing: -2px;
+		}
+
+		& p {
+			font-size: $font-small-thick;
+		}
+	}
+
+	& .appstore {
+		display: none;
+		@mixin absolute 10%, 11%, *, *;
+	}
+
+	& .app-sample {
+		display: none;
+		margin-top: 50px;
+		background: url("/images/Food-Drivr-Driver-iphone.png") no-repeat;
+		background-size: 100%;
+		@mixin rect 490px, 638px;
+	}
 }
 
-.becomeA-title {
-	letter-spacing: -2px;
-}
-.becomeA-appstore {
-	display: none;
-	position: absolute;
-	top: 10%;
-	right: 11%;
-}
-.becomeA-img {
-	display: none;
-	margin-top: 50px;
-	background-image: url("/images/Food-Drivr-Driver-iphone.png");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	height: 638px;
-	width: 490px;
-}
 @media screen and (min-width: 768px) {
-	.becomeA-arrow img {
-		width: 50px;
-	}
-	.becomeA-section {
-		min-height: 450px;
+	.becomeA {
+		& .arrow img {
+			@mixin square 50px;
+		}
+		& section {
+			min-height: 450px;
+		}
 	}
 }
 @media screen and (min-width: 1024px) {
-	.becomeA-arrow img {
-		width: 60px;
+	.becomeA {
+		& .arrow img {
+			@mixin square 60px;
+		}
 	}
 }
 @media screen and (min-width: 1440px) {
-	.becomeA-arrow,
-	.becomeA-appstore,
-	.becomeA-img{
-		display: block;
-	}
-	.becomeA-section {
-		padding:0 50px;
+	.becomeA {
+		& .arrow,
+		& .appstore,
+		& .app-sample {
+			display: block;
+		}
+		& section {
+			padding: 0 50px;
+
+			& p {
+				font-size: $font-medium-thin;
+			}
+		}
 	}
 }

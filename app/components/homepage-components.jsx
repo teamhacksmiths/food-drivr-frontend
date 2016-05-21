@@ -102,7 +102,7 @@ var Arrow = React.createClass({
 	},
 	render() {
 		return (
-			<div className="becomeA-arrow">
+			<div className="arrow">
 				<img className="pointer-cursor" onClick={this.props.onClick} src={`images/${this.props.direction}-Arrow.svg`} alt={`${this.props.direction} arrow`} />
 			</div>
 		);
@@ -138,17 +138,17 @@ var BecomeA = React.createClass({
 	},
 	render() {
 		return (
-			<article className="becomeA">
+			<article className="becomeA bg-grey-dark">
 				<Arrow direction="Left" onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver} />
-				<section className="becomeA-section text-white">
-					<Headline value={`Become a ${this.state.userType}`} className="becomeA-title" />
+				<section className="text-white">
+					<Headline value={`Become a ${this.state.userType}`} className="title" />
 					{this.state.userType === 'Driver' ?
 						<DriverDescription /> :
 						<VolunteerDescription />}
 					<BodyButton />
 				</section>
-				<AppStoreIcon className="becomeA-appstore" />
-				<div className="becomeA-img" />
+				<AppStoreIcon className="appstore" />
+				<div className="app-sample" />
 				<Arrow direction="Right" onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver} />
 			</article>
 		);

@@ -17,7 +17,8 @@
 	}
 
 	& .back {
-		background: url("/images/back-arrow.svg") no-repeat 100%;
+		background: url("/images/back-arrow.svg") no-repeat;
+		background-size: 100%;
 		@mixin square 55px;
 	}
 }
@@ -64,7 +65,8 @@
 	padding: 0 15%;
 
 	& .truck {
-		background: url("/images/food-drivr-logo-grey.svg") no-repeat 100%;
+		background: url("/images/food-drivr-logo-grey.svg") no-repeat;
+		background-size: 100%;
 		@mixin square 55px;
 	}
 }
