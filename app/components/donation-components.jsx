@@ -136,7 +136,7 @@ class Donation extends React.Component {
 				/>
 				<ul>{donatedItems}</ul>
 				<button
-					className={this.state.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'} onClick={this.handleOpen}
+					className={this.state.enableDonation ? 'btn-donate bg-yellow' : 'btn-donate bg-yellow btn-disabled'} onClick={this.handleOpen}
 				>
 					DONATE
 				</button>
@@ -185,7 +185,7 @@ class Donation extends React.Component {
 					autoHideDuration={4000}
 					onRequestClose={this.handleSnackClose}
 				/>
-		</section>
+			</section>
 		);
 	}
 }
@@ -193,7 +193,7 @@ class Donation extends React.Component {
 
 const DonationItem = props => (
 	<li className="text-flex">
-		<div className="donation-itemName text-lightgrey">{props.name}</div>
+		<div className="item-name text-lightgrey">{props.name}</div>
 		<button className="pointer-cursor btn-delDonation" onClick={props.onRemoveItem} />
 	</li>
 );
@@ -298,7 +298,7 @@ class DonationsList extends React.Component {
 		});
 		return (
 		<article className="donations">
-			<h1 className="donations-title text-center text-yellow">BUSINESS NAME</h1>
+			<h1 className="title text-center text-yellow">BUSINESS NAME</h1>
 			<Donation />
 			{donationList}
 		</article>

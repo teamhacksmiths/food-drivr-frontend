@@ -6,7 +6,7 @@
 	max-width: 1000px;
 	margin: 30px auto 20px;
 	@mixin flex *, center, *, space-between;
-	font-family: $font-open-sans;
+	font-family: $open-sans;
 	font-size: $font-medium-thin;
 
 	& .user-name {

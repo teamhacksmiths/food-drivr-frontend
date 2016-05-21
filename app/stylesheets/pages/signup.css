@@ -1,7 +1,7 @@
 .signup {
 	min-height: 80vh;
 	@mixin flex column, center, *, *;
-	font-family: $font-open-sans;
+	font-family: $open-sans;
 
 	& h1 {
 		margin-bottom: 50px;
