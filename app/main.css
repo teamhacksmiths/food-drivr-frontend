@@ -512,7 +512,6 @@ ul {
 .donation form {
 	display: flex;
 	justify-content: center;
-	font-size: 16px;
 }
 .btn-addDonation {
 	width: 55px;
@@ -548,7 +547,7 @@ ul {
 	align-items: flex-end;
 	justify-content: space-between;
 }
-.donated-name {
+.donation-itemName {
     margin-top: 15px;
     font-size: 20px;
     letter-spacing: 0.9px;
@@ -674,10 +673,10 @@ ul {
 	.contacts-email {
 		font-size: 20px;
 	}
-	.donation form div {
+	/*.donation form div {
 		line-height: 2.1;
 		font-size: 20px;
-	}
+	}*/
 }
 
 @media screen and (min-width: 1024px) {
@@ -687,10 +686,10 @@ ul {
 	.becomeA-arrow img {
 		width: 60px;
 	}
-	.donation form div {
+	/*.donation form div {
 	    line-height: 2;
 	    font-size: 22px;
-	}
+	}*/
 }
 
 /* Responsive: Laptop and up */
@@ -949,4 +948,8 @@ ul {
 /* Change the white to any color ;) */
 input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0px 1000px #FF1E40 inset;
+}
+
+.donation-dialog input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset;
 }

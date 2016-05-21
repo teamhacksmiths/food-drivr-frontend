@@ -149,6 +149,7 @@ class Donation extends React.Component {
 					open={this.state.open}
 					onRequestClose={this.handleClose}
 					autoScrollBodyContent
+					className="donation-dialog"
 				>
 					<br />
 					Where?
@@ -192,7 +193,7 @@ class Donation extends React.Component {
 
 const DonationItem = props => (
 	<li className="text-flex">
-		<div className="donated-name text-lightgrey">{props.name}</div>
+		<div className="donation-itemName text-lightgrey">{props.name}</div>
 		<button className="pointer-cursor btn-delDonation" onClick={props.onRemoveItem} />
 	</li>
 );
@@ -215,7 +216,7 @@ var DonatedItem = React.createClass({
 	render: function() {
 		return (
 			<div className="text-right">
-				<div className='donation-item'>{this.props.quantity} {this.props.unit} x {this.props.title}</div>
+				<div className='donated-item'>{this.props.quantity} {this.props.unit} x {this.props.title}</div>
 			</div>
 		);
 	}
