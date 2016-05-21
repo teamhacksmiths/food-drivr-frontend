@@ -47,7 +47,7 @@ const Header = React.createClass({
 			logInButton = '';
 		}
 		return (
-			<header className={window.location.pathname === '/donation' ? 'header header--donation text-flex' : 'header text-flex'}>
+			<header className={window.location.pathname === '/donation' ? 'header header--donation bg-grey-light text-flex' : 'header text-flex'}>
 				{headerButton}
 				{logInButton}
 			</header>
@@ -75,7 +75,7 @@ class BackButton extends React.Component {
 	}
 	render() {
 		return (
-			<div className="header-back pointer-cursor" onClick={this.handleGoBack}></div>
+			<div className="back pointer-cursor" onClick={this.handleGoBack}></div>
 		);
 	}
 }
@@ -89,7 +89,7 @@ AppStoreIcon.propTypes = {
 };
 
 const TruckButton = () => (
-	<div className="header--donation-truck"></div>
+	<div className="truck"></div>
 );
 
 const WhiteTruckButton = props => (
@@ -138,12 +138,12 @@ class UserMenu extends React.Component {
 	}
 	render() {
 		return (
-			<div refs="userMenu" className={this.props.showMenu ? 'header-menu text-black' : 'header-menu hidden'}>
-				<div className="header-menuArrow" />
-				<Link to="/" className="header-menuItem">Dashboard</Link>
-				<Link to="donation" className="header-menuItem">Donate</Link>
-				<Link to="/profile" className="header-menuItem">Settings</Link>
-				<a className="header-logout pointer-cursor" onClick={this.handleLogout}>Logout</a>
+			<div refs="userMenu" className={this.props.showMenu ? 'header-menu bg-white text-black text-right' : 'header-menu bg-white hidden'}>
+				<div className="arrow bg-white" />
+				<Link to="/" className="item">Dashboard</Link>
+				<Link to="donation" className="item">Donate</Link>
+				<Link to="/profile" className="item">Settings</Link>
+				<a className="logout pointer-cursor" onClick={this.handleLogout}>Logout</a>
 			</div>
 		);
 	}
@@ -169,7 +169,7 @@ class UserHeader extends React.Component {
 			});
 	}
 	handleClick(e) {
-		if (!e.target.classList.contains('header-userName') && !e.target.classList.contains('header-menu')) {
+		if (!e.target.classList.contains('user-name') && !e.target.classList.contains('header-menu')) {
 			this.setState({
 				showMenu: false
 			});
@@ -186,7 +186,7 @@ class UserHeader extends React.Component {
 			relative: true,
 			'text-white': window.location.pathname === '/',
 			'text-black': window.location.pathname !== '/',
-			'header--donation-userName': window.location.pathname === '/donation'
+			'user-name': window.location.pathname === '/donation'
 		});
 		const UserInfoContainerClass = classNames({
 			'pointer-cursor': true,
@@ -196,7 +196,7 @@ class UserHeader extends React.Component {
 		return (
 			<div className={UserHeaderClass}>
 				<div
-					className={`header-userName ${UserInfoContainerClass}`} onClick={this.toggleMenu}
+					className={`user-name ${UserInfoContainerClass}`} onClick={this.toggleMenu}
 				>
 					{name}
 				</div>
@@ -210,6 +210,7 @@ const Footer = React.createClass({
 	render() {
 		const footerClass = classNames({
 			footer: true,
+			'text-center': true,
 			'text-black': window.location.pathname === '/donation',
 			'text-white': window.location.pathname !== '/donation'
 		});

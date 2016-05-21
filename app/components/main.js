@@ -12,7 +12,7 @@ export default class App extends React.Component {
 			container: true,
 			'bg-blue': window.location.pathname === '/',
 			'bg-red': window.location.pathname === '/signup' || window.location.pathname === '/signin',
-			'bg-grey-light': window.location.pathname === '/donation',
+			'bg-grey': window.location.pathname === '/donation',
 			'bg-yellow': window.location.href.indexOf('donor') > -1,
 			'bg-blue-light': window.location.href.indexOf('volunteer') > -1
 		});

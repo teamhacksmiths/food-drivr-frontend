@@ -1,4 +1,6 @@
 @import "../base/fonts.css";
+@import "../base/z-indexes.css";
+@import "../utils/mixins.css";
 
 .header {
 	width: 90%;
@@ -6,90 +8,72 @@
 	margin: 30px auto 20px;
 	justify-content: space-between;
 	align-items: center;
-	font-family: 'Open Sans', sans-serif;
+	font-family: $font-open-sans;
 	font-size: $font-medium-thin;
+
+	& .user-name {
+		letter-spacing: 4px;
+		font-weight: bold;
+		line-height: 70px;
+	}
+
+	& .back {
+		background: url("/images/back-arrow.svg") no-repeat 100%;
+		@mixin square 55px;
+	}
+}
+.header-menu {
+	@mixin absolute 100%, 0, *, *;
+	padding: 12px;
+	width: 200px;
+	box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
+	border: solid 1px #979797;
+	z-index: $z-index-1;
+	& .arrow {
+		@mixin square 20px;
+		@mixin absolute -11px, 20%, *, *;
+		border-top: solid 1px #979797;
+		border-left: solid 1px #979797;
+	    transform: rotate(45deg);
+		box-shadow: -2px -2px 4px -1px rgba(0,0,0,0.2);
+	}
+
+	& .item {
+		display: block;
+		letter-spacing: 4px;
+	    margin-bottom: 20px;
+		text-transform: uppercase;
+	}
+
+	& .logout {
+		display: block;
+		border: none 2px #979797;
+		border-top-style: solid;
+		margin-top: 10px;
+		padding: 12px 0;
+		letter-spacing: 4px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
 }
 .header--donation {
 	width: 100%;
 	max-width: 1450px;
 	min-height: 110px;
     margin: 0;
-    background: #f8f8f8;
     box-shadow: 0 4px 4px 0 rgba(228, 228, 228, 0.5);
-}
-.header--donation-userName {
-	margin-right: 15%;
-}
-.header--donation-truck {
-	background-image: url("/images/food-drivr-logo-grey.svg");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	width: 55px;
-	height: 55px;
-	margin-left: 15%;
+	& .user-name {
+		margin-right: 15%;
+	}
+
+	& .truck {
+		background: url("/images/food-drivr-logo-grey.svg") no-repeat 100%;
+		@mixin square 55px;
+		margin-left: 15%;
+	}
 }
 /* Probably needs renaming since it is reused multiple times in different scenarios */
 .header-appstore {
-	width: 135px;
-	height: 40px;
-	background: url("/images/App-Store-Badge.png");
-	background-repeat: no-repeat;
-}
-.header-back {
-	background-image: url("/images/back-arrow.svg");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	width: 55px;
-	height: 55px;
-}
-.header-userName {
-	font-family: 'Open Sans', sans-serif;
-	letter-spacing: 4px;
-	font-weight: bold;
-	line-height: 70px;
-}
-.header-menu {
-	top: 100%;
-	position: absolute;
-	right: 0;
-	text-align: right;
-	background: white;
-	padding: 12px;
-	width: 200px;
-	box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
-	border: solid 1px #979797;
-	z-index: 99;
-}
-.header-menu a {
-	display: block;
-}
-.header-menuArrow {
-	width: 20px;
-    height: 20px;
-    position: absolute;
-    background: white;
-	border-top: solid 1px #979797;
-	border-left: solid 1px #979797;
-	top: -11px;
-	right: 20%;
-    -ms-transform: rotate(7deg);
-    -webkit-transform: rotate(7deg);
-	-o-transform: rotate(7deg);
-    transform: rotate(45deg);
-	box-shadow: -2px -2px 4px -1px rgba(0,0,0,0.2);
-}
-.header-menuItem {
-	letter-spacing: 4px;
-    margin-bottom: 20px;
-	text-transform: uppercase;
-}
-.header-logout {
-	border-top-style: solid;
-	border-width: 2px;
-	border-color: #979797;
-	margin-top: 10px;
-	padding: 12px 0;
-	letter-spacing: 4px;
-	font-weight: bold;
-	text-transform: uppercase;
+	@mixin rect 135px, 40px;
+	background: url("/images/App-Store-Badge.png") no-repeat;
 }

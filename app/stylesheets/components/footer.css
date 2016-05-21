@@ -1,10 +1,9 @@
+@import "../utils/mixins.css";
+
 .footer {
-	position: absolute;
-	bottom: 15px;
-	height: 30px;
-	width: 100%;
-	text-align: center;
-}
-.footer a:hover{
-	text-decoration: underline;
+	@mixin absolute *, *, 15px, *;
+	@mixin rect 100%, 30px;
+	a:hover {
+		text-decoration: underline;
+	}
 }
