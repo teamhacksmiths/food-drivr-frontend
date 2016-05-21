@@ -1,5 +1,5 @@
 @import "../base/fonts.css";
-@import "../base/z-indexes.css";
+@import "../base/zIndexes.css";
 
 .header {
 	width: 90%;
@@ -21,6 +21,7 @@
 		@mixin square 55px;
 	}
 }
+
 .header-menu {
 	@mixin absolute 100%, 0, *, *;
 	padding: 12px;
@@ -55,6 +56,7 @@
 		text-transform: uppercase;
 	}
 }
+
 .header--donation {
 	width: 100%;
 	max-width: 1450px;

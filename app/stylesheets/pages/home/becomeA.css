@@ -42,11 +42,13 @@
 		& .arrow img {
 			@mixin square 50px;
 		}
+
 		& section {
 			min-height: 450px;
 		}
 	}
 }
+
 @media screen and (min-width: 1024px) {
 	.becomeA {
 		& .arrow img {
@@ -54,6 +56,7 @@
 		}
 	}
 }
+
 @media screen and (min-width: 1440px) {
 	.becomeA {
 		& .arrow,
@@ -61,9 +64,9 @@
 		& .app-sample {
 			display: block;
 		}
+
 		& section {
 			padding: 0 50px;
-
 			& p {
 				font-size: $font-medium-thin;
 			}

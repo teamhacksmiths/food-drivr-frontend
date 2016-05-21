@@ -13,6 +13,17 @@
 @import "pages/thankyou.css";
 
 
+.bullet {
+	display: inline;
+	font-size: $font-huge-thin;
+	margin: 0 10px;
+}
+.bullet:before {
+	content: "•";
+}
+.bullet--active:before{
+	content: "◦";
+}
 
 /* Generic Classes */
 .pointer-cursor {

@@ -218,44 +218,36 @@ var Comments = React.createClass({
 	}
 });
 
-var Contacts = React.createClass({
-	render() {
-		return (
-			<article className="contacts text-white">
-				<p>If you have any question or comments, please don't hesitate to contact us.</p>
-				<p>1 650-253-0000</p>
+const Contacts = () => (
+	<article className="contacts text-white">
+		<p>If you have any question or comments, please don't hesitate to contact us.</p>
+		<p>1 650-253-0000</p>
 
-				<section className="contacts-email">
-					susie@benefitbrownies.organization
-				</section>
-				<section className="contacts-social">
-					<Link to="" role="button">
-						<img src="images/facebook-icon-footer.svg" alt="facebook icon" className="social-icon" />
-					</Link>
-					<Link to="" role="button">
-						<img src="images/Twitter-Icon-footer.svg" alt="twitter icon" className="social-icon" />
-					</Link>
-				</section>
-				<footer className="copyright text-center">
-					© Copyright Benefit Brownies 2016
-				</footer>
-			</article>
-		);
-	}
-});
+		<section className="email">
+			susie@benefitbrownies.organization
+		</section>
+		<section>
+			<Link to="" role="button">
+				<img src="images/facebook-icon-footer.svg" alt="facebook icon" className="social-icon" />
+			</Link>
+			<Link to="" role="button">
+				<img src="images/Twitter-Icon-footer.svg" alt="twitter icon" className="social-icon" />
+			</Link>
+		</section>
+		<footer className="copyright text-center">
+			© Copyright Benefit Brownies 2016
+		</footer>
+	</article>
+);
 
-var HomePage = React.createClass({
-	render() {
-		return (
-			<div>
-				<Intro />
-				<HowItWorks />
-				<BecomeA />
-				<Comments />
-				<Contacts />
-			</div>
-		);
-	}
-});
+const HomePage = () => 	(
+	<div>
+		<Intro />
+		<HowItWorks />
+		<BecomeA />
+		<Comments />
+		<Contacts />
+	</div>
+);
 
 module.exports = HomePage;
