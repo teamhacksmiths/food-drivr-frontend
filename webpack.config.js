@@ -18,6 +18,7 @@ const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
   images: path.join(__dirname, 'assets/images'),
+  style: path.join(__dirname, 'app/stylesheets')
 };
 
 process.env.BABEL_ENV = TARGET;
@@ -62,6 +63,7 @@ const common = {
         test: /\.css$/,
         loader: "style-loader!css-loader!postcss-loader",
         // Include accepts either a path or an array of paths.
+        include: PATHS.style
       },
       {
         test: /\.(png|jpg)$/,
