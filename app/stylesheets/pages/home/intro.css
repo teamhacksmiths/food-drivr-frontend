@@ -1,51 +1,62 @@
+@import "../../utils/mixins.css";
+@import "../../base/fonts.css";
+
 .intro {
 	display: flex;
 	flex-direction: column;
 	height: calc( 100vh - 120px);
-}
-.intro-truckWhite {
-	background: url("/images/fd-logo.svg");
-	background-repeat: no-repeat;
-	width: 50px;
-	height: 50px;
-	margin: auto;
-}
-.intro-powered {
-	font-size: 13px;
-}
-.intro-title {
-	margin: 35px auto;
-	font-weight: bold;
-	font-size: 40px;
-	max-width: 300px;
-}
-.intro-content {
-	max-width: 530px;
-	margin: auto;
-	font-size: 15px;
-	padding: 0 20px;
-}
-.intro-scrolldown {
-	font-size: 10px;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-    font-weight: bold;
+	& .truck-white {
+		background: url("/images/fd-logo.svg") no-repeat;
+		@mixin square 50px;
+		margin: auto;
+	}
+
+	& .powered {
+		font-size: $font-small;
+	}
+
+	& .title {
+		margin: 25px auto;
+		font-weight: bold;
+		font-size: $font-large-thick;
+		max-width: 300px;
+	}
+
+	& .content {
+		max-width: 530px;
+		margin: auto;
+		font-size: $font-small-thick;
+		padding: 0 20px;
+	}
+
+	& .scrolldown {
+		font-size: $font-small-thin;
+	    margin-bottom: 20px;
+	    letter-spacing: 2px;
+	    font-weight: bold;
+	}
 }
 
 @media screen and (min-width: 768px) {
-	.intro-title {
-		max-width: 900px;
-		font-size: 60px;
-	}
-	.intro-content {
-		font-size: 17px;
+	.intro {
+		& .title {
+			max-width: 900px;
+			font-size: $font-huge;
+		}
+
+		& .content {
+			font-size: $font-medium-thin;
+		}
 	}
 }
 @media screen and (min-width: 1440px) {
-	.intro-title {
-		font-size: 70px;
-	}
-	.intro-content {
-		font-size: 22px;
+	.intro{
+		& .title {
+			font-size: $font-huge-thick;
+		}
+
+		& .content {
+			font-size: $font-medium;
+		}
 	}
 }

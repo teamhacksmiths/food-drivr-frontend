@@ -22,16 +22,16 @@ var Intro = React.createClass({
 		return (
 			<article className="intro">
 				<header className="text-center text-white">
-					<div title="food drivr logo" className="intro-truckWhite"></div>
+					<div title="food drivr logo" className="truck-white"></div>
 					<p className="uppercase">
 						Food drivr
 					</p>
-					<p className="intro-powered">
+					<p className="powered">
 						Powering Donations For
 					</p>
-					<Headline value="Waste not food taxi" className="uppercase intro-title text-center text-white" />
+					<Headline value="Waste not food taxi" className="uppercase title text-center text-white" />
 				</header>
-				<section className="intro-content flex-grow-1 text-center text-white source-sans">
+				<section className="content flex-grow-1 text-center text-white source-sans">
 					<p>
 						On a daily basis, businesess like catering facilities, restaurants, grocery stores, as well as individuals produce more food than what is necessary for them to meet their needs.
 					</p>
@@ -45,7 +45,7 @@ var Intro = React.createClass({
 				<section className="flex-grow-3 text-center">
 					<BodyButton />
 				</section>
-				<footer href="#howto" className="intro-scrolldown text-center text-white pointer-cursor">
+				<footer href="#howto" className="scrolldown text-center text-white pointer-cursor">
 					<ScrollDownButton destination="" color="white" text="Learn more" />
 				</footer>
 			</article>
