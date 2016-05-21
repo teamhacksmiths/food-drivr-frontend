@@ -47,9 +47,12 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
 SignInUser.propTypes = {
 	email: React.PropTypes.string.isRequired,
 	password: React.PropTypes.string.isRequired,
-	error: React.PropTypes.string.isRequired,
-	errorEmail: React.PropTypes.string.isRequired,
-	errorPassword: React.PropTypes.string.isRequired,
+    error: React.PropTypes.oneOfType([
+        React.PropTypes.string,
+        React.PropTypes.object
+    ]),
+    errorEmail: React.PropTypes.string,
+	errorPassword: React.PropTypes.string,
 	onEmailChange: React.PropTypes.func.isRequired,
 	onPasswordChange: React.PropTypes.func.isRequired,
 	onFormSubmit: React.PropTypes.func.isRequired

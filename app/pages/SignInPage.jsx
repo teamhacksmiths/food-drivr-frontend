@@ -102,11 +102,6 @@ class SignInPage extends React.Component {
 	}
 }
 
-SignInPage.propTypes = {
-	history: React.PropTypes.string.isRequired,
-	location: React.PropTypes.string.isRequired
-};
-
 SignInPage.contextTypes = {
 	router: React.PropTypes.object.isRequired
 };

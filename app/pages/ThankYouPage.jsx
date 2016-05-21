@@ -11,8 +11,7 @@ class ThankYouPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			role: parseInt(localStorage.getItem('role'), 10),
-			loggedIn: auth.loggedIn()
+			role: parseInt(localStorage.getItem('role'), 10)
 		};
 		this.handleClick = this.handleClick.bind(this);
 	}

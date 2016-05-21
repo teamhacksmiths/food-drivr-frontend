@@ -12,6 +12,7 @@ class Header extends React.Component {
 		this.state = {
 			loggedIn: auth.loggedIn()
 		};
+		this.updateAuth = this.updateAuth.bind(this);
 	}
 
 	componentWillMount() {

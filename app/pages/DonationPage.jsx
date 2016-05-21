@@ -13,12 +13,20 @@ class DonationPage extends React.Component {
 			newItemName: '',
 			itemsAdded: [],
 			enableAddItem: false,
-			enableDonation: false
+			enableDonation: false,
+			open: false,
+			openSnackBar: false,
+			snackbarMessage: '',
+			noteMsg: ''
 		};
 		this.handleOpen = this.handleOpen.bind(this);
 		this.handleUpdateItem = this.handleUpdateItem.bind(this);
 		this.handleAddItem = this.handleAddItem.bind(this);
 		this.handleRemoveItem = this.handleRemoveItem.bind(this);
+		this.handleClose = this.handleClose.bind(this);
+		this.handleDonate = this.handleDonate.bind(this);
+		this.handleSnackClose = this.handleSnackClose.bind(this);
+		this.handleNoteChange = this.handleNoteChange.bind(this);
 	}
 
 	componentWillMount() {
@@ -80,6 +88,36 @@ class DonationPage extends React.Component {
 		}
 	}
 
+	handleClose() {
+		this.setState({ open: false });
+	}
+
+	handleDonate() {
+		auth.postDonation(this.state.itemsAdded)
+		.then((response) => {
+			console.log(response);
+			this.setState({ open: false,
+							openSnackBar: true,
+							snackbarMessage: 'Donation Complete!',
+							itemsAdded: [] });
+		})
+		.catch((err) => {
+			console.log(err);
+			this.setState({ open: false,
+							openSnackBar: true,
+							snackbarMessage: 'Donation Could Not Be Sent! Please Try Again!' });
+		});
+	}
+
+	handleSnackClose() {
+		this.setState({ openSnackBar: false });
+	}
+
+	handleNoteChange(e) {
+		this.setState({
+			noteMsg: e.target.value
+		});
+	}
 	render() {
 		return (
 		<div>
@@ -92,7 +130,17 @@ class DonationPage extends React.Component {
 				onHandleOpen={this.handleOpen}
 				onHandleRemoveItem={this.handleRemoveItem}
 			/>
-			<DonationConfirmation />
+			<DonationConfirmation
+				onOpen={this.state.open}
+				onHandleClose={this.handleClose}
+				onHandleDonate={this.handleDonate}
+				onNoteChange={this.handleNoteChange}
+				noteMsg={this.state.noteMsg}
+				itemsAdded={this.state.itemsAdded}
+				openSnackBar={this.state.openSnackBar}
+				snackbarMessage={this.state.snackbarMessage}
+				onSnackClose={this.handleSnackClose}
+			/>
 			<DonationHistory
 				donations={this.state.donations}
 			/>
