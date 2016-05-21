@@ -1,0 +1,36 @@
+.text-grey {
+	color: #3c3d41;
+}
+.text-lightgrey {
+	color: #cfcfcf;
+}
+.text-white {
+	color: white;
+}
+.text-white a:visited {
+	color: white;
+}
+.text-black {
+	color: black;
+}
+.text-black a:visited {
+	color: black;
+}
+.text-yellow {
+	color: #f7b32b;
+}
+.text-center{
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.text-flex {
+	display: flex;
+}
+.fontSize-small {
+	font-size: 13px;
+}
+.fontSize-medium {
+	font-size: 16px;
+}

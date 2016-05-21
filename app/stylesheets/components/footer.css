@@ -1,0 +1,10 @@
+.footer {
+	position: absolute;
+	bottom: 15px;
+	height: 30px;
+	width: 100%;
+	text-align: center;
+}
+.footer a:hover{
+	text-decoration: underline;
+}

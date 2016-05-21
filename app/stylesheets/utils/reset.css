@@ -1,0 +1,36 @@
+body {
+	width: 100%;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover,
+a:focus {
+	text-decoration: none;
+	outline: none;
+}
+
+h1 {
+	font-size: 46px;
+	font-weight: bold;
+}
+
+h4 {
+	color: black;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}

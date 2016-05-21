@@ -1,0 +1,16 @@
+$blue: #394969;
+$blue-light: rgb(20, 207, 232);
+$red: rgb(255, 30, 64);
+$grey-light: #ebebeb;
+$yellow: rgb(247, 179, 43);
+$white: rgb(255, 255, 255);
+
+/* Change color of auto fill */
+/* Change the white to any color ;) */
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px #FF1E40 inset;
+}
+
+.donation-dialog input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset;
+}

@@ -1,0 +1,68 @@
+.donations {
+	width: 90%;
+	margin: auto;
+}
+.donations-title {
+	font-size: 40px;
+}
+.donation form {
+	display: flex;
+	justify-content: center;
+}
+.btn-addDonation {
+	width: 55px;
+	height: 55px;
+	border: none;
+	background: transparent;
+	background-image: url('/images/add-button.svg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.btn-delDonation {
+	width: 25px;
+    height: 25px;
+	border: none;
+    background: transparent;
+    background-image: url('/images/btn-del-donation.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.btn-disabled {
+	opacity: .5;
+	cursor: default;
+}
+.donation ul {
+	overflow-x: hidden;
+	max-height: 40vh;
+	max-width: 540px;
+	width: 95%;
+	margin: auto;
+	margin-top: 20px;
+}
+.donation li {
+	align-items: flex-end;
+	justify-content: space-between;
+}
+.donation-itemName {
+    margin-top: 15px;
+    font-size: 20px;
+    letter-spacing: 0.9px;
+    color: #202020;
+    font-family: 'Open Sans', sans-serif;
+}
+.btn-delDonation:focus,
+.btn-donate:focus,
+.btn-addDonation:focus {
+	outline: none;
+}
+.btn-donate {
+	display: block;
+	width: 60%;
+	max-width: 250px;
+	height: 50px;
+	margin: 25px auto;font-size: 21px;
+	color: white;
+	background-color: #f7bd4b;
+	border: none;
+	box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
+}

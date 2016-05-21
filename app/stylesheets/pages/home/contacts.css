@@ -1,0 +1,31 @@
+.contacts {
+	padding: 55px 15% 0;
+	font-size: 20px;
+}
+.contacts p {
+	max-width: 400px;
+	margin: 50px 0;
+}
+.contacts-email{
+	display: inline;
+	border-bottom: 1px solid #FFF;
+	padding-bottom: 3px;
+	font-size: 13px;
+}
+.social-icon {
+	margin: 20px 10px 0 0;
+}
+.copyright {
+	margin: 50px 0;
+	font-size: 10px;
+}
+@media screen and (min-width: 768px) {
+	.contacts-email {
+		font-size: 20px;
+	}
+}
+@media screen and (min-width: 1440px) {
+	.contacts {
+		padding: 55px 25% 0;
+	}
+}

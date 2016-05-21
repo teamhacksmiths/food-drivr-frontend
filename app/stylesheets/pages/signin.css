@@ -1,0 +1,10 @@
+.signin {
+	min-height: calc(100vh - 135px);
+	padding: 50px 0;
+	background-color: #ff1e40;
+}
+.signin form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

@@ -1,0 +1,49 @@
+.comments {
+	background: #14cfe8;
+	padding: 150px 0 20px;
+}
+.comment-container p {
+	width: 70%;
+	margin: auto;
+	font-size: 20px;
+}
+.comment-container {
+	height: 280px;
+}
+.comment-author {
+	font-size: 16px;
+	margin: 60px 0 10px;
+}
+.comment-company {
+	font-size: 12px;
+}
+.comments-dots {
+	margin-top: 60px;
+}
+.bullet {
+	display: inline;
+	font-size: 45px;
+	margin: 0 10px;
+}
+.bullet:before {
+	content: "•";
+}
+.bullet-active:before{
+	content: "◦";
+}
+@media screen and (min-width: 768px) {
+	.comment-container p {
+		width: 60%;
+	}
+	.comment-container {
+		height: 260px;
+	}
+}
+@media screen and (min-width: 1440px) {
+	.comment-container p {
+		width: 40%;
+	}
+	.comment-container {
+		height: 220px;
+	}
+}

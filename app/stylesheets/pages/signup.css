@@ -1,0 +1,25 @@
+.signup-container {
+	min-height: 80vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: 'Open Sans', sans-serif;
+}
+.signup-container h1 {
+	margin-bottom: 50px;
+}
+.signup-or {
+	font-size: 36px;
+}
+.signup-selection {
+	display: flex;
+	flex-direction: column;
+	font-size: 25px;
+}
+.signup-selection>*{
+	cursor: pointer;
+}
+.signup-form {
+	width: 90%;
+	max-width: 350px;
+}
