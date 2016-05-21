@@ -2,8 +2,7 @@
 @import "../../base/fonts.css";
 
 .intro {
-	display: flex;
-	flex-direction: column;
+	@mixin flex column, *, *, *;
 	height: calc( 100vh - 120px);
 	& .truck-white {
 		background: url("/images/fd-logo.svg") no-repeat;

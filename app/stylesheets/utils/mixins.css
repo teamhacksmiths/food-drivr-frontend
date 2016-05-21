@@ -24,6 +24,22 @@
 	}
 }
 
+@define-mixin flex $direction, $align-items, $align-content, $justify-content{
+	display: flex;
+	@if $direction != *{
+		flex-direction: $direction;
+	}
+	@if $align-items != *{
+		align-items: $align-items;
+	}
+	@if $align-content != *{
+		align-content: $align-content;
+	}
+	@if $justify-content != *{
+		justify-content: $justify-content;
+	}
+}
+
 %clearfix {
   *zoom: 1;
   &:before, &:after {

@@ -61,10 +61,10 @@ var HowItWorksSection = React.createClass({
 	},
 	render() {
 		return (
-			<section className="howItWorks-section">
+			<section>
 				<header className="text-center">
-					<img src={this.props.imgSrc} alt={this.props.imgAlt} className="howItWorks-img" />
-					<p className="uppercase">{this.props.title}</p>
+					<img src={this.props.imgSrc} alt={this.props.imgAlt} className="img" />
+					<div className="uppercase">{this.props.title}</div>
 				</header>
 				<p className="text-center source-sans">
 					{this.props.children}
@@ -78,8 +78,8 @@ var HowItWorks = React.createClass({
 	render() {
 		return (
 			<article id="howItWorks" className="howItWorks bg-white">
-				<Headline value="How it works" className="howItWorks-title text-center text-grey" />
-				<div className="howItWorks-content">
+				<Headline value="How it works" className="title text-center text-grey" />
+				<div className="content">
 					<HowItWorksSection title="donating" imgSrc="images/package.svg" imgAlt="donation package">
 						After signing up, donors can enter in items they wish to donate to those in need. Once items are donated, a notification is sent out to all drivers of a pending donation.
 					</HowItWorksSection>

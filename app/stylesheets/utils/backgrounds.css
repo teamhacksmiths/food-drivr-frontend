@@ -9,11 +9,11 @@
 .bg-red {
 	background: $red;
 }
+.bg-grey-x-light {
+	background: $grey-x-light;
+}
 .bg-grey-light {
 	background: $grey-light;
-}
-.bg-grey {
-	background: $grey;
 }
 .bg-yellow {
 	background: $yellow;

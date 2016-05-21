@@ -6,8 +6,7 @@
 	width: 90%;
 	max-width: 1000px;
 	margin: 30px auto 20px;
-	justify-content: space-between;
-	align-items: center;
+	@mixin flex *, center, *, space-between;
 	font-family: $font-open-sans;
 	font-size: $font-medium-thin;
 

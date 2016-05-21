@@ -47,7 +47,7 @@ const Header = React.createClass({
 			logInButton = '';
 		}
 		return (
-			<header className={window.location.pathname === '/donation' ? 'header header--donation bg-grey-light text-flex' : 'header text-flex'}>
+			<header className={window.location.pathname === '/donation' ? 'header header--donation bg-grey-x-light' : 'header'}>
 				{headerButton}
 				{logInButton}
 			</header>
