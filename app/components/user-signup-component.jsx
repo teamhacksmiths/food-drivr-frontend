@@ -19,9 +19,9 @@ const styles = {
 };
 
 const UserSignup = props => (
-	<article className="signup-container text-center">
+	<article className="signup text-center">
 		<h2 className="uppercase text-white">{props.userType} Sign Up</h2>
-		<form className="signup-form">
+		<form>
 			<TextField
 				hintText="Enter Name"
 				errorText={props.errorName}

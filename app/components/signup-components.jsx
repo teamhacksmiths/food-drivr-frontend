@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SignupButton = ({ title, onSubmit, imgSrc, imgAlt }) => (
-	<section className="signup-selection flex-grow-1 text-center">
+	<section className="selection flex-grow-1 text-center">
 		<img onClick={onSubmit} src={imgSrc} alt={imgAlt} />
 		<span onClick={onSubmit}>{title}</span>
 	</section>
@@ -21,7 +21,7 @@ class SignUpPage extends React.Component {
 	}
 	render() {
 		return (
-			<article className="signup-container text-center text-white">
+			<article className="signup text-center text-white">
 				<h1 className="uppercase">Sign Up</h1>
 				<SignupButton
 					onSubmit={this.handleSubmitDonor}
@@ -29,7 +29,7 @@ class SignUpPage extends React.Component {
 					imgAlt="donor package"
 					title="Donor"
 				/>
-			<p className="signup-or flex-grow-1">OR</p>
+			<p className="or flex-grow-1">OR</p>
 				<SignupButton
 					onSubmit={this.handleSubmitVolunteer}
 					imgSrc="images/volunteer-icon.svg"
