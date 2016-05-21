@@ -1,6 +1,3 @@
-@import "../../utils/mixins.css";
-@import "../../base/fonts.css";
-
 .intro {
 	@mixin flex column, *, *, *;
 	height: calc( 100vh - 120px);

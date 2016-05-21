@@ -1,6 +1,5 @@
 @import "../base/fonts.css";
 @import "../base/z-indexes.css";
-@import "../utils/mixins.css";
 
 .header {
 	width: 90%;

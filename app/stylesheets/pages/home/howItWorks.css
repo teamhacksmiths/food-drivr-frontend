@@ -1,7 +1,3 @@
-@import "../../base/fonts.css";
-@import "../../base/colors.css";
-@import "../../utils/mixins.css";
-
 .howItWorks {
 	@mixin flex column, *, *, *;
 	padding: 50px 0 80px;
@@ -43,6 +39,9 @@
 
 @media screen and (min-width: 768px) {
 	.howItWorks{
+		& .title {
+			font-size: $font-huge;
+		}
 		& .content {
 			flex-direction: row;
 		}

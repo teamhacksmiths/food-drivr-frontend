@@ -163,12 +163,12 @@ var Comment = React.createClass({
 	},
 	render() {
 		return (
-			<section className="comment-container">
+			<section className="comment">
 				<p>{this.props.text}</p>
-				<div className="comment-author">
+				<div className="author">
 					{this.props.author}
 				</div>
-				<div className="comment-company">
+				<div className="company">
 					{this.props.company}
 				</div>
 			</section>
@@ -202,13 +202,13 @@ var Comments = React.createClass({
 		}
 	},
 	isActive(value) {
-		return `${((this.state.item === value) ? 'bullet-active ' : '')} bullet pointer-cursor`;
+		return `${((this.state.item === value) ? 'bullet--active ' : '')} bullet pointer-cursor`;
 	},
 	render() {
 		return (
 			<article className="comments text-center text-white">
 				<Comment text={this.state.text} author={this.state.author} company={this.state.company} />
-				<div className="comments-dots">
+				<div className="dots">
 					<div className={this.isActive(0)} onClick={this.selectItem.bind(this,0)} />
 					<div className={this.isActive(1)} onClick={this.selectItem.bind(this,1)} />
 					<div className={this.isActive(2)} onClick={this.selectItem.bind(this,2)} />
