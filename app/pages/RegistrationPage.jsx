@@ -1,5 +1,5 @@
 import React from 'react';
-import UserSignup from '../components/user-signup-component.jsx';
+import UserRegister from '../components/RegistrationPage/UserRegister.jsx';
 import auth from '../utils/auth.js';
 import CircularProgress from 'material-ui/CircularProgress';
 
@@ -16,14 +16,14 @@ class Registration extends React.Component {
 			password: '',
 			passwordConfirmation: ''
 		};
-		this._handleNameChange = this._handleNameChange.bind(this);
-		this._handlePasswordChange = this._handlePasswordChange.bind(this);
-		this._handlePasswordConfirmChange = this._handlePasswordConfirmChange.bind(this);
-		this._handleEmailChange = this._handleEmailChange.bind(this);
-		this._handleSubmitUser = this._handleSubmitUser.bind(this);
+		this.handleNameChange = this.handleNameChange.bind(this);
+		this.handlePasswordChange = this.handlePasswordChange.bind(this);
+		this.handlePasswordConfirmChange = this.handlePasswordConfirmChange.bind(this);
+		this.handleEmailChange = this.handleEmailChange.bind(this);
+		this.handleSubmitUser = this.handleSubmitUser.bind(this);
 	}
 
-	_handleNameChange(e) {
+	handleNameChange(e) {
 		this.state.errorName = '';
 
 		if (!e.target.value) {
@@ -37,17 +37,17 @@ class Registration extends React.Component {
 		});
 	}
 
-	_validateEmail(email) {
-		var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	validateEmail(email) {
+		const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		return re.test(email);
 	}
 
-	_handleEmailChange(e) {
+	handleEmailChange(e) {
 		this.state.errorEmail = '';
-		var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+		const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 		/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -62,7 +62,7 @@ class Registration extends React.Component {
 		});
 	}
 
-	_handlePasswordChange(e) {
+	handlePasswordChange(e) {
 		this.state.errorPassword = '';
 		if (!e.target.value) {
 			this.state.errorPassword = 'This field is required.';
@@ -75,7 +75,7 @@ class Registration extends React.Component {
 		});
 	}
 
-	_handlePasswordConfirmChange(e) {
+	handlePasswordConfirmChange(e) {
 		this.state.errorPasswordConfirmation = '';
 		if (!e.target.value) {
 			this.state.errorPasswordConfirmation = 'This field is required.';
@@ -90,16 +90,16 @@ class Registration extends React.Component {
 		});
 	}
 
-	_handleSubmitUser(e) {
+	handleSubmitUser(e) {
 		if (e.keyCode === 13 || e.button === 0) {
 			console.log(this.props.route.header);
 			const { name, email, password, passwordConfirmation } = this.state;
 			const userRole = this.props.route.header === 'Donor' ? 0 : 1;
 			e.preventDefault();
-			if (this.state.errorName == '' &&
-				this.state.errorPassword == '' &&
-				this.state.errorEmail == '' &&
-				this.state.errorPasswordConfirmation == '') {
+			if (this.state.errorName === '' &&
+				this.state.errorPassword === '' &&
+				this.state.errorEmail === '' &&
+				this.state.errorPasswordConfirmation === '') {
 				this.setState({ error: <CircularProgress /> });
 				auth.register(name, email, password, passwordConfirmation, userRole)
 				.then((response) => {
@@ -125,7 +125,6 @@ class Registration extends React.Component {
 
 	render() {
 		const {
-			style,
 			name,
 			errorName,
 			email,
@@ -135,15 +134,15 @@ class Registration extends React.Component {
 			passwordConfirmation,
 			errorPasswordConfirmation,
 			error
-		 } = this.state;
+		} = this.state;
 		return (
-			<UserSignup
-				onNameChange={this._handleNameChange}
-				onValidateEmail={this._validateEmail}
-				onEmailChange={this._handleEmailChange}
-				onPasswordChange={this._handlePasswordChange}
-				onPasswordConfirmChange={this._handlePasswordConfirmChange}
-				onSubmitUser={this._handleSubmitUser}
+			<UserRegister
+				onNameChange={this.handleNameChange}
+				onValidateEmail={this.validateEmail}
+				onEmailChange={this.handleEmailChange}
+				onPasswordChange={this.handlePasswordChange}
+				onPasswordConfirmChange={this.handlePasswordConfirmChange}
+				onSubmitUser={this.handleSubmitUser}
 				userType={this.props.route.header}
 				name={name}
 				email={email}
@@ -154,7 +153,7 @@ class Registration extends React.Component {
 				errorPassword={errorPassword}
 				errorPasswordConfirmation={errorPasswordConfirmation}
 				error={error}
-				/>
+			/>
 		);
 	}
 }

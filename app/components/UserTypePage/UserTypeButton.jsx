@@ -10,7 +10,7 @@ const UserTypeButton = ({ onSubmit, imageSrc, imageAlt, title }) => (
 UserTypeButton.propTypes = {
 	onSubmit: React.PropTypes.func,
 	imageSrc: React.PropTypes.string.isRequired,
-	imageAlt: React.PropTypes.string.isRequired,
+	imageAlt: React.PropTypes.string,
 	title: React.PropTypes.string.isRequired
 };
 
