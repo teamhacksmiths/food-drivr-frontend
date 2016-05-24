@@ -2,14 +2,14 @@ import React from 'react';
 
 const Comment = ({ text, author, company }) => (
   <section className="comment">
-    <p>{text}</p>
+    <q>{text}</q>
     <div className="author">
       {author}
     </div>
     <div className="company">
       {company}
     </div>
-</section>
+  </section>
 );
 
 Comment.propTypes = {

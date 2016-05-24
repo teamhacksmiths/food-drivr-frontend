@@ -8,7 +8,7 @@
 
 .comment {
 	height: 280px;
-	& p {
+	& q {
 		width: 70%;
 		margin: auto;
 		font-size: $font-medium-thin;
@@ -17,7 +17,7 @@
 	& .author {
 		margin: 60px 0 10px;
 	}
-	
+
 	& .company {
 		font-size: $font-small;
 	}
