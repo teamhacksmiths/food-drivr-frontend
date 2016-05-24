@@ -40,6 +40,11 @@
 	}
 }
 
+@define-mixin bg-img $url {
+  background: transparent url($url) no-repeat;
+	background-size: 100%;
+}
+
 %clearfix {
   *zoom: 1;
   &:before, &:after {

@@ -17,9 +17,8 @@
   }
 
   & .truck {
-  	background-image: url("/images/food-drivr-logo.svg") no-repeat;
-  	background-size: 100%;
-    @mixin square 55px, 55px;
+    @mixin bg-img '/images/food-drivr-logo.svg';
+    @mixin square 55px;
   	margin: auto;
   }
 

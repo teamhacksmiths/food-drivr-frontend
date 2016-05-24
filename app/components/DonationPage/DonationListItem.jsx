@@ -2,8 +2,8 @@ import React from 'react';
 
 const DonationItem = ({ name, onRemoveItem }) => (
   <li>
-    <div className="item-name text-lightgrey">{name}</div>
-    <button className="pointer-cursor btn-delDonation" onClick={onRemoveItem} />
+    <div className="item-name">{name}</div>
+    <button className="btn btn-delDonation" onClick={onRemoveItem} />
   </li>
 );
 

@@ -24,7 +24,7 @@ const AddNewItem = ({ onUpdateItem, enableAddItem, onAddItem }) => (
       style={styles.textField}
     />
     <button
-      className={enableAddItem ? 'pointer-cursor btn-addDonation' : 'pointer-cursor btn-addDonation btn-disabled'}
+      className={enableAddItem ? 'btn btn-addDonation' : 'btn btn-addDonation btn--disabled'}
       onClick={onAddItem}
     />
   </form>

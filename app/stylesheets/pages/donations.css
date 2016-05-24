@@ -1,3 +1,5 @@
+@import "../components/buttons.css";
+
 .donations {
 	width: 90%;
 	margin:  50px auto 0;
@@ -12,6 +14,7 @@
 }
 
 .donation {
+  @mixin flex column, *, *, *;
 	& ul {
 		overflow-x: hidden;
 		max-height: 40vh;
@@ -26,42 +29,13 @@
 		    margin-top: 15px;
 		    font-size: $font-medium-thin;
 		    letter-spacing: 0.9px;
-		    color: #202020;
 		    font-family: $open-sans;
 		}
 	}
 }
 
-.btn-delDonation:focus,
-.btn-donate:focus,
-.btn-addDonation:focus {
-	outline: none;
-}
-.btn-addDonation {
-	@mixin square 55px;
-	border: none;
-	background: transparent url('/images/add-button.svg') no-repeat;
-	background-size: 100%;
-}
-.btn-delDonation {
-	@mixin square 25px;
-	border: none;
-    background: transparent url('/images/btn-del-donation.png') no-repeat;
-	background-size: 100%;
-}
-.btn-disabled {
-	opacity: .5;
-	cursor: default;
-}
-.btn-donate {
-	display: block;
-	@mixin rect 60%, 50px;
-	max-width: 250px;
-	margin: 25px auto;
-	font-size: $font-medium-thin;
-	color: white;
-	border: none;
-	box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
+.donation-dialog input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset;
 }
 
 @media screen and (min-width: 768px) {

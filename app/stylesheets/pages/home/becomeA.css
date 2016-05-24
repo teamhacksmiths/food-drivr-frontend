@@ -25,10 +25,6 @@
 
     & div {
       margin-bottom: 40px;
-      & p {
-          /*font-family: $source-sans;*/
-      }
-
     }
 	}
 
@@ -40,8 +36,7 @@
 	& .app-sample {
 		display: none;
 		margin-top: 50px;
-		background: url("/images/Food-Drivr-Driver-iphone.png") no-repeat;
-		background-size: 100%;
+    @mixin bg-img '/images/Food-Drivr-Driver-iphone.png';
 		@mixin rect 490px, 638px;
 	}
 }

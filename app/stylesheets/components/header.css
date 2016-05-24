@@ -15,8 +15,7 @@
 	}
 
 	& .back {
-		background: url("/images/back-arrow.svg") no-repeat;
-		background-size: 100%;
+    @mixin bg-img '/images/back-arrow.svg';
 		@mixin square 55px;
 	}
 }
@@ -28,6 +27,7 @@
 	box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
 	border: solid 1px #979797;
 	z-index: $z-index-1;
+  text-transform: uppercase;
 	& .arrow {
 		@mixin square 20px;
 		@mixin absolute -11px, 20%, *, *;
@@ -41,7 +41,6 @@
 		display: block;
 		letter-spacing: 4px;
 	  margin-bottom: 20px;
-		text-transform: uppercase;
     color: inherit;
 	}
 
@@ -53,7 +52,6 @@
 		padding: 12px 0;
 		letter-spacing: 4px;
 		font-weight: bold;
-		text-transform: uppercase;
 	}
 }
 
@@ -66,13 +64,12 @@
 	padding: 0 15%;
 
 	& .truck {
-		background: url("/images/food-drivr-logo-grey.svg") no-repeat;
-		background-size: 100%;
+    @mixin bg-img '/images/food-drivr-logo-grey.svg';
 		@mixin square 55px;
 	}
 }
 /* Probably needs renaming since it is reused multiple times in different scenarios */
 .header-appstore {
+  @mixin bg-img '/images/App-Store-Badge.png';
 	@mixin rect 135px, 40px;
-	background: url("/images/App-Store-Badge.png") no-repeat;
 }

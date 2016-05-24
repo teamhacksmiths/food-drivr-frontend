@@ -3,10 +3,10 @@
 	padding: 50px 0 80px;
 
 	& .title {
+    margin: 40px 0;
 		font-weight: bold;
-		margin: 40px 0;
 		font-size: $font-large-thick;
-	  	letter-spacing: -2px;
+	  letter-spacing: -2px;
 		text-transform: capitalize;
 	}
 
@@ -21,14 +21,14 @@
 
 		& header {
 			font-size: $font-small-thin;
-		    letter-spacing: 2px;
-		    font-weight: bold;
+		  letter-spacing: 2px;
+		  font-weight: bold;
 		}
 
 		& p {
 			font-size: $font-small-thick;
-		    line-height: 1.1;
-		    color: $grey;
+		  line-height: 1.1;
+		  color: $grey;
 		}
 	}
 

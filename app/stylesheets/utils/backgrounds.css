@@ -1,26 +1,26 @@
 @import "../base/colors.css";
 
 .bg-blue-light {
-	background: $blue-light;
+	background-color: $blue-light;
 }
 .bg-blue {
-	background: $blue;
+	background-color: $blue;
 }
 .bg-red {
-	background: $red;
+	background-color: $red;
 }
 .bg-grey-x-light {
-	background: $grey-x-light;
+	background-color: $grey-x-light;
 }
 .bg-grey-light {
-	background: $grey-light;
+	background-color: $grey-light;
 }
 .bg-grey-dark {
-	background: $grey-dark;
+	background-color: $grey-dark;
 }
 .bg-yellow {
-	background: $yellow;
+	background-color: $yellow;
 }
 .bg-white {
-	background: $white;
+	background-color: $white;
 }

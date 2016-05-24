@@ -77,8 +77,9 @@ const common = {
         postcssImport({
             addDependencyTo: webpack
         }),
-		require('autoprefixer'),
-		require('precss')
+  		require('autoprefixer'),
+  		require('precss'),
+      require('cssnano')
     ];
   }
 };

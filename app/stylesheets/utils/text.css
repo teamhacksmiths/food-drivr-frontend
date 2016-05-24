@@ -1,23 +1,16 @@
-.text-grey {
-	color: #3c3d41;
-}
-.text-lightgrey {
-	color: #cfcfcf;
+@import "../base/colors.css";
+
+.text-grey-dark {
+	color: $grey-dark;
 }
 .text-white {
-	color: white;
-}
-.text-white a:visited {
 	color: white;
 }
 .text-black {
 	color: black;
 }
-.text-black a:visited {
-	color: black;
-}
 .text-yellow {
-	color: #f7b32b;
+	color: $yellow;
 }
 .text-center{
 	text-align: center;

@@ -30,7 +30,7 @@ class SectionComments extends React.Component {
   }
 
   isActive(value) {
-    return (`${(this.state.item === value) ? 'bullet--active ' : ''} + bullet pointer-cursor`);
+    return (`${(this.state.item === value) ? 'bullet--active' : ''} bullet pointer-cursor`);
   }
 
   render() {

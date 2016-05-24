@@ -1,0 +1,36 @@
+@import "../base/fonts.css";
+@import "../base/colors.css";
+
+.bullet {
+	display: inline;
+	font-size: $font-huge-thin;
+	margin: 0 10px;
+  &:before {
+  	content: "•";
+  }
+}
+
+.bullet--active:before{
+	content: "◦";
+}
+
+/* Generic Classes */
+.pointer-cursor {
+	cursor: pointer;
+}
+
+.relative {
+	position: relative;
+}
+
+.hidden {
+	display: none;
+}
+
+.flex-grow-1 {
+	flex-grow: 1;
+}
+
+.flex-grow-3 {
+	flex-grow: 3;
+}
