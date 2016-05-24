@@ -4,6 +4,7 @@
 	font-family: $open-sans;
 
 	& h1 {
+    font-size: $font-huge-thin;
 		margin-bottom: 50px;
 	}
 

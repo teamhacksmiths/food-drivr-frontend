@@ -2,8 +2,23 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
+const styles = {
+  fullWidth: {
+    width: '100%'
+  },
+  underlineYellow: {
+    borderColor: '#F7B32B'
+  },
+  floatingLabelYellow: {
+    color: '#F7B32B'
+  },
+  colorWhite: {
+    color: 'white'
+  }
+};
+
 const UserRegister = (props) => (
-  <div className="signup-container text-center">
+  <div className="signup text-center">
     <p>{props.userType} Sign Up</p>
     <form>
       <TextField
@@ -12,8 +27,10 @@ const UserRegister = (props) => (
         floatingLabelText="Name"
         onChange={props.onNameChange}
         onKeyUp={props.onSubmitUser}
-        style={{ width: '80%', maxWidth: 350 }}
-        errorStyle={{ color: 'white' }}
+        style={styles.fullWidth}
+        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : ''}
+        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : ''}
+        errorStyle={styles.colorWhite}
         value={props.name}
       />
         <br />

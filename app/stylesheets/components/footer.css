@@ -1,8 +1,8 @@
 @import "../utils/mixins.css";
 
 .footer {
-	@mixin absolute *, *, 15px, *;
-	@mixin rect 100%, 30px;
+	@mixin absolute *, *, 0px, *;
+	width: 100%;
 	a:hover {
 		text-decoration: underline;
 	}
