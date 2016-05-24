@@ -40,8 +40,9 @@
 	& .item {
 		display: block;
 		letter-spacing: 4px;
-	    margin-bottom: 20px;
+	  margin-bottom: 20px;
 		text-transform: uppercase;
+    color: inherit;
 	}
 
 	& .logout {
@@ -60,8 +61,8 @@
 	width: 100%;
 	max-width: 1450px;
 	min-height: 110px;
-    margin: 0;
-    box-shadow: 0 4px 4px 0 rgba(228, 228, 228, 0.5);
+  margin: 0;
+  box-shadow: 0 4px 4px 0 rgba(228, 228, 228, 0.5);
 	padding: 0 15%;
 
 	& .truck {

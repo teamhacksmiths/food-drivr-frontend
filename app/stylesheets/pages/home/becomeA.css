@@ -22,6 +22,14 @@
       font-size: $font-large-thick;
 			letter-spacing: -2px;
 		}
+
+    & div {
+      margin-bottom: 40px;
+      & p {
+          /*font-family: $source-sans;*/
+      }
+
+    }
 	}
 
 	& .appstore {

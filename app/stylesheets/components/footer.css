@@ -6,6 +6,7 @@
 	a:hover {
 		text-decoration: underline;
 	}
+  a,
   a:visited {
     color: inherit;
   }

@@ -8,9 +8,9 @@
 
 .comment {
 	height: 280px;
+  width: 70%;
+  margin: auto;
 	& q {
-		width: 70%;
-		margin: auto;
 		font-size: $font-medium-thin;
 	}
 

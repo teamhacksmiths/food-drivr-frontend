@@ -1,6 +1,8 @@
+@import "../../components/buttons.css";
+
 .intro {
 	@mixin flex column, *, *, *;
-	height: calc( 100vh - 100px);
+	height: calc( 100vh - 6rem);
 	& .truck-white {
 		background: url("/images/fd-logo.svg") no-repeat;
 		@mixin square 50px;
@@ -12,27 +14,27 @@
 	}
 
 	& .title {
-		margin: 25px auto;
+		margin: 1rem auto;
 		font-weight: bold;
 		font-size: $font-large-thick;
-		max-width: 300px;
+		max-width: 20rem;
 	}
 
 	& .content {
-		max-width: 530px;
+		max-width: 35rem;
 		margin: auto;
-		padding: 0 20px;
+		padding: 0 2rem;
 	}
 
 	& .scrolldown {
 		font-size: $font-small-thin;
-	    margin-bottom: 20px;
-	    letter-spacing: 2px;
-	    font-weight: bold;
+	  margin-bottom: 1rem;
+	  letter-spacing: 2px;
+	  font-weight: bold;
 	}
 
   & footer p {
-    margin-bottom: 5px;
+    margin-bottom: .5rem;
   }
 }
 
@@ -52,10 +54,6 @@
 	.intro{
 		& .title {
 			font-size: $font-huge-thick;
-		}
-
-		& .content {
-			font-size: $font-medium;
 		}
 	}
 }

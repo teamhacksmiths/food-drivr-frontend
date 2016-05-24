@@ -10,32 +10,32 @@
 
 @define-mixin absolute $top, $right, $bottom, $left {
 	position: absolute;
-    @if $top != *{
+    @if $top != * {
 		top: $top;
 	}
-	@if $right != *{
+	@if $right != * {
 		right: $right;
 	}
-	@if $bottom != *{
+	@if $bottom != * {
 		bottom: $bottom;
 	}
-	@if $left != *{
+	@if $left != * {
 		left: $left;
 	}
 }
 
 @define-mixin flex $direction, $align-items, $align-content, $justify-content{
 	display: flex;
-	@if $direction != *{
+	@if $direction != * {
 		flex-direction: $direction;
 	}
-	@if $align-items != *{
+	@if $align-items != * {
 		align-items: $align-items;
 	}
-	@if $align-content != *{
+	@if $align-content != * {
 		align-content: $align-content;
 	}
-	@if $justify-content != *{
+	@if $justify-content != * {
 		justify-content: $justify-content;
 	}
 }
