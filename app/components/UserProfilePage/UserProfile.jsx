@@ -6,7 +6,7 @@ import AvatarMissing from '../../assets/images/avatar-missing.png';
 import Toggle from 'material-ui/Toggle';
 import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
-import PasswordForm from './PasswordForm';
+import PasswordForm from './PasswordForm.jsx';
 
 
 const Styles = {
@@ -58,6 +58,10 @@ class UserProfile extends React.Component {
     this.handleCancelClick = this.handleCancelClick.bind(this);
   }
 
+  componentDidMount() {
+    this.disableEditing();
+  }
+
   handlePasswordFormSubmission(params) {
     this.props.handleSendPasswordReset(params);
   }
@@ -67,16 +71,10 @@ class UserProfile extends React.Component {
     const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     const test = re.test(formData.email);
     return test || formData.email.length === 0;
-  }
+  }  
 
   handleFormSubmission() {
-    if (this.state.formData.emailIsValid) {
-      this.props.handleSendFormData(this.state.formData);
-    } else {
-      this.setState({
-        hasErrors: true
-      });
-    }
+    this.props.handleSendFormData(this.state.formData);
   }
 
   enableEditing() {
@@ -85,6 +83,26 @@ class UserProfile extends React.Component {
 
   disableEditing() {
     this.setState({ isEditing: false });
+  }
+
+  validateField(name, e) {
+    switch (name) {
+    case 'email': {
+      const email = e.target.value;
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      const emailIsValid = re.test(email);
+      let error = null;
+      if (emailIsValid) {
+        error = null;
+      } else {
+        error = 'Email must be valid.';
+      }
+      return error;
+    }
+    case 'password': {}
+    case 'phone': {}
+    default:
+    }
   }
 
   handleEditButtonClick(e) {
@@ -134,6 +152,7 @@ class UserProfile extends React.Component {
       handleFormUpdate,
       userData
     } = this.props;
+
     return (
       <div className="user-profile-container lightgrey-background" style={Styles.containerStyle}>
         <h1 className="giant-title text-center text-yellow">Hello, {this.props.userData.name}</h1>
@@ -160,8 +179,17 @@ class UserProfile extends React.Component {
               required
               autocomplete="email"
             />
-          </div>
-          <div className="form-group">
+            <TextField
+              id="password"
+              ref="passwordInput"
+              name="password"
+              value={this.state.formData.password}
+              errorText={this.state.errors.passwordError}
+              onChange={this.handleFormUpdate.bind(this, 'password')}
+              disabled={!this.state.isEditing}
+              type="password"
+              hintText="Password"
+            />
             <TextField
               id="phone"
               ref="phoneInput"
@@ -176,8 +204,6 @@ class UserProfile extends React.Component {
               hintText="Contact Phone"
               autocomplete="tel"
             />
-          </div>
-          <div className="form-group">
             <TextField
               style={Styles.formGroup}
               id="company"
@@ -191,8 +217,6 @@ class UserProfile extends React.Component {
               hintText="Company Name (Optional)"
               autocomplete="organization"
             />
-          </div>
-          <div className="form-group toggle-block">
             <Toggle
               className="toggle"
               onToggle={this.handleNotificationToggle}
@@ -203,6 +227,14 @@ class UserProfile extends React.Component {
               label="Toggle Notifications"
             />
           </div>
+
+          {/* <AddressListMenu
+          addresses={this.state.addresses}
+          handleAddAddress={this.handleAddAddress.bind(this)}
+          handleEditAddress={this.handleEditAddress.bind(this)}
+          handleSetAddressAsDefault={this.handleSetAddressAsDefault.bind(this)}
+          handleDeleteAddress={this.handleDeleteAddress.bind(this)}
+          />*/}
           <div className=".geosuggest__group">
             <Geosuggest
               className={this.state.editingAddress ? '' : 'hidden'}
@@ -271,4 +303,4 @@ UserProfile.propTypes = {
   handleSendPasswordReset: React.PropTypes.func.isRequired
 };
 
-export default UserProfile;
+module.exports = UserProfile;

@@ -1,22 +1,26 @@
 import React from 'react';
-import UserProfile from '../../components/UserProfile/UserProfile';
-import FullscreenLoading from '../../components/FullscreenLoading/FullscreenLoading';
-import foodDrivrAPI from '../../utils/foodDrivrAPI.js';
+import UserProfile from '../components/UserProfilePage/UserProfile';
+import FullscreenLoading from '../components/Reusable/FullscreenLoading';
+import auth from '../utils/auth.js';
 import Snackbar from 'material-ui/Snackbar';
 
 class UserProfilePage extends React.Component {
   constructor(props, context) {
     super(props, context);
-
-    this.setInitialState = this.setInitialState.bind(this);
-    this.setInitialState();
+    this.state = {
+      role: parseInt(localStorage.getItem('role'), 10),
+      isLoading: true,
+      snackBarIsOpen: false,
+      snackBarMessage: '',
+      userData: {}
+    };
     this.handleSendFormData = this.handleSendFormData.bind(this);
     this.handleFormReset = this.handleFormReset.bind(this);
     this.handleCloseSnackBar = this.handleCloseSnackBar.bind(this);
     this.handleSendPasswordReset = this.handleSendPasswordReset.bind(this);
   }
 
-  setInitialState(){
+  setInitialState() {
     this.state = {
       role: parseInt(localStorage.getItem('role'), 10),
       isLoading: true,
@@ -29,13 +33,18 @@ class UserProfilePage extends React.Component {
 
   fetchUserData() {
     foodDrivrAPI.getUserData().then((response) => {
-      this.setState({
-        isLoading: false,
-        userData: response.userData
+      auth.getUser()
+      .then((userData) => {
+        console.log(userData);
+        this.setState({
+          isLoading: false,
+          userData: response.userData
+        });
+      })
+      .catch((error) => {
+        this.setState({ loading: false });
+        this.handleOpenSnackBar('An unknown error occured while loading the network data.');
       });
-    }).catch((error) => {
-      this.setState({ loading: false });
-      this.handleOpenSnackBar('An unknown error occured while loading the network data.');
     });
   }
 
@@ -62,7 +71,7 @@ class UserProfilePage extends React.Component {
       .then((response) => {
         this.handleOpenSnackBar('Successfully updated your password');
       }).catch((error) => {
-        this.handleOpenSnackBar('Please check that your password is correct and try again.')
+        this.handleOpenSnackBar('Please check that your password is correct and try again.');
       });
   }
 
@@ -94,9 +103,7 @@ class UserProfilePage extends React.Component {
   }
 
   render() {
-    const {
-      handleCloseSnackBar
-    } = this.props;
+    const { handleCloseSnackBar } = this.props;
     return (
       this.state.isLoading ? <FullscreenLoading isLoading={this.state.isLoading} /> :
         <div>
@@ -121,7 +128,8 @@ class UserProfilePage extends React.Component {
 }
 
 UserProfilePage.propTypes = {
-  handleCloseSnackBar: React.PropTypes.func
+  handleCloseSnackBar: React.PropTypes.func,
+  errors: React.PropTypes.array
 };
 
 export default UserProfilePage;

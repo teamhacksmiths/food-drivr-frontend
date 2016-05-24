@@ -1,13 +1,15 @@
 import axios from 'axios';
-const baseURL = 'https://wastenotfoodtaxi.herokuapp.com/api/v1';
+import UserModel from '../models/UserModel.js';
+
+const baseURL = 'https://wastenotfoodtaxi.herokuapp.com/api/v1/users';
 const baseUserURL = `${baseURL}/users`;
-const getAuthToken = () => { return localStorage.getItem('token'); };
+const getAuthToken = () => localStorage.getItem('token');
 const authToken = getAuthToken();
 const userURLWithAuthToken = `${baseUserURL}/${authToken}`;
 const updatePasswordURL = `${userURLWithAuthToken}/password-update`;
 
 const config = {
-  headers: { 'Content-Type': 'application/json', 'Authorization': authToken }
+  headers: { 'Content-Type': 'application/json', Authorization: authToken }
 };
 
 class UserModel {
@@ -18,7 +20,7 @@ class UserModel {
     this.phone = user.phone;
     this.company = user.company;
     this.type = user.type;
-    this.roleId = user["role_id"];
+    this.roleId = user.role_id;
     this.avatar = user.avatar;
     this.notifications = user.settings.notifications;
   }
@@ -48,19 +50,16 @@ const foodDrivrAPI = {
     return axios
       .get(userURLWithAuthToken, config)
       .then((response) => {
-        return {
-          userData: this.parseUser(response.data)
-        };
-      });
+        userData: this.parseUser(response.data);
+      }
+    );
   },
   /* Returns a promise with response from posting user data to API */
   postUserDataToAPI(userData) {
     const encodedData = this.encodedUserData(userData);
     return axios
       .patch(userURLWithAuthToken, encodedData, config)
-      .then((response) => {
-        return response;
-      });
+      .then((response) => response);
   },
   /* Encode the user's password data to submit to API */
   encodePasswordData(data) {
@@ -76,10 +75,8 @@ const foodDrivrAPI = {
   /* Returns a promise submitting the password update data to the API */
   updatePassword(params) {
     const encodedData = this.encodePasswordData(params);
-    return axios.patch(updatePasswordURL, encodedData, config).then((response) => {
-      return response;
-    });
+    return axios.patch(updatePasswordURL, encodedData, config).then((response) => response);
   }
 };
 
-export default foodDrivrAPI;
+module.exports = foodDrivrAPI;
