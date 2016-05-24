@@ -4,8 +4,8 @@
 	font-family: $open-sans;
 
 	& h1 {
-    font-size: $font-huge-thin;
-		margin-bottom: 50px;
+    font-size: $font-large;
+		margin-bottom: 30px;
 	}
 
 	& .or {

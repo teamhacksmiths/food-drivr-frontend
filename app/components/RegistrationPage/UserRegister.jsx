@@ -18,8 +18,8 @@ const styles = {
 };
 
 const UserRegister = (props) => (
-  <div className="signup text-center">
-    <p>{props.userType} Sign Up</p>
+  <section className="signup text-center">
+    <h1 className="uppercase text-white">{props.userType} Sign Up</h1>
     <form>
       <TextField
         hintText="Enter Name"
@@ -33,55 +33,56 @@ const UserRegister = (props) => (
         errorStyle={styles.colorWhite}
         value={props.name}
       />
-        <br />
       <TextField
         hintText="Enter Email"
         errorText={props.errorEmail}
         floatingLabelText="Email"
         onChange={props.onEmailChange}
         onKeyUp={props.onSubmitUser}
-        style={{ width: '80%', maxWidth: 350 }}
-        errorStyle={{ color: 'white' }}
+        style={styles.fullWidth}
+        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : ''}
+        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : ''}
+        errorStyle={styles.colorWhite}
         value={props.email}
       />
-        <br />
       <TextField
         hintText="8 or more characters."
         errorText={props.errorPassword}
         floatingLabelText="Password"
         onChange={props.onPasswordChange}
         onKeyUp={props.onSubmitUser}
-        style={{ width: '80%', maxWidth: 350 }}
-        errorStyle={{ color: 'white' }}
+        style={styles.fullWidth}
+        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : ''}
+        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : ''}
+        errorStyle={styles.colorWhite}
         value={props.password}
         type="password"
       />
-        <br />
       <TextField
         hintText="8 or more characters."
         errorText={props.errorPasswordConfirmation}
         floatingLabelText="Password Confirmation"
         onChange={props.onPasswordConfirmChange}
         onKeyUp={props.onSubmitUser}
-        style={{ width: '80%', maxWidth: 350 }}
-        errorStyle={{ color: 'white' }}
+        style={styles.fullWidth}
+        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : ''}
+        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : ''}
+        errorStyle={styles.colorWhite}
         value={props.passwordConfirmation}
         type="password"
       />
-        <br />
       <RaisedButton
         label="Sign Up"
-        secondary
+        labelColor="white"
         onClick={props.onSubmitUser}
         style={{ marginTop: 100, minWidth: 250 }}
-        backgroundColor={props.userType === 'Volunteer' ? 'rgb(247, 179, 43)' : ''}
+        backgroundColor={props.userType === 'Volunteer' ? '#f7b32b' : '#14cfe8'}
       />
-        <br />
-      <span className="text-lightgrey">
+      <h4 className="text-white">
         {props.error}
-      </span>
+      </h4>
     </form>
-  </div>
+  </section>
 );
 
 UserRegister.propTypes = {
