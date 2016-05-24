@@ -6,13 +6,15 @@ import BodyButton from './BodyButton.jsx';
 import DriverDescription from './DriverDescription.jsx';
 import VolunteerDescription from './VolunteerDescription.jsx';
 
-class SectionBecomeDriver extends React.Component {
+class SectionBecomeA extends React.Component {
   constructor() {
     super();
     this.state = {
       userType: 'Driver',
       description: ''
     };
+    this.onSubmitDriver = this.onSubmitDriver.bind(this);
+    this.onSubmitVolunteer = this.onSubmitVolunteer.bind(this);
   }
 
   onSubmitDriver() {
@@ -25,23 +27,21 @@ class SectionBecomeDriver extends React.Component {
 
   render() {
     return (
-      <div className="homepage-becomedriver">
-        <AppStoreIcon className="becomedriver-appStoreIcon" />
+      <section className="becomeA bg-grey-dark">
         <Arrow direction="Left" onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver} />
-        <div className="becomedriver-content text-white">
-          <Headline value={`Become a ${this.state.userType}`} className="becomedriver-title" />
-          {this.state.userType === 'Driver' ?
-            <DriverDescription /> :
-            <VolunteerDescription />}
-          <div className="button-container">
-            <BodyButton />
-          </div>
-        </div>
-        <div className="becomedriver-img" />
+        <section className="text-white">
+          <Headline value={`Become a ${this.state.userType}`} className="title" />
+            {this.state.userType === 'Driver' ?
+              <DriverDescription /> :
+              <VolunteerDescription />}
+          <BodyButton />
+        </section>
+        <AppStoreIcon className="appstore" />
+        <div className="app-sample" />
         <Arrow direction="Right" onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver} />
-      </div>
+      </section>
     );
   }
 }
 
-module.exports = SectionBecomeDriver;
+module.exports = SectionBecomeA;
