@@ -5,7 +5,7 @@ module.exports = {
     ],
     "rules" : {
         "no-console": 0,
-        "indent": [1, 'tab'],
+        // "indent": [1, 'tab'],
         "react/jsx-indent": 0,
         "react/jsx-indent-props": 0,
         "max-len": 0,
