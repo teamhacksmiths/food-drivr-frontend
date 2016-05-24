@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ScrollDownButton = ({ text, color }) => (
-  <div>
+  <div className="uppercase">
     <p>{text}</p>
     <img src={color === 'white' ? 'images/down-arrow.svg' : 'images/down-arrow-yellow.svg'} alt="down arrow" />
   </div>

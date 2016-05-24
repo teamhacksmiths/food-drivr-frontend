@@ -1,3 +1,5 @@
+@import "../utils/mixins.css";
+
 .footer {
 	@mixin absolute *, *, 15px, *;
 	@mixin rect 100%, 30px;

@@ -54,10 +54,10 @@ class Header extends React.Component {
       logInButton = '';
     }
     return (
-      <div className={window.location.pathname === '/donation' ? 'donation-header text-flex' : 'header text-flex'}>
+      <header className={window.location.pathname === '/donation' ? 'header header--donation bg-grey-x-light' : 'header'}>
         {headerButton}
         {logInButton}
-      </div>
+      </header>
     );
   }
 }

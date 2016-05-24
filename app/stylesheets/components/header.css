@@ -4,7 +4,7 @@
 .header {
 	width: 90%;
 	max-width: 1000px;
-	margin: 30px auto 20px;
+	margin: 30px auto;
 	@mixin flex *, center, *, space-between;
 	font-family: $open-sans;
 	font-size: $font-medium-thin;

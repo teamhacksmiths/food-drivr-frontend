@@ -4,33 +4,35 @@ import BodyButton from './BodyButton.jsx';
 import ScrollDownButton from '../Reusable/ScrollDownButton.jsx';
 
 const SectionIntro = () => (
-  <div className="homepage-intro">
-    <div className="text-center text-white">
-      <img src="images/fd-logo.svg" alt="food drivr logo" className="fd-logo" />
-      <p className="homepage-logotitle">
-        FOOD DRIVR
+  <section className="intro">
+    <header className="text-center text-white">
+      <div title="food drivr logo" className="truck-white" />
+      <p className="uppercase">
+        Food drivr
       </p>
-      <p className="homepage-powered">
+      <p className="powered">
         Powering Donations For
       </p>
+      <Headline value="Waste not food taxi" className="uppercase title text-center text-white" />
+    </header>
+    <div className="content flex-grow-1 text-center text-white source-sans">
+      <p>
+        On a daily basis, businesess like catering facilities, restaurants, grocery stores, as well as individuals produce more food than what is necessary for them to meet their needs.
+      </p>
+      <p>
+        Organizations that utilize Food Drivr help deliver this excess to people in need.
+      </p>
+      <p>
+        Join us and help end hunger.
+      </p>
     </div>
-    <Headline value="WASTE NOT FOOD TAXI" className="homepage-title text-center text-white" />
-    <p className="homepage-content text-center text-white source-sans">
-      On a daily basis, businesess like catering facilities, restaurants, grocery stores, as well as individuals produce more food than what is necessary for them to meet their needs.
-      <br />
-      <br />
-      Organizations that utilize Food Drivr help deliver this excess to people in need.
-      <br />
-      Join us and help end hunger.
-    </p>
-    <br />
-    <div className="button-container text-center">
+    <div className="flex-grow-3 text-center">
       <BodyButton />
     </div>
-    <a href="#howto" className="homepage-scrolldown text-center text-white pointer-cursor">
-      <ScrollDownButton color="white" text="LEARN MORE" />
-    </a>
-  </div>
+    <footer href="#howto" className="scrolldown text-center text-white pointer-cursor">
+      <ScrollDownButton destination="" color="white" text="Learn more" />
+    </footer>
+  </section>
 );
 
 module.exports = SectionIntro;

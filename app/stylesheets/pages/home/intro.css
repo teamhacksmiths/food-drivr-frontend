@@ -1,6 +1,6 @@
 .intro {
 	@mixin flex column, *, *, *;
-	height: calc( 100vh - 120px);
+	height: calc( 100vh - 100px);
 	& .truck-white {
 		background: url("/images/fd-logo.svg") no-repeat;
 		@mixin square 50px;
@@ -21,7 +21,6 @@
 	& .content {
 		max-width: 530px;
 		margin: auto;
-		font-size: $font-small-thick;
 		padding: 0 20px;
 	}
 
@@ -31,6 +30,10 @@
 	    letter-spacing: 2px;
 	    font-weight: bold;
 	}
+
+  & footer p {
+    margin-bottom: 5px;
+  }
 }
 
 @media screen and (min-width: 768px) {
