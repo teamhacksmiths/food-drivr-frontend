@@ -20,8 +20,8 @@ class Header extends React.Component {
     const email = localStorage.getItem('email');
     const pass = localStorage.getItem('password');
     if (this.state.loggedIn === true) {
-      auth.login(email, pass).
-      then((response) => {
+      auth.login(email, pass)
+      .then((response) => {
         console.log(response);
         auth.onChange(true);
       })

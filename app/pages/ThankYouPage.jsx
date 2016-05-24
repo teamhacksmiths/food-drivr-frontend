@@ -56,13 +56,13 @@ class ThankYouPage extends React.Component {
   }
   render() {
     return (
-      <div className="text-center text-white">
-        <WhiteTruckButton />
-        <Headline className="thankyou-header" value="Thank You!" />
-        {this.state.role !== 0 ? <VolunteerThankYou /> : <DonorThankYou />}
-        {this.state.role ? '' : <DonateButton onHandleClick={this.handleClick} />}
-        {this.state.role !== 1 ? '' : <AppStoreIcon className="thankyou-appstore-icon" />}
-      </div>
+        <section className="thankyou text-center text-white">
+          <WhiteTruckButton />
+          <Headline value="Thank You!" />
+          {this.state.role !== 0 ? <VolunteerThankYou /> : <DonorThankYou />}
+          {this.state.role ? '' : <DonateButton onClick={this.handleClick} />}
+          {this.state.role !==1 ? '' : <AppStoreIcon />}
+        </section>
     );
   }
 }

@@ -2,6 +2,10 @@
 	min-height: calc(100vh - 135px);
 	padding: 50px 0;
 	background-color: #ff1e40;
+  & h1 {
+    margin: 10px 0 30px;
+    font-size: $font-large;
+  }
 }
 .signin form {
 	display: flex;
