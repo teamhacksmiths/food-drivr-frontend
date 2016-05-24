@@ -70,8 +70,8 @@ address={address}
 }
 
 AddressListMenu.propTypes = {
-  handleAddAddress: React.PropTypes.func.isRequired,
-  handleDeleteAddress: React.PropTypes.func.isRequired,
-  handleEditAddress: React.PropTypes.func.isRequired,
-  handleSetAddressAsDefault: React.PropTypes.func.isRequired
+	handleAddAddress: React.PropTypes.func.isRequired,
+	handleDeleteAddress: React.PropTypes.func.isRequired,
+	handleEditAddress: React.PropTypes.func.isRequired,
+	handleSetAddressAsDefault: React.PropTypes.func.isRequired
 };
