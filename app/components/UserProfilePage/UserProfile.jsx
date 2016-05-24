@@ -71,7 +71,7 @@ class UserProfile extends React.Component {
     const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     const test = re.test(formData.email);
     return test || formData.email.length === 0;
-  }
+  }  
 
   handleFormSubmission() {
     this.props.handleSendFormData(this.state.formData);
