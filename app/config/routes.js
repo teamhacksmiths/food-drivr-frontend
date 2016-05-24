@@ -13,28 +13,28 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 function requireAuth(nextState, replace) {
-	if (!auth.loggedIn()) {
-		replace({
-			pathname: '/',
-			state: { nextPathname: nextState.location.pathname }
-		});
-	}
+  if (!auth.loggedIn()) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname }
+    });
+  }
 }
 
 const routes = (
-	<Router history={browserHistory}>
-		<Route path="/" component={App}>
-			<IndexRoute component={HomePage} />
-			<Route path="signin" component={SignInPage} />
-			<Route path="signup" component={UserTypePage} />
-			<Route path="signup/donor" component={RegistrationPage} header="Donor" />
-			<Route path="signup/volunteer" component={RegistrationPage} header="Volunteer" />
-			<Route path="thankyou" component={ThankYouPage} />
-			<Route path="thankyou/:userType" component={ThankYouPage} />
-			<Route path="donation" component={DonationPage} onEnter={requireAuth} />
-			<Route path="profile" component={UserProfilePage} onEnter={requireAuth} />
-		</Route>
-	</Router>
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={HomePage} />
+      <Route path="signin" component={SignInPage} />
+      <Route path="signup" component={UserTypePage} />
+      <Route path="signup/donor" component={RegistrationPage} header="Donor" />
+      <Route path="signup/volunteer" component={RegistrationPage} header="Volunteer" />
+      <Route path="thankyou" component={ThankYouPage} />
+      <Route path="thankyou/:userType" component={ThankYouPage} />
+      <Route path="donation" component={DonationPage} onEnter={requireAuth} />
+      <Route path="profile" component={UserProfilePage} onEnter={requireAuth} />
+    </Route>
+  </Router>
 );
 
 module.exports = routes;

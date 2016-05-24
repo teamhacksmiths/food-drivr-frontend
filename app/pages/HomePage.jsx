@@ -6,13 +6,13 @@ import SectionComments from '../components/HomePage/SectionComments.jsx';
 import SectionContacts from '../components/HomePage/SectionContacts.jsx';
 
 const HomePage = () => (
-	<div className="homepage">
-		<SectionIntro />
-		<SectionHowTo />
-		<SectionBecomeDriver />
-		<SectionComments />
-		<SectionContacts />
-	</div>
+  <div className="homepage">
+    <SectionIntro />
+    <SectionHowTo />
+    <SectionBecomeDriver />
+    <SectionComments />
+    <SectionContacts />
+  </div>
 );
 
 module.exports = HomePage;
