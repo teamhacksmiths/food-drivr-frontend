@@ -1,15 +1,15 @@
 import React from 'react';
 
 const Comment = ({ text, author, company }) => (
-  <div className="comments-container">
+  <section className="comment">
     <p>{text}</p>
-    <div className="comments-author">
+    <div className="author">
       {author}
     </div>
-    <div className="comments-company">
+    <div className="company">
       {company}
     </div>
-  </div>
+</section>
 );
 
 Comment.propTypes = {
