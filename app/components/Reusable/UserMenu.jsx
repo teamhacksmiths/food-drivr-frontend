@@ -25,13 +25,13 @@ class UserMenu extends React.Component {
 
   render() {
     return (
-      <div refs="userMenu" className={this.props.showMenu ? 'user-menu-container text-black' : 'user-menu-container hide-menu'}>
-        <div className="user-menu-arrow" />
-        <Link to="/" className="menu-item">Dashboard</Link>
-        <Link to="donation" className="menu-item">Donate</Link>
-        <Link to="/profile" className="menu-item">Settings</Link>
-        <a className="logout" onClick={this.handleLogout}>Logout</a>
-      </div>
+      <nav refs="userMenu" className={this.props.showMenu ? 'header-menu bg-white text-black text-right' : 'header-menu bg-white hidden'}>
+        <div className="arrow bg-white" />
+        <Link to="/" className="item">Dashboard</Link>
+        <Link to="donation" className="item">Donate</Link>
+        <Link to="/profile" className="item">Settings</Link>
+        <a className="logout pointer-cursor" onClick={this.handleLogout}>Logout</a>
+     </nav>
     );
   }
 }

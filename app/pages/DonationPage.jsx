@@ -56,6 +56,7 @@ class DonationPage extends React.Component {
   }
 
   handleAddItem(e) {
+    e.preventDefault();
     if (e.keyCode === 13 || e.button === 0) {
       if (this.state.enableAddItem) {
         const newItemsArr = this.state.itemsAdded;
@@ -120,7 +121,7 @@ class DonationPage extends React.Component {
   }
   render() {
     return (
-    <div>
+    <section className="donations">
       <PendingDonations
         enableAddItem={this.state.enableAddItem}
         onAddItem={this.handleAddItem}
@@ -144,7 +145,7 @@ class DonationPage extends React.Component {
       <DonationHistory
         donations={this.state.donations}
       />
-    </div>
+    </section>
     );
   }
 }

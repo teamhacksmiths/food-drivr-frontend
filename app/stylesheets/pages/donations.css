@@ -1,6 +1,6 @@
 .donations {
 	width: 90%;
-	margin: auto;
+	margin:  50px auto 0;
 
 	& .title {
 		font-size: $font-large-thick;
@@ -62,4 +62,17 @@
 	color: white;
 	border: none;
 	box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
+}
+
+@media screen and (min-width: 768px) {
+  .donations {
+    & form {
+      & div,
+      & input {
+        /* Using !important is highly discouraged. In this case it is the only way to override Material UI inline styling */
+        font-size: $font-medium !important;
+        line-height: 1.9 !important;
+      }
+  	}
+  }
 }

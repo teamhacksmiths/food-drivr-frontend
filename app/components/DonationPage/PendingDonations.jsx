@@ -3,24 +3,22 @@ import AddNewItem from './AddNewItem.jsx';
 import DonationList from './DonationList.jsx';
 
 const PendingDonations = (props) => (
-  <div className="donation-container">
+  <section className="donation">
     <AddNewItem
       enableAddItem={props.enableAddItem}
       onAddItem={props.onAddItem}
       onUpdateItem={props.onUpdateItem}
     />
-    <div className="donation-list">
     <DonationList
       itemsAdded={props.itemsAdded}
       onHandleRemoveItem={props.onHandleRemoveItem}
     />
-    </div>
     <button
-      className={props.enableDonation ? 'btn-donate' : 'btn-donate btn-disabled'} onClick={props.onHandleOpen}
+        className={props.enableDonation ? 'btn-donate uppercase bg-yellow' : 'uppercase btn-donate bg-yellow btn-disabled'} onClick={props.onHandleOpen}
     >
-      DONATE
+      Donate
     </button>
-  </div>
+</section>
 );
 
 PendingDonations.propTypes = {

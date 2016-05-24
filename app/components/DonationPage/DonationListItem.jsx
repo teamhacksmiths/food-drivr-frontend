@@ -1,10 +1,10 @@
 import React from 'react';
 
 const DonationItem = ({ name, onRemoveItem }) => (
-  <div className="donated-item text-flex">
-    <div className="donated-name text-lightgrey">{name}</div>
-    <button className="btn-del-donation" onClick={onRemoveItem} />
-  </div>
+  <li>
+    <div className="item-name text-lightgrey">{name}</div>
+    <button className="pointer-cursor btn-delDonation" onClick={onRemoveItem} />
+  </li>
 );
 
 DonationItem.propTypes = {

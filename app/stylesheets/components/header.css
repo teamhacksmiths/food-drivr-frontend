@@ -12,7 +12,6 @@
 	& .user-name {
 		letter-spacing: 4px;
 		font-weight: bold;
-		line-height: 70px;
 	}
 
 	& .back {
@@ -23,7 +22,7 @@
 }
 
 .header-menu {
-	@mixin absolute 100%, 0, *, *;
+	@mixin absolute 50px, 0, *, *;
 	padding: 12px;
 	width: 200px;
 	box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
@@ -34,7 +33,7 @@
 		@mixin absolute -11px, 20%, *, *;
 		border-top: solid 1px #979797;
 		border-left: solid 1px #979797;
-	    transform: rotate(45deg);
+	  transform: rotate(45deg);
 		box-shadow: -2px -2px 4px -1px rgba(0,0,0,0.2);
 	}
 
