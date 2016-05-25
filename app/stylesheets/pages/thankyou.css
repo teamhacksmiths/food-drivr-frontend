@@ -1,13 +1,13 @@
 .thankyou {
   @mixin flex column, center, *, *;
 
-  & h1 {
+  h1 {
     font-size: $font-huge-thin;
     text-transform: uppercase;
   	margin-top: 30px;
   }
 
-  & p {
+  p {
     max-width: 500px;
   	width: 80%;
   	margin-bottom: 25px;
@@ -16,35 +16,31 @@
   	letter-spacing: 1px;
   }
 
-  & .truck {
+  .truck {
     @mixin bg-img '/images/food-drivr-logo.svg';
     @mixin square 55px;
   	margin: auto;
   }
+}
 
-  & .btn-start {
-    display: block;
-    @mixin rect 46%, 70px;
-  	max-width: 300px;
-  	min-width: 200px;
-    background-color: white;
-    border: none;
-    color: rgb(247, 179, 43);
-    font-size: $font-medium;
-  }
+.btn-getStarted {
+  @mixin rect 46%, 70px;
+  margin-top: 20px;
+  max-width: 300px;
+  min-width: 200px;
 }
 
 @media screen and (min-width: 768px) {
 	.thankyou {
-    & p {
-      font-size: $font-medium;
-    }
+	  p {
+	    font-size: $font-medium;
+	  }
 	}
 }
 
 @media screen and (min-width: 1024px) {
 	.thankyou {
-    & p {
+    p {
       font-size: $font-medium-thick;
     }
 	}

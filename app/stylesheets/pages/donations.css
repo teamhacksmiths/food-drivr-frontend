@@ -1,21 +1,21 @@
-@import "../components/buttons.css";
+@import "../components/button.css";
 
 .donations {
 	width: 90%;
 	margin:  50px auto 0;
 
-	& .title {
+	.title {
 		font-size: $font-large-thick;
 	}
 
-	& form {
+	form {
 		@mixin flex *, *, *, center;
 	}
 }
 
 .donation {
   @mixin flex column, *, *, *;
-	& ul {
+	ul {
 		overflow-x: hidden;
 		max-height: 40vh;
 		max-width: 540px;
@@ -23,15 +23,29 @@
 		margin: 20px auto 0;
 	}
 
-	& li {
+	li {
 		@mixin flex *, flex-end, *, space-between;
-		& .item-name {
-		    margin-top: 15px;
-		    font-size: $font-medium-thin;
-		    letter-spacing: 0.9px;
-		    font-family: $open-sans;
+		.item-name {
+	    margin-top: 15px;
+	    font-size: $font-medium-thin;
+	    letter-spacing: 0.9px;
+	    font-family: $open-sans;
 		}
 	}
+}
+
+.btn-addDonation {
+  @mixin square 55px;
+  @mixin bg-img '/images/add-button.svg';
+}
+.btn-delDonation {
+  @mixin square 25px;
+  @mixin bg-img '/images/btn-del-donation.png';
+}
+.btn-donate {
+  @mixin rect 60%, 50px;
+  max-width: 250px;
+  margin: 25px auto;
 }
 
 .donation-dialog input:-webkit-autofill {
@@ -40,9 +54,9 @@
 
 @media screen and (min-width: 768px) {
   .donations {
-    & form {
-      & div,
-      & input {
+    form {
+      div,
+      input {
         /* Using !important is highly discouraged. In this case it is the only way to override Material UI inline styling */
         font-size: $font-medium !important;
         line-height: 1.9 !important;

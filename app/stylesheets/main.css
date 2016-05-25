@@ -21,8 +21,6 @@ body {
 }
 
 * {
-	-webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -31,7 +29,7 @@ p {
 }
 
 input:-webkit-autofill {
-	-webkit-box-shadow: 0 0 0px 1000px #FF1E40 inset;
+	box-shadow: 0 0 0px 1000px $red inset;
 }
 
 .container {

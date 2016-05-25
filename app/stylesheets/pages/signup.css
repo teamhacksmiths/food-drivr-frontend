@@ -3,25 +3,25 @@
 	@mixin flex column, center, *, *;
 	font-family: $open-sans;
 
-	& h1 {
+	h1 {
     font-size: $font-large;
 		margin-bottom: 30px;
 	}
 
-	& .or {
+	.or {
 		font-size: $font-large;
 	}
 
-	& .selection {
+  .selection {
 		@mixin flex column, *, *, *;
 		font-size: $font-medium;
 	}
 
-	& .selection>*{
+	.selection>*{
 		cursor: pointer;
 	}
 
-	& form {
+	form {
 		width: 90%;
 		max-width: 350px;
 	}

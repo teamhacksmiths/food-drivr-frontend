@@ -14,24 +14,10 @@
   box-shadow: rgba(0, 0, 0, 0.247059) 0px 3px 10px, rgba(0, 0, 0, 0.219608) 0px 0px 7px;
 }
 .btn--disabled {
-	opacity: .5;
-	cursor: default;
+  opacity: .5;
+  cursor: default;
 }
 .btn--round {
-	padding: 10px 55px;
-	border-radius: 25px;
-}
-
-.btn-addDonation {
-	@mixin square 55px;
-	@mixin bg-img '/images/add-button.svg';
-}
-.btn-delDonation {
-	@mixin square 25px;
-  @mixin bg-img '/images/btn-del-donation.png';
-}
-.btn-donate {
-	@mixin rect 60%, 50px;
-	max-width: 250px;
-	margin: 25px auto;
+  padding: 10px 55px;
+  border-radius: 25px;
 }

@@ -2,7 +2,7 @@
 	@mixin flex column, *, *, *;
 	padding: 50px 0 80px;
 
-	& .title {
+	.title {
     margin: 40px 0;
 		font-weight: bold;
 		font-size: $font-large-thick;
@@ -10,39 +10,39 @@
 		text-transform: capitalize;
 	}
 
-	& .content {
+	.content {
 		@mixin flex column, center, *, center;
 		margin: 0 30px;
 	}
 
-	& section {
+	section {
 		padding: 20px;
 		max-width: 350px;
 
-		& header {
+		header {
 			font-size: $font-small-thin;
 		  letter-spacing: 2px;
 		  font-weight: bold;
 		}
 
-		& p {
+		p {
 			font-size: $font-small-thick;
 		  line-height: 1.1;
 		  color: $grey;
 		}
 	}
 
-	& img {
+	img {
 		margin: 20px;
 	}
 }
 
 @media screen and (min-width: 768px) {
 	.howItWorks{
-		& .title {
+		.title {
 			font-size: $font-huge;
 		}
-		& .content {
+		.content {
 			flex-direction: row;
 		}
 	}

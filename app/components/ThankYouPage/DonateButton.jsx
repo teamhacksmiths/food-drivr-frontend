@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DonateButton = ({ onClick }) => (
-  <button className="btn-start uppercase pointer-cursor" onClick={onClick}>
+  <button className="btn btn-getStarted bg-white text-yellow" onClick={onClick}>
     Get started
   </button>
 );

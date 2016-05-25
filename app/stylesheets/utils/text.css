@@ -1,4 +1,4 @@
-@import "../base/colors.css";
+@import "../config/colors.css";
 
 .text-grey-dark {
 	color: $grey-dark;

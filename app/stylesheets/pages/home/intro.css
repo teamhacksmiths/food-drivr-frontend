@@ -1,57 +1,58 @@
-@import "../../components/buttons.css";
+@import "../../components/button.css";
 
 .intro {
 	@mixin flex column, center, *, *;
 	height: calc( 100vh - 6rem);
-	& .truck-white {
+
+  .truck-white {
 		@mixin bg-img '/images/fd-logo.svg';
 		@mixin square 50px;
     margin: auto;
 	}
 
-	& .powered {
+	.powered {
 		font-size: $font-small;
 	}
 
-	& .title {
+	.title {
 		margin: 1rem;
 		font-weight: bold;
 		font-size: $font-large-thick;
 		max-width: 20rem;
 	}
 
-	& .content {
+	.content {
 		max-width: 35rem;
 		padding: 0 2rem;
 	}
 
-	& .scrolldown {
+	.scrolldown {
 		font-size: $font-small-thin;
 	  margin-bottom: 1rem;
 	  letter-spacing: 2px;
 	  font-weight: bold;
 	}
 
-  & footer p {
+  footer p {
     margin-bottom: .5rem;
   }
 }
 
 @media screen and (min-width: 768px) {
 	.intro {
-		& .title {
+		.title {
 			max-width: 900px;
 			font-size: $font-huge;
 		}
 
-		& .content {
+		.content {
 			font-size: $font-medium-thin;
 		}
 	}
 }
 @media screen and (min-width: 1440px) {
 	.intro{
-		& .title {
+		.title {
 			font-size: $font-huge-thick;
 		}
 	}

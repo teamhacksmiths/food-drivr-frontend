@@ -2,12 +2,12 @@
 	padding: 55px 15% 0;
 	font-size: $font-medium-thin;
 
-	& p {
+	p {
 		max-width: 400px;
 		margin: 50px 0;
 	}
 
-	& .email{
+	.email{
 		display: inline;
 		border-bottom: 1px solid #FFF;
 		padding-bottom: 3px;
@@ -26,7 +26,7 @@
 
 @media screen and (min-width: 768px) {
 	.contacts {
-		& .email {
+		.email {
 			font-size: $font-medium-thin;
 		}
 	}
