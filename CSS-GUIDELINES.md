@@ -33,7 +33,7 @@ On the other hand we highly encourage the use of `mixins`. These are powerful to
 
 ### Nesting
 
-Nesting can also make CSS cleaner but **don't abuse it !** It can easily get out of hand thus making the code hard to interpret. As a general rule of thumb, feel free to use one level of nesting, use a second level as little as possible (or never) but don't go any deeper than that. Also make sure you actually need nesting to make the code more clear. As an example:
+Nesting can also make CSS cleaner but **don't abuse it !** It can easily get out of hand thus making the code hard to interpret. As a general rule of thumb try to use one **1 level** of nesting, to target HTML tags. This is where BEM comes in handy to allow avoiding creating confusing CSS with multiple nesting. As an example:
 
 ```
 .intro {
@@ -46,10 +46,24 @@ Nesting can also make CSS cleaner but **don't abuse it !** It can easily get out
 In this case nesting is not necessary, it doesn't bring more readability in any way. You can easily go like:
 
 ```
-.intro .intro__header{
+.intro__header{
   padding: 10px;
 }
 ```
+
+A good example of nesting is the following:
+
+```
+.intro__content {
+  padding: 10px;
+  text-align: right;
+  p {
+    margin-top: 10px;
+  }
+}
+```
+
+In this case there is no need to use an additional class to target the `p` tag. So do what you think is best and come back to these example if you are unsure.
 
 ## Naming
 Things get interesting here, we decided to go with [BEM](http://getbem.com/introduction/) among the many different possibilities. We are not going to worry about the global scope of CSS classes since this project is not too large and we did not incur in any similar problem during development.
