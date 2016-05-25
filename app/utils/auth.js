@@ -5,7 +5,10 @@ module.exports = {
     // ensure callback is always last argument
     console.log(JSON.stringify({ session: { email, password: pass } }));
     const token = (typeof window !== 'undefined') ? localStorage.getItem('token') : undefined;
-    // if (token) return this.onChange(true);
+    /*****************************************************************/
+    /* ALERT THE CALLING FUNCTION IS EXPECTING A PROMISE IN RETURN!! */
+    /*****************************************************************/
+    if (token) return this.onChange(true);
 
     return axios({
       url: '/sessions',

@@ -71,7 +71,7 @@ class UserProfile extends React.Component {
     const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     const test = re.test(formData.email);
     return test || formData.email.length === 0;
-  }  
+  }
 
   handleFormSubmission() {
     this.props.handleSendFormData(this.state.formData);
@@ -87,21 +87,21 @@ class UserProfile extends React.Component {
 
   validateField(name, e) {
     switch (name) {
-    case 'email': {
-      const email = e.target.value;
-      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      const emailIsValid = re.test(email);
-      let error = null;
-      if (emailIsValid) {
-        error = null;
-      } else {
-        error = 'Email must be valid.';
+      case 'email': {
+        const email = e.target.value;
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const emailIsValid = re.test(email);
+        let error = null;
+        if (emailIsValid) {
+          error = null;
+        } else {
+          error = 'Email must be valid.';
+        }
+        return error;
       }
-      return error;
-    }
-    case 'password': {}
-    case 'phone': {}
-    default:
+      case 'password': {}
+      case 'phone': {}
+      default: {}
     }
   }
 

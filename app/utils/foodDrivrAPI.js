@@ -1,5 +1,4 @@
 import axios from 'axios';
-import UserModel from '../models/UserModel.js';
 
 const baseURL = 'https://wastenotfoodtaxi.herokuapp.com/api/v1/users';
 const baseUserURL = `${baseURL}/users`;

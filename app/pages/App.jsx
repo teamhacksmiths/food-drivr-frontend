@@ -21,7 +21,7 @@ class App extends React.Component {
         <div className={containerClass}>
           <Header />
           <ReactCSSTransitionGroup transitionName="appear" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-            {React.cloneElement(this.props.children, {key: this.props.location.pathname})}
+            {React.cloneElement(this.props.children, { key: this.props.location.pathname })}
           </ReactCSSTransitionGroup>
           <Footer />
         </div>
@@ -29,5 +29,10 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  location: React.PropTypes.string.isRequired,
+  children: React.PropTypes.array.isRequired
+};
 
 module.exports = App;

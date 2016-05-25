@@ -10,7 +10,7 @@ npm install -g webpack-dev-server
 ```
 
 ### Installing
-To install all of the project’s dependencies, run
+To install all of the project’s dependencies move inside the project folder then run
 ```
 npm install
 ```
@@ -43,4 +43,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
- Thank you to all of the brilliant people involved in this project. You've all worked hard to accomplish something really amazing! A big thank you to Udacity students and staff. None of this would have been possible without this phenomenal and exremely supportive community!
+ Thank you to all of the brilliant people involved in this project. You've all worked hard to accomplish something really amazing! A big thank you to Udacity students and staff. None of this would have been possible without this phenomenal and extremely supportive community!
