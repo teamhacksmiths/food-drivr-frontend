@@ -31,8 +31,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  location: React.PropTypes.string.isRequired,
-  children: React.PropTypes.array.isRequired
+  location: React.PropTypes.object.isRequired,
+  children: React.PropTypes.object.isRequired
 };
 
 module.exports = App;
