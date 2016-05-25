@@ -1,5 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router';
 
-const TruckButton = () => (<div className="header--donation__truck"></div>);
+const TruckButton = () => (
+    <Link to="/">
+        <div className="header--donation__truck"></div>
+    </Link>
+);
 
 module.exports = TruckButton;
