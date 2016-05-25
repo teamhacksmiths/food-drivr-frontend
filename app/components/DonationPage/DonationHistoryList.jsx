@@ -1,12 +1,14 @@
 import React from 'react';
 
 const DonationHistoryList = ({ title, date, children }) => (
-  <li className="row donation">
-    <div className="col-xs-8">
-      <h4>{title}</h4>
-      <p>{date}</p>
+  <li>
+    <header className="donations-history__titles">
+      <h2 className="uppercase">{title}</h2>
+      <i>{date}</i>
+    </header>
+    <div className="donations-history__items">
+      {children}
     </div>
-    {children}
   </li>
 );
 
