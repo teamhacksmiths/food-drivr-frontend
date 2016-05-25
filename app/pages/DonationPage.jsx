@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import auth from '../utils/auth.js';
 import PendingDonations from '../components/DonationPage/PendingDonations.jsx';
 import DonationConfirmation from '../components/DonationPage/DonationConfirmation.jsx';

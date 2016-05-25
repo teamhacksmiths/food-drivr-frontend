@@ -5,7 +5,9 @@ import auth from '../../utils/auth.js';
 class UserMenu extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.displayName = 'UserMenu';
+    this.state = {
+      userRole: parseInt(localStorage.getItem('role'), 10) ? 1 : 0
+    };
     this.handleLogout = this.handleLogout.bind(this);
   }
 
@@ -28,7 +30,7 @@ class UserMenu extends React.Component {
       <nav refs="userMenu" className={this.props.showMenu ? 'header-menu bg-white text-black text-right' : 'header-menu bg-white hidden'}>
         <div className="arrow bg-white" />
         <Link to="/" className="item">Dashboard</Link>
-        <Link to="donation" className="item">Donate</Link>
+        {this.state.userRole ? '' : <Link to="/donation" className="item">Donate</Link>}
         <Link to="/profile" className="item">Settings</Link>
         <a className="logout pointer-cursor" onClick={this.handleLogout}>Logout</a>
      </nav>
