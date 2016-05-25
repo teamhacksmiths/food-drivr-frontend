@@ -1,15 +1,17 @@
 import React from 'react';
+import { Link as ScrollTo } from 'react-scroll';
 
-const ScrollDownButton = ({ text, color }) => (
-  <div className="uppercase">
+const ScrollDownButton = ({ text, color, destination }) => (
+  <ScrollTo to={destination} spy smooth offset={50} duration={800} className="uppercase">
     <p>{text}</p>
     <img src={color === 'white' ? 'images/down-arrow.svg' : 'images/down-arrow-yellow.svg'} alt="down arrow" />
-  </div>
+  </ScrollTo>
 );
 
 ScrollDownButton.propTypes = {
   text: React.PropTypes.string.isRequired,
-  color: React.PropTypes.string.isRequired
+  color: React.PropTypes.string.isRequired,
+  destination: React.PropTypes.string.isRequired,
 };
 
 module.exports = ScrollDownButton;

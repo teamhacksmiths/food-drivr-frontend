@@ -30,7 +30,7 @@ const SectionIntro = () => (
       <BodyButton />
     </div>
     <div href="#howto" className="intro__scrolldown text-center text-white pointer-cursor">
-      <ScrollDownButton destination="" color="white" text="Learn more" />
+      <ScrollDownButton destination="howItWorks" color="white" text="Learn more" />
     </div>
   </section>
 );
