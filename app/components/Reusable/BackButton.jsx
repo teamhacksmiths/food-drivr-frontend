@@ -12,7 +12,7 @@ class BackButton extends React.Component {
 
   render() {
     return (
-      <div className="back pointer-cursor" onClick={this.handleGoBack}></div>
+      <div className="header__back pointer-cursor" onClick={this.handleGoBack}></div>
 	);
   }
 }

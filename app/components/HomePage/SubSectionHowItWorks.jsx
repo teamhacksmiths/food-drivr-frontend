@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HowItWorksSubSection = (props) => (
-  <section>
+  <section className="how-it-works__section">
     <header className="text-center">
       <img src={props.imgSrc} alt={props.imgAlt} className="img" />
       <div className="uppercase">{props.title}</div>

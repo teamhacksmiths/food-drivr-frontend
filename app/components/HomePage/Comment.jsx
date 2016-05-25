@@ -3,10 +3,10 @@ import React from 'react';
 const Comment = ({ text, author, company }) => (
   <section className="comment">
     <q>{text}</q>
-    <div className="author">
+    <div className="comment__author">
       {author}
     </div>
-    <div className="company">
+    <div className="comment__company">
       {company}
     </div>
   </section>

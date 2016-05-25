@@ -3,9 +3,9 @@ import Headline from '../Reusable/Headline.jsx';
 import SubSectionHowItWorks from './SubSectionHowItWorks.jsx';
 
 const SectionHowItWorks = () => (
-    <section id="howItWorks" className="howItWorks bg-white">
-        <Headline value="How it works" className="title text-center text-grey-dark" />
-        <div className="content">
+    <section id="howItWorks" className="how-it-works bg-white">
+        <Headline value="How it works" className="how-it-works__title text-center text-grey-dark" />
+        <div className="how-it-works__content">
             <SubSectionHowItWorks title="donating" imgSrc="images/package.svg" imgAlt="donation package">
                 After signing up, donors can enter in items they wish to donate to those in need. Once items are donated, a notification is sent out to all drivers of a pending donation.
             </SubSectionHowItWorks>

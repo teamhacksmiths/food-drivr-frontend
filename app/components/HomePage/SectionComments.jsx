@@ -30,14 +30,14 @@ class SectionComments extends React.Component {
   }
 
   isActive(value) {
-    return (`${(this.state.item === value) ? 'bullet--active' : ''} bullet pointer-cursor`);
+    return (`${(this.state.item === value) ? 'comments__bullet--active' : ''} comments__bullet pointer-cursor`);
   }
 
   render() {
     return (
       <section className="comments text-center text-white">
         <Comment text={this.state.text} author={this.state.author} company={this.state.company} />
-        <div className="dots">
+        <div className="comments__dots">
           <div className={this.isActive(0)} onClick={this.selectItem.bind(this, 0)} />
           <div className={this.isActive(1)} onClick={this.selectItem.bind(this, 1)} />
           <div className={this.isActive(2)} onClick={this.selectItem.bind(this, 2)} />

@@ -22,7 +22,7 @@ class UserHeader extends React.Component {
   }
 
   handleClick(e) {
-    if (!e.target.classList.contains('user-name') && !e.target.classList.contains('header-menu')) {
+    if (!e.target.classList.contains('header__user-name') && !e.target.classList.contains('header-menu')) {
       this.setState({
         showMenu: false
       });
@@ -48,7 +48,7 @@ class UserHeader extends React.Component {
     const name = localStorage.getItem('name');
     return (
       <div className={UserHeaderClass}>
-        <div className={`user-name ${UserInfoContainerClass}`} onClick={this.toggleMenu}>
+        <div className={`header__user-name ${UserInfoContainerClass}`} onClick={this.toggleMenu}>
           {name}
         </div>
         <UserMenu showMenu={this.state.showMenu} />

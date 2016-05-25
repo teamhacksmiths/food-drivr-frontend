@@ -2,22 +2,20 @@
 @import "../config/zIndexes.css";
 
 .header {
-    width: 90%;
-    max-width: 1000px;
-    margin: 30px auto;
-    @mixin flex *, center, *, space-between;
-    font-family: $open-sans;
-    font-size: $font-medium-thin;
-
-    & .user-name {
-      letter-spacing: 4px;
-      font-weight: bold;
-    }
-
-    & .back {
-      @mixin bg-img '/images/back-arrow.svg';
-      @mixin square 55px;
-    }
+  width: 90%;
+  max-width: 1000px;
+  margin: 30px auto;
+  @mixin flex *, center, *, space-between;
+  font-family: $open-sans;
+  font-size: $font-medium-thin;
+}
+.header__user-name {
+  letter-spacing: 4px;
+  font-weight: bold;
+}
+.header__back {
+  @mixin bg-img '/images/back-arrow.svg';
+  @mixin square 55px;
 }
 
 .header-menu {
@@ -28,32 +26,29 @@
   border: solid 1px #979797;
   z-index: $z-index-1;
   text-transform: uppercase;
-
-    .arrow {
-      @mixin square 20px;
-      @mixin absolute -11px, 20%, *, *;
-      border-top: solid 1px #979797;
-      border-left: solid 1px #979797;
-      transform: rotate(45deg);
-      box-shadow: -2px -2px 4px -1px rgba(0,0,0,0.2);
-    }
-
-    .item {
-      display: block;
-      letter-spacing: 4px;
-      margin-bottom: 20px;
-      color: inherit;
-    }
-
-    .logout {
-      display: block;
-      border: none 2px #979797;
-      border-top-style: solid;
-      margin-top: 10px;
-      padding: 12px 0;
-      letter-spacing: 4px;
-      font-weight: bold;
-    }
+}
+.header-menu__arrow {
+  @mixin square 20px;
+  @mixin absolute -11px, 20%, *, *;
+  border-top: solid 1px #979797;
+  border-left: solid 1px #979797;
+  transform: rotate(45deg);
+  box-shadow: -2px -2px 4px -1px rgba(0,0,0,0.2);
+}
+.header-menu__item {
+  display: block;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  color: inherit;
+}
+.header-menu__logout {
+  display: block;
+  border: none 2px #979797;
+  border-top-style: solid;
+  margin-top: 10px;
+  padding: 12px 0;
+  letter-spacing: 4px;
+  font-weight: bold;
 }
 
 .header--donation {
@@ -63,14 +58,13 @@
   margin: 0;
   box-shadow: 0 4px 4px 0 rgba(228, 228, 228, 0.5);
   padding: 0 15%;
-
-  .truck {
-    @mixin bg-img '/images/food-drivr-logo-grey.svg';
-    @mixin square 55px;
-  }
+}
+.header--donation__truck {
+  @mixin bg-img '/images/food-drivr-logo-grey.svg';
+  @mixin square 55px;
 }
 /* Probably needs renaming since it is reused multiple times in different scenarios */
-.header-appstore {
+.header__appstore-icon {
   @mixin bg-img '/images/App-Store-Badge.png';
   @mixin rect 135px, 40px;
 }

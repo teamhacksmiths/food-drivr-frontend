@@ -27,17 +27,17 @@ class SectionBecomeA extends React.Component {
 
   render() {
     return (
-      <section className="becomeA bg-grey-dark">
+      <section className="become-a bg-grey-dark">
         <Arrow direction="Left" onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver} />
-        <section className="text-white">
-          <Headline value={`Become a ${this.state.userType}`} className="title" />
+        <section className="become-a__content text-white">
+          <Headline value={`Become a ${this.state.userType}`} className="become-a__title" />
             {this.state.userType === 'Driver' ?
               <DriverDescription /> :
               <VolunteerDescription />}
           <BodyButton />
         </section>
-        <AppStoreIcon className="appstore" />
-        <div className="app-sample" />
+        <AppStoreIcon className="become-a__appstore-icon" />
+        <div className="become-a__app-sample" />
         <Arrow direction="Right" onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver} />
       </section>
     );

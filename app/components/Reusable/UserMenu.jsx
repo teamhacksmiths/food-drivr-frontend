@@ -28,11 +28,11 @@ class UserMenu extends React.Component {
   render() {
     return (
       <nav refs="userMenu" className={this.props.showMenu ? 'header-menu bg-white text-black text-right' : 'header-menu bg-white hidden'}>
-        <div className="arrow bg-white" />
-        <Link to="/" className="item">Dashboard</Link>
-        {this.state.userRole ? '' : <Link to="/donation" className="item">Donate</Link>}
-        <Link to="/profile" className="item">Settings</Link>
-        <a className="logout pointer-cursor" onClick={this.handleLogout}>Logout</a>
+        <div className="header-menu__arrow bg-white" />
+        <Link to="/" className="header-menu__item">Dashboard</Link>
+        {this.state.userRole ? '' : <Link to="/donation" className="header-menu__item">Donate</Link>}
+        <Link to="/profile" className="header-menu__item">Settings</Link>
+        <a className="header-menu__logout pointer-cursor" onClick={this.handleLogout}>Logout</a>
      </nav>
     );
   }

@@ -1,9 +1,20 @@
 .comments {
 	background: #14cfe8;
 	padding: 150px 0 20px;
-	.dots {
-		margin-top: 60px;
-	}
+}
+.comments__dots {
+  margin-top: 60px;
+}
+.comments__bullet {
+  display: inline;
+  font-size: $font-huge-thin;
+  margin: 0 10px;
+  &:before {
+  	content: "•";
+  }
+}
+.comments__bullet--active:before{
+  content: "◦";
 }
 
 .comment {
@@ -12,27 +23,13 @@
 	q {
 		font-size: $font-medium-thin;
 	}
-
-	.author {
-		margin: 60px 0 10px;
-	}
-
-	.company {
-		font-size: $font-small;
-	}
+}
+.comment__author {
+  margin: 60px 0 10px;
 }
 
-.bullet {
-  display: inline;
-  font-size: $font-huge-thin;
-  margin: 0 10px;
-  &:before {
-  	content: "•";
-  }
-}
-
-.bullet--active:before{
-  content: "◦";
+.comment__company {
+  font-size: $font-small;
 }
 
 @media screen and (min-width: 768px) {
