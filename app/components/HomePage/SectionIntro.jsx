@@ -15,7 +15,7 @@ const SectionIntro = () => (
       </p>
       <Headline value="Waste not food taxi" className="intro__title uppercase text-center text-white" />
     </header>
-    <div className="intro__content flex-grow-1 text-center text-white source-sans">
+    <div className="intro__content flex-grow-1 text-center text-white open-sans">
       <p>
         On a daily basis, businesess like catering facilities, restaurants, grocery stores, as well as individuals produce more food than what is necessary for them to meet their needs.
       </p>

@@ -6,7 +6,7 @@ const HowItWorksSubSection = (props) => (
       <img src={props.imgSrc} alt={props.imgAlt} className="img" />
       <div className="uppercase">{props.title}</div>
     </header>
-      <p className="text-center source-sans">
+      <p className="text-center open-sans">
         {props.children}
       </p>
   </section>
