@@ -10,18 +10,18 @@ class App extends React.Component {
   render() {
     const containerClass = classNames({
       container: true,
-      'blue-background': window.location.pathname === '/',
-      'red-background': window.location.pathname === '/signup' || window.location.pathname === '/signin',
-      'lightgrey-background': window.location.pathname === '/donation',
-      'yellow-background': window.location.pathname === '/signup/donor',
-      'lightblue-background': window.location.pathname === '/signup/volunteer'
+      'bg-blue': window.location.pathname === '/',
+      'bg-red': window.location.pathname === '/signup' || window.location.pathname === '/signin',
+      'bg-grey-light': window.location.pathname === '/donation',
+      'bg-yellow': window.location.href.indexOf('donor') > -1,
+      'bg-blue-light': window.location.href.indexOf('volunteer') > -1
     });
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className={containerClass}>
           <Header />
           <ReactCSSTransitionGroup transitionName="appear" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-            {React.cloneElement(this.props.children, {key: this.props.location.pathname})}
+            {React.cloneElement(this.props.children, { key: this.props.location.pathname })}
           </ReactCSSTransitionGroup>
           <Footer />
         </div>
@@ -29,5 +29,10 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  location: React.PropTypes.object.isRequired,
+  children: React.PropTypes.object.isRequired
+};
 
 module.exports = App;

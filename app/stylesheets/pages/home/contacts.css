@@ -1,0 +1,32 @@
+.contacts {
+	padding: 55px 15% 0;
+	font-size: $font-medium-thin;
+	p {
+		max-width: 400px;
+		margin: 50px 0;
+	}
+}
+.contacts__email{
+  display: inline;
+  border-bottom: 1px solid #FFF;
+  padding-bottom: 3px;
+  font-size: $font-small;
+}
+.contacts__social-icon {
+	margin: 20px 10px 0 0;
+}
+.contacts__copyright {
+	margin: 50px 0;
+	font-size: 10px;
+}
+
+@media screen and (min-width: 768px) {
+	.contacts__email {
+		font-size: $font-medium-thin;
+	}
+}
+@media screen and (min-width: 1440px) {
+	.contacts {
+		padding: 55px 25% 0;
+	}
+}

@@ -1,17 +1,19 @@
 import React from 'react';
-import DonationHistoryList from './DonationHistoryList.jsx';
-import DonationHistoryItem from './DonationHistoryItem.jsx';
+import Headline from '../Reusable/Headline';
+import DonationHistoryList from './DonationHistoryList';
+import DonationHistoryItem from './DonationHistoryItem';
 
 const DonationHistory = ({ donations }) => (
-  <div>
-    <ul>
+  <section className="donations-history">
+    <Headline value="Donations History" />
+    <ul className="donations-history__list">
       {donations.map((donation) =>
         <DonationHistoryList title={donation.participants.donor.name} date={donation.created_at}>
           {donation.items.map((item) => <DonationHistoryItem quantity={item.quantity} unit={item.unit} title={item.description} />)}
         </DonationHistoryList>
       )}
     </ul>
-  </div>
+  </section>
 );
 
 DonationHistory.propTypes = {

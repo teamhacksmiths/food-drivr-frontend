@@ -20,8 +20,8 @@ class Header extends React.Component {
     const email = localStorage.getItem('email');
     const pass = localStorage.getItem('password');
     if (this.state.loggedIn === true) {
-      auth.login(email, pass).
-      then((response) => {
+      auth.login(email, pass)
+      .then((response) => {
         console.log(response);
         auth.onChange(true);
       })
@@ -54,10 +54,10 @@ class Header extends React.Component {
       logInButton = '';
     }
     return (
-      <div className={window.location.pathname === '/donation' ? 'donation-header text-flex' : 'header text-flex'}>
+      <header className={window.location.pathname === '/donation' ? 'header header--donation bg-grey-x-light' : 'header'}>
         {headerButton}
         {logInButton}
-      </div>
+      </header>
     );
   }
 }

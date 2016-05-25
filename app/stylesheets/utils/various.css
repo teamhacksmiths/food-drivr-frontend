@@ -1,0 +1,19 @@
+@import "../config/fonts.css";
+@import "../config/colors.css";
+
+/* Generic Classes */
+.pointer-cursor {
+	cursor: pointer;
+}
+.relative {
+	position: relative;
+}
+.hidden {
+	display: none;
+}
+.flex-grow-1 {
+	flex-grow: 1;
+}
+.flex-grow-3 {
+	flex-grow: 3;
+}

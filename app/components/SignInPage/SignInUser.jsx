@@ -4,9 +4,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Headline from '../Reusable/Headline.jsx';
 
 const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmailChange, onPasswordChange, onFormSubmit }) => (
-  <div className="signin text-center text-white">
-    <Headline value="Sign In" />
-    <form>
+  <section className="signin text-center text-white">
+    <Headline value="Sign In" className="signin__title" />
+    <form className="signin__form">
       <TextField
         hintText="Enter Email"
         errorText={errorEmail}
@@ -17,7 +17,6 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
         errorStyle={{ color: 'white' }}
         value={email}
       />
-      <br />
       <TextField
         hintText="Enter Password"
         errorText={errorPassword}
@@ -29,19 +28,17 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
         value={password}
         type="password"
       />
-      <br />
       <RaisedButton
         label="Sign In"
         secondary
         onClick={onFormSubmit}
         style={{ marginTop: 100, minWidth: 250 }}
       />
-      <br />
       <span>
         {error}
       </span>
     </form>
-  </div>
+  </section>
 );
 
 SignInUser.propTypes = {

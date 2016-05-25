@@ -1,0 +1,68 @@
+.become-a {
+	@mixin flex *, flex-start, *, space-around;
+	position: relative;
+}
+.become-a__arrow {
+  align-self: center;
+  img {
+    margin: 0 5px;
+    @mixin square 45px;
+  }
+}
+.become-a__content {
+  @mixin flex column, flex-start, *, center;
+  margin: 50px 0;
+  padding: 0 5px;
+  max-width: 600px;
+  min-height: 761px;
+  div {
+    margin-bottom: 40px;
+  }
+}
+.become-a__title {
+  font-size: $font-large-thick;
+  letter-spacing: -2px;
+}
+.become-a__appstore-icon {
+  display: none;
+  @mixin absolute 10%, 11%, *, *;
+}
+.become-a__app-sample {
+  display: none;
+  margin-top: 50px;
+  @mixin bg-img '/images/Food-Drivr-Driver-iphone.png';
+  @mixin rect 490px, 638px;
+}
+
+@media screen and (min-width: 768px) {
+	.become-a__arrow img {
+		@mixin square 50px;
+	}
+	.become-a__content {
+		min-height: 450px;
+	}
+  .become-a__title {
+    font-size: $font-huge-thin;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+	.become-a__arrow img {
+		@mixin square 60px;
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	.become-a__arrow,
+	.become-a__appstore-icon,
+	.become-a__app-sample {
+		display: block;
+	}
+	.become-a__content {
+    justify-content: flex-start;
+		padding: 0 50px;
+		p {
+			font-size: $font-medium-thin;
+		}
+	}
+}

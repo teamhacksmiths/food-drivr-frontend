@@ -2,6 +2,7 @@ import React from 'react';
 import UserProfile from '../components/UserProfilePage/UserProfile';
 import FullscreenLoading from '../components/Reusable/FullscreenLoading';
 import auth from '../utils/auth.js';
+import foodDrivrAPI from '../utils/foodDrivrAPI.js';
 import Snackbar from 'material-ui/Snackbar';
 
 class UserProfilePage extends React.Component {

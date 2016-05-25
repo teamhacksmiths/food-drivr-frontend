@@ -72,16 +72,16 @@ class PasswordForm extends React.Component {
     const regExpTest = passwordRE.test(newPassword);
     const errors = this.state.errors;
     if (regExpTest !== true && newPassword.length > 0) {
-      const errorMessage = 'Minimum 8 characters, 1 Upper, 1 Lower, 1 Special and 1 Number'
+      const errorMessage = 'Minimum 8 characters, 1 Upper, 1 Lower, 1 Special and 1 Number';
       errors[name] = errorMessage;
     } else {
       errors[name] = null;
     }
 
-    formData[name] = newPassword
+    formData[name] = newPassword;
     this.setState({
-      formData: formData,
-      errors: errors,
+      formData,
+      errors,
       hasErrors: true,
       canSubmit: this.checkCanSubmit()
     });
@@ -108,7 +108,7 @@ class PasswordForm extends React.Component {
       /* I hate that I am redoing this and am altering state here, but I need to submit this */
       const errors = this.state.errors;
       errors.passwordConfirmation = 'Passwords do not match.';
-      this.setState({ errors: errors });
+      this.setState({ errors });
     }
     return canSubmit;
   }

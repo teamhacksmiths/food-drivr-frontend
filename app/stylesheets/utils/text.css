@@ -1,0 +1,23 @@
+@import "../config/colors.css";
+
+.text-grey-dark {
+	color: $grey-dark;
+}
+.text-white {
+	color: white;
+}
+.text-black {
+	color: black;
+}
+.text-yellow {
+	color: $yellow;
+}
+.text-center{
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.uppercase {
+	text-transform: uppercase;
+}

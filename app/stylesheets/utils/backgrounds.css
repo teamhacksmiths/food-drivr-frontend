@@ -1,0 +1,26 @@
+@import "../config/colors.css";
+
+.bg-blue-light {
+	background-color: $blue-light;
+}
+.bg-blue {
+	background-color: $blue;
+}
+.bg-red {
+	background-color: $red;
+}
+.bg-grey-x-light {
+	background-color: $grey-x-light;
+}
+.bg-grey-light {
+	background-color: $grey-light;
+}
+.bg-grey-dark {
+	background-color: $grey-dark;
+}
+.bg-yellow {
+	background-color: $yellow;
+}
+.bg-white {
+	background-color: $white;
+}

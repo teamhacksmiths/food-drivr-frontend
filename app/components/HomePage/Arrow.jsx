@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Arrow = ({ onClick, direction }) => (
-  <div className="becomedriver-arrow">
+  <div className="become-a__arrow">
     <img className="pointer-cursor" onClick={onClick} src={`images/${direction}-Arrow.svg`} alt={`${direction} arrow`} />
   </div>
 );

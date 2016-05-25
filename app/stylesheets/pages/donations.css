@@ -1,0 +1,117 @@
+@import "../components/button.css";
+
+.donations {
+	width: 90%;
+	margin:  50px auto 0;
+}
+.donations__form {
+  @mixin flex *, *, *, center;
+}
+
+.donation {
+  @mixin flex column, *, *, *;
+}
+.donation__item-list {
+  overflow-x: hidden;
+  max-height: 40vh;
+  max-width: 540px;
+  width: 95%;
+  margin: 20px auto 0;
+}
+.donation__item {
+	@mixin flex *, flex-end, *, space-between;
+}
+.donation__item-name {
+  margin-top: 15px;
+  font-size: $font-medium-thin;
+  letter-spacing: 0.9px;
+  font-family: $open-sans;
+}
+
+.donations-history {
+  max-width: 550px;
+  margin: auto;
+}
+.donations-history h1 {
+  font-family: $open-sans;
+  font-size: $font-medium-thick;
+  font-weight: 100;
+  letter-spacing: 1.2px;
+  margin: 20px auto;
+}
+.donations-history__list {
+  font-family: $open-sans;
+  li {
+    @mixin flex *, *, *, space-between;
+  }
+}
+.donation-history__titles {
+  max-width: 40%;
+  h2 {
+    font-weight: 500;
+    font-size: $font-medium;
+  }
+  i {
+    letter-spacing: 1.2px;
+  }
+}
+.donations-history__items {
+  letter-spacing: 1px;
+  max-width: 50%;
+}
+
+.btn-addDonation {
+  @mixin square 55px;
+  @mixin bg-img '/images/add-button.svg';
+}
+.btn-delDonation {
+  @mixin square 25px;
+  @mixin bg-img '/images/btn-del-donation.png';
+}
+.btn-donate {
+  @mixin rect 60%, 50px;
+  max-width: 250px;
+  margin: 25px auto;
+}
+
+/* The color here does not comply with the palette */
+.donation-dialog input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset;
+}
+
+@media screen and (min-width: 768px) {
+  .donations__form {
+    div,
+    input {
+      /* Using !important is highly discouraged. In this case it is the only way to override Material UI inline styling */
+      font-size: $font-medium !important;
+      line-height: 1.9 !important;
+    }
+	}
+  .donations-history h1 {
+    font-size: $font-large;
+  }
+  .donations-history__titles h2 {
+    font-size: $font-medium-thick;
+  }
+  .donations-history__items {
+    font-size: $font-medium-thin;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .donations-history h1 {
+    font-size: $font-large-thick;
+  }
+  .donations-history__titles{
+    h2 {
+      font-size: $font-large;
+    }
+    i {
+      font-size: $font-medium-thin;
+    }
+  }
+  .donations-history__items {
+    font-size: $font-medium;
+  }
+}

@@ -21,9 +21,8 @@ class UserHeader extends React.Component {
     document.removeEventListener('click', this.handleClick);
   }
 
-  handleClick(event) {
-    if (event.target.className !== 'user-info' && event.target.className !== 'user-menu-container') {
-      // hide the menu
+  handleClick(e) {
+    if (!e.target.classList.contains('header__user-name') && !e.target.classList.contains('header-menu')) {
       this.setState({
         showMenu: false
       });
@@ -38,23 +37,19 @@ class UserHeader extends React.Component {
 
   render() {
     const UserHeaderClass = classNames({
-      'user-container text-margin-left text-flex': true,
+      relative: true,
       'text-white': window.location.pathname === '/',
-      'text-black': window.location.pathname !== '/',
-      'donation-header-user': window.location.pathname === '/donation'
+      'text-black': window.location.pathname !== '/'
     });
-
     const UserInfoContainerClass = classNames({
-      'text-flex pointer-cursor': true,
+      'pointer-cursor': true,
       'text-yellow': window.location.pathname === '/donation'
     });
-
     const name = localStorage.getItem('name');
-
     return (
       <div className={UserHeaderClass}>
-        <div className={UserInfoContainerClass} onClick={this.toggleMenu}>
-          <div className="user-info">{name}</div>
+        <div className={`header__user-name ${UserInfoContainerClass}`} onClick={this.toggleMenu}>
+          {name}
         </div>
         <UserMenu showMenu={this.state.showMenu} />
       </div>

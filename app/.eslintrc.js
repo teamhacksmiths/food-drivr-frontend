@@ -7,7 +7,7 @@ module.exports = {
         "no-console": 0,
         "react/jsx-indent": 0,
         "react/jsx-indent-props": 0,
-        "max-len": [1, 200],
+        "max-len": 0,
 		"comma-dangle": 0,
 		"no-underscore-dangle": 0
     },

@@ -1,13 +1,13 @@
 import React from 'react';
 
-const DonateButton = ({ onHandleClick }) => (
-  <button className="thankyou-btn-donate" onClick={onHandleClick}>
-    GET STARTED
+const DonateButton = ({ onClick }) => (
+  <button className="btn btn-getStarted bg-white text-yellow" onClick={onClick}>
+    Get started
   </button>
 );
 
 DonateButton.propTypes = {
-  onHandleClick: React.PropTypes.func.isRequired
+  onClick: React.PropTypes.func.isRequired
 };
 
 module.exports = DonateButton;

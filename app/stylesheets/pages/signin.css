@@ -1,0 +1,15 @@
+.signin {
+	min-height: calc(100vh - 135px);
+	padding: 50px 0;
+	background-color: #ff1e40;
+}
+.signin__title {
+  margin: 10px 0 30px;
+  font-size: $font-large;
+}
+.signin__form {
+  @mixin flex column, center, *, *, *;
+  input:-webkit-autofill {
+  	box-shadow: 0 0 0px 1000px $red inset;
+  }
+}

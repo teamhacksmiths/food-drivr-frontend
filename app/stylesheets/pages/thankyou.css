@@ -1,0 +1,40 @@
+.thank-you {
+  @mixin flex column, center, *, *;
+  p {
+    max-width: 500px;
+  	width: 80%;
+  	margin-bottom: 25px;
+  	font-size: $font-medium-thin;
+    font-family: $open-sans;
+  	letter-spacing: 1px;
+  }
+}
+.thank-you__truck {
+  @mixin bg-img '/images/food-drivr-logo.svg';
+  @mixin square 55px;
+  margin: auto;
+}
+.thank-you__title {
+  font-size: $font-huge-thin;
+  text-transform: uppercase;
+  margin-top: 30px;
+}
+
+.btn-getStarted {
+  @mixin rect 46%, 70px;
+  margin-top: 20px;
+  max-width: 300px;
+  min-width: 200px;
+}
+
+@media screen and (min-width: 768px) {
+	.thank-you p {
+	  font-size: $font-medium;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.thankyou p {
+    font-size: $font-medium-thick;
+  }
+}

@@ -1,9 +1,7 @@
 import React from 'react';
 
 const DonationHistoryItem = ({ quantity, unit, title }) => (
-  <div className="col-xs-4 text-right">
-    <div className="donation-item">{quantity} {unit} x {title}</div>
-  </div>
+    <div className="text-right">{quantity} {unit} x {title}</div>
 );
 
 DonationHistoryItem.propTypes = {

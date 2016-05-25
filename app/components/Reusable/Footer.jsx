@@ -5,13 +5,14 @@ import classNames from 'classnames/bind';
 const Footer = () => {
   const footerClass = classNames({
     footer: true,
-    'text-black': window.location.pathname === '/donation',
+    'text-center': true,
+    'text-yellow': window.location.pathname === '/donation',
     'text-white': window.location.pathname !== '/donation'
   });
   return (
-    <div className={footerClass}>
+    <footer className={footerClass}>
       <p>Made with ♥ by <Link to="http://hacksmiths.io">Team Hacksmiths</Link></p>
-    </div>
+    </footer>
   );
 };
 

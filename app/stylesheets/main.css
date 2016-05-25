@@ -1,0 +1,39 @@
+@import "utils/reset.css";
+@import "utils/backgrounds.css";
+@import "utils/animations.css";
+@import "utils/text.css";
+@import "utils/various.css";
+
+@import "components/footer.css";
+@import "components/header.css";
+
+@import "pages/home.css";
+@import "pages/signin.css";
+@import "pages/signup.css";
+@import "pages/donations.css";
+@import "pages/thankyou.css";
+
+/* Planning on adding CSS MQPacker plugin */
+/* Main content */
+body {
+	width: 100%;
+	font-family: $montserrat;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 16px auto;
+}
+
+.container {
+  @extend %clearfix;
+	width: 100%;
+	min-height: 100vh;
+	max-width: 1450px;
+	margin: auto;
+	padding: 0;
+	position: relative;
+}

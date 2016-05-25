@@ -1,4 +1,4 @@
-import './main.css';
+import './stylesheets/main.css';
 import ReactDOM from 'react-dom';
 import routes from './config/routes.js';
 

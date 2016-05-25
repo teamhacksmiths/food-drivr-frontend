@@ -1,0 +1,57 @@
+@define-mixin square $dimension {
+    width: $dimension;
+    height: $dimension;
+}
+
+@define-mixin rect $width, $height {
+    width: $width;
+    height: $height;
+}
+
+@define-mixin absolute $top, $right, $bottom, $left {
+	position: absolute;
+    @if $top != * {
+		top: $top;
+	}
+	@if $right != * {
+		right: $right;
+	}
+	@if $bottom != * {
+		bottom: $bottom;
+	}
+	@if $left != * {
+		left: $left;
+	}
+}
+
+@define-mixin flex $direction, $align-items, $align-content, $justify-content{
+	display: flex;
+	@if $direction != * {
+		flex-direction: $direction;
+	}
+	@if $align-items != * {
+		align-items: $align-items;
+	}
+	@if $align-content != * {
+		align-content: $align-content;
+	}
+	@if $justify-content != * {
+		justify-content: $justify-content;
+	}
+}
+
+@define-mixin bg-img $url {
+  background: transparent url($url) no-repeat;
+	background-size: 100%;
+}
+
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}

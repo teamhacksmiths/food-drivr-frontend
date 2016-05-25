@@ -3,7 +3,7 @@ import DonationListItem from './DonationListItem.jsx';
 
 const DonationList = (props) => (
   <div>
-    <ul>
+    <ul className="donation__item-list">
       {props.itemsAdded.map((item, index) => {
         const boundClick = props.onHandleRemoveItem.bind(this, index);
         return (
