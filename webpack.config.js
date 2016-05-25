@@ -41,6 +41,7 @@ const common = {
     filename: 'bundle.js'
   },
   module: {
+    // This clutters the console with errors for each eslint error
     // preLoaders: [{
     //   test: /\.jsx?$/,
     //   loaders: PRODUCTION ? [] : ['eslint'],
