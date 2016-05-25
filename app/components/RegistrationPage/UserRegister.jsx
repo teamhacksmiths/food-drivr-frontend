@@ -75,8 +75,9 @@ const UserRegister = (props) => (
         label="Sign Up"
         labelColor="white"
         onClick={props.onSubmitUser}
-        style={{ marginTop: 100, minWidth: 250 }}
-        backgroundColor={props.userType === 'Volunteer' ? '#f7b32b' : '#14cfe8'}
+        style={{ marginBottom: 20, width: 350, borderBottom: '1px solid white', boxShadow: 'none', backgroundColor: 'transparent' }}
+        backgroundColor="transparent"
+        className="signup__btn"
       />
       <h4 className="text-white">
         {props.error}

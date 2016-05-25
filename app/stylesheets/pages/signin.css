@@ -7,6 +7,10 @@
   margin: 10px 0 30px;
   font-size: $font-large;
 }
+.signin__btn button {
+  height: 85px !important;
+  font-size: $font-medium !important;
+}
 .signin__form {
   @mixin flex column, center, *, *, *;
   input:-webkit-autofill {

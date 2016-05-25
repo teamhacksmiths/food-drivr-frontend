@@ -30,9 +30,11 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
       />
       <RaisedButton
         label="Sign In"
-        secondary
+        labelColor="white"
         onClick={onFormSubmit}
-        style={{ marginTop: 100, minWidth: 250 }}
+        style={{ marginBottom: 20, width: 350, borderBottom: '1px solid white', boxShadow: 'none', backgroundColor: 'transparent' }}
+        className="signin__btn"
+        backgroundColor="transparent"
       />
       <span>
         {error}

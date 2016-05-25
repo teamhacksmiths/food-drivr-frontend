@@ -21,6 +21,10 @@
   width: 90%;
   max-width: 350px;
 }
+.signup__btn button {
+  height: 85px !important;
+  font-size: $font-medium !important;
+}
 .signup__form--donor input:-webkit-autofill {
   box-shadow: 0 0 0px 1000px $yellow inset;
 }
