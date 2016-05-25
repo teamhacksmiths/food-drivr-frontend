@@ -20,7 +20,7 @@ const styles = {
 const UserRegister = (props) => (
   <section className="signup text-center">
     <h1 className="uppercase text-white">{props.userType} Sign Up</h1>
-    <form>
+    <form autoComplete="off" className={props.userType === 'Volunteer' ? 'volunteer' : 'donor'}>
       <TextField
         hintText="Enter Name"
         errorText={props.errorName}
@@ -28,8 +28,8 @@ const UserRegister = (props) => (
         onChange={props.onNameChange}
         onKeyUp={props.onSubmitUser}
         style={styles.fullWidth}
-        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : ''}
-        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : ''}
+        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : {}}
+        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : {}}
         errorStyle={styles.colorWhite}
         value={props.name}
       />
@@ -40,8 +40,8 @@ const UserRegister = (props) => (
         onChange={props.onEmailChange}
         onKeyUp={props.onSubmitUser}
         style={styles.fullWidth}
-        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : ''}
-        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : ''}
+        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : {}}
+        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : {}}
         errorStyle={styles.colorWhite}
         value={props.email}
       />
@@ -52,8 +52,8 @@ const UserRegister = (props) => (
         onChange={props.onPasswordChange}
         onKeyUp={props.onSubmitUser}
         style={styles.fullWidth}
-        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : ''}
-        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : ''}
+        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : {}}
+        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : {}}
         errorStyle={styles.colorWhite}
         value={props.password}
         type="password"
@@ -65,8 +65,8 @@ const UserRegister = (props) => (
         onChange={props.onPasswordConfirmChange}
         onKeyUp={props.onSubmitUser}
         style={styles.fullWidth}
-        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : ''}
-        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : ''}
+        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : {}}
+        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : {}}
         errorStyle={styles.colorWhite}
         value={props.passwordConfirmation}
         type="password"

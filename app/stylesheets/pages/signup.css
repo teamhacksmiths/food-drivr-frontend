@@ -25,4 +25,12 @@
 		width: 90%;
 		max-width: 350px;
 	}
+
+  .donor input:-webkit-autofill {
+  	box-shadow: 0 0 0px 1000px $yellow inset;
+  }
+
+  .volunteer input:-webkit-autofill {
+  	box-shadow: 0 0 0px 1000px $blue-light inset;
+  }
 }
