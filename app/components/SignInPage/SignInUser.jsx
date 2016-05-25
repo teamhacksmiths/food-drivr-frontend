@@ -5,8 +5,8 @@ import Headline from '../Reusable/Headline.jsx';
 
 const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmailChange, onPasswordChange, onFormSubmit }) => (
   <section className="signin text-center text-white">
-    <Headline value="Sign In" />
-    <form>
+    <Headline value="Sign In" className="signin__title" />
+    <form className="signin__form">
       <TextField
         hintText="Enter Email"
         errorText={errorEmail}

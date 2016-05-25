@@ -19,8 +19,8 @@ const styles = {
 
 const UserRegister = (props) => (
   <section className="signup text-center">
-    <h1 className="uppercase text-white">{props.userType} Sign Up</h1>
-    <form autoComplete="off" className={props.userType === 'Volunteer' ? 'volunteer' : 'donor'}>
+    <h1 className="signup__title uppercase text-white">{props.userType} Sign Up</h1>
+    <form autoComplete="off" className={props.userType === 'Volunteer' ? 'signup__form signup__form--volunteer' : 'signup__form signup__form--donor'}>
       <TextField
         hintText="Enter Name"
         errorText={props.errorName}

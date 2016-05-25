@@ -19,14 +19,14 @@ class UserTypePage extends React.Component {
   render() {
     return (
       <section className="signup text-center text-white">
-        <h1 className="uppercase">Sign Up</h1>
+        <h1 className="signup__title uppercase">Sign Up</h1>
         <UserTypeButton
           onSubmit={this.handleSubmitDonor}
           imgSrc="images/donor-icon.svg"
           imgAlt="donor package"
           title="Donor"
         />
-        <p className="or flex-grow-1">OR</p>
+        <p className="signup__or flex-grow-1">OR</p>
         <UserTypeButton
           onSubmit={this.handleSubmitVolunteer}
           imgSrc="images/volunteer-icon.svg"
