@@ -9,21 +9,27 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
     <form className="signin__form">
       <TextField
         hintText="Enter Email"
+        floatingLabelStyle={{ color: 'white' }}
         errorText={errorEmail}
         floatingLabelText="Email"
         onChange={onEmailChange}
         onKeyUp={onFormSubmit}
         style={{ width: '80%', maxWidth: 350 }}
+        floatingLabelStyle={{ color: 'white' }}
+        underlineStyle={{ borderColor: 'white' }}
         errorStyle={{ color: 'white' }}
         value={email}
       />
       <TextField
         hintText="Enter Password"
+        floatingLabelStyle={{ color: 'white' }}
         errorText={errorPassword}
         floatingLabelText="Password"
         onChange={onPasswordChange}
         onKeyUp={onFormSubmit}
         style={{ width: '80%', maxWidth: 350 }}
+        floatingLabelStyle={{ color: 'white' }}
+        underlineStyle={{ borderColor: 'white' }}
         errorStyle={{ color: 'white' }}
         value={password}
         type="password"
@@ -32,7 +38,7 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
         label="Sign In"
         labelColor="white"
         onClick={onFormSubmit}
-        style={{ marginBottom: 20, width: 350, borderBottom: '1px solid white', boxShadow: 'none', backgroundColor: 'transparent' }}
+        style={{ color: 'white', marginBottom: 20, width: 350, borderBottom: '1px solid white', boxShadow: 'none', backgroundColor: 'transparent' }}
         className="signin__btn"
         backgroundColor="transparent"
       />
