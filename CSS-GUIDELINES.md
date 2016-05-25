@@ -15,7 +15,7 @@ All of the CSS files can be found inside the `stylesheets` folder. The structure
 - `components`: here you can find `button.css`, `footer.css` and `header.css`, you can add any other item or styling that can be reused across the whole project (unfortunately we don't have that many). To further explain the main `footer` and `header` don't really belong to any specific page but they are used everywhere. Same for `button`, here you can find the starting styles for each button along with the respective modifiers (e.g. `.btn--round`, `.btn--shadow`, ...).
 - `config`: here are stored values used in different classes like fonts size, colors, z-index. This is the place where we want to store variables to use across the project. We don't want to clutter the project with many different font sizes, colors or z-indexes that grow up to 999999. For this reason we only pick font sizes color and z-indexes among the ones provided in the respective file.
 - `pages`: just like the jsx files here you can find the specific style for each page, if a page requires major css it can be split in a subfolder with separate css files (e.g. the home page is represented by many sections each with a complete different styling, to keep things organized we have a `home` subfolder with each section style separate).
-- `util`s: here you can find the reset file, animations, background colors, text classes and various other classes that are useful to use across the project (e.g. `.uppercase`, `.text-center`, `.text-left`, `.bg-blue`, ...).
+- `utils`: here you can find the reset file, animations, background colors, text classes and various other classes that are useful to use across the project (e.g. `.uppercase`, `.text-center`, `.text-left`, `.bg-blue`, ...).
 
 Then we have the `main.css` that wires everything up and contains some styling regarding the main container and that's it. Nothing else goes in here.
 
@@ -66,7 +66,7 @@ A good example of nesting is the following:
 In this case there is no need to use an additional class to target the `p` tag. So do what you think is best and come back to these example if you are unsure.
 
 ## Naming
-Things get interesting here, we decided to go with [BEM](http://getbem.com/introduction/) among the many different possibilities. We are not going to worry about the global scope of CSS classes since this project is not too large and we did not incur in any similar problem during development.
+Things get interesting here, we decided to go with [BEM](http://getbem.com/introduction/) among the many different possibilities. We are not going to worry about the global scope of CSS classes using some extra PostCSS plugin, this project is not too large and we did not incur in any similar problem during development. BEM in this case is more than sufficient to avoid any possible collision.
 
 ## Disclaimer
 
