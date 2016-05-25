@@ -28,8 +28,9 @@ const UserRegister = (props) => (
         onChange={props.onNameChange}
         onKeyUp={props.onSubmitUser}
         style={styles.fullWidth}
-        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : {}}
-        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : {}}
+        floatingLabelStyle={{ color: 'white', top: 25, fontFamily: '"Open Sans", sans-serif' }}
+        underlineStyle={{ borderColor: 'white' }}
+        underlineFocusStyle={{ borderColor: 'white' }}
         errorStyle={styles.colorWhite}
         value={props.name}
       />
@@ -40,8 +41,9 @@ const UserRegister = (props) => (
         onChange={props.onEmailChange}
         onKeyUp={props.onSubmitUser}
         style={styles.fullWidth}
-        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : {}}
-        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : {}}
+        floatingLabelStyle={{ color: 'white', top: 25, fontFamily: '"Open Sans", sans-serif' }}
+        underlineStyle={{ borderColor: 'white' }}
+        underlineFocusStyle={{ borderColor: 'white' }}
         errorStyle={styles.colorWhite}
         value={props.email}
       />
@@ -52,8 +54,9 @@ const UserRegister = (props) => (
         onChange={props.onPasswordChange}
         onKeyUp={props.onSubmitUser}
         style={styles.fullWidth}
-        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : {}}
-        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : {}}
+        floatingLabelStyle={{ color: 'white', top: 25, fontFamily: '"Open Sans", sans-serif' }}
+        underlineStyle={{ borderColor: 'white' }}
+        underlineFocusStyle={{ borderColor: 'white' }}
         errorStyle={styles.colorWhite}
         value={props.password}
         type="password"
@@ -65,8 +68,9 @@ const UserRegister = (props) => (
         onChange={props.onPasswordConfirmChange}
         onKeyUp={props.onSubmitUser}
         style={styles.fullWidth}
-        underlineFocusStyle={props.userType === 'Volunteer' ? styles.underlineYellow : {}}
-        floatingLabelFocusStyle={props.userType === 'Volunteer' ? styles.floatingLabelYellow : {}}
+        floatingLabelStyle={{ color: 'white', top: 25, fontFamily: '"Open Sans", sans-serif' }}
+        underlineStyle={{ borderColor: 'white' }}
+        underlineFocusStyle={{ borderColor: 'white' }}
         errorStyle={styles.colorWhite}
         value={props.passwordConfirmation}
         type="password"
@@ -75,8 +79,10 @@ const UserRegister = (props) => (
         label="Sign Up"
         labelColor="white"
         onClick={props.onSubmitUser}
-        style={{ marginTop: 100, minWidth: 250 }}
-        backgroundColor={props.userType === 'Volunteer' ? '#f7b32b' : '#14cfe8'}
+        style={{ color: 'white', marginBottom: 20, width: 350, borderBottom: '1px solid white', boxShadow: 'none', backgroundColor: 'transparent' }}
+        labelStyle={{ fontFamily: '"Open Sans", sans-serif', fontSize: 20, position: 'absolute', width: '100%', left: 0, top: 11 }}
+        backgroundColor="transparent"
+        className="signup__btn"
       />
       <h4 className="text-white">
         {props.error}
