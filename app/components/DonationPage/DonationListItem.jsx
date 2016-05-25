@@ -1,8 +1,8 @@
 import React from 'react';
 
 const DonationItem = ({ name, onRemoveItem }) => (
-  <li>
-    <div className="item-name">{name}</div>
+  <li className="donation__item">
+    <div className="donation__item-name">{name}</div>
     <button className="btn btn-delDonation" onClick={onRemoveItem} />
   </li>
 );

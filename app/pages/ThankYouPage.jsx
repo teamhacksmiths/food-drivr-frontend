@@ -56,9 +56,9 @@ class ThankYouPage extends React.Component {
   }
   render() {
     return (
-      <section className="thankyou text-center text-white">
+      <section className="thank-you text-center text-white">
         <WhiteTruckButton />
-        <Headline value="Thank You!" />
+        <Headline value="Thank You!" className="thank-you__title" />
         {this.state.role !== 0 ? <VolunteerThankYou /> : <DonorThankYou />}
         {this.state.role ? '' : <DonateButton onClick={this.handleClick} />}
         {this.state.role !==1 ? '' : <AppStoreIcon />}

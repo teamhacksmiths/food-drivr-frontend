@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const WhiteTruckButton = () => (
   <Link to="/">
-    <div className="thankyou-truck"></div>
+    <div className="thank-you__truck"></div>
   </Link>
 );
 

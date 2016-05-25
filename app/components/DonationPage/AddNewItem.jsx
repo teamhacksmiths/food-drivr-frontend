@@ -15,7 +15,7 @@ const styles = {
 };
 
 const AddNewItem = ({ onUpdateItem, enableAddItem, onAddItem }) => (
-  <form>
+  <form className="donations__form">
     <TextField
       type="text"
       onKeyUp={onUpdateItem}

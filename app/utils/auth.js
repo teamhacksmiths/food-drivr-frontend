@@ -8,7 +8,7 @@ module.exports = {
     /*****************************************************************/
     /* ALERT THE CALLING FUNCTION IS EXPECTING A PROMISE IN RETURN!! */
     /*****************************************************************/
-    if (token) return this.onChange(true);
+    // if (token) return this.onChange(true);
 
     return axios({
       url: '/sessions',

@@ -3,35 +3,29 @@
 .donations {
 	width: 90%;
 	margin:  50px auto 0;
-
-	.title {
-		font-size: $font-large-thick;
-	}
-
-	form {
-		@mixin flex *, *, *, center;
-	}
+}
+.donations__form {
+  @mixin flex *, *, *, center;
 }
 
 .donation {
   @mixin flex column, *, *, *;
-	ul {
-		overflow-x: hidden;
-		max-height: 40vh;
-		max-width: 540px;
-		width: 95%;
-		margin: 20px auto 0;
-	}
-
-	li {
-		@mixin flex *, flex-end, *, space-between;
-		.item-name {
-	    margin-top: 15px;
-	    font-size: $font-medium-thin;
-	    letter-spacing: 0.9px;
-	    font-family: $open-sans;
-		}
-	}
+}
+.donation__item-list {
+  overflow-x: hidden;
+  max-height: 40vh;
+  max-width: 540px;
+  width: 95%;
+  margin: 20px auto 0;
+}
+.donation__item {
+	@mixin flex *, flex-end, *, space-between;
+}
+.donation__item-name {
+  margin-top: 15px;
+  font-size: $font-medium-thin;
+  letter-spacing: 0.9px;
+  font-family: $open-sans;
 }
 
 .btn-addDonation {
@@ -54,14 +48,12 @@
 }
 
 @media screen and (min-width: 768px) {
-  .donations {
-    form {
-      div,
-      input {
-        /* Using !important is highly discouraged. In this case it is the only way to override Material UI inline styling */
-        font-size: $font-medium !important;
-        line-height: 1.9 !important;
-      }
-  	}
-  }
+  .donations__form {
+    div,
+    input {
+      /* Using !important is highly discouraged. In this case it is the only way to override Material UI inline styling */
+      font-size: $font-medium !important;
+      line-height: 1.9 !important;
+    }
+	}
 }
