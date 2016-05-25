@@ -8,8 +8,7 @@
   font-size: $font-large;
 }
 .signin__btn button {
-  height: 85px !important;
-  font-size: $font-medium !important;
+  height: 63px !important;
 }
 .signin__form {
   @mixin flex column, center, *, *, *;
