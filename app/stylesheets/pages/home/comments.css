@@ -1,7 +1,7 @@
 .comments {
 	background: #14cfe8;
 	padding: 150px 0 20px;
-	& .dots {
+	.dots {
 		margin-top: 60px;
 	}
 }
@@ -9,17 +9,30 @@
 .comment {
   @mixin rect 70%, 280px;
   margin: auto;
-	& q {
+	q {
 		font-size: $font-medium-thin;
 	}
 
-	& .author {
+	.author {
 		margin: 60px 0 10px;
 	}
 
-	& .company {
+	.company {
 		font-size: $font-small;
 	}
+}
+
+.bullet {
+  display: inline;
+  font-size: $font-huge-thin;
+  margin: 0 10px;
+  &:before {
+  	content: "•";
+  }
+}
+
+.bullet--active:before{
+  content: "◦";
 }
 
 @media screen and (min-width: 768px) {
