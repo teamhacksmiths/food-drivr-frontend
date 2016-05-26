@@ -29,6 +29,7 @@
 
   p {
     font-size: $font-small-thick;
+    font-family: $pt-sans;
     line-height: 1.1;
     color: $grey;
   }
@@ -40,5 +41,6 @@
 	}
 	.how-it-works__content {
 		flex-direction: row;
+    align-items: baseline;
 	}
 }
