@@ -6,6 +6,7 @@
   font-size: $font-medium-thin;
   font-weight: bold;
   cursor: pointer;
+  font-family: $montserrat;
   &:focus {
     outline: none;
   }

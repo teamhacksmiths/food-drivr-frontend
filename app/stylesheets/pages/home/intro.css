@@ -19,6 +19,7 @@
   max-width: 20rem;
 }
 .intro__content {
+  font-family: $pt-sans;
   max-width: 35rem;
   padding: 0 2rem;
 }

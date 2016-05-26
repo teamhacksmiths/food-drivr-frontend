@@ -5,14 +5,17 @@
 }
 .signup__title {
   font-size: $font-large;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 .signup__or {
-  font-size: $font-large;
+  font-size: $font-medium;
 }
 .signup__selection {
   @mixin flex column, *, *, *;
-  font-size: $font-medium;
+  font-size: $font-medium-thick;
+  span {
+    margin-top: 15px;
+  }
   * {
     cursor: pointer;
   }
