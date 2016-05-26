@@ -32,7 +32,7 @@ p {
   @extend %clearfix;
 	width: 100%;
 	min-height: 100vh;
-	max-width: 1450px;
+	/*max-width: 1450px;*/
 	margin: auto;
 	padding: 0;
 	position: relative;

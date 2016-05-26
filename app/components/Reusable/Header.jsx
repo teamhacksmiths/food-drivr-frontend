@@ -48,10 +48,10 @@ class Header extends React.Component {
       headerButton = <BackButton />;
     }
 
-    if (window.location.pathname !== '/thankyou' && (this.state.loggedIn || window.location.pathname === '/donation')) {
-      logInButton = <UserHeader />;
-    } else if (window.location.pathname === '/thankyou') {
+    if (window.location.pathname === '/thankyou' || window.location.pathname.indexOf('/signup') > -1 || window.location.pathname === '/signin') {
       logInButton = '';
+    } else if (this.state.loggedIn || window.location.pathname === '/donation') {
+      logInButton = <UserHeader />;
     }
     return (
       <header className={window.location.pathname === '/donation' ? 'header header--donation bg-grey-x-light' : 'header'}>
