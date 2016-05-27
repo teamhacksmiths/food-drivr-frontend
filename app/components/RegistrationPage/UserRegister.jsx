@@ -3,14 +3,15 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 const styles = {
-  fullWidth: {
-    width: '100%'
+  textField: {
+    width: '90%',
+    maxWidth: 350,
+    marginBottom: 10
   },
-  underlineYellow: {
-    borderColor: '#F7B32B'
-  },
-  floatingLabelYellow: {
-    color: '#F7B32B'
+  floatingLabel: {
+    color: 'white',
+    top: 25,
+    fontFamily: '"Open Sans", sans-serif'
   },
   colorWhite: {
     color: 'white'
@@ -27,8 +28,8 @@ const UserRegister = (props) => (
         floatingLabelText="Name"
         onChange={props.onNameChange}
         onKeyUp={props.onSubmitUser}
-        style={styles.fullWidth}
-        floatingLabelStyle={{ color: 'white', top: 25, fontFamily: '"Open Sans", sans-serif' }}
+        style={styles.textField}
+        floatingLabelStyle={styles.floatingLabel}
         underlineStyle={{ borderColor: 'white' }}
         underlineFocusStyle={{ borderColor: 'white' }}
         errorStyle={styles.colorWhite}
@@ -40,8 +41,8 @@ const UserRegister = (props) => (
         floatingLabelText="Email"
         onChange={props.onEmailChange}
         onKeyUp={props.onSubmitUser}
-        style={styles.fullWidth}
-        floatingLabelStyle={{ color: 'white', top: 25, fontFamily: '"Open Sans", sans-serif' }}
+        style={styles.textField}
+        floatingLabelStyle={styles.floatingLabel}
         underlineStyle={{ borderColor: 'white' }}
         underlineFocusStyle={{ borderColor: 'white' }}
         errorStyle={styles.colorWhite}
@@ -53,8 +54,8 @@ const UserRegister = (props) => (
         floatingLabelText="Password"
         onChange={props.onPasswordChange}
         onKeyUp={props.onSubmitUser}
-        style={styles.fullWidth}
-        floatingLabelStyle={{ color: 'white', top: 25, fontFamily: '"Open Sans", sans-serif' }}
+        style={styles.textField}
+        floatingLabelStyle={styles.floatingLabel}
         underlineStyle={{ borderColor: 'white' }}
         underlineFocusStyle={{ borderColor: 'white' }}
         errorStyle={styles.colorWhite}
@@ -67,8 +68,8 @@ const UserRegister = (props) => (
         floatingLabelText="Password Confirmation"
         onChange={props.onPasswordConfirmChange}
         onKeyUp={props.onSubmitUser}
-        style={styles.fullWidth}
-        floatingLabelStyle={{ color: 'white', top: 25, fontFamily: '"Open Sans", sans-serif' }}
+        style={styles.textField}
+        floatingLabelStyle={styles.floatingLabel}
         underlineStyle={{ borderColor: 'white' }}
         underlineFocusStyle={{ borderColor: 'white' }}
         errorStyle={styles.colorWhite}

@@ -12,6 +12,9 @@
 }
 .signin__form {
   @mixin flex column, center, *, *, *;
+  input {
+    color: rgba(255, 255, 255, 1) !important;
+  }
   input:-webkit-autofill {
   	box-shadow: 0 0 0px 1000px $red inset;
   }
