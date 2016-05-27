@@ -1,6 +1,5 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
 import Headline from '../Reusable/Headline.jsx';
 
 const styles = {
@@ -47,15 +46,9 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
         value={password}
         type="password"
       />
-      <RaisedButton
-        label="Sign In"
-        labelColor="white"
-        onClick={onFormSubmit}
-        style={{ color: 'white', marginBottom: 20, width: 350, borderBottom: '1px solid white', boxShadow: 'none', backgroundColor: 'transparent' }}
-        labelStyle={{ fontFamily: '"Open Sans", sans-serif', fontSize: 20, position: 'absolute', width: '100%', left: 0, top: 11 }}
-        className="signin__btn"
-        backgroundColor="transparent"
-      />
+      <button className="btn btn-rect bg-white text-red" onClick={onFormSubmit}>
+        Sign in
+      </button>
       <span>
         {error}
       </span>
