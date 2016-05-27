@@ -12,6 +12,12 @@
 .text-yellow {
 	color: $yellow;
 }
+.text-red {
+	color: $red;
+}
+.text-blue-light {
+	color: $blue-light;
+}
 .text-center{
 	text-align: center;
 }

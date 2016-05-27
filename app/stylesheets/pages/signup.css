@@ -21,15 +21,20 @@
   }
 }
 .signup__form {
-  width: 90%;
-  max-width: 350px;
+  @mixin flex column, center, *, *;
+  width: 100%;
+  input {
+    color: rgba(255, 255, 255, 1) !important;
+  }
 }
 .signup__btn button {
   height: 63px !important;
 }
 .signup__form--donor input:-webkit-autofill {
   box-shadow: 0 0 0px 1000px $yellow inset;
+  color: rgba(255, 255, 255, 1) !important;
 }
 .signup__form--volunteer input:-webkit-autofill {
   box-shadow: 0 0 0px 1000px $blue-light inset;
+  color: rgba(255, 255, 255, 1) !important;
 }

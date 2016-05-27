@@ -20,13 +20,6 @@
   margin-top: 30px;
 }
 
-.btn-getStarted {
-  @mixin rect 46%, 70px;
-  margin-top: 20px;
-  max-width: 300px;
-  min-width: 200px;
-}
-
 @media screen and (min-width: 768px) {
 	.thank-you p {
 	  font-size: $font-medium;
