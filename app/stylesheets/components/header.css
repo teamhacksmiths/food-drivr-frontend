@@ -3,6 +3,7 @@
 
 .header {
   width: 90%;
+  max-width: 1000px;
   margin: 30px auto;
   @mixin flex *, center, *, space-between;
   font-family: $open-sans;
@@ -15,6 +16,7 @@
 .header__back {
   @mixin bg-img '/images/back-arrow.svg';
   @mixin square 55px;
+  @mixin absolute 50px, *, * , 50px;
 }
 
 .header-menu {

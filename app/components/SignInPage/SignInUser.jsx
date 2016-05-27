@@ -17,7 +17,7 @@ const styles = {
 
 const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmailChange, onPasswordChange, onFormSubmit }) => (
   <section className="signin text-center text-white">
-    <Headline value="Sign In" className="signin__title" />
+    <Headline value="Sign In" className="signin__title uppercase" />
     <form className="signin__form">
       <TextField
         hintText="Enter Email"
