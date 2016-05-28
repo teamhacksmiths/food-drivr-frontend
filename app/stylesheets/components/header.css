@@ -54,7 +54,7 @@
 
 .header--donation {
   width: 100%;
-  max-width: 1450px;
+  max-width: 100%;
   min-height: 110px;
   margin: 0;
   box-shadow: 0 4px 4px 0 rgba(228, 228, 228, 0.5);
