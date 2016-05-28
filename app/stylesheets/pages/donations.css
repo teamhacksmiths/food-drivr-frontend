@@ -61,6 +61,36 @@
   max-width: 50%;
 }
 
+.donation-popup section{
+  margin: 10px 0;
+}
+.donation-popup__items-title {
+  font-family: $open-sans;
+  font-size: $font-medium;
+  letter-spacing: 2px;
+}
+.donation-popup__items-list,
+.donation-popup__address {
+  font-family: $open-sans;
+  font-size: $font-medium-thin;
+}
+.donation-popup__saved-locations {
+  margin: 10px 0;
+  font-family: $open-sans;
+  font-size: $font-medium-thin;
+  li {
+    margin: 5px 0;
+    padding-left: 10px;
+  }
+}
+.donation-popup__add-location {
+  font-style: italic;
+  font-weight: bolder;
+}
+.donation-popup__btn-donate {
+  margin: auto;
+}
+
 .btn-addDonation {
   @mixin square 55px;
   @mixin bg-img '/images/add-button.svg';

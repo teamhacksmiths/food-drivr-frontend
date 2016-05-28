@@ -4,23 +4,8 @@ import DonationConfirmed from './DonationConfirmed.jsx';
 
 class DonationConfirmation extends React.Component {
   render() {
-    const actions = [
-      <FlatButton
-        label="Cancel"
-        primary
-        onTouchTap={this.props.onHandleClose}
-      />,
-      <FlatButton
-        label="Donate"
-        primary
-        onTouchTap={this.props.onHandleDonate}
-        keyboardFocused
-      />,
-    ];
-
     return (
       <DonationConfirmed
-        actions={actions}
         onOpen={this.props.onOpen}
         onHandleClose={this.props.onHandleClose}
         onNoteChange={this.props.onNoteChange}
@@ -29,6 +14,7 @@ class DonationConfirmation extends React.Component {
         openSnackBar={this.props.openSnackBar}
         snackbarMessage={this.props.snackbarMessage}
         onSnackClose={this.props.onSnackClose}
+        onConfirm={this.props.onHandleDonate}
       />
     );
   }
