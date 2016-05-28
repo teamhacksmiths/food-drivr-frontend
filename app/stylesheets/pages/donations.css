@@ -67,7 +67,7 @@
 }
 .btn-delDonation {
   @mixin square 25px;
-  @mixin bg-img '/images/btn-del-donation.png';
+  @mixin bg-img '/images/delete-item.svg';
 }
 .btn-donate {
   @mixin rect 60%, 50px;
