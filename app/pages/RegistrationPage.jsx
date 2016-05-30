@@ -109,8 +109,10 @@ class Registration extends React.Component {
           }
         })
         .catch((err) => {
-          console.log(err);
-          this.setState({ error: 'Registration Failed' });
+          if (err.status >= 400 && err.status <= 500) {
+            console.log(err);
+            this.setState({ error: 'Registration Failed' });
+          }
         });
       } else {
         this.setState({ error: 'Can not send request.' });

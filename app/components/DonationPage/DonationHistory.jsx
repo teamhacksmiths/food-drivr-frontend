@@ -15,7 +15,7 @@ const DonationHistory = ({ donations }) => (
     <ul className="donations-history__list">
       {donations.map((donation) =>
         <DonationHistoryList title={donation.participants.donor.name} date={convertDate(donation.created_at)}>
-          {donation.items.map((item) => <DonationHistoryItem quantity={item.quantity} unit={item.unit} title={item.description} />)}
+          {donation.items.map((item, index) => <DonationHistoryItem key={index} quantity={item.quantity} unit={item.unit} title={item.description} />)}
         </DonationHistoryList>
       )}
     </ul>

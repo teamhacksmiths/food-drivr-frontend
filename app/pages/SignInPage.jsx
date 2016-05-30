@@ -77,7 +77,9 @@ class SignInPage extends React.Component {
         })
         .catch((err) => {
           console.log(err);
-          this.setState({ error: 'Login Failed' });
+          if (err.status >= 400 && err.status <= 500) {
+            this.setState({ error: 'Login Failed' });
+          }
         });
       } else {
         this.setState({ error: 'Can not send request.' });

@@ -5,9 +5,8 @@ module.exports = {
     // ensure callback is always last argument
     console.log(JSON.stringify({ session: { email, password: pass } }));
     const token = (typeof window !== 'undefined') ? localStorage.getItem('token') : undefined;
-    /*****************************************************************/
+
     /* ALERT THE CALLING FUNCTION IS EXPECTING A PROMISE IN RETURN!! */
-    /*****************************************************************/
     // if (token) return this.onChange(true);
 
     return axios({
@@ -77,6 +76,28 @@ module.exports = {
       url: `/users/${localStorage.getItem('token')}`,
       method: 'get',
       baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
+      responseType: 'json',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('token')
+      }
+    });
+  },
+
+  postUser() {
+    return axios({
+      url: '/donor/donations',
+      method: 'patch',
+      baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
+      transformRequest: [(data) =>
+    // Do whatever you want to transform the data
+        JSON.stringify(data)
+      ],
+      data: {
+        donation: {
+          items
+        }
+      },
       responseType: 'json',
       headers: {
         'Content-Type': 'application/json',

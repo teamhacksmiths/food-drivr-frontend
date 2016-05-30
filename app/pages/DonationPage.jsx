@@ -41,7 +41,12 @@ class DonationPage extends React.Component {
       this.setState({ donations: response.data.donations });
     })
     .catch((err) => {
-      console.log(err);
+      if (err.status >= 400 && err.status <= 500) {
+        console.log(err);
+        auth.logout();
+        auth.onChange(false);
+        this.context.router.push('/');
+      }
     });
   }
 

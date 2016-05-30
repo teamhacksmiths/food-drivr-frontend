@@ -2,7 +2,6 @@ import React from 'react';
 import UserProfile from '../components/UserProfilePage/UserProfile';
 import FullscreenLoading from '../components/Reusable/FullscreenLoading';
 import auth from '../utils/auth.js';
-import foodDrivrAPI from '../utils/foodDrivrAPI.js';
 import Snackbar from 'material-ui/Snackbar';
 
 class UserProfilePage extends React.Component {
@@ -13,50 +12,54 @@ class UserProfilePage extends React.Component {
       isLoading: true,
       snackBarIsOpen: false,
       snackBarMessage: '',
-      userData: {}
+      userData: {},
+      isEditing: false
     };
+    this.fetchUserData();
     this.handleSendFormData = this.handleSendFormData.bind(this);
     this.handleFormReset = this.handleFormReset.bind(this);
     this.handleCloseSnackBar = this.handleCloseSnackBar.bind(this);
     this.handleSendPasswordReset = this.handleSendPasswordReset.bind(this);
   }
 
-  setInitialState() {
-    this.state = {
-      role: parseInt(localStorage.getItem('role'), 10),
-      isLoading: true,
-      snackBarIsOpen: false,
-      snackBarMessage: '',
-      isEditing: false
-    };
-    this.fetchUserData();
+  componentWillMount() {
+    if (this.state.role !== 0) {
+      this.context.router.push('/');
+    }
   }
 
   fetchUserData() {
-    foodDrivrAPI.getUserData().then((response) => {
-      auth.getUser()
-      .then((userData) => {
-        console.log(userData);
-        this.setState({
-          isLoading: false,
-          userData: response.userData
-        });
-      })
-      .catch((error) => {
-        this.setState({ loading: false });
-        this.handleOpenSnackBar('An unknown error occured while loading the network data.');
+    auth.getUser()
+    .then((response) => {
+      console.log(response);
+      this.setState({
+        isLoading: false,
+        userData: response.userData
       });
+    })
+    .catch((error) => {
+      console.log(error);
+      if (error.status >= 400 && error.status <= 500) {
+        auth.logout();
+        this.setState({ isLoading: true });
+      }
+      this.handleOpenSnackBar('An unknown error has occured while loading the network data.');
     });
   }
 
   handleFormReset() {
     /* Zero out data and set initial state back to the way it was */
-    this.setState({ isLoading: true });
-    this.setInitialState();
+    this.setState({
+      isLoading: true,
+      snackBarIsOpen: false,
+      snackBarMessage: '',
+      userData: {},
+      isEditing: false
+    });
   }
 
   submitDataToAPI(data) {
-    foodDrivrAPI.postUserDataToAPI(data)
+    auth.postUser(data)
       .then((response) => {
         this.setState({ isEditing: false });
         this.handleOpenSnackBar('Successfully updated your profile!');
@@ -131,6 +134,10 @@ class UserProfilePage extends React.Component {
 UserProfilePage.propTypes = {
   handleCloseSnackBar: React.PropTypes.func,
   errors: React.PropTypes.array
+};
+
+UserProfilePage.contextTypes = {
+  router: React.PropTypes.object.isRequired
 };
 
 export default UserProfilePage;
