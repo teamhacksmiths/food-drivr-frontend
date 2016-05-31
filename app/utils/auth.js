@@ -86,7 +86,7 @@ module.exports = {
     });
   },
 
-  postUser() {
+  postUser(data) {
     return axios({
       url: '/donor/donations',
       method: 'patch',
@@ -143,6 +143,30 @@ module.exports = {
       data: {
         donation: {
           items
+        }
+      },
+      responseType: 'json',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('token')
+      }
+    });
+  },
+
+  updatePassword(params) {
+    return axios({
+      url: `/users/${localStorage.getItem('token')}`,
+      method: 'patch',
+      baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
+      transformRequest: [(data) =>
+    // Do whatever you want to transform the data
+        JSON.stringify(data)
+      ],
+      data: {
+        user: {
+          password: params.password,
+          password_confirmation: params.passwordConfirmation,
+          current_password: params.currentPassword
         }
       },
       responseType: 'json',
