@@ -88,7 +88,7 @@ module.exports = {
 
   postUser(data) {
     return axios({
-      url: '/donor/donations',
+      url: `/users/${localStorage.getItem('token')}`,
       method: 'patch',
       baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
       transformRequest: [(data) =>
@@ -155,7 +155,7 @@ module.exports = {
 
   updatePassword(params) {
     return axios({
-      url: `/users/${localStorage.getItem('token')}`,
+      url: `/users/${localStorage.getItem('token')}/password-update`,
       method: 'patch',
       baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
       transformRequest: [(data) =>

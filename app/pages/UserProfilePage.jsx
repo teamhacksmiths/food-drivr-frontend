@@ -17,27 +17,35 @@ class UserProfilePage extends React.Component {
       passwordEdit: false,
       oldPassword: '',
       newPassword: '',
-      newPasswordConfirmation: ''; 
+      newPasswordConfirmation: '',
       formData: {
         email: '',
         phone: '',
         company: '',
-        notifications: false,
+        notifications: false
       },
       hasErrors: false,
-      error: '';
+      error: '',
+      errorEmail: '',
       errorPassword: '',
       errorNewPassword: '',
-      errorNewPasswordConfirmation: '' 
+      errorNewPasswordConfirmation: ''
     };
     this.getUserData = this.getUserData.bind(this);
     this.submitUserData = this.submitUserData.bind(this);
-    this.enableEditing = this.enableEditing.bind(this);
     this.handleFormUpdate = this.handleFormUpdate.bind(this);
     this.handleFormReset = this.handleFormReset.bind(this);
     this.handleCloseSnackBar = this.handleCloseSnackBar.bind(this);
-    this.handleSendPasswordReset = this.handleSendPasswordReset.bind(this);
-    this.enableEditing = this.enableEditing.bind(this);
+    this.handlePasswordReset = this.handlePasswordReset.bind(this);
+    this.handleCancelClick = this.handleCancelClick.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleNewPasswordChange = this.handleNewPasswordChange.bind(this);
+    this.handlePasswordConfirmChange = this.handlePasswordConfirmChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleEditButtonClick = this.handleEditButtonClick.bind(this);
+    this.handlePasswordCancel = this.handlePasswordCancel.bind(this);
+    this.handleChangePasswordClick = this.handleChangePasswordClick.bind(this);
+    this.handleNotificationToggle = this.handleNotificationToggle.bind(this);
   }
 
   componentWillMount() {
@@ -77,8 +85,7 @@ class UserProfilePage extends React.Component {
   }
 
   submitUserData() {
-    const userData = this.state.userData;
-    auth.postUser(userData)
+    auth.postUser(this.state.userData)
       .then(() => {
         console.log('Successfully submitted user data.');
         this.setState({
@@ -86,7 +93,8 @@ class UserProfilePage extends React.Component {
           snackBarIsOpen: true,
           snackBarMessage: 'Successfully updated your profile!'
         });
-      }).catch(() => {
+      }).catch((err) => {
+        console.log(err);
         this.setState({
           snackBarIsOpen: true,
           snackBarMessage: 'An error occured while submitting data to the network.'
@@ -112,7 +120,7 @@ class UserProfilePage extends React.Component {
     this.getUserData();
   }
 
-  handleSendPasswordReset(data) {
+  handlePasswordReset(data) {
     auth.updatePassword(data)
       .then(() => {
         this.setState({
@@ -127,25 +135,39 @@ class UserProfilePage extends React.Component {
       });
   }
 
-  enableEditing() {
-    this.setState({ isEditing: true });
-  }
-
   handleCancelClick() {
     this.setState({ isEditing: false });
     this.handleFormReset();
   }
 
+  validateEmail(email) {
+    const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
+  }
+
+  handleEmailChange(e) {
+    const formData = this.state.formData;
+    const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+
+    if (!e.target.value) {
+      this.state.errorEmail = 'This field is required.';
+    } else if (!re.test(e.target.value)) {
+      this.state.errorEmail = 'Email is not valid.';
+    }
+    formData.email = e.target.value;
+    this.setState({
+      errorEmail: this.state.errorEmail,
+      formData
+    });
+  }
+
   handlePasswordChange(e) {
-    this.state.errorPassword = '';
     if (!e.target.value) {
       this.state.errorPassword = 'This field is required.';
-    } else if (e.target.value.length < 8) {
-      this.state.errorPassword = 'Passwords need more than 8 characters.';
     }
     this.setState({
       errorPassword: this.state.errorPassword,
-      password: e.target.value
+      oldPassword: e.target.value
     });
   }
 
@@ -153,34 +175,33 @@ class UserProfilePage extends React.Component {
     if (!e.target.value) {
       this.state.errorNewPassword = 'This field is required.';
     } else if (e.target.value.length < 8) {
-      this.state.errorPassword = 'Passwords need more than 8 characters.';
+      this.state.errorNewPassword = 'Passwords need more than 8 characters.';
     }
     this.setState({
-      errorPassword: this.state.errorPassword,
-      password: e.target.value
+      errorNewPassword: this.state.errorNewPassword,
+      newPassword: e.target.value
     });
   }
 
   handlePasswordConfirmChange(e) {
-    this.state.errorPasswordConfirmation = '';
     if (!e.target.value) {
-      this.state.errorPasswordConfirmation = 'This field is required.';
+      this.state.errorNewPasswordConfirmation = 'This field is required.';
     } else if (e.target.value.length < 8) {
-      this.state.errorPasswordConfirmation = 'Passwords need more than 8 characters.';
+      this.state.errorNewPasswordConfirmation = 'Passwords need more than 8 characters.';
     } else if (e.target.value !== this.state.password) {
-      this.state.errorPasswordConfirmation = 'Passwords must match!';
+      this.state.errorNewPasswordConfirmation = 'Passwords must match!';
     }
     this.setState({
-      errorPasswordConfirmation: this.state.errorPasswordConfirmation,
-      passwordConfirmation: e.target.value
+      errorNewPasswordConfirmation: this.state.errorPasswordNewConfirmation,
+      newPasswordConfirmation: e.target.value
     });
   }
 
   handleEditButtonClick(e) {
     if (this.state.isEditing) {
-      this.handleFormSubmission();
+      this.submitUserData();
     } else {
-      this.enableEditing();
+      this.setState({ isEditing: true });
     }
     e.preventDefault();
   }
@@ -190,7 +211,7 @@ class UserProfilePage extends React.Component {
   }
 
   handleChangePasswordClick() {
-    this.setState({ passwordEdit: true }});
+    this.setState({ passwordEdit: true });
   }
 
   handleNotificationToggle() {
@@ -211,11 +232,17 @@ class UserProfilePage extends React.Component {
             onFormUpdate={this.handleFormUpdate}
             onCancelClick={this.handleCancelClick}
             isEditing={this.state.isEditing}
-            onSendPasswordReset={this.handleSendPasswordReset}
-            onEdit={this.enableEditing}
+            onEditButtonClick={this.handleEditButtonClick}
+            onChangePasswordClick={this.handleChangePasswordClick}
+            onPasswordCancel={this.handlePasswordCancel}
+            onPasswordReset={this.handlePasswordReset}
             formData={this.state.formData}
             errors={this.state.errors}
             onNotificationToggle={this.handleNotificationToggle}
+            onEmailChange={this.handleEmailChange}
+            errorEmail={this.state.errorEmail}
+            onPasswordChange
+            errorPassword={this.state.errorPassword}
           />
           <Snackbar
             open={this.state.snackBarIsOpen}

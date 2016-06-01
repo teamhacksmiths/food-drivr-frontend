@@ -43,11 +43,23 @@ const UserProfile = (props) => (
     <form className="user-dashboard-form" ref="form" onSubmit={props.onFormSubmit}>
       <div className="form-group">
         <TextField
+          hintText="Enter Email"
+          errorText={props.errorEmail}
+          floatingLabelText="Email"
+          onChange={props.onEmailChange}
+          style={styles.textField}
+          floatingLabelStyle={styles.floatingLabel}
+          underlineStyle={{ borderColor: 'white' }}
+          underlineFocusStyle={{ borderColor: 'white' }}
+          errorStyle={styles.colorWhite}
+          value={props.formData.email}
+        />
+        <TextField
           id="password"
           name="password"
           value={props.formData.password}
-          errorText={props.errors.passwordError}
-          onChange={props.onFormUpdate.bind(this, 'password')}
+          errorText={props.errorPassword}
+          onChange={props.onPasswordChange}
           disabled={!props.isEditing}
           type="password"
           hintText="Password"
@@ -116,15 +128,15 @@ const UserProfile = (props) => (
           <RaisedButton
             style={Styles.buttonStyle}
             secondary
-            onTouchTap={this.onCancelClick}
+            onTouchTap={props.onCancelClick}
             label="Cancel"
           />
         </div>
         <RaisedButton
           style={Styles.buttonStyle}
           primary
-          onClick={this.handleEditButtonClick}
-          label={this.state.isEditing ? 'Save Profile' : 'Edit Profile'}
+          onClick={props.onEditButtonClick}
+          label={props.isEditing ? 'Save Profile' : 'Edit Profile'}
         />
       </div>
     </form>
@@ -135,13 +147,13 @@ const UserProfile = (props) => (
       <FlatButton
         primary
         label="Change Password"
-        onTouchTap={this.handleChangePasswordClick}
+        onTouchTap={props.handleChangePasswordClick}
       />
-      <div className={props.password.isEditing ? 'edit-password-form' : 'hidden'}>
+      <div className={props.passwordEdit ? 'edit-password-form' : 'hidden'}>
         <PasswordForm
-          onSubmit={this.handlePasswordFormSubmission}
-          isOpen={this.state.password.isEditing}
-          onCancel={this.handlePasswordCancel}
+          onSubmit={this.onPasswordReset}
+          isOpen={props.passwordEdit}
+          onCancel={props.handlePasswordCancel}
         />
       </div>
     </div>
@@ -158,8 +170,8 @@ UserProfile.propTypes = {
     phone: React.PropTypes.string,
     notifications: React.PropTypes.bool.isRequired
   }),
-  handleFormReset: React.PropTypes.func.isRequired,
-  handleSendPasswordReset: React.PropTypes.func.isRequired
+  onFormReset: React.PropTypes.func.isRequired,
+  onPasswordReset: React.PropTypes.func.isRequired
 };
 
 export default UserProfile;
