@@ -130,14 +130,14 @@ const UserProfile = (props) => (
     </form>
     <div
       style={Styles.changePasswordGroup}
-      className={this.state.isEditing ? 'change-password-reveal' : 'hidden'}
+      className={props.isEditing ? 'change-password-reveal' : 'hidden'}
     >
       <FlatButton
         primary
         label="Change Password"
         onTouchTap={this.handleChangePasswordClick}
       />
-      <div className={this.state.password.isEditing ? 'edit-password-form' : 'hidden'}>
+      <div className={props.password.isEditing ? 'edit-password-form' : 'hidden'}>
         <PasswordForm
           onSubmit={this.handlePasswordFormSubmission}
           isOpen={this.state.password.isEditing}

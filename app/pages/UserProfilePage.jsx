@@ -14,24 +14,30 @@ class UserProfilePage extends React.Component {
       snackBarMessage: '',
       userData: {},
       isEditing: false,
-      password: {
-        isEditing: false
-      },
+      passwordEdit: false,
+      oldPassword: '',
+      newPassword: '',
+      newPasswordConfirmation: ''; 
       formData: {
         email: '',
         phone: '',
-        company:'',
+        company: '',
         notifications: false,
       },
       hasErrors: false,
-      errors: {}
+      error: '';
+      errorPassword: '',
+      errorNewPassword: '',
+      errorNewPasswordConfirmation: '' 
     };
     this.getUserData = this.getUserData.bind(this);
     this.submitUserData = this.submitUserData.bind(this);
     this.enableEditing = this.enableEditing.bind(this);
+    this.handleFormUpdate = this.handleFormUpdate.bind(this);
     this.handleFormReset = this.handleFormReset.bind(this);
     this.handleCloseSnackBar = this.handleCloseSnackBar.bind(this);
     this.handleSendPasswordReset = this.handleSendPasswordReset.bind(this);
+    this.enableEditing = this.enableEditing.bind(this);
   }
 
   componentWillMount() {
@@ -60,24 +66,31 @@ class UserProfilePage extends React.Component {
         console.log(error);
         if (error.status >= 400 && error.status <= 500) {
           auth.logout();
-          this.setState({ isLoading: true });
+          this.setState({
+            isLoading: true,
+            snackBarIsOpen: true,
+            snackBarMessage: 'An unknown error has occured while loading the network data.'
+          });
           this.context.router.push('/');
         }
-        this.handleOpenSnackBar('An unknown error has occured while loading the network data.');
       });
   }
 
-  submitUserData(data) {
+  submitUserData() {
     const userData = this.state.userData;
     auth.postUser(userData)
       .then(() => {
         console.log('Successfully submitted user data.');
-        this.setState({ isEditing: false });
-        this.handleOpenSnackBar('Successfully updated your profile!');
+        this.setState({
+          isEditing: false,
+          snackBarIsOpen: true,
+          snackBarMessage: 'Successfully updated your profile!'
+        });
       }).catch(() => {
-        this.handleOpenSnackBar(
-          'An error occured while submitting data to the network.'
-        );
+        this.setState({
+          snackBarIsOpen: true,
+          snackBarMessage: 'An error occured while submitting data to the network.'
+        });
       });
   }
 
@@ -102,9 +115,15 @@ class UserProfilePage extends React.Component {
   handleSendPasswordReset(data) {
     auth.updatePassword(data)
       .then(() => {
-        this.handleOpenSnackBar('Successfully updated your password');
+        this.setState({
+          snackBarIsOpen: true,
+          snackBarMessage: 'Successfully updated your password'
+        });
       }).catch(() => {
-        this.handleOpenSnackBar('Please check that your password is correct and try again.');
+        this.setState({
+          snackBarIsOpen: true,
+          snackBarMessage: 'Please check that your password is correct and try again.'
+        });
       });
   }
 
@@ -117,24 +136,44 @@ class UserProfilePage extends React.Component {
     this.handleFormReset();
   }
 
-  validateField(name, e) {
-    switch (name) {
-      case 'email': {
-        const email = e.target.value;
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        const emailIsValid = re.test(email);
-        let error = null;
-        if (emailIsValid) {
-          error = null;
-        } else {
-          error = 'Email must be valid.';
-        }
-        return error;
-      }
-      case 'password': {}
-      case 'phone': {}
-      default: {}
+  handlePasswordChange(e) {
+    this.state.errorPassword = '';
+    if (!e.target.value) {
+      this.state.errorPassword = 'This field is required.';
+    } else if (e.target.value.length < 8) {
+      this.state.errorPassword = 'Passwords need more than 8 characters.';
     }
+    this.setState({
+      errorPassword: this.state.errorPassword,
+      password: e.target.value
+    });
+  }
+
+  handleNewPasswordChange(e) {
+    if (!e.target.value) {
+      this.state.errorNewPassword = 'This field is required.';
+    } else if (e.target.value.length < 8) {
+      this.state.errorPassword = 'Passwords need more than 8 characters.';
+    }
+    this.setState({
+      errorPassword: this.state.errorPassword,
+      password: e.target.value
+    });
+  }
+
+  handlePasswordConfirmChange(e) {
+    this.state.errorPasswordConfirmation = '';
+    if (!e.target.value) {
+      this.state.errorPasswordConfirmation = 'This field is required.';
+    } else if (e.target.value.length < 8) {
+      this.state.errorPasswordConfirmation = 'Passwords need more than 8 characters.';
+    } else if (e.target.value !== this.state.password) {
+      this.state.errorPasswordConfirmation = 'Passwords must match!';
+    }
+    this.setState({
+      errorPasswordConfirmation: this.state.errorPasswordConfirmation,
+      passwordConfirmation: e.target.value
+    });
   }
 
   handleEditButtonClick(e) {
@@ -147,15 +186,11 @@ class UserProfilePage extends React.Component {
   }
 
   handlePasswordCancel() {
-    this.setState({
-      password: { isEditing: false }
-    });
+    this.setState({ passwordEdit: false });
   }
 
   handleChangePasswordClick() {
-    this.setState({
-      password: { isEditing: true }
-    });
+    this.setState({ passwordEdit: true }});
   }
 
   handleNotificationToggle() {
@@ -163,13 +198,6 @@ class UserProfilePage extends React.Component {
     const toggled = !formData.notifications;
     formData.notifications = toggled;
     this.setState(formData);
-  }
-
-  handleOpenSnackBar(message) {
-    this.setState({
-      snackBarIsOpen: true,
-      snackBarMessage: message
-    });
   }
 
   render() {
@@ -181,6 +209,7 @@ class UserProfilePage extends React.Component {
             onFormSubmit={this.submitUserData}
             onFormReset={this.handleFormReset}
             onFormUpdate={this.handleFormUpdate}
+            onCancelClick={this.handleCancelClick}
             isEditing={this.state.isEditing}
             onSendPasswordReset={this.handleSendPasswordReset}
             onEdit={this.enableEditing}
