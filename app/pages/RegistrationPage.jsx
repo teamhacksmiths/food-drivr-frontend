@@ -86,37 +86,35 @@ class Registration extends React.Component {
   }
 
   handleSubmitUser(e) {
-    if (e.keyCode === 13 || e.button === 0) {
-      console.log(this.props.route.header);
-      const { name, email, password, passwordConfirmation } = this.state;
-      const userRole = this.props.route.header === 'Donor' ? 0 : 1;
-      e.preventDefault();
-      if (this.state.errorName === '' &&
-        this.state.errorPassword === '' &&
-        this.state.errorEmail === '' &&
-        this.state.errorPasswordConfirmation === '') {
-        this.setState({ error: <CircularProgress /> });
-        auth.register(name, email, password, passwordConfirmation, userRole)
-        .then((response) => {
-          console.log('hello from register');
-          console.log(response.data);
-          console.log(response.status);
-          localStorage.setItem('email', email);
-          localStorage.setItem('password', password);
-          const role = localStorage.setItem('role', userRole);
-          if (parseInt(role, 10) !== 1) {
-            this.context.router.push('/thankyou');
-          }
-        })
-        .catch((err) => {
-          if (err.status >= 400 && err.status <= 500) {
-            console.log(err);
-            this.setState({ error: 'Registration Failed' });
-          }
-        });
-      } else {
-        this.setState({ error: 'Can not send request.' });
-      }
+    console.log(this.props.route.header);
+    const { name, email, password, passwordConfirmation } = this.state;
+    const userRole = this.props.route.header === 'Donor' ? 0 : 1;
+    e.preventDefault();
+    if (this.state.errorName === '' &&
+      this.state.errorPassword === '' &&
+      this.state.errorEmail === '' &&
+      this.state.errorPasswordConfirmation === '') {
+      this.setState({ error: <CircularProgress /> });
+      auth.register(name, email, password, passwordConfirmation, userRole)
+      .then((response) => {
+        console.log('hello from register');
+        console.log(response.data);
+        console.log(response.status);
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
+        const role = localStorage.setItem('role', userRole);
+        if (parseInt(role, 10) !== 1) {
+          this.context.router.push('/thankyou');
+        }
+      })
+      .catch((err) => {
+        if (err.status >= 400 && err.status <= 500) {
+          console.log(err);
+          this.setState({ error: 'Registration Failed' });
+        }
+      });
+    } else {
+      this.setState({ error: 'Can not send request.' });
     }
   }
 

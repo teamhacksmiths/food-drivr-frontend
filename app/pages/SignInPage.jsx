@@ -47,43 +47,41 @@ class SignInPage extends React.Component {
   }
 
   formSubmit(e) {
-    if (e.keyCode === 13 || e.button === 0) {
-      const { errorPassword, errorEmail, email, password } = this.state;
-      e.preventDefault();
-      if (errorPassword === '' && errorEmail === '') {
-        this.setState({ error: <CircularProgress /> });
-        auth.login(email, password)
-        .then((response) => {
-          console.log('hello from login');
-          console.log(response);
-          localStorage.setItem('token', response.data.authtoken.auth_token);
-          localStorage.setItem('email', email);
-          localStorage.setItem('password', password);
-          return auth.getUser();
-        })
-        .then((response) => {
-          console.log(response);
-          console.log(response.data.user.role_id);
-          localStorage.setItem('role', response.data.user.role_id);
-          localStorage.setItem('name', response.data.user.name);
-          const role = localStorage.getItem('role');
-          if (auth.loggedIn() && parseInt(role, 10) !== 1) {
-            this.context.router.push('/donation');
-            auth.onChange(true);
-          } else {
-            this.context.router.push('/thankyou?userType=volunteer');
-            auth.onChange(true);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.status >= 400 && err.status <= 500) {
-            this.setState({ error: 'Login Failed' });
-          }
-        });
-      } else {
-        this.setState({ error: 'Can not send request.' });
-      }
+    const { errorPassword, errorEmail, email, password } = this.state;
+    e.preventDefault();
+    if (errorPassword === '' && errorEmail === '') {
+      this.setState({ error: <CircularProgress /> });
+      auth.login(email, password)
+      .then((response) => {
+        console.log('hello from login');
+        console.log(response);
+        localStorage.setItem('token', response.data.authtoken.auth_token);
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
+        return auth.getUser();
+      })
+      .then((response) => {
+        console.log(response);
+        console.log(response.data.user.role_id);
+        localStorage.setItem('role', response.data.user.role_id);
+        localStorage.setItem('name', response.data.user.name);
+        const role = localStorage.getItem('role');
+        if (auth.loggedIn() && parseInt(role, 10) !== 1) {
+          this.context.router.push('/donation');
+          auth.onChange(true);
+        } else {
+          this.context.router.push('/thankyou?userType=volunteer');
+          auth.onChange(true);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.status >= 400 && err.status <= 500) {
+          this.setState({ error: 'Login Failed' });
+        }
+      });
+    } else {
+      this.setState({ error: 'Can not send request.' });
     }
   }
 

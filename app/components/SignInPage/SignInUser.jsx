@@ -18,13 +18,12 @@ const styles = {
 const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmailChange, onPasswordChange, onFormSubmit }) => (
   <section className="signin text-center text-white">
     <Headline value="Sign In" className="signin__title uppercase" />
-    <form className="signin__form">
+    <form onSubmit={onFormSubmit} className="signin__form">
       <TextField
         hintText="Enter Email"
         errorText={errorEmail}
         floatingLabelText="Email"
         onChange={onEmailChange}
-        onKeyUp={onFormSubmit}
         style={styles.textField}
         floatingLabelStyle={styles.floatingLabel}
         underlineStyle={{ borderColor: 'white' }}
@@ -37,7 +36,6 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
         errorText={errorPassword}
         floatingLabelText="Password"
         onChange={onPasswordChange}
-        onKeyUp={onFormSubmit}
         style={styles.textField}
         floatingLabelStyle={styles.floatingLabel}
         underlineStyle={{ borderColor: 'white' }}
@@ -46,7 +44,7 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
         value={password}
         type="password"
       />
-      <button className="btn btn-rect bg-white text-red" onClick={onFormSubmit}>
+      <button type="submit" className="btn btn-rect bg-white text-red">
         Sign in
       </button>
       <span>
