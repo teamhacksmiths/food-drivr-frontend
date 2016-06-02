@@ -41,8 +41,6 @@ const UserRegister = (props) => {
             onKeyUp={props.onSubmitUser}
             style={styles.textField}
             floatingLabelStyle={styles.floatingLabel}
-            underlineStyle={{ borderColor: 'white' }}
-            underlineFocusStyle={{ borderColor: 'white' }}
             errorStyle={styles.colorWhite}
             value={props.name}
           />

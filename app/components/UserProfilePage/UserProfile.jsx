@@ -40,18 +40,13 @@ const UserProfile = (props) => (
         alt="person-avatar"
       />
     </div>
-    <form className="user-dashboard-form" ref="form" onSubmit={props.onFormSubmit}>
+    <form className="user-dashboard-form" onSubmit={props.onFormSubmit}>
       <div className="form-group">
         <TextField
           hintText="Enter Email"
           errorText={props.errorEmail}
           floatingLabelText="Email"
           onChange={props.onEmailChange}
-          style={styles.textField}
-          floatingLabelStyle={styles.floatingLabel}
-          underlineStyle={{ borderColor: 'white' }}
-          underlineFocusStyle={{ borderColor: 'white' }}
-          errorStyle={styles.colorWhite}
           value={props.formData.email}
         />
         <TextField
@@ -66,11 +61,9 @@ const UserProfile = (props) => (
         />
         <TextField
           id="phone"
-          ref="phoneInput"
           name="phone"
           style={Styles.formGroup}
           value={props.formData.phone}
-          errorText={props.errors.phoneError}
           onChange={props.onFormUpdate.bind(this, 'phone')}
           disabled={!props.isEditing}
           floatingLabelText="Phone"
@@ -83,7 +76,6 @@ const UserProfile = (props) => (
           id="company"
           name="company"
           floatingLabelText="Company"
-          ref="companyInput"
           value={props.formData.company}
           onChange={props.onFormUpdate.bind(this, 'company')}
           disabled={!props.isEditing}
@@ -96,7 +88,6 @@ const UserProfile = (props) => (
           onToggle={props.onNotificationToggle}
           toggled={props.formData.notifications}
           disabled={!props.isEditing}
-          ref="notificationInput"
           id="notification-toggle"
           label="Toggle Notifications"
         />
@@ -110,15 +101,16 @@ const UserProfile = (props) => (
       handleDeleteAddress={this.handleDeleteAddress.bind(this)}
       />*/}
       <div className=".geosuggest__group">
-        <Geosuggest
-          className={this.state.editingAddress ? '' : 'hidden'}
-          placeholder="Start typing!"
-          initialValue="Portland"
-          onSuggestSelect={this.onSuggestSelect}
-          location={new google.maps.LatLng(45.523062, -122.676482)}
-          radius="20"
-          enabled={!props.isEditing}
-        />
+     {  /* <Geosuggest
+               className="hidden"
+               placeholder="Start typing!"
+               initialValue="Portland"
+               onSuggestSelect={this.onSuggestSelect}
+               location={new google.maps.LatLng(45.523062, -122.676482)}
+               radius="20"
+               enabled={!props.isEditing}
+             />*/
+      }
         <span className="geosuggest__highlight"></span>
         <span className="geosuggest__bar"></span>
       </div>
@@ -150,28 +142,14 @@ const UserProfile = (props) => (
         onTouchTap={props.handleChangePasswordClick}
       />
       <div className={props.passwordEdit ? 'edit-password-form' : 'hidden'}>
-        <PasswordForm
-          onSubmit={this.onPasswordReset}
+{/*        <PasswordForm
+          onSubmit={props.onPasswordReset}
           isOpen={props.passwordEdit}
           onCancel={props.handlePasswordCancel}
-        />
+        />*/}
       </div>
     </div>
   </div>
 );
-
-UserProfile.propTypes = {
-  isEditing: React.PropTypes.bool,
-  userData: React.PropTypes.shape({
-    name: React.PropTypes.string.isRequired,
-    email: React.PropTypes.string.isRequired,
-    company: React.PropTypes.string,
-    avatar: React.PropTypes.string,
-    phone: React.PropTypes.string,
-    notifications: React.PropTypes.bool.isRequired
-  }),
-  onFormReset: React.PropTypes.func.isRequired,
-  onPasswordReset: React.PropTypes.func.isRequired
-};
 
 export default UserProfile;

@@ -88,7 +88,7 @@ class DonationPage extends React.Component {
 
   handleOpen() {
     const el = document.getElementsByTagName('button')[1];
-    if (!el.classList.contains('btn-disabled')) {
+    if (!el.classList.contains('btn--disabled')) {
       this.setState({ open: true });
     }
   }

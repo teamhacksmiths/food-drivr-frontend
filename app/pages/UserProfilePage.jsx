@@ -35,7 +35,6 @@ class UserProfilePage extends React.Component {
     this.submitUserData = this.submitUserData.bind(this);
     this.handleFormUpdate = this.handleFormUpdate.bind(this);
     this.handleFormReset = this.handleFormReset.bind(this);
-    this.handleCloseSnackBar = this.handleCloseSnackBar.bind(this);
     this.handlePasswordReset = this.handlePasswordReset.bind(this);
     this.handleCancelClick = this.handleCancelClick.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -46,11 +45,12 @@ class UserProfilePage extends React.Component {
     this.handlePasswordCancel = this.handlePasswordCancel.bind(this);
     this.handleChangePasswordClick = this.handleChangePasswordClick.bind(this);
     this.handleNotificationToggle = this.handleNotificationToggle.bind(this);
+    this.handleSnackClose = this.handleSnackClose.bind(this);
   }
 
   componentWillMount() {
-    // check if user role is set, otherwise, return to the homepage.
-    if (!this.state.role) {
+    const role = localStorage.getItem('role');
+    if (parseInt(role, 10) === undefined || parseInt(role, 10) === null) {
       this.context.router.push('/');
     }
   }
@@ -67,8 +67,9 @@ class UserProfilePage extends React.Component {
         this.setState({
           isLoading: false,
           isEditing: false,
-          userData: response.userData
+          userData: response.data.user
         });
+        console.log(this.state.userData);
       })
       .catch((error) => {
         console.log(error);
@@ -221,6 +222,10 @@ class UserProfilePage extends React.Component {
     this.setState(formData);
   }
 
+  handleSnackClose() {
+    this.setState({ snackBarIsOpen: false });
+  }
+
   render() {
     return (
       this.state.isLoading ? <FullscreenLoading isLoading={this.state.isLoading} /> :
@@ -241,7 +246,7 @@ class UserProfilePage extends React.Component {
             onNotificationToggle={this.handleNotificationToggle}
             onEmailChange={this.handleEmailChange}
             errorEmail={this.state.errorEmail}
-            onPasswordChange
+            onPasswordChange={this.handlePasswordChange}
             errorPassword={this.state.errorPassword}
           />
           <Snackbar
@@ -249,17 +254,12 @@ class UserProfilePage extends React.Component {
             action="Close"
             message={this.state.snackBarMessage}
             autoHideDuration={3000}
-            onRequestClose={this.state.snackBarIsOpen}
+            onRequestClose={this.handleSnackClose}
           />
         </div>
     );
   }
 }
-
-UserProfilePage.propTypes = {
-  handleCloseSnackBar: React.PropTypes.func,
-  errors: React.PropTypes.array
-};
 
 UserProfilePage.contextTypes = {
   router: React.PropTypes.object.isRequired

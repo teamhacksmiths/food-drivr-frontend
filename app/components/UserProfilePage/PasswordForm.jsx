@@ -199,10 +199,4 @@ class PasswordForm extends React.Component {
   }
 }
 
-PasswordForm.PropTypes = {
-  onSubmit: React.PropTypes.func.isRequired,
-  onCancel: React.PropTypes.func.isRequired,
-  isOpen: React.PropTypes.bool.isRequired
-};
-
 export default PasswordForm;
