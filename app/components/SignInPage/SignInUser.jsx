@@ -20,6 +20,7 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
     <Headline value="Sign In" className="signin__title uppercase" />
     <form onSubmit={onFormSubmit} className="signin__form">
       <TextField
+        id="Email"
         hintText="Enter Email"
         errorText={errorEmail}
         floatingLabelText="Email"
@@ -32,6 +33,7 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
         value={email}
       />
       <TextField
+        id="Password"
         hintText="Enter Password"
         errorText={errorPassword}
         floatingLabelText="Password"

@@ -1,35 +1,46 @@
 import React from 'react';
-import UserProfile from '../components/UserProfilePage/UserProfile';
-import FullscreenLoading from '../components/Reusable/FullscreenLoading';
 import auth from '../utils/auth.js';
+import FullscreenLoading from '../components/Reusable/FullscreenLoading';
 import Snackbar from 'material-ui/Snackbar';
+import RaisedButton from 'material-ui/RaisedButton';
+import UserProfile from '../components/UserProfilePage/UserProfile';
+import PasswordForm from '../components/UserProfilePage/PasswordForm.jsx';
+
+const Styles = {
+  buttonGroup: {
+    margin: 15
+  }
+};
 
 class UserProfilePage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       role: parseInt(localStorage.getItem('role'), 10),
+      open: false,
       isLoading: true,
       snackBarIsOpen: false,
       snackBarMessage: '',
       userData: {},
       isEditing: false,
       passwordEdit: false,
-      oldPassword: '',
-      newPassword: '',
-      newPasswordConfirmation: '',
       formData: {
         email: '',
         phone: '',
         company: '',
-        notifications: false
+        notifications: false,
+        currentPassword: '',
+        newPassword: '',
+        newPasswordConfirmation: ''
       },
       hasErrors: false,
-      error: '',
-      errorEmail: '',
-      errorPassword: '',
-      errorNewPassword: '',
-      errorNewPasswordConfirmation: ''
+      error: {
+        errorEmail: '',
+        errorPassword: '',
+        errorNewPassword: '',
+        errorNewPasswordConfirmation: ''
+      },
+      canSubmit: false
     };
     this.getUserData = this.getUserData.bind(this);
     this.submitUserData = this.submitUserData.bind(this);
@@ -40,7 +51,6 @@ class UserProfilePage extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleNewPasswordChange = this.handleNewPasswordChange.bind(this);
     this.handlePasswordConfirmChange = this.handlePasswordConfirmChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleEditButtonClick = this.handleEditButtonClick.bind(this);
     this.handlePasswordCancel = this.handlePasswordCancel.bind(this);
     this.handleChangePasswordClick = this.handleChangePasswordClick.bind(this);
@@ -103,10 +113,8 @@ class UserProfilePage extends React.Component {
       });
   }
 
-  handleFormUpdate(param, e) {
-    const formData = {};
-    formData[param] = e.target.value;
-    this.setState(formData);
+  handleFormUpdate(input, e) {
+    this.setState({ [`${input}Value`]: e.target.value });
   }
 
   handleFormReset() {
@@ -139,27 +147,6 @@ class UserProfilePage extends React.Component {
   handleCancelClick() {
     this.setState({ isEditing: false });
     this.handleFormReset();
-  }
-
-  validateEmail(email) {
-    const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-    return re.test(email);
-  }
-
-  handleEmailChange(e) {
-    const formData = this.state.formData;
-    const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-
-    if (!e.target.value) {
-      this.state.errorEmail = 'This field is required.';
-    } else if (!re.test(e.target.value)) {
-      this.state.errorEmail = 'Email is not valid.';
-    }
-    formData.email = e.target.value;
-    this.setState({
-      errorEmail: this.state.errorEmail,
-      formData
-    });
   }
 
   handlePasswordChange(e) {
@@ -222,11 +209,102 @@ class UserProfilePage extends React.Component {
     this.setState(formData);
   }
 
+  handleOpen() {
+    this.setState({ open: true });
+  }
+
   handleSnackClose() {
     this.setState({ snackBarIsOpen: false });
   }
 
+    /*
+      Handling the Password Form
+    */
+
+  handleClose() {
+    this.setState({
+      formData: {
+        password: '',
+        passwordConfirmation: '',
+        currentPassword: ''
+      }
+    });
+    this.props.onPasswordCancel();
+  }
+
+  handleSubmit() {
+    const params = this.state.formData;
+    if (this.state.canSubmit === true) {
+      this.props.onPasswordReset(params);
+    }
+  }
+
+  /* handle1FormUpdate(name, e) {
+    const formData = this.state.formData;
+    const passwordRE = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
+    const newPassword = e.target.value;
+    const regExpTest = passwordRE.test(newPassword);
+    const errors = this.state.errors;
+    if (regExpTest !== true && newPassword.length > 0) {
+      const errorMessage = 'Minimum 8 characters, 1 Upper, 1 Lower, 1 Special and 1 Number';
+      errors[name] = errorMessage;
+    } else {
+      errors[name] = null;
+    }
+
+    formData[name] = newPassword;
+    this.setState({
+      formData,
+      errors,
+      hasErrors: true,
+      canSubmit: this.checkCanSubmit()
+    });
+  }
+*/
+  checkPasswordsDontMatch() {
+    const formData = this.state.formData;
+    return formData.password !== formData.passwordConfirmation;
+  }
+
+  checkCanSubmit() {
+    let canSubmit = false;
+    const passwordMatchError = this.checkPasswordsDontMatch();
+    const formData = this.state.formData;
+    const password = formData.password;
+    const passwordConfirmation = formData.passwordConfirmation;
+    const currentPassword = formData.currentPassword;
+    if (!passwordMatchError) {
+      if (currentPassword.length > 0) {
+        const passwordRE = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
+        const passwordTest = passwordRE.test(password);
+        const passwordConfTest = passwordRE.test(passwordConfirmation);
+        canSubmit = passwordTest && passwordConfTest;
+      }
+    } else {
+      /* I hate that I am redoing this and am altering state here, but I need to submit this */
+      const errors = this.state.errors;
+      errors.passwordConfirmation = 'Passwords do not match.';
+      this.setState({ errors });
+    }
+    return canSubmit;
+  }
+
   render() {
+    const actions = [
+      <RaisedButton
+        label="Cancel"
+        secondary
+        onTouchTap={this.handlePasswordCancel}
+        style={Styles.buttonGroup}
+      />,
+      <RaisedButton
+        label="Submit"
+        disabled={!this.state.canSubmit}
+        primary
+        onTouchTap={this.handleSubmit}
+        style={Styles.buttonGroup}
+      />
+    ];
     return (
       this.state.isLoading ? <FullscreenLoading isLoading={this.state.isLoading} /> :
         <div>
@@ -239,8 +317,6 @@ class UserProfilePage extends React.Component {
             isEditing={this.state.isEditing}
             onEditButtonClick={this.handleEditButtonClick}
             onChangePasswordClick={this.handleChangePasswordClick}
-            onPasswordCancel={this.handlePasswordCancel}
-            onPasswordReset={this.handlePasswordReset}
             formData={this.state.formData}
             errors={this.state.errors}
             onNotificationToggle={this.handleNotificationToggle}
@@ -248,6 +324,12 @@ class UserProfilePage extends React.Component {
             errorEmail={this.state.errorEmail}
             onPasswordChange={this.handlePasswordChange}
             errorPassword={this.state.errorPassword}
+          />
+          <PasswordForm
+          actions={actions}
+          isOpen={this.state.passwordEdit}
+          onPasswordCancel={this.handlePasswordCancel}
+          onPasswordReset={this.handlePasswordReset}
           />
           <Snackbar
             open={this.state.snackBarIsOpen}

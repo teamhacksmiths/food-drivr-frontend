@@ -6,7 +6,6 @@ import AvatarMissing from '../../assets/images/avatar-missing.png';
 import Toggle from 'material-ui/Toggle';
 import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
-import PasswordForm from './PasswordForm.jsx';
 
 
 const Styles = {
@@ -43,10 +42,10 @@ const UserProfile = (props) => (
     <form className="user-dashboard-form" onSubmit={props.onFormSubmit}>
       <div className="form-group">
         <TextField
-          hintText="Enter Email"
+          hintText="Enter Your Email"
           errorText={props.errorEmail}
           floatingLabelText="Email"
-          onChange={props.onEmailChange}
+          onChange={props.onFormUpdate}
           value={props.formData.email}
         />
         <TextField
@@ -54,7 +53,7 @@ const UserProfile = (props) => (
           name="password"
           value={props.formData.password}
           errorText={props.errorPassword}
-          onChange={props.onPasswordChange}
+          onChange={props.onFormUpdate}
           disabled={!props.isEditing}
           type="password"
           hintText="Password"
@@ -64,7 +63,7 @@ const UserProfile = (props) => (
           name="phone"
           style={Styles.formGroup}
           value={props.formData.phone}
-          onChange={props.onFormUpdate.bind(this, 'phone')}
+          onChange={props.onFormUpdate}
           disabled={!props.isEditing}
           floatingLabelText="Phone"
           type="phone"
@@ -77,7 +76,7 @@ const UserProfile = (props) => (
           name="company"
           floatingLabelText="Company"
           value={props.formData.company}
-          onChange={props.onFormUpdate.bind(this, 'company')}
+          onChange={props.onFormUpdate}
           disabled={!props.isEditing}
           type="text"
           hintText="Company Name (Optional)"
@@ -142,11 +141,6 @@ const UserProfile = (props) => (
         onTouchTap={props.handleChangePasswordClick}
       />
       <div className={props.passwordEdit ? 'edit-password-form' : 'hidden'}>
-{/*        <PasswordForm
-          onSubmit={props.onPasswordReset}
-          isOpen={props.passwordEdit}
-          onCancel={props.handlePasswordCancel}
-        />*/}
       </div>
     </div>
   </div>

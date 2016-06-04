@@ -8,38 +8,44 @@ class SignInPage extends React.Component {
     super(props, context);
     this.state = {
       error: '',
-      email: '',
-      password: ''
+      errorEmail: '',
+      errorPassword: '',
+      valueEmail: '',
+      valuePassword: '',
     };
     this.history = props.history;
     this.showSessionMsg = props.location.query ? props.location.query.session : true;
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
+    this.handleFormUpdate = this.handleFormUpdate.bind(this);
   }
 
-  handleEmailChange(e) {
-    this.state.errorEmail = '';
+  handleFormUpdate(e) {
     const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-
-    if (!e.target.value) {
-      this.state.errorEmail = 'This field is required.';
-    } else if (!re.test(e.target.value)) {
-      this.state.errorEmail = 'Email is not valid.';
+    if (e.target.id === 'Email') {
+      if (!e.target.value) {
+        this.state.errorEmail = 'This field is required.';
+      } else if (!re.test(e.target.value)) {
+        this.state.errorEmail = 'Email is not valid.';
+      } else {
+        this.state.errorEmail = '';
+      }
+    } else if (e.target.id === 'Password') {
+      if (!e.target.value) {
+        this.state.errorPassword = 'This field is required.';
+      } else if (e.target.value.length < 8) {
+        this.state.errorPassword = 'Password needs more than 8 characters.';
+      } else {
+        this.state.errorPassword = '';
+      }
     }
     this.setState({
-      errorEmail: this.state.errorEmail,
-      email: e.target.value
+      [`value${e.target.id}`]: e.target.value,
+      [`error${e.target.id}`]: eval(`this.state.error${e.target.id}`)
     });
   }
 
   handlePasswordChange(e) {
-    this.state.errorPassword = '';
-    if (!e.target.value) {
-      this.state.errorPassword = 'This field is required.';
-    } else if (e.target.value.length < 8) {
-      this.state.errorPassword = 'Password needs more than 8 characters.';
-    }
+
     this.setState({
       errorPassword: this.state.errorPassword,
       password: e.target.value
@@ -47,17 +53,17 @@ class SignInPage extends React.Component {
   }
 
   formSubmit(e) {
-    const { errorPassword, errorEmail, email, password } = this.state;
+    const { errorPassword, errorEmail, valueEmail, valuePassword } = this.state;
     e.preventDefault();
     if (errorPassword === '' && errorEmail === '') {
       this.setState({ error: <CircularProgress /> });
-      auth.login(email, password)
+      auth.login(valueEmail, valuePassword)
       .then((response) => {
         console.log('hello from login');
         console.log(response);
         localStorage.setItem('token', response.data.authtoken.auth_token);
-        localStorage.setItem('email', email);
-        localStorage.setItem('password', password);
+        localStorage.setItem('email', valueEmail);
+        localStorage.setItem('password', valuePassword);
         return auth.getUser();
       })
       .then((response) => {
@@ -86,16 +92,16 @@ class SignInPage extends React.Component {
   }
 
   render() {
-    const { errorPassword, errorEmail, email, password, error } = this.state;
+    const { errorPassword, errorEmail, valueEmail, valuePassword, error } = this.state;
     return (
       <SignInUser
-        email={email}
-        password={password}
+        email={valueEmail}
+        password={valuePassword}
         error={error}
         errorEmail={errorEmail}
         errorPassword={errorPassword}
-        onEmailChange={this.handleEmailChange}
-        onPasswordChange={this.handlePasswordChange}
+        onEmailChange={this.handleFormUpdate}
+        onPasswordChange={this.handleFormUpdate}
         onFormSubmit={this.formSubmit}
       />
     );
