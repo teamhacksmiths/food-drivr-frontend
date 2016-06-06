@@ -77,12 +77,24 @@ If error occurs, logout user and return to homepage.
     auth.getUser()
       .then((response) => {
         console.log(response);
+        const newForm = this.state.formData;
+        if (response.data.user.phone != null){
+          newForm.Phone = response.data.user.phone;
+        } else {
+          newForm.Phone = '';
+        }
+        if (response.data.user.company != null){
+          newForm.Company = response.data.user.company;
+        } else {
+          newForm.Company = '';
+        }
+
         this.setState({
           isLoading: false,
           isEditing: false,
-          userData: response.data.user
+          userData: response.data.user,
+          formData: newForm
         });
-        console.log(this.state.userData);
       })
       .catch((error) => {
         console.log(error);
