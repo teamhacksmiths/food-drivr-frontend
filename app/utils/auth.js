@@ -112,7 +112,7 @@ module.exports = {
 
   getDonation() {
     return axios({
-      url: '/donor/donations/',
+      url: '/donor/donations/all',
       method: 'get',
       baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
       responseType: 'json',

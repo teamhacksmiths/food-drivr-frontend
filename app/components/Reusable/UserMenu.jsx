@@ -21,8 +21,6 @@ class UserMenu extends React.Component {
       }).catch((err) => {
         console.log(err);
       });
-    auth.onChange(false);
-    localStorage.clear();
   }
 
   render() {

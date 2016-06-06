@@ -23,6 +23,7 @@ class Header extends React.Component {
       auth.login(email, pass)
       .then((response) => {
         console.log(response);
+        localStorage.setItem('token', response.data.authtoken.auth_token);
         auth.onChange(true);
       })
       .catch((err) => {
