@@ -164,9 +164,14 @@ If error occurs, logout user and return to homepage.
         this.state.errors.NewPasswordConfirmation = '';
       }
     }
+    const newFormData = this.state.formData;
+    const newFormErrors = this.state.errors;
+
+    newFormData[e.target.id] = e.target.value;
+    newFormErrors[e.target.id] = this.state.errors[e.target.id];
     this.setState({
-      [`formData.${e.target.id}`]: e.target.value,
-      [`errors.${e.target.id}`]: eval(`this.state.errors.${e.target.id}`)
+      formData: newFormData,
+      errors: newFormErrors
     });
   }
 
