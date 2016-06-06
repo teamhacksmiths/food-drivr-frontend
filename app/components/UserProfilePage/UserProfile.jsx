@@ -33,9 +33,10 @@ const UserProfile = (props) => (
     <div className="user-avatar-frame">
       <img
         className="user-avatar-image"
-        src={props.userData.avatar ? props.userData.avatar : { AvatarMissing } }
+        src={props.userData.avatar ? props.userData.avatar : AvatarMissing}
         alt="person-avatar"
       />
+      <br />
     </div>
     <form className="user-dashboard-form" onSubmit={props.onFormSubmit}>
       <div className="form-group">

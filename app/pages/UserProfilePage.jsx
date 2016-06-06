@@ -262,8 +262,9 @@ If error occurs, logout user and return to homepage.
         NewPassword: '',
         NewPasswordConfirmation: '',
         CurrentPassword: '',
-        passwordEdit: false
-      }
+      },
+      passwordEdit: false,
+      open: false
     });
   }
 
