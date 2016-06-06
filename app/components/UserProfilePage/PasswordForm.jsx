@@ -49,7 +49,7 @@ const PasswordForm = (props) => (
               id="CurrentPassword"
               name="currentPassword"
               floatingLabelText="Current Password"
-              value={this.state.formData.CurrentPassword}
+              value={props.formData.CurrentPassword}
               onChange={props.onFormUpdate}
               type="password"
               hintText="Current Password"
@@ -62,8 +62,8 @@ const PasswordForm = (props) => (
               style={Styles.formGroup}
               name="password"
               floatingLabelText="New Password"
-              value={this.state.formData.NewPassword}
-              errorText={this.state.errors.NewPassword}
+              value={props.formData.NewPassword}
+              errorText={props.errors.NewPassword}
               onChange={props.onFormUpdate}
               type="password"
               hintText="New Password"
@@ -75,8 +75,8 @@ const PasswordForm = (props) => (
               id="NewPasswordConfirmation"
               name="passwordConfirmation"
               floatingLabelText="Confirm New Password"
-              value={this.state.formData.NewPasswordConfirmation}
-              errorText={this.state.errors.NewPasswordConfirmation}
+              value={props.formData.NewPasswordConfirmation}
+              errorText={props.errors.NewPasswordConfirmation}
               onChange={props.onFormUpdate}
               type="password"
               hintText="Confirm Password"

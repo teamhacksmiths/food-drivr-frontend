@@ -301,21 +301,14 @@ If error occurs, logout user and return to homepage.
           <UserProfile
             userData={this.state.userData}
             onFormSubmit={this.submitUserData}
-            errors
-            onFormUpdate
-            formData
-
-            onFormReset={this.handleFormReset}
-            onFormUpdate={this.handleFormUpdate}
-            onCancelClick={this.handleCancelClick}
-            isEditing={this.state.isEditing}
-            onEditButtonClick={this.handleEditButtonClick}
-            onChangePasswordClick={this.handleChangePasswordClick}
-            formData={this.state.formData}
             errors={this.state.errors}
+            onFormUpdate={this.handleFormUpdate}
+            formData={this.state.formData}
+            isEditing={this.state.isEditing}
             onNotificationToggle={this.handleNotificationToggle}
-            onEmailChange={this.handleEmailChange}
-            onPasswordChange={this.handlePasswordChange}
+            onCancelClick={this.handleCancelClick}
+            onEditButtonClick={this.handleEditButtonClick}
+            onFormReset={this.handleFormReset}
           />
           <div
             style={Styles.changePasswordGroup}
@@ -329,8 +322,11 @@ If error occurs, logout user and return to homepage.
             <div className={this.state.passwordEdit ? 'edit-password-form' : 'hidden'}>
               <PasswordForm
                 actions={actions}
-                onSubmit={this.handlePasswordReset}
+                onPasswordReset={this.handlePasswordReset}
                 isOpen={this.state.passwordEdit}
+                onFormUpdate={this.handleFormUpdate}
+                formData={this.state.formData}
+                errors={this.state.errors}
               />
             </div>
           </div>
