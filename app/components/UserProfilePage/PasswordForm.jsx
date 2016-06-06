@@ -46,12 +46,11 @@ const PasswordForm = (props) => (
           <div className="form-group">
             <TextField
               style={Styles.formGroup}
-              id="current-password"
-              ref="currentPasswordInput"
+              id="CurrentPassword"
               name="currentPassword"
               floatingLabelText="Current Password"
-              value={this.state.formData.currentPassword}
-              onChange={this.handleFormUpdate.bind(this, 'currentPassword')}
+              value={this.state.formData.CurrentPassword}
+              onChange={props.onFormUpdate}
               type="password"
               hintText="Current Password"
               hasErrors
@@ -59,14 +58,13 @@ const PasswordForm = (props) => (
           </div>
           <div className="form-group">
             <TextField
-              id="password"
+              id="NewPassword"
               style={Styles.formGroup}
-              ref="passwordInput"
               name="password"
               floatingLabelText="New Password"
-              value={this.state.formData.password}
-              errorText={this.state.errors.password}
-              onChange={this.handleFormUpdate.bind(this, 'password')}
+              value={this.state.formData.NewPassword}
+              errorText={this.state.errors.NewPassword}
+              onChange={props.onFormUpdate}
               type="password"
               hintText="New Password"
             />
@@ -74,13 +72,12 @@ const PasswordForm = (props) => (
           <div className="form-group">
             <TextField
               style={Styles.formGroup}
-              id="passwordConfirmation"
-              ref="passwordConfirmationInput"
+              id="NewPasswordConfirmation"
               name="passwordConfirmation"
               floatingLabelText="Confirm New Password"
-              value={this.state.formData.passwordConfirmation}
-              errorText={this.state.errors.passwordConfirmation}
-              onChange={this.handleFormUpdate.bind(this, 'passwordConfirmation')}
+              value={this.state.formData.NewPasswordConfirmation}
+              errorText={this.state.errors.NewPasswordConfirmation}
+              onChange={props.onFormUpdate}
               type="password"
               hintText="Confirm Password"
             />

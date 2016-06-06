@@ -44,14 +44,6 @@ class SignInPage extends React.Component {
     });
   }
 
-  handlePasswordChange(e) {
-
-    this.setState({
-      errorPassword: this.state.errorPassword,
-      password: e.target.value
-    });
-  }
-
   formSubmit(e) {
     const { errorPassword, errorEmail, valueEmail, valuePassword } = this.state;
     e.preventDefault();

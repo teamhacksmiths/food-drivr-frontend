@@ -5,8 +5,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import AvatarMissing from '../../assets/images/avatar-missing.png';
 import Toggle from 'material-ui/Toggle';
 import Divider from 'material-ui/Divider';
-import FlatButton from 'material-ui/FlatButton';
-
 
 const Styles = {
   containerStyle: {
@@ -42,27 +40,28 @@ const UserProfile = (props) => (
     <form className="user-dashboard-form" onSubmit={props.onFormSubmit}>
       <div className="form-group">
         <TextField
+          id="Email"
           hintText="Enter Your Email"
-          errorText={props.errorEmail}
+          errorText={props.errors.Email}
           floatingLabelText="Email"
           onChange={props.onFormUpdate}
-          value={props.formData.email}
+          value={props.formData.Email}
         />
         <TextField
-          id="password"
-          name="password"
-          value={props.formData.password}
-          errorText={props.errorPassword}
+          id="CurrentPassword"
+          name="Password"
+          value={props.formData.CurrentPassword}
+          errorText={props.errors.CurrentPassword}
           onChange={props.onFormUpdate}
           disabled={!props.isEditing}
           type="password"
           hintText="Password"
         />
         <TextField
-          id="phone"
-          name="phone"
+          id="Phone"
+          name="Phone"
           style={Styles.formGroup}
-          value={props.formData.phone}
+          value={props.formData.Phone}
           onChange={props.onFormUpdate}
           disabled={!props.isEditing}
           floatingLabelText="Phone"
@@ -72,10 +71,10 @@ const UserProfile = (props) => (
         />
         <TextField
           style={Styles.formGroup}
-          id="company"
-          name="company"
+          id="Company"
+          name="Company"
           floatingLabelText="Company"
-          value={props.formData.company}
+          value={props.formData.Company}
           onChange={props.onFormUpdate}
           disabled={!props.isEditing}
           type="text"
@@ -87,7 +86,7 @@ const UserProfile = (props) => (
           onToggle={props.onNotificationToggle}
           toggled={props.formData.notifications}
           disabled={!props.isEditing}
-          id="notification-toggle"
+          id="Notifications"
           label="Toggle Notifications"
         />
       </div>
@@ -131,18 +130,6 @@ const UserProfile = (props) => (
         />
       </div>
     </form>
-    <div
-      style={Styles.changePasswordGroup}
-      className={props.isEditing ? 'change-password-reveal' : 'hidden'}
-    >
-      <FlatButton
-        primary
-        label="Change Password"
-        onTouchTap={props.handleChangePasswordClick}
-      />
-      <div className={props.passwordEdit ? 'edit-password-form' : 'hidden'}>
-      </div>
-    </div>
   </div>
 );
 
