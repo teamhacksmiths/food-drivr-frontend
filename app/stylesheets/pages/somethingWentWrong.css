@@ -16,6 +16,7 @@
 
 .something_went_wrong__header {
   font-family: $pt-sans;
+  font-weight: bold;
   margin-top: 42px;
   font-size: 72px;
   letter-spacing: 3.4px;

@@ -14,7 +14,7 @@ const SomethingWentWrong = () => (
             <div className="something_went_wrong__truck"></div>
           </Link>
       </header>
-          <h1 className="something_went_wrong__header"><b>{oops}</b></h1>
+          <h1 className="something_went_wrong__header">{oops}</h1>
           <h2 className="something_went_wrong__subheader">{somethingGoneWrong}</h2>
           <div className="something_went_wrong__paragraph-container">
             <p className="something_went_wrong__paragraph-text">{message}</p>
