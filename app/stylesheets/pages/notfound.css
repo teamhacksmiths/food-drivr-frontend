@@ -1,0 +1,49 @@
+
+.not-found__container {
+  background-color: #ff1e40;
+}
+
+.not-found__truck {
+  @mixin bg-img '/images/fd-logo.svg';
+  @mixin square 50px;
+  margin: auto;
+  margin-top: 163px;
+}
+
+.not-found__section {
+  @mixin flex column, center, *, *;
+}
+
+
+.not-found__header {
+  font-family: $pt-sans;
+  margin-top: 42px;
+  font-size: 72px;
+  letter-spacing: 3.4px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.not-found__subheader {
+  font-family: $pt-sans;
+  margin-top: 18px;
+  font-size: 46px;
+  letter-spacing: 2.2px;
+  text-align: center;
+  max-width: 864px;
+  color: #ffffff;
+}
+
+.not-found__paragraph-container {
+  max-width: 45rem;
+  padding: 0 2rem;
+  margin-top: 60px;
+}
+
+.not-found__paragraph-text {
+  font-family: OpenSans;
+  font-size: 24px;
+  letter-spacing: 1.2px;
+  text-align: center;
+  color: #ffffff;
+}

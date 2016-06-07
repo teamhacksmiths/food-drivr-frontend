@@ -1,0 +1,48 @@
+
+.something_wrong__container {
+  background-color: #ff1e40;
+}
+
+.something_wrong__truck {
+  @mixin bg-img '/images/fd-logo.svg';
+  @mixin square 50px;
+  margin: auto;
+  margin-top: 163px;
+}
+
+.something_wrong__section {
+  @mixin flex column, center, *, *;
+}
+
+.something_wrong__header {
+  font-family: $pt-sans;
+  margin-top: 42px;
+  font-size: 72px;
+  letter-spacing: 3.4px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.something_wrong__subheader {
+  font-family: $pt-sans;
+  margin-top: 18px;
+  font-size: 46px;
+  letter-spacing: 2.2px;
+  text-align: center;
+  max-width: 864px;
+  color: #ffffff;
+}
+
+.something_wrong__paragraph-container {
+  max-width: 45rem;
+  padding: 0 2rem;
+  margin-top: 60px;
+}
+
+.something_wrong__paragraph-text {
+  font-family: OpenSans;
+  font-size: 24px;
+  letter-spacing: 1.2px;
+  text-align: center;
+  color: #ffffff;
+}
