@@ -36,7 +36,7 @@ const routes = (
       <Route path="thankyou/:userType" component={ThankYouPage} />
       <Route path="donation" component={DonationPage} onEnter={requireAuth} />
       <Route path="profile" component={UserProfilePage} onEnter={requireAuth} />
-      <Route path="oops" component={SomethingWentWrong} />
+      <Route path="error" component={SomethingWentWrong} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>
