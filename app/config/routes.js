@@ -8,6 +8,7 @@ import RegistrationPage from '../pages/RegistrationPage.jsx';
 import DonationPage from '../pages/DonationPage.jsx';
 import ThankYouPage from '../pages/ThankYouPage.jsx';
 import NotFound from '../components/Errors/NotFound';
+import SomethingWentWrong from '../components/Errors/SomethingWentWrong';
 import UserProfilePage from '../pages/UserProfilePage.jsx';
 import auth from '../utils/auth.js';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -36,6 +37,7 @@ const routes = (
       <Route path="donation" component={DonationPage} onEnter={requireAuth} />
       <Route path="profile" component={UserProfilePage} onEnter={requireAuth} />
       <Route path="error" component={NotFound} />
+      <Route path="oops" component={SomethingWentWrong} />
     </Route>
   </Router>
 );

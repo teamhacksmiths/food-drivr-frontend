@@ -5,7 +5,7 @@
 
 .not-found__truck {
   @mixin bg-img '/images/fd-logo.svg';
-  @mixin square 50px;
+  @mixin square 66px;
   margin: auto;
   margin-top: 163px;
 }
