@@ -1,10 +1,7 @@
 import React from 'react';
-import Geosuggest from 'react-geosuggest';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
 import AvatarMissing from '../../assets/images/avatar-missing.png';
 import Toggle from 'material-ui/Toggle';
-import Divider from 'material-ui/Divider';
 
 const Styles = {
   containerStyle: {
@@ -19,11 +16,6 @@ const Styles = {
   },
   buttonStyle: {
     marginRight: 15
-  },
-  changePasswordGroup: {
-    margin: 10,
-    textAlign: 'center',
-    padding: 20
   }
 };
 
@@ -88,45 +80,6 @@ const UserProfile = (props) => (
           disabled={!props.isEditing}
           id="Notifications"
           label="Toggle Notifications"
-        />
-      </div>
-
-      {/* <AddressListMenu
-      addresses={this.state.addresses}
-      handleAddAddress={this.handleAddAddress.bind(this)}
-      handleEditAddress={this.handleEditAddress.bind(this)}
-      handleSetAddressAsDefault={this.handleSetAddressAsDefault.bind(this)}
-      handleDeleteAddress={this.handleDeleteAddress.bind(this)}
-      />*/}
-      <div className=".geosuggest__group">
-     {  /* <Geosuggest
-               className="hidden"
-               placeholder="Start typing!"
-               initialValue="Portland"
-               onSuggestSelect={this.onSuggestSelect}
-               location={new google.maps.LatLng(45.523062, -122.676482)}
-               radius="20"
-               enabled={!props.isEditing}
-             />*/
-      }
-        <span className="geosuggest__highlight"></span>
-        <span className="geosuggest__bar"></span>
-      </div>
-      <Divider />
-      <div className="profile-button-group" style={Styles.buttonGroup}>
-        <div className={props.isEditing ? 'cancel-button' : 'hidden'}>
-          <RaisedButton
-            style={Styles.buttonStyle}
-            secondary
-            onTouchTap={props.onCancelClick}
-            label="Cancel"
-          />
-        </div>
-        <RaisedButton
-          style={Styles.buttonStyle}
-          primary
-          onClick={props.onEditButtonClick}
-          label={props.isEditing ? 'Save Profile' : 'Edit Profile'}
         />
       </div>
     </form>

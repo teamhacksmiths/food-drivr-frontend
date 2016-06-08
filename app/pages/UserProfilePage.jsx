@@ -3,9 +3,11 @@ import auth from '../utils/auth.js';
 import FullscreenLoading from '../components/Reusable/FullscreenLoading';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+import Divider from 'material-ui/Divider';
 import UserProfile from '../components/UserProfilePage/UserProfile';
 import PasswordForm from '../components/UserProfilePage/PasswordForm.jsx';
+import GeoSuggest from '../components/UserProfilePage/GeoSuggest.jsx';
+import EditProfileButton from '../components/UserProfilePage/EditProfileButton.jsx';
 
 const Styles = {
   buttonGroup: {
@@ -67,6 +69,7 @@ class UserProfilePage extends React.Component {
   componentDidMount() {
     // Get user data on component mount
     this.getUserData();
+    this.checkCanSubmit();
   }
 
 /*
@@ -78,12 +81,12 @@ If error occurs, logout user and return to homepage.
       .then((response) => {
         console.log(response);
         const newForm = this.state.formData;
-        if (response.data.user.phone != null){
+        if (response.data.user.phone != null) {
           newForm.Phone = response.data.user.phone;
         } else {
           newForm.Phone = '';
         }
-        if (response.data.user.company != null){
+        if (response.data.user.company != null) {
           newForm.Company = response.data.user.company;
         } else {
           newForm.Company = '';
@@ -269,12 +272,12 @@ If error occurs, logout user and return to homepage.
 @return set state for formData. Actions for password form.
 */
   handleCloseAction() {
+    const formData = this.state.formData;
+    formData.NewPassword = '';
+    formData.NewPasswordConfirmation = '';
+    formData.CurrentPassword = '';
     this.setState({
-      formData: {
-        NewPassword: '',
-        NewPasswordConfirmation: '',
-        CurrentPassword: '',
-      },
+      formData,
       passwordEdit: false,
       open: false
     });
@@ -290,9 +293,14 @@ If error occurs, logout user and return to homepage.
   }
 
   checkCanSubmit() {
-    if (this.state.errors.CurrentPassword === '' &&
-      this.state.errors.NewPassword === '' &&
-      this.state.errors.NewPasswordConfirmation === '') {
+    const formData = this.state.formData;
+    const errors = this.state.errors;
+    if (errors.CurrentPassword === '' &&
+      errors.NewPassword === '' &&
+      errors.NewPasswordConfirmation === '' &&
+      formData.CurrentPassword !== '' &&
+      formData.NewPassword !== '' &&
+      formData.NewPasswordConfirmation !== '') {
       this.setState({ canSubmit: true });
     }
   }
@@ -315,47 +323,46 @@ If error occurs, logout user and return to homepage.
     ];
     return (
       this.state.isLoading ? <FullscreenLoading isLoading={this.state.isLoading} /> :
-        <div>
-          <UserProfile
-            userData={this.state.userData}
-            onFormSubmit={this.submitUserData}
-            errors={this.state.errors}
-            onFormUpdate={this.handleFormUpdate}
-            formData={this.state.formData}
-            isEditing={this.state.isEditing}
-            onNotificationToggle={this.handleNotificationToggle}
-            onCancelClick={this.handleCancelClick}
-            onEditButtonClick={this.handleEditButtonClick}
-            onFormReset={this.handleFormReset}
-          />
-          <div
-            style={Styles.changePasswordGroup}
-            className={this.state.isEditing ? 'change-password-reveal' : 'hidden'}
-          >
-            <FlatButton
-              primary
-              label="Change Password"
-              onTouchTap={this.handleChangePasswordClick}
-            />
-            <div className={this.state.passwordEdit ? 'edit-password-form' : 'hidden'}>
-              <PasswordForm
-                actions={actions}
-                onPasswordReset={this.handlePasswordReset}
-                isOpen={this.state.passwordEdit}
-                onFormUpdate={this.handleFormUpdate}
-                formData={this.state.formData}
-                errors={this.state.errors}
-              />
-            </div>
-          </div>
-          <Snackbar
-            open={this.state.snackBarIsOpen}
-            action="Close"
-            message={this.state.snackBarMessage}
-            autoHideDuration={3000}
-            onRequestClose={this.handleSnackClose}
-          />
-        </div>
+      <div>
+        <UserProfile
+          userData={this.state.userData}
+          onFormSubmit={this.submitUserData}
+          errors={this.state.errors}
+          onFormUpdate={this.handleFormUpdate}
+          formData={this.state.formData}
+          isEditing={this.state.isEditing}
+          onNotificationToggle={this.handleNotificationToggle}
+          onFormReset={this.handleFormReset}
+        />
+        <GeoSuggest 
+          isEditing={this.state.isEditing}
+        />
+        <Divider />
+        <EditProfileButton 
+          isEditing={this.state.isEditing}
+          onCancelClick={this.handleCancelClick}
+          onEditButtonClick={this.handleEditButtonClick}
+        />
+        <PasswordForm
+          actions={actions}
+          onPasswordReset={this.handlePasswordReset}
+          isOpen={this.state.passwordEdit}
+          onFormUpdate={this.handleFormUpdate}
+          formData={this.state.formData}
+          errors={this.state.errors}
+          canSubmit={this.checkCanSubmit}
+          onHandleClose={this.handleCloseAction}
+          onChangePasswordClick={this.handleChangePasswordClick}
+          passwordEdit={this.state.passwordEdit}
+        />
+        <Snackbar
+          open={this.state.snackBarIsOpen}
+          action="Close"
+          message={this.state.snackBarMessage}
+          autoHideDuration={3000}
+          onRequestClose={this.handleSnackClose}
+        />
+      </div>
     );
   }
 }
