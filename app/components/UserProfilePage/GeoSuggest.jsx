@@ -4,7 +4,6 @@ import Geosuggest from 'react-geosuggest';
 const GeoSuggest = (props) => (
   <div className=".geosuggest__group">
     <Geosuggest
-      className="hidden"
       placeholder="Start typing!"
       initialValue="Portland"
       location={new google.maps.LatLng(45.523062, -122.676482)}

@@ -298,9 +298,9 @@ If error occurs, logout user and return to homepage.
     if (errors.CurrentPassword === '' &&
       errors.NewPassword === '' &&
       errors.NewPasswordConfirmation === '' &&
-      formData.CurrentPassword !== '' &&
-      formData.NewPassword !== '' &&
-      formData.NewPasswordConfirmation !== '') {
+      formData.CurrentPassword.length > 1 &&
+      formData.NewPassword.length > 1 &&
+      formData.NewPasswordConfirmation.length > 1) {
       this.setState({ canSubmit: true });
     }
   }
@@ -353,6 +353,8 @@ If error occurs, logout user and return to homepage.
           canSubmit={this.checkCanSubmit}
           onHandleClose={this.handleCloseAction}
           onChangePasswordClick={this.handleChangePasswordClick}
+          passwordEdit={this.state.passwordEdit}
+          isEditing={this.state.isEditing}
           passwordEdit={this.state.passwordEdit}
         />
         <Snackbar
