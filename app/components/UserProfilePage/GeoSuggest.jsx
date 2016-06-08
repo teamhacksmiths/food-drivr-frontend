@@ -6,6 +6,7 @@ const GeoSuggest = (props) => (
     <Geosuggest
       placeholder="Start typing!"
       initialValue="Portland"
+      onSuggestSelect={props.onSuggestSelect}
       location={new google.maps.LatLng(45.523062, -122.676482)}
       radius="20"
       enabled={!props.isEditing}

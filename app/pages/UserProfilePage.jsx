@@ -33,7 +33,8 @@ class UserProfilePage extends React.Component {
         Notifications: false,
         CurrentPassword: '',
         NewPassword: '',
-        NewPasswordConfirmation: ''
+        NewPasswordConfirmation: '',
+        Address: ''
       },
       hasErrors: false,
       errors: {
@@ -57,6 +58,7 @@ class UserProfilePage extends React.Component {
     this.handleCloseAction = this.handleCloseAction.bind(this);
     this.handleSubmitAction = this.handleSubmitAction.bind(this);
     this.checkCanSubmit = this.checkCanSubmit.bind(this);
+    this.handleSuggestSelect = this.handleSuggestSelect.bind(this);
   }
 
   componentWillMount() {
@@ -69,7 +71,6 @@ class UserProfilePage extends React.Component {
   componentDidMount() {
     // Get user data on component mount
     this.getUserData();
-    this.checkCanSubmit();
   }
 
 /*
@@ -258,7 +259,7 @@ If error occurs, logout user and return to homepage.
     const formData = this.state.formData;
     const toggled = !formData.notifications;
     formData.notifications = toggled;
-    this.setState(formData);
+    this.setState({ formData });
   }
 
 /*
@@ -302,7 +303,16 @@ If error occurs, logout user and return to homepage.
       formData.NewPassword.length > 1 &&
       formData.NewPasswordConfirmation.length > 1) {
       this.setState({ canSubmit: true });
+    } else {
+      this.setState({ canSubmit: false });
     }
+  }
+
+  handleSuggestSelect(address) {
+    const formData = this.state.formData;
+    console.log(address.label);
+    formData.Address = address.label;
+    this.setState({ formData });
   }
 
   render() {
@@ -336,6 +346,7 @@ If error occurs, logout user and return to homepage.
         />
         <GeoSuggest 
           isEditing={this.state.isEditing}
+          onSuggestSelect={this.handleSuggestSelect}
         />
         <Divider />
         <EditProfileButton 
