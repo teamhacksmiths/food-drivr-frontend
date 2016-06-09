@@ -4,7 +4,7 @@ import Arrow from './Arrow.jsx';
 import Headline from '../Reusable/Headline.jsx';
 import BodyButton from './BodyButton.jsx';
 import DriverDescription from './DriverDescription.jsx';
-import VolunteerDescription from './VolunteerDescription.jsx';
+import DonorDescription from './DonorDescription.jsx';
 
 class SectionBecomeA extends React.Component {
   constructor() {
@@ -22,7 +22,7 @@ class SectionBecomeA extends React.Component {
   }
 
   onSubmitVolunteer() {
-    this.setState({ userType: 'Volunteer' });
+    this.setState({ userType: 'Donor' });
   }
 
   render() {
@@ -33,7 +33,7 @@ class SectionBecomeA extends React.Component {
           <Headline value={`Become a ${this.state.userType}`} className="become-a__title" />
             {this.state.userType === 'Driver' ?
               <DriverDescription /> :
-              <VolunteerDescription />}
+              <DonorDescription />}
           <BodyButton />
         </section>
         <AppStoreIcon className="become-a__appstore-icon" />
