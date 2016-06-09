@@ -34,10 +34,9 @@ class UserProfilePage extends React.Component {
         CurrentPassword: '',
         NewPassword: '',
         NewPasswordConfirmation: '',
-        Address: '',
         Avatar: null
       },
-      hasErrors: false,
+      emailComplete: false,
       errors: {
         Email: '',
         CurrentPassword: '',
@@ -58,7 +57,6 @@ class UserProfilePage extends React.Component {
     this.handleSnackClose = this.handleSnackClose.bind(this);
     this.handleCloseAction = this.handleCloseAction.bind(this);
     this.handleSubmitAction = this.handleSubmitAction.bind(this);
-    this.checkCanSubmit = this.checkCanSubmit.bind(this);
     this.handleSuggestSelect = this.handleSuggestSelect.bind(this);
   }
 
@@ -157,6 +155,9 @@ If error occurs, logout user and return to homepage.
 */
   handleFormUpdate(e) {
     const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    const newFormData = this.state.formData;
+    const newFormErrors = this.state.errors;
+
     if (e.target.id === 'Email') {
       if (!e.target.value) {
         this.state.errors.Email = 'This field is required.';
@@ -186,11 +187,26 @@ If error occurs, logout user and return to homepage.
         this.state.errors.NewPasswordConfirmation = '';
       }
     }
-    const newFormData = this.state.formData;
-    const newFormErrors = this.state.errors;
 
     newFormData[e.target.id] = e.target.value;
     newFormErrors[e.target.id] = this.state.errors[e.target.id];
+
+    if (newFormData.Email.length > 0 && !newFormErrors.Email) {
+      this.setState({ emailComplete: true });
+    } else {
+      this.setState({ emailComplete: false });
+    }
+
+    if (!newFormErrors.CurrentPassword &&
+      !newFormErrors.NewPassword &&
+      !newFormErrors.NewPasswordConfirmation &&
+      newFormData.CurrentPassword.length > 1 &&
+      newFormData.NewPassword.length > 1 &&
+      newFormData.NewPasswordConfirmation.length > 1) {
+      this.setState({ canSubmit: true });
+    } else {
+      this.setState({ canSubmit: false });
+    }
     this.setState({
       formData: newFormData,
       errors: newFormErrors
@@ -216,13 +232,17 @@ If error occurs, logout user and return to homepage.
 @return Confirmation + snackbar message
 */
   handlePasswordReset(data) {
+    console.log(data);
     auth.updatePassword(data)
-      .then(() => {
+      .then((response) => {
+        console.log(response);
         this.setState({
+          passwordEdit: false,
           snackBarIsOpen: true,
           snackBarMessage: 'Successfully updated your password'
         });
-      }).catch(() => {
+      }).catch((err) => {
+        console.log(err);
         this.setState({
           snackBarIsOpen: true,
           snackBarMessage: 'Please check that your password is correct and try again.'
@@ -299,21 +319,6 @@ If error occurs, logout user and return to homepage.
     }
   }
 
-  checkCanSubmit() {
-    const formData = this.state.formData;
-    const errors = this.state.errors;
-    if (errors.CurrentPassword === '' &&
-      errors.NewPassword === '' &&
-      errors.NewPasswordConfirmation === '' &&
-      formData.CurrentPassword.length > 1 &&
-      formData.NewPassword.length > 1 &&
-      formData.NewPasswordConfirmation.length > 1) {
-      this.setState({ canSubmit: true });
-    } else {
-      this.setState({ canSubmit: false });
-    }
-  }
-
   handleSuggestSelect(address) {
     const formData = this.state.formData;
     console.log(address.label);
@@ -350,7 +355,7 @@ If error occurs, logout user and return to homepage.
           onNotificationToggle={this.handleNotificationToggle}
           onFormReset={this.handleFormReset}
         />
-        <GeoSuggest
+        <GeoSuggest 
           isEditing={this.state.isEditing}
           onSuggestSelect={this.handleSuggestSelect}
         />
@@ -359,6 +364,7 @@ If error occurs, logout user and return to homepage.
           isEditing={this.state.isEditing}
           onCancelClick={this.handleCancelClick}
           onEditButtonClick={this.handleEditButtonClick}
+          emailComplete={this.state.emailComplete}
         />
         <PasswordForm
           actions={actions}
@@ -367,12 +373,9 @@ If error occurs, logout user and return to homepage.
           onFormUpdate={this.handleFormUpdate}
           formData={this.state.formData}
           errors={this.state.errors}
-          canSubmit={this.checkCanSubmit}
           onHandleClose={this.handleCloseAction}
           onChangePasswordClick={this.handleChangePasswordClick}
-          passwordEdit={this.state.passwordEdit}
           isEditing={this.state.isEditing}
-          passwordEdit={this.state.passwordEdit}
         />
         <Snackbar
           open={this.state.snackBarIsOpen}

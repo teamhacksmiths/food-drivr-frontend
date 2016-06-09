@@ -107,8 +107,4 @@ const PasswordForm = (props) => (
 </div>
 );
 
-PasswordForm.propTypes = {
-  canSubmit: React.PropTypes.func.isRequired
-};
-
 export default PasswordForm;

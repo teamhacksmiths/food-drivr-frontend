@@ -2,7 +2,7 @@ import React from 'react';
 import Geosuggest from 'react-geosuggest';
 
 const GeoSuggest = (props) => (
-  <div className=".geosuggest__group">
+  <div>
     <Geosuggest
       placeholder="Start typing!"
       initialValue="Portland"

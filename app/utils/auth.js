@@ -100,9 +100,6 @@ module.exports = {
           company: data.Company,
           setting_attributes: {
             notifications: data.Notifications
-          },
-          addresses_attributes: {
-            address: data.Address
           }
         }
       },
@@ -172,7 +169,7 @@ module.exports = {
         user: {
           password: data.NewPassword,
           password_confirmation: data.NewPasswordConfirmation,
-          current_password: data.currentPassword
+          current_password: data.CurrentPassword
         }
       },
       responseType: 'json',

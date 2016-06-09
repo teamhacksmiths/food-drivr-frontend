@@ -13,9 +13,6 @@ const Styles = {
   buttonGroup: {
     display: 'flex',
     padding: 10
-  },
-  buttonStyle: {
-    marginRight: 15
   }
 };
 
@@ -38,6 +35,8 @@ const UserProfile = (props) => (
           floatingLabelText="Email"
           onChange={props.onFormUpdate}
           value={props.formData.Email}
+          disabled={!props.isEditing}
+          style={Styles.formGroup}
         />
         <TextField
           id="CurrentPassword"
@@ -48,6 +47,7 @@ const UserProfile = (props) => (
           disabled={!props.isEditing}
           type="password"
           hintText="Password"
+          style={Styles.formGroup}
         />
         <TextField
           id="Phone"
@@ -60,6 +60,7 @@ const UserProfile = (props) => (
           type="phone"
           hintText="Contact Phone"
           autocomplete="tel"
+          style={Styles.formGroup}
         />
         <TextField
           style={Styles.formGroup}
@@ -72,6 +73,7 @@ const UserProfile = (props) => (
           type="text"
           hintText="Company Name (Optional)"
           autocomplete="organization"
+          style={Styles.formGroup}
         />
         <Toggle
           className="toggle"

@@ -24,6 +24,7 @@
 .user-avatar-frame{
 	border: 2px solid #ebebeb;
 }
+
 .user-avatar-frame,.user-avatar-frame img{
 	width: 100px;
 	height: 100px;
@@ -33,75 +34,47 @@
 		margin: auto;
 	}
 
+
 /**
  * The geosuggest module
  */
 .geosuggest {
-	font-size: 18px;
-	font-size: 1rem;
-	position: relative;
-	width: 50%;
-	margin: 1em auto;
-	text-align: left;
+  font-size: 18px;
+  font-size: 1rem;
+  position: relative;
+  width: 50%;
+  margin: 1em auto;
+  text-align: left;
 }
 .geosuggest__input {
-	font-size: 18px;
-	padding: 10px 10px 10px 5px;
-	display: block;
-	border: none;
-	border-bottom: 1px solid #fff;
+  width: 100%;
+  border: 2px solid transparent;
+  box-shadow: 0 0 1px #3d464d;
+  padding: .5em 1em;
+  -webkit-transition: border 0.2s, box-shadow 0.2s;
+          transition: border 0.2s, box-shadow 0.2s;
 }
-
-
-.geosuggest__bar {
-	position: relative;
-	display: block;
-	width: 300px;
-}
-
-.geosuggest__bar:before, .geosuggest__bar:after {
-	content:'';
-	height:2px;
-	width:0;
-	bottom:1px;
-	position:absolute;
-	background:#5264AE;
-	transition:0.2s ease all;
-}
-
-.geosuggest__bar:before {
-	left:50%;
-}
-
-.geosuggest__bar:after {
-	right:50%;
-}
-
-.geosuggest__group {
-	position: relative;
-	margin-bottom: 45px;
-}
-
 .geosuggest__input:focus {
-	outline: none;
+  border-color: #267dc0;
+  box-shadow: 0 0 0 transparent;
 }
 .geosuggest__suggests {
-	position: absolute;
-	top: 100%;
-	left: 0;
-	right: 0;
-	max-height: 25em;
-	padding: 0;
-	margin-top: -1px;
-	background: #fff;
-	border: 2px solid rgb(0, 188, 212);
-	border-top-width: 0;
-	overflow-x: hidden;
-	overflow-y: auto;
-	list-style: none;
-	z-index: 5;
-	-webkit-transition: max-height 0.2s, border 0.2s;
-					transition: max-height 0.2s, border 0.2s;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 25em;
+  padding: 0;
+  margin-top: -1px;
+  background: #fff;
+  border: 2px solid #267dc0;
+  border-top-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  list-style: none;
+  z-index: 5;
+  -webkit-transition: max-height 0.2s, border 0.2s;
+          transition: max-height 0.2s, border 0.2s;
 }
 .geosuggest__suggests--hidden {
   max-height: 0;
@@ -113,27 +86,22 @@
  * A geosuggest item
  */
 .geosuggest-item {
-	font-size: 18px;
-	font-size: 1rem;
-	padding: .5em .65em;
-	cursor: pointer;
+  font-size: 18px;
+  font-size: 1rem;
+  padding: .5em .65em;
+  cursor: pointer;
 }
 .geosuggest-item:hover,
 .geosuggest-item:focus {
-	background: #f5f5f5;
+  background: #f5f5f5;
 }
 .geosuggest-item--active {
-	background: #267dc0;
-	color: #fff;
+  background: #267dc0;
+  color: #fff;
 }
 .geosuggest-item--active:hover,
 .geosuggest-item--active:focus {
-	background: #ccc;
-}
-
-/* Customizing the address select field*/
-.geosuggest-address-select-field {
-
+  background: #ccc;
 }
 
 .toggle-block {

@@ -9,6 +9,13 @@ const Styles = {
 
 const EditProfileButton = (props) => (
   <div className="profile-button-group" style={Styles.buttonGroup}>
+    <RaisedButton
+      style={Styles.buttonStyle}
+      primary
+      disabled={props.isEditing ? !props.emailComplete : false}
+      onClick={props.onEditButtonClick}
+      label={props.isEditing ? 'Save Profile' : 'Edit Profile'}
+    />
     <div className={props.isEditing ? 'cancel-button' : 'hidden'}>
       <RaisedButton
         style={Styles.buttonStyle}
@@ -17,12 +24,6 @@ const EditProfileButton = (props) => (
         label="Cancel"
       />
     </div>
-    <RaisedButton
-      style={Styles.buttonStyle}
-      primary
-      onClick={props.onEditButtonClick}
-      label={props.isEditing ? 'Save Profile' : 'Edit Profile'}
-    />
   </div>
 );
 
