@@ -108,6 +108,7 @@ If error occurs, logout user and return to homepage.
         console.log(error);
         if (error.status >= 400 && error.status <= 500) {
           auth.logout();
+          auth.onChange(false);
           this.setState({
             isLoading: true,
             snackBarIsOpen: true,
