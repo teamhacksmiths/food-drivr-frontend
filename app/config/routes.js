@@ -22,12 +22,21 @@ function requireAuth(nextState, replace) {
   }
 }
 
+function ifAuth(nextState, replace) {
+  if (auth.loggedIn()) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname }
+    });
+  }
+}
+
 const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={HomePage} />
-      <Route path="signin" component={SignInPage} />
-      <Route path="signup" component={UserTypePage} />
+      <Route path="signin" component={SignInPage} onEnter={ifAuth} />
+      <Route path="signup" component={UserTypePage} onEnter={ifAuth} />
       <Route path="signup/donor" component={RegistrationPage} header="Donor" />
       <Route path="signup/volunteer" component={RegistrationPage} header="Volunteer" />
       <Route path="thankyou" component={ThankYouPage} />
