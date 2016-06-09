@@ -11,13 +11,17 @@
   margin: auto;
 }
 
+.bobbing {
+	animation: bobbing 0.2s infinite ease-in-out forwards alternate;
+}
+
 .intro__food-drivr {
 	font-size: 18px;
 	letter-spacing: 3.3px;
 }
 
 .intro__truck-white:hover {
-	animation: bobbing 0.2s infinite ease-in-out forwards alternate;
+
 }
 
 .intro__powered {

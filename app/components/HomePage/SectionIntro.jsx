@@ -10,10 +10,21 @@ const paragraphOne = "On a daily basis catering facilities, restaurants, grocery
 const paragraphTwo = "Using Food Drivr, organizations help to deliver this excess to people in need."
 const joinUs = "Join us and help end hunger."
 
+const FoodDrivrTruck = ({
+  bobbing
+}) => (
+    <div
+      title="food drivr logo"
+      className={bobbing ? 'intro__truck-white bobbing' : 'intro__truck-white'}
+    />
+);
+
 const SectionIntro = () => (
   <section className="intro">
     <header className="text-center text-white">
-      <div title="food drivr logo" className="intro__truck-white" />
+      <FoodDrivrTruck
+        bobbing
+      />
       <p className="uppercase intro__food-drivr">
         {foodDrivrTitle}
       </p>
