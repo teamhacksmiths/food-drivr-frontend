@@ -40,22 +40,23 @@ class Header extends React.Component {
   render() {
     let headerButton = <AppStoreIcon />;
     let logInButton = <Login />;
+    const winlo = window.location.pathname;
 
-    if (window.location.pathname === '/donation') {
+    if (winlo === '/donation' || winlo === '/profile') {
       headerButton = <TruckButton />;
-    } else if (window.location.pathname === '/thankyou') {
+    } else if (winlo === '/thankyou') {
       headerButton = '';
-    } else if (window.location.pathname !== '/') {
+    } else if (winlo !== '/') {
       headerButton = <BackButton />;
     }
 
-    if (window.location.pathname === '/thankyou' || window.location.pathname.indexOf('/signup') > -1 || window.location.pathname === '/signin') {
+    if (winlo === '/thankyou' || winlo.indexOf('/signup') > -1 || winlo === '/signin') {
       logInButton = '';
-    } else if (this.state.loggedIn || window.location.pathname === '/donation') {
+    } else if (this.state.loggedIn || winlo === '/donation') {
       logInButton = <UserHeader />;
     }
     return (
-      <header className={window.location.pathname === '/donation' ? 'header header--donation bg-grey-x-light' : 'header'}>
+      <header className={winlo === '/donation' ? 'header header--donation bg-grey-x-light' : 'header'}>
         {headerButton}
         {logInButton}
       </header>
