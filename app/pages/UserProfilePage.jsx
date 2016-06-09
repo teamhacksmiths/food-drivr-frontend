@@ -34,7 +34,8 @@ class UserProfilePage extends React.Component {
         CurrentPassword: '',
         NewPassword: '',
         NewPasswordConfirmation: '',
-        Address: ''
+        Address: '',
+        Avatar: null
       },
       hasErrors: false,
       errors: {
@@ -91,6 +92,11 @@ If error occurs, logout user and return to homepage.
           newForm.Company = response.data.user.company;
         } else {
           newForm.Company = '';
+        }
+        if (response.data.user.avatar != null) {
+          newForm.Avatar = response.data.user.avatar;
+        } else {
+          newForm.Avatar = null;
         }
 
         this.setState({
@@ -344,12 +350,12 @@ If error occurs, logout user and return to homepage.
           onNotificationToggle={this.handleNotificationToggle}
           onFormReset={this.handleFormReset}
         />
-        <GeoSuggest 
+        <GeoSuggest
           isEditing={this.state.isEditing}
           onSuggestSelect={this.handleSuggestSelect}
         />
         <Divider />
-        <EditProfileButton 
+        <EditProfileButton
           isEditing={this.state.isEditing}
           onCancelClick={this.handleCancelClick}
           onEditButtonClick={this.handleEditButtonClick}

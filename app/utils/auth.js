@@ -94,8 +94,16 @@ module.exports = {
         JSON.stringify(data)
       ],
       data: {
-        donation: {
-          items
+        user: {
+          email: data.Email,
+          phone: data.Phone,
+          company: data.Company,
+          setting_attributes: {
+            notifications: data.Notifications
+          },
+          addresses_attributes: {
+            address: data.Address
+          }
         }
       },
       responseType: 'json',
@@ -151,7 +159,7 @@ module.exports = {
     });
   },
 
-  updatePassword(params) {
+  updatePassword(data) {
     return axios({
       url: `/users/${localStorage.getItem('token')}/password-update`,
       method: 'patch',
@@ -162,9 +170,9 @@ module.exports = {
       ],
       data: {
         user: {
-          password: params.password,
-          password_confirmation: params.passwordConfirmation,
-          current_password: params.currentPassword
+          password: data.NewPassword,
+          password_confirmation: data.NewPasswordConfirmation,
+          current_password: data.currentPassword
         }
       },
       responseType: 'json',
