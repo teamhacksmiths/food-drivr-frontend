@@ -27,7 +27,7 @@ class SectionBecomeA extends React.Component {
 
   render() {
     return (
-      <section className="become-a bg-grey-dark">
+      <section className="become-a bg-grey-dark__gradient">
         <Arrow direction="Left" onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver} />
         <section className="become-a__content text-white">
           <Headline value={`Become a ${this.state.userType}`} className="become-a__title" />

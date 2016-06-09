@@ -1,27 +1,45 @@
 @import "../../components/button.css";
 
 .intro {
-	@mixin flex column, center, *, *;
-	height: calc( 100vh - 6rem);
+  @mixin flex column, center, *, *;
+  height: calc( 100vh - 6rem);
+	padding: 20px;
 }
 .intro__truck-white {
   @mixin bg-img '/images/fd-logo.svg';
-  @mixin square 50px;
+  @mixin square 46px;
   margin: auto;
 }
+
+.intro__food-drivr {
+	font-size: 18px;
+	letter-spacing: 3.3px;
+}
+
+.intro__truck-white:hover {
+	animation: bobbing 0.2s infinite ease-in-out forwards alternate;
+}
+
 .intro__powered {
   font-size: $font-small;
+	line-height: 3px;
+	letter-spacing: 2.8px;
 }
 .intro__title {
   margin: 1rem;
   font-weight: bold;
   font-size: $font-large-thick;
-  max-width: 20rem;
+  max-width: 60rem;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 .intro__content {
-  font-family: $pt-sans;
-  max-width: 35rem;
+  font-family: $pt-serif;
+  max-width: 40rem;
   padding: 0 2rem;
+	font-size: 18px;
+	line-height: 1.11;
+	text-align: center
 }
 .intro__scrolldown {
   font-size: $font-small-thin;
@@ -31,6 +49,10 @@
   p {
     margin-bottom: .5rem;
   }
+}
+
+.intro__scrolldown:hover {
+	animation: bobbing 0.2s infinite ease-in-out forwards alternate;
 }
 
 @media screen and (min-width: 768px) {
