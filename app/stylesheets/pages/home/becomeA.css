@@ -16,7 +16,7 @@
   max-width: 600px;
   min-height: 761px;
   div {
-    font-family: $pt-sans;
+    font-family: $pt-serif;
     margin-bottom: 40px;
   }
 }
