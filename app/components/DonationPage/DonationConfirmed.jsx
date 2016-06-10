@@ -11,11 +11,17 @@ const styles = {
     textTransform: 'uppercase',
     fontSize: 26,
     paddingBottom: 30,
-    paddingTop: 40
+    paddingTop: 40,
+    letterSpacing: 1.5
+  },
+  bodyStyle: {
+    width: '80%',
+    margin: 'auto'
   },
   contentStyle: {
-    width: '90%',
-    margin: 'auto'
+    width: '50%',
+    minWidth: 300,
+    maxWidth: 600
   }
 };
 const DonationConfirmed = (props) => (
@@ -27,7 +33,8 @@ const DonationConfirmed = (props) => (
       onRequestClose={props.onHandleClose}
       autoScrollBodyContent
       titleStyle={styles.titleStyle}
-      bodyStyle={styles.contentStyle}
+      bodyStyle={styles.bodyStyle}
+      contentStyle={styles.contentStyle}
       className="donation-popup"
     >
       <section>

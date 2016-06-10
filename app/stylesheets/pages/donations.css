@@ -74,6 +74,7 @@
   font-size: $font-medium-thin;
   li {
     padding-left: 5px;
+    letter-spacing: 1px;
   }
 }
 .donation-popup__input {
