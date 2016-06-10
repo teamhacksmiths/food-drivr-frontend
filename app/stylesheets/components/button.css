@@ -34,6 +34,8 @@
   }
 }
 
-.btn-join-us {
-  width: 260px;
+@media screen and (min-width: 768px){
+  .btn-join-us {
+    width: 260px;
+  }
 }

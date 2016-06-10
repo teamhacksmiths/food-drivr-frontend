@@ -3,27 +3,18 @@
 .intro {
   @mixin flex column, center, *, *;
   height: calc( 100vh - 6rem);
-	padding: 20px;
 }
 .intro__truck-white {
   @mixin bg-img '/images/fd-logo.svg';
   @mixin square 46px;
   margin: auto;
 }
-
-.bobbing {
-	animation: bobbing 0.2s infinite ease-in-out forwards alternate;
-}
-
 .intro__food-drivr {
-	font-size: 18px;
 	letter-spacing: 3.3px;
 }
-
 .intro__truck-white:hover {
-
+  /* Unused class */
 }
-
 .intro__powered {
   font-size: $font-small;
 	line-height: 3px;
@@ -34,16 +25,13 @@
   font-weight: bold;
   font-size: $font-large-thick;
   max-width: 60rem;
-	padding-top: 50px;
-	padding-bottom: 50px;
 }
 .intro__content {
   font-family: $pt-serif;
+  font-size: $font-small-thick;
+  line-height: 1.11;
   max-width: 40rem;
   padding: 0 2rem;
-	font-size: 18px;
-	line-height: 1.11;
-	text-align: center
 }
 .intro__scrolldown {
   font-size: $font-small-thin;
@@ -54,18 +42,26 @@
     margin-bottom: .5rem;
   }
 }
-
 .intro__scrolldown:hover {
 	animation: bobbing 0.2s infinite ease-in-out forwards alternate;
 }
 
 @media screen and (min-width: 768px) {
+  .intro {
+    padding: 10px;
+  }
   .intro__title {
 		max-width: 900px;
-		font-size: $font-huge;
+		font-size: $font-huge-thin;
+    padding: 10px 0;
 	}
 	.intro__content {
 		font-size: $font-medium-thin;
+	}
+}
+@media screen and (min-width: 1024px) {
+	.intro__title {
+		font-size: $font-huge;
 	}
 }
 @media screen and (min-width: 1440px) {
