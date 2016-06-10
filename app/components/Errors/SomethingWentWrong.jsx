@@ -1,32 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router';
+import WhiteTruckButton from '../Reusable/WhiteTruckButton.jsx';
 
-const oops = "OOPS,"
+const oops = "oops,"
 const message = "Because of all the amazing people dontaing food our servers appear to be having a problem.  Please come back later or contact our support team to report the problem.";
 const thanks = "Thanks again for supporting Food Drivr!";
 const somethingGoneWrong = "something appears to have gone wrong";
 
 const SomethingWentWrong = () => (
-  <div className="container something_went_wrong__container">
-    <section className="something_went_wrong__section">
-      <header className="text-center text-white">
-          <Link to="/">
-            <div className="something_went_wrong__truck"></div>
-          </Link>
+    <section className="something-went-wrong__section text-center text-white">
+      <header className="uppercase">
+          <WhiteTruckButton />
+          <h1 className="something-went-wrong__header">{oops}</h1>
+          <h2 className="something-went-wrong__subheader">{somethingGoneWrong}</h2>
       </header>
-          <h1 className="something_went_wrong__header">{oops}</h1>
-          <h2 className="something_went_wrong__subheader">{somethingGoneWrong}</h2>
-          <div className="something_went_wrong__paragraph-container">
-            <p className="something_went_wrong__paragraph-text">{message}</p>
-            <p className="something_went_wrong__paragraph-text">{thanks}</p>
-            <div className="text-center">
-              <Link to="mailto: admin@fooddrivr.com">
-                <button className="btn btn-contact">Contact Support</button>
-              </Link>
-            </div>
-        </div>
+      <div className="something-went-wrong__paragraph-container">
+        <p>{message}</p>
+        <p>{thanks}</p>
+      </div>
+      <Link to="mailto: admin@fooddrivr.com">
+        <button className="btn btn-rect text-red">Contact Support</button>
+      </Link>
     </section>
-  </div>
 );
 
 export default SomethingWentWrong;

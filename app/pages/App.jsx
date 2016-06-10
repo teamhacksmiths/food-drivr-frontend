@@ -11,7 +11,7 @@ class App extends React.Component {
     const containerClass = classNames({
       container: true,
       'bg-blue': window.location.pathname === '/',
-      'bg-red': window.location.pathname === '/signup' || window.location.pathname === '/signin',
+      'bg-red': window.location.pathname === '/signup' || window.location.pathname === '/signin' || window.location.pathname === '/error',
       'bg-grey-light': window.location.pathname === '/donation',
       'bg-yellow': window.location.href.indexOf('donor') > -1,
       'bg-blue-light': window.location.href.indexOf('volunteer') > -1

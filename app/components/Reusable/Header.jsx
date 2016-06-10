@@ -48,7 +48,7 @@ class Header extends React.Component {
       headerButton = <BackButton />;
     }
 
-    if (window.location.pathname === '/thankyou' || window.location.pathname.indexOf('/signup') > -1 || window.location.pathname === '/signin') {
+    if (window.location.pathname === '/thankyou' || window.location.pathname.indexOf('/signup') > -1 || window.location.pathname === '/signin' || window.location.pathname === '/error') {
       logInButton = '';
     } else if (this.state.loggedIn || window.location.pathname === '/donation') {
       logInButton = <UserHeader />;
