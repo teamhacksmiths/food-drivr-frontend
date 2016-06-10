@@ -1,24 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router';
-const oops = "OOPS,";
-const subHeader = "WE CAN'T SEEM TO FIND THE PAGE YOU'RE LOOKING FOR";
-const paragraphText = "Sorry no page could be found at this address. You can also click on our logo above to be taken back to the Home page.";
+import WhiteTruckButton from '../Reusable/WhiteTruckButton.jsx';
+
+const oops = 'OOPS,';
+const subHeader = 'WE CAN\'T SEEM TO FIND THE PAGE YOU\'RE LOOKING FOR';
+const paragraphText = 'Sorry no page could be found at this address. You can also click on our logo above to be taken back to the Home page.';
 
 const NotFound = () => (
-  <div className="container not-found__container">
-    <section className="not-found__section">
-      <header className="text-center text-white">
-          <Link to="/">
-            <div className="not-found__truck"></div>
-          </Link>
+    <section className="something-went-wrong__section text-center text-white">
+      <header className="uppercase">
+          <WhiteTruckButton />
+          <h1 className="something-went-wrong__header">{oops}</h1>
+          <h2 className="something-went-wrong__subheader">{subHeader}</h2>
       </header>
-          <h1 className="not-found__header">{oops}</h1>
-          <h2 className="not-found__subheader">{subHeader}</h2>
-          <div className="not-found__paragraph-container">
-            <p className="not-found__paragraph-text">{paragraphText}</p>
-          </div>
+      <div className="something-went-wrong__paragraph-container">
+        <p>{paragraphText}</p>
+      </div>
     </section>
-  </div>
 );
 
 export default NotFound;
