@@ -1,59 +1,45 @@
-
-.something_went_wrong__container {
-  background-color: #ff1e40;
-}
-
-.something_went_wrong__truck {
-  @mixin bg-img '/images/fd-logo.svg';
-  @mixin square 66px;
-  margin: auto;
-  margin-top: 163px;
-}
-
-.something_went_wrong__section {
+.something-went-wrong__section {
   @mixin flex column, center, *, *;
+  min-height: calc(100vh - 135px);
+  margin-top: 100px;
+  padding: 0 10px;
+  a {
+    width: 100%;
+  }
 }
-
-.something_went_wrong__header {
-  font-family: $pt-sans;
+.something-went-wrong__header {
+  font-family: $pt-serif;
   font-weight: bold;
-  margin-top: 42px;
-  font-size: 72px;
+  margin-top: 10px;
+  font-size: $font-medium-thick;
   letter-spacing: 3.4px;
-  text-align: center;
-  color: #ffffff;
 }
-
-.something_went_wrong__subheader {
-  font-family: $pt-sans;
-  margin-top: 18px;
-  font-size: 46px;
+.something-went-wrong__subheader {
+  font-family: $pt-serif;
+  margin-top: 10px;
+  font-size: $font-medium-thin;
   letter-spacing: 2.2px;
-  text-align: center;
   max-width: 682px;
-  color: #ffffff;
-  text-transform: uppercase;
 }
-
-.something_went_wrong__paragraph-container {
+.something-went-wrong__paragraph-container {
+  width: 90%;
   max-width: 45rem;
-  padding: 0 2rem;
-  margin-top: 60px;
-}
-
-.something_went_wrong__paragraph-text {
-  font-family: OpenSans;
-  font-size: 24px;
+  margin-top: 10px;
+  font-family: $open-sans;
+  font-size: $font-medium-thin;
   letter-spacing: 1.2px;
-  text-align: center;
-  color: #ffffff;
 }
 
-.btn-contact {
-  width: 343px;
-  height: 60px;
-  border-radius: 6px;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #ff1e40;
-  margin-top: 90px;
+@media screen and (min-width: 768px){
+  .something-went-wrong__header {
+    margin-top: 20px;
+    font-size: $font-huge-thin;
+  }
+  .something-went-wrong__subheader {
+    margin-top: 20px;
+    font-size: $font-medium-thick;
+  }
+  .something-went-wrong__paragraph-container {
+    font-size: $font-medium;
+  }
 }

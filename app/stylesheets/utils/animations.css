@@ -1,3 +1,12 @@
+/* Bobbing animation for the car */
+@keyframes bobbing {
+    0%{
+        transform: rotate(0) translateY(0);
+    }
+    100%{
+        transform: rotate(0.1deg) translateY(5px);
+    }
+}
 .appear-enter {
 	transition-duration: 1s;
 	transition-property: opacity;
@@ -10,12 +19,6 @@
 	opacity: 0;
 	display: none;
 }
-/* Bobbing animation for the car */
-@keyframes bobbing {
-    0%{
-        transform: rotate(0) translateY(0);
-    }
-    100%{
-        transform: rotate(0.1deg) translateY(5px);
-    }
+.bobbing {
+	animation: bobbing 0.2s infinite ease-in-out forwards alternate;
 }
