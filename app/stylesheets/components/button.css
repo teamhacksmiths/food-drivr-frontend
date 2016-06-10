@@ -22,7 +22,7 @@
   padding: 10px 55px;
   border-radius: 25px;
 }
-.btn-rect {
+.btn-rect-hover {
   @mixin rect 80%, 70px;
   margin: 30px 0;
   max-width: 350px;
@@ -32,6 +32,12 @@
   &:hover {
     opacity: 1;
   }
+}
+.btn-rect {
+  @mixin rect 80%, 70px;
+  margin: 30px 0;
+  max-width: 350px;
+  min-width: 200px;
 }
 
 @media screen and (min-width: 768px){
