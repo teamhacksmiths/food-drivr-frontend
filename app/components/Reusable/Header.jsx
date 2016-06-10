@@ -39,6 +39,7 @@ class Header extends React.Component {
   render() {
     let headerButton = <AppStoreIcon />;
     let logInButton = <Login />;
+    const validRoutes = ['donation', 'profile', '/'];
 
     if (window.location.pathname === '/donation') {
       headerButton = <TruckButton />;
@@ -48,7 +49,7 @@ class Header extends React.Component {
       headerButton = <BackButton />;
     }
 
-    if (window.location.pathname === '/thankyou' || window.location.pathname.indexOf('/signup') > -1 || window.location.pathname === '/signin' || window.location.pathname === '/error') {
+    if (window.location.pathname === '/thankyou' || window.location.pathname.indexOf('/signup') > -1 || window.location.pathname === '/signin' || window.location.pathname === '/error' || validRoutes.indexOf(window.location.pathname) === -1) {
       logInButton = '';
     } else if (this.state.loggedIn || window.location.pathname === '/donation') {
       logInButton = <UserHeader />;
