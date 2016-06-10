@@ -18,6 +18,9 @@
 .bg-grey-dark {
 	background-color: $grey-dark;
 }
+.bg-grey-dark__gradient {
+	background-image: radial-gradient(circle at 67% 75%, #686868, #3b3d40);
+}
 .bg-yellow {
 	background-color: $yellow;
 }

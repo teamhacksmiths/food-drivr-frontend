@@ -13,6 +13,8 @@
 @import "pages/donations.css";
 @import "pages/thankyou.css";
 
+@import "pages/somethingWentWrong";
+
 /* Planning on adding CSS MQPacker plugin */
 /* Main content */
 body {

@@ -22,7 +22,7 @@
   margin: auto;
 	q {
 		font-size: $font-medium-thin;
-    font-family: $pt-sans;
+    font-family: $pt-serif;
 	}
 }
 .comment__author {

@@ -16,7 +16,7 @@
 .header__back {
   @mixin bg-img '/images/back-arrow.svg';
   @mixin square 55px;
-  @mixin absolute 50px, *, * , 50px;
+  @mixin absolute 25px, *, * , 25px;
 }
 
 .header-menu {
@@ -68,4 +68,10 @@
 .header__appstore-icon {
   @mixin bg-img '/images/App-Store-Badge.png';
   @mixin rect 135px, 40px;
+}
+
+@media screen and (min-width: 768px){
+  .header__back {
+    @mixin absolute 50px, *, * , 50px;
+  }
 }

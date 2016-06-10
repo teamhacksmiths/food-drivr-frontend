@@ -29,7 +29,7 @@
 
   p {
     font-size: $font-small-thick;
-    font-family: $pt-sans;
+    font-family: $pt-serif;
     line-height: 1.1;
     color: $grey;
   }

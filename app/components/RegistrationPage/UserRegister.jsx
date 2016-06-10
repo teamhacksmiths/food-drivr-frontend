@@ -1,6 +1,5 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
 import classNames from 'classnames/bind';
 
 const styles = {
@@ -21,7 +20,7 @@ const styles = {
 
 const UserRegister = (props) => {
   const btnClass = classNames({
-    'btn btn-rect bg-white': true,
+    'btn btn-rect-hover bg-white': true,
     'text-blue-light': props.userType === 'Volunteer',
     'text-yellow': props.userType === 'Donor'
   });
