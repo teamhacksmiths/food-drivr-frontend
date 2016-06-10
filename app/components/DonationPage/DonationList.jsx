@@ -7,10 +7,9 @@ const DonationList = (props) => (
       {props.itemsAdded.map((item, index) => {
         const boundClick = props.onHandleRemoveItem.bind(this, index);
         return (
-            <DonationListItem key={index} name={item.description} onRemoveItem={boundClick} />
-          );
-      })
-      }
+          <DonationListItem key={index} name={item.description} onRemoveItem={boundClick} />
+        );
+      })}
     </ul>
   </div>
 );

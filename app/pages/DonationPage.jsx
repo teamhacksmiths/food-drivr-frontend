@@ -26,6 +26,7 @@ class DonationPage extends React.Component {
     this.handleDonate = this.handleDonate.bind(this);
     this.handleSnackClose = this.handleSnackClose.bind(this);
     this.handleNoteChange = this.handleNoteChange.bind(this);
+    this.handleGetDonations = this.handleGetDonations.bind(this);
   }
 
   componentWillMount() {
@@ -36,6 +37,10 @@ class DonationPage extends React.Component {
   }
 
   componentDidMount() {
+    this.handleGetDonations();
+  }
+
+  handleGetDonations() {
     auth.getDonation().then((response) => {
       console.log(response);
       this.setState({ donations: response.data.donations });
@@ -101,16 +106,22 @@ class DonationPage extends React.Component {
     auth.postDonation(this.state.itemsAdded)
     .then((response) => {
       console.log(response);
-      this.setState({ open: false,
-              openSnackBar: true,
-              snackbarMessage: 'Donation Complete!',
-              itemsAdded: [] });
+      this.setState({
+        open: false,
+        openSnackBar: true,
+        snackbarMessage: 'Donation Complete!',
+        itemsAdded: [],
+        enableDonation: false
+      });
+      this.handleGetDonations();
     })
     .catch((err) => {
       console.log(err);
-      this.setState({ open: false,
-              openSnackBar: true,
-              snackbarMessage: 'Donation Could Not Be Sent! Please Try Again!' });
+      this.setState({
+        open: false,
+        openSnackBar: true,
+        snackbarMessage: 'Donation Could Not Be Sent! Please Try Again!'
+      });
     });
   }
 

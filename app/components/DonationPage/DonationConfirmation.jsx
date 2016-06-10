@@ -17,7 +17,6 @@ class DonationConfirmation extends React.Component {
         keyboardFocused
       />,
     ];
-
     return (
       <DonationConfirmed
         actions={actions}
@@ -34,4 +33,4 @@ class DonationConfirmation extends React.Component {
   }
 }
 
-module.exports = DonationConfirmation;
+export default DonationConfirmation;
