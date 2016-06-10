@@ -1,23 +1,26 @@
 import React from 'react';
-import FlatButton from 'material-ui/FlatButton';
 import DonationConfirmed from './DonationConfirmed.jsx';
 
-class DonationConfirmation extends React.Component {
-  render() {
-    return (
-      <DonationConfirmed
-        onOpen={this.props.onOpen}
-        onHandleClose={this.props.onHandleClose}
-        onNoteChange={this.props.onNoteChange}
-        noteMsg={this.props.noteMsg}
-        items={this.props.itemsAdded}
-        openSnackBar={this.props.openSnackBar}
-        snackbarMessage={this.props.snackbarMessage}
-        onSnackClose={this.props.onSnackClose}
-        onConfirm={this.props.onHandleDonate}
-      />
-    );
-  }
-}
+const DonationConfirmation = (props) => (
+    <DonationConfirmed
+      onOpen={props.onOpen}
+      onHandleClose={props.onHandleClose}
+      onConfirm={props.onHandleDonate}
+      items={props.itemsAdded}
+      openSnackBar={props.openSnackBar}
+      snackbarMessage={props.snackbarMessage}
+      onSnackClose={props.onSnackClose}
+    />
+);
+
+DonationConfirmation.propTypes = {
+  onOpen: React.PropTypes.bool.isRequired,
+  onHandleClose: React.PropTypes.func.isRequired,
+  onHandleDonate: React.PropTypes.func.isRequired,
+  itemsAdded: React.PropTypes.array.isRequired,
+  openSnackBar: React.PropTypes.bool.isRequired,
+  snackbarMessage: React.PropTypes.string.isRequired,
+  onSnackClose: React.PropTypes.func.isRequired
+};
 
 module.exports = DonationConfirmation;

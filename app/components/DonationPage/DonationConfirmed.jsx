@@ -1,8 +1,5 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
-import { List, ListItem } from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
 import Snackbar from 'material-ui/Snackbar';
 
 const styles = {
@@ -25,7 +22,6 @@ const DonationConfirmed = (props) => (
   <div>
     <Dialog
       title="Donation Confirmation"
-      actions={props.actions}
       modal={false}
       open={props.onOpen}
       onRequestClose={props.onHandleClose}
@@ -44,18 +40,13 @@ const DonationConfirmed = (props) => (
       </section>
       <section>
         <h3 className="donation-popup__items-title">Pick-Up Location</h3>
-        <div className="donation-popup__address">600 Main St.</div>
-        <div className="donation-popup__saved-locations">
-            <i>Saved Locations</i>
-            <ul>
-                <li>6636 Tremblay Walks</li>
-                <li>303 Kuhlam Walks Apt.405</li>
-            </ul>
-        </div>
+        <input className="donation-popup__input text-grey" list="donation-popup__addresses" defaultValue="600 Main St." />
+        <datalist id="donation-popup__addresses">
+          <option value="600 Main St."></option>
+          <option value="6636 Tremblay Walks"></option>
+          <option value="303 Kuhlam Walks Apt.405"></option>
+        </datalist>
       </section>
-      <p className="donation-popup__add-location pointer-cursor">
-        Different location
-      </p>
       <div className="text-center">
         <button className="btn btn-rect bg-yellow text-white" onClick={props.onConfirm}>Donate</button>
       </div>
@@ -70,11 +61,9 @@ const DonationConfirmed = (props) => (
 );
 
 DonationConfirmed.propTypes = {
-  actions: React.PropTypes.array.isRequired,
   onOpen: React.PropTypes.bool.isRequired,
   onHandleClose: React.PropTypes.func.isRequired,
-  onNoteChange: React.PropTypes.func.isRequired,
-  noteMsg: React.PropTypes.string.isRequired,
+  onConfirm: React.PropTypes.func.isRequired,
   items: React.PropTypes.array.isRequired,
   openSnackBar: React.PropTypes.bool.isRequired,
   snackbarMessage: React.PropTypes.string.isRequired,

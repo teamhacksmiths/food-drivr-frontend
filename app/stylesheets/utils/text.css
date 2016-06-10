@@ -3,6 +3,9 @@
 .text-grey-dark {
 	color: $grey-dark;
 }
+.text-grey {
+	color: $grey;
+}
 .text-white {
 	color: white;
 }
