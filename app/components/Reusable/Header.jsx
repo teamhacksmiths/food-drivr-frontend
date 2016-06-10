@@ -39,7 +39,7 @@ class Header extends React.Component {
   render() {
     let headerButton = <AppStoreIcon />;
     let logInButton = <Login />;
-    const validRoutes = ['donation', 'profile', '/'];
+    const validRoutes = ['/donation', '/profile', '/'];
 
     if (window.location.pathname === '/donation') {
       headerButton = <TruckButton />;
