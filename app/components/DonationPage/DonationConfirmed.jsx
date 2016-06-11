@@ -1,6 +1,7 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
+import TextField from 'material-ui/TextField';
 
 const styles = {
   titleStyle: {
@@ -47,12 +48,17 @@ const DonationConfirmed = (props) => (
       </section>
       <section>
         <h3 className="donation-popup__items-title">Pick-Up Location</h3>
-        <input className="donation-popup__input text-grey" list="donation-popup__addresses" defaultValue="600 Main St." />
-        <datalist id="donation-popup__addresses">
-          <option value="600 Main St."></option>
-          <option value="6636 Tremblay Walks"></option>
-          <option value="303 Kuhlam Walks Apt.405"></option>
-        </datalist>
+        <p className="donation-popup__address text-grey">600 Main St.</p>
+      </section>
+      <section>
+        <h3 className="donation-popup__items-title">Notes for the Driver</h3>
+        <textarea
+          className="donation-popup__textarea text-grey"
+          placeholder="Special Notes For The Driver"
+          rows="4"
+          onChange={props.onNoteChange}
+          value={props.noteMsg}
+        />
       </section>
       <div className="text-center">
         <button className="btn btn-rect bg-yellow text-white" onClick={props.onConfirm}>Donate</button>
@@ -71,6 +77,8 @@ DonationConfirmed.propTypes = {
   onOpen: React.PropTypes.bool.isRequired,
   onHandleClose: React.PropTypes.func.isRequired,
   onConfirm: React.PropTypes.func.isRequired,
+  onNoteChange: React.PropTypes.func.isRequired,
+  noteMsg: React.PropTypes.string.isRequired,
   items: React.PropTypes.array.isRequired,
   openSnackBar: React.PropTypes.bool.isRequired,
   snackbarMessage: React.PropTypes.string.isRequired,

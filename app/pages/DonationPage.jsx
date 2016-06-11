@@ -15,7 +15,8 @@ class DonationPage extends React.Component {
       enableDonation: false,
       open: false,
       openSnackBar: false,
-      snackbarMessage: ''
+      snackbarMessage: '',
+      noteMsg: ''
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleUpdateItem = this.handleUpdateItem.bind(this);
@@ -24,6 +25,7 @@ class DonationPage extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleDonate = this.handleDonate.bind(this);
     this.handleSnackClose = this.handleSnackClose.bind(this);
+    this.handleNoteChange = this.handleNoteChange.bind(this);
   }
 
   componentWillMount() {
@@ -110,6 +112,10 @@ class DonationPage extends React.Component {
     this.setState({ openSnackBar: false });
   }
 
+  handleNoteChange(e) {
+    this.setState({ noteMsg: e.target.value });
+  }
+
   render() {
     return (
     <section className="donations">
@@ -126,12 +132,16 @@ class DonationPage extends React.Component {
         onOpen={this.state.open}
         onHandleClose={this.handleClose}
         onHandleDonate={this.handleDonate}
+        onNoteChange={this.handleNoteChange}
+        noteMsg={this.state.noteMsg}
         itemsAdded={this.state.itemsAdded}
         openSnackBar={this.state.openSnackBar}
         snackbarMessage={this.state.snackbarMessage}
         onSnackClose={this.handleSnackClose}
       />
-      <DonationHistory donations={this.state.donations} />
+      <DonationHistory
+        donations={this.state.donations}
+      />
     </section>
     );
   }
