@@ -81,6 +81,11 @@ If error occurs, logout user and return to homepage.
       .then((response) => {
         console.log(response);
         const newForm = this.state.formData;
+        if (response.data.user.email != null) {
+          newForm.Email = response.data.user.email;
+        } else {
+          newForm.Email = '';
+        }
         if (response.data.user.phone != null) {
           newForm.Phone = response.data.user.phone;
         } else {
@@ -156,6 +161,7 @@ If error occurs, logout user and return to homepage.
 */
   handleFormUpdate(e) {
     const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    const rePhone = /^\(\d{3}\) ?\d{3}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}/i;
     const newFormData = this.state.formData;
     const newFormErrors = this.state.errors;
 
@@ -166,6 +172,12 @@ If error occurs, logout user and return to homepage.
         this.state.errors.Email = 'Email is not valid.';
       } else {
         this.state.errors.Email = '';
+      } 
+    } else if (e.target.id === 'Phone') {
+      if (!rePhone.test(e.target.value)) {
+        this.state.errors.Phone = 'Phone Number is not valid.';
+      } else {
+        this.state.errors.Phone = '';
       }
     } else if (e.target.id === 'NewPassword') {
       if (!e.target.value) {
@@ -218,12 +230,19 @@ If error occurs, logout user and return to homepage.
 @return set state to a default on form reset.
 */
   handleFormReset() {
+    const newFormData = this.state.formData;
+    if (this.state.isEditing === true) {
+      for (const i in newFormData) {
+        newFormData[i] = '';
+      }
+    }
     this.setState({
       isLoading: true,
       snackBarIsOpen: false,
       snackBarMessage: '',
       userData: {},
-      isEditing: false
+      isEditing: false,
+      formData: newFormData
     });
     this.getUserData();
   }
@@ -237,8 +256,15 @@ If error occurs, logout user and return to homepage.
     auth.updatePassword(data)
       .then((response) => {
         console.log(response);
+        const newFormData = this.state.formData;
+        if (this.state.isEditing === true) {
+          newFormData.CurrentPassword = '';
+          newFormData.NewPassword = '';
+          newFormData.NewPasswordConfirmation = '';
+        }
         this.setState({
           passwordEdit: false,
+          formData: newFormData,
           snackBarIsOpen: true,
           snackBarMessage: 'Successfully updated your password'
         });
@@ -356,7 +382,7 @@ If error occurs, logout user and return to homepage.
           onNotificationToggle={this.handleNotificationToggle}
           onFormReset={this.handleFormReset}
         />
-        <GeoSuggest 
+        <GeoSuggest
           isEditing={this.state.isEditing}
           onSuggestSelect={this.handleSuggestSelect}
         />

@@ -4,6 +4,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 const Styles = {
   buttonStyle: {
     marginRight: 15
+  },
+  buttonGroup: {
+    display: 'flex',
+    padding: 10,
+    marginBottom: 40
   }
 };
 

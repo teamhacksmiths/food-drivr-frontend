@@ -9,10 +9,6 @@ const Styles = {
   },
   formGroup: {
     width: 350
-  },
-  buttonGroup: {
-    display: 'flex',
-    padding: 10
   }
 };
 
@@ -35,18 +31,7 @@ const UserProfile = (props) => (
           floatingLabelText="Email"
           onChange={props.onFormUpdate}
           value={props.formData.Email}
-          disabled={!props.isEditing}
-          style={Styles.formGroup}
-        />
-        <TextField
-          id="CurrentPassword"
-          name="Password"
-          value={props.formData.CurrentPassword}
-          errorText={props.errors.CurrentPassword}
-          onChange={props.onFormUpdate}
-          disabled={!props.isEditing}
-          type="password"
-          hintText="Password"
+          disabled
           style={Styles.formGroup}
         />
         <TextField
