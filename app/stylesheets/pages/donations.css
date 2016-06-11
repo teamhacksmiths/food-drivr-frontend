@@ -46,11 +46,12 @@
     margin-top: 40px;
   }
 }
-.donation-history__titles {
+.donations-history__titles {
   max-width: 40%;
   h2 {
     font-weight: 500;
     font-size: $font-medium;
+    letter-spacing: 1.2px;
   }
   i {
     letter-spacing: 1.2px;
@@ -122,7 +123,7 @@
     }
 	}
   .donations-history h1 {
-    font-size: $font-large;
+    font-size: $font-large-thin;
   }
   .donations-history__titles h2 {
     font-size: $font-medium-thick;
