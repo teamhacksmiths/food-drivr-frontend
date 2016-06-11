@@ -32,17 +32,14 @@ const UserRegister = (props) => {
   return (
       <section className="signup text-center">
         <h1 className="signup__title uppercase text-white">{props.userType} Sign Up</h1>
-        <form autoComplete="off" className={formClass}>
+        <form autoComplete="off" className={formClass} onSubmit={props.onSubmitUser}>
           <TextField
             hintText="Enter Name"
             errorText={props.errorName}
             floatingLabelText="Name"
             onChange={props.onNameChange}
-            onKeyUp={props.onSubmitUser}
             style={styles.textField}
             floatingLabelStyle={styles.floatingLabel}
-            underlineStyle={{ borderColor: 'white' }}
-            underlineFocusStyle={{ borderColor: 'white' }}
             errorStyle={styles.colorWhite}
             value={props.name}
           />
@@ -51,7 +48,6 @@ const UserRegister = (props) => {
             errorText={props.errorEmail}
             floatingLabelText="Email"
             onChange={props.onEmailChange}
-            onKeyUp={props.onSubmitUser}
             style={styles.textField}
             floatingLabelStyle={styles.floatingLabel}
             underlineStyle={{ borderColor: 'white' }}
@@ -64,7 +60,6 @@ const UserRegister = (props) => {
             errorText={props.errorPassword}
             floatingLabelText="Password"
             onChange={props.onPasswordChange}
-            onKeyUp={props.onSubmitUser}
             style={styles.textField}
             floatingLabelStyle={styles.floatingLabel}
             underlineStyle={{ borderColor: 'white' }}
@@ -78,7 +73,6 @@ const UserRegister = (props) => {
             errorText={props.errorPasswordConfirmation}
             floatingLabelText="Password Confirmation"
             onChange={props.onPasswordConfirmChange}
-            onKeyUp={props.onSubmitUser}
             style={styles.textField}
             floatingLabelStyle={styles.floatingLabel}
             underlineStyle={{ borderColor: 'white' }}
@@ -87,7 +81,7 @@ const UserRegister = (props) => {
             value={props.passwordConfirmation}
             type="password"
           />
-          <button className={btnClass} onClick={props.onSubmitUser}>
+          <button type="submit" className={btnClass}>
             Sign up
           </button>
           <h4 className="text-white">

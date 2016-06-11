@@ -23,6 +23,7 @@ class Header extends React.Component {
       auth.login(email, pass)
       .then((response) => {
         console.log(response);
+        localStorage.setItem('token', response.data.authtoken.auth_token);
         auth.onChange(true);
       })
       .catch((err) => {
@@ -40,22 +41,23 @@ class Header extends React.Component {
     let headerButton = <AppStoreIcon />;
     let logInButton = <Login />;
     const validRoutes = ['/donation', '/profile', '/'];
+    const winlo = window.location.pathname;
 
-    if (window.location.pathname === '/donation') {
+    if (winlo === '/donation' || winlo === '/profile') {
       headerButton = <TruckButton />;
-    } else if (window.location.pathname === '/thankyou') {
+    } else if (winlo === '/thankyou') {
       headerButton = '';
-    } else if (window.location.pathname !== '/') {
+    } else if (winlo !== '/') {
       headerButton = <BackButton />;
     }
 
-    if (window.location.pathname === '/thankyou' || window.location.pathname.indexOf('/signup') > -1 || window.location.pathname === '/signin' || window.location.pathname === '/error' || validRoutes.indexOf(window.location.pathname) === -1) {
+    if (winlo === '/thankyou' || winlo.indexOf('/signup') > -1 || winlo === '/signin' || winlo === '/error' || validRoutes.indexOf(winlo) === -1) {
       logInButton = '';
-    } else if (this.state.loggedIn || window.location.pathname === '/donation') {
+    } else if (this.state.loggedIn || winlo === '/donation') {
       logInButton = <UserHeader />;
     }
     return (
-      <header className={window.location.pathname === '/donation' ? 'header header--donation bg-grey-x-light' : 'header'}>
+      <header className={winlo === '/donation' ? 'header header--donation bg-grey-x-light' : 'header'}>
         {headerButton}
         {logInButton}
       </header>

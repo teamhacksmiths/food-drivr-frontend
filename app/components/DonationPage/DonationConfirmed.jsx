@@ -1,7 +1,6 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
-import TextField from 'material-ui/TextField';
 
 const styles = {
   titleStyle: {
@@ -62,6 +61,7 @@ const DonationConfirmed = (props) => (
         />
       </section>
       <div className="text-center">
+        <button className="btn btn-rect--hover bg-yellow text-white" onClick={props.onHandleClose}>Cancel</button>
         <button className="btn btn-rect--hover bg-yellow text-white" onClick={props.onConfirm}>Donate</button>
       </div>
     </Dialog>

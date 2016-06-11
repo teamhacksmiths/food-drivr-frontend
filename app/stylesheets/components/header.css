@@ -27,7 +27,18 @@
   border: solid 1px #979797;
   z-index: $z-index-1;
   text-transform: uppercase;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s opacity ease-in, 1s;
 }
+
+.header > div:hover .header-menu,
+.header-menu:hover {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
 .header-menu__arrow {
   @mixin square 20px;
   @mixin absolute -11px, 20%, *, *;

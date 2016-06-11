@@ -26,6 +26,7 @@ class DonationPage extends React.Component {
     this.handleDonate = this.handleDonate.bind(this);
     this.handleSnackClose = this.handleSnackClose.bind(this);
     this.handleNoteChange = this.handleNoteChange.bind(this);
+    this.handleGetDonations = this.handleGetDonations.bind(this);
   }
 
   componentWillMount() {
@@ -36,12 +37,21 @@ class DonationPage extends React.Component {
   }
 
   componentDidMount() {
+    this.handleGetDonations();
+  }
+
+  handleGetDonations() {
     auth.getDonation().then((response) => {
       console.log(response);
       this.setState({ donations: response.data.donations });
     })
     .catch((err) => {
-      console.log(err);
+      if (err.status >= 400 && err.status <= 500) {
+        console.log(err);
+        auth.logout();
+        auth.onChange(false);
+        this.context.router.push('/');
+      }
     });
   }
 
@@ -81,8 +91,9 @@ class DonationPage extends React.Component {
     if (this.state.itemsAdded.length === 0) this.setState({ enableDonation: false });
   }
 
-  handleOpen(e) {
-    if (!e.target.classList.contains('btn--disabled')) {
+  handleOpen() {
+    const el = document.getElementsByTagName('button')[1];
+    if (!el.classList.contains('btn--disabled')) {
       this.setState({ open: true });
     }
   }
@@ -95,16 +106,22 @@ class DonationPage extends React.Component {
     auth.postDonation(this.state.itemsAdded)
     .then((response) => {
       console.log(response);
-      this.setState({ open: false,
-              openSnackBar: true,
-              snackbarMessage: 'Donation Complete!',
-              itemsAdded: [] });
+      this.setState({
+        open: false,
+        openSnackBar: true,
+        snackbarMessage: 'Donation Complete!',
+        itemsAdded: [],
+        enableDonation: false
+      });
+      this.handleGetDonations();
     })
     .catch((err) => {
       console.log(err);
-      this.setState({ open: false,
-              openSnackBar: true,
-              snackbarMessage: 'Donation Could Not Be Sent! Please Try Again!' });
+      this.setState({
+        open: false,
+        openSnackBar: true,
+        snackbarMessage: 'Donation Could Not Be Sent! Please Try Again!'
+      });
     });
   }
 

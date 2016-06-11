@@ -2,17 +2,17 @@ import React from 'react';
 import DonationConfirmed from './DonationConfirmed.jsx';
 
 const DonationConfirmation = (props) => (
-    <DonationConfirmed
-      onOpen={props.onOpen}
-      onHandleClose={props.onHandleClose}
-      onConfirm={props.onHandleDonate}
-      onNoteChange={props.onNoteChange}
-      noteMsg={props.noteMsg}
-      items={props.itemsAdded}
-      openSnackBar={props.openSnackBar}
-      snackbarMessage={props.snackbarMessage}
-      onSnackClose={props.onSnackClose}
-    />
+  <DonationConfirmed
+    onOpen={props.onOpen}
+    onHandleClose={props.onHandleClose}
+    onConfirm={props.onHandleDonate}
+    onNoteChange={props.onNoteChange}
+    noteMsg={props.noteMsg}
+    items={props.itemsAdded}
+    openSnackBar={props.openSnackBar}
+    snackbarMessage={props.snackbarMessage}
+    onSnackClose={props.onSnackClose}
+  />
 );
 
 DonationConfirmation.propTypes = {
@@ -27,4 +27,4 @@ DonationConfirmation.propTypes = {
   onSnackClose: React.PropTypes.func.isRequired
 };
 
-module.exports = DonationConfirmation;
+export default DonationConfirmation;
