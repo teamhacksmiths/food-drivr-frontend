@@ -16,7 +16,7 @@ const styles = {
     letterSpacing: 1.5
   },
   bodyStyle: {
-    width: '80%',
+    maxWidth: 500,
     margin: 'auto',
     paddingBottom: 0
   },

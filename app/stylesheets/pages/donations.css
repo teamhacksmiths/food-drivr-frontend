@@ -72,24 +72,24 @@
 }
 .donation-popup__items-list {
   font-size: $font-medium-thin;
-  max-height: 62px;
-  overflow-y: scroll;
+  overflow-wrap: break-word;
   li {
-    padding-left: 5px;
+    display: inline;
     letter-spacing: 1px;
+  }
+  li:not(:last-child):after {
+    content: ","
   }
 }
 .donation-popup__address {
   font-size: $font-medium-thin;
   margin: 0;
-  padding-left: 5px;
 }
 .donation-popup__textarea {
   font-size: $font-medium-thin;
   resize: none;
   font-family: $open-sans;
   margin-top: 10px;
-  padding-left: 5px;
   width: 100%;
 }
 .donation-popup__btn-donate {
