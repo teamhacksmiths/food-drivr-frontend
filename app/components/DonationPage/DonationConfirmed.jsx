@@ -17,7 +17,8 @@ const styles = {
   },
   bodyStyle: {
     width: '80%',
-    margin: 'auto'
+    margin: 'auto',
+    paddingBottom: 0
   },
   contentStyle: {
     width: '50%',

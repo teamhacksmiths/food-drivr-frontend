@@ -72,6 +72,8 @@
 }
 .donation-popup__items-list {
   font-size: $font-medium-thin;
+  max-height: 62px;
+  overflow-y: scroll;
   li {
     padding-left: 5px;
     letter-spacing: 1px;
