@@ -2,7 +2,7 @@
 
 .donations {
 	width: 90%;
-	margin:  50px auto 0;
+	margin:  50px auto 80px;
 }
 .donations__form {
   @mixin flex *, *, *, center;
@@ -46,11 +46,12 @@
     margin-top: 40px;
   }
 }
-.donation-history__titles {
+.donations-history__titles {
   max-width: 40%;
   h2 {
     font-weight: 500;
     font-size: $font-medium;
+    letter-spacing: 1.2px;
   }
   i {
     letter-spacing: 1.2px;
@@ -59,6 +60,40 @@
 .donations-history__items {
   letter-spacing: 1px;
   max-width: 50%;
+}
+
+.donation-popup section {
+  margin: 10px 0;
+  font-family: $open-sans;
+}
+.donation-popup__items-title {
+  font-size: $font-medium;
+  letter-spacing: 2px;
+}
+.donation-popup__items-list {
+  font-size: $font-medium-thin;
+  max-height: 62px;
+  overflow-y: scroll;
+  li {
+    padding-left: 5px;
+    letter-spacing: 1px;
+  }
+}
+.donation-popup__address {
+  font-size: $font-medium-thin;
+  margin: 0;
+  padding-left: 5px;
+}
+.donation-popup__textarea {
+  font-size: $font-medium-thin;
+  resize: none;
+  font-family: $open-sans;
+  margin-top: 10px;
+  padding-left: 5px;
+  width: 100%;
+}
+.donation-popup__btn-donate {
+  margin: auto;
 }
 
 .btn-addDonation {
@@ -90,7 +125,7 @@
     }
 	}
   .donations-history h1 {
-    font-size: $font-large;
+    font-size: $font-large-thin;
   }
   .donations-history__titles h2 {
     font-size: $font-medium-thick;

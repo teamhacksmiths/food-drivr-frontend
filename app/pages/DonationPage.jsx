@@ -81,9 +81,8 @@ class DonationPage extends React.Component {
     if (this.state.itemsAdded.length === 0) this.setState({ enableDonation: false });
   }
 
-  handleOpen() {
-    const el = document.getElementsByTagName('button')[1];
-    if (!el.classList.contains('btn-disabled')) {
+  handleOpen(e) {
+    if (!e.target.classList.contains('btn--disabled')) {
       this.setState({ open: true });
     }
   }
@@ -114,10 +113,9 @@ class DonationPage extends React.Component {
   }
 
   handleNoteChange(e) {
-    this.setState({
-      noteMsg: e.target.value
-    });
+    this.setState({ noteMsg: e.target.value });
   }
+
   render() {
     return (
     <section className="donations">
