@@ -22,7 +22,7 @@
   padding: 10px 80px;
   border-radius: 25px;
 }
-.btn-rect-hover {
+.btn-rect--hover {
   @mixin rect 80%, 70px;
   margin: 30px 0;
   max-width: 350px;

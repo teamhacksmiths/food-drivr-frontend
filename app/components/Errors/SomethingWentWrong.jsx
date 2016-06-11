@@ -19,7 +19,7 @@ const SomethingWentWrong = () => (
         <p>{thanks}</p>
       </div>
       <Link to="mailto: admin@fooddrivr.com">
-        <button className="btn btn-rect bg-white text-red">Contact Support</button>
+        <button className="btn btn-rect--hover bg-white text-red">Contact Support</button>
       </Link>
     </section>
 );

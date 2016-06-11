@@ -46,7 +46,7 @@ const SignInUser = ({ email, password, error, errorEmail, errorPassword, onEmail
         value={password}
         type="password"
       />
-      <button className="btn btn-rect-hover bg-white text-red" onClick={onFormSubmit}>
+      <button className="btn btn-rect--hover bg-white text-red" onClick={onFormSubmit}>
         Sign in
       </button>
       <span>

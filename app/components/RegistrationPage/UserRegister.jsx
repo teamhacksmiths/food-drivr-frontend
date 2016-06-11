@@ -20,7 +20,7 @@ const styles = {
 
 const UserRegister = (props) => {
   const btnClass = classNames({
-    'btn btn-rect-hover bg-white': true,
+    'btn btn-rect--hover bg-white': true,
     'text-blue-light': props.userType === 'Volunteer',
     'text-yellow': props.userType === 'Donor'
   });
