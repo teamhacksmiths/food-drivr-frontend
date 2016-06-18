@@ -69,3 +69,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
  Thank you to all of the brilliant people involved in this project. You've all worked hard to accomplish something really amazing! A big thank you to Udacity students and staff. None of this would have been possible without this phenomenal and extremely supportive community!
+
+## Screen Shots
+![Food Drivr Landing Page](https://raw.githubusercontent.com/teamhacksmiths/food-drivr-frontend/master/food-drivr-screenshot.png )
