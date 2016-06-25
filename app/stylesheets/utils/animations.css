@@ -17,7 +17,6 @@
 }
 .appear-leave {
 	opacity: 0;
-	display: none;
 }
 .bobbing {
 	animation: bobbing 0.2s infinite ease-in-out forwards alternate;

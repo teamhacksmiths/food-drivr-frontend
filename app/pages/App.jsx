@@ -21,7 +21,7 @@ class App extends React.Component {
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className={containerClass}>
           <Header />
-          <ReactCSSTransitionGroup transitionName="appear" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+          <ReactCSSTransitionGroup transitionName="appear" transitionEnterTimeout={500} transitionLeaveTimeout={1}>
             {React.cloneElement(this.props.children, { key: this.props.location.pathname })}
           </ReactCSSTransitionGroup>
           <Footer />
