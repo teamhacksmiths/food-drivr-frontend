@@ -14,4 +14,4 @@ ScrollDownButton.propTypes = {
   destination: React.PropTypes.string.isRequired,
 };
 
-module.exports = ScrollDownButton;
+export default ScrollDownButton;
