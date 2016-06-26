@@ -4,16 +4,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 const Styles = {
   buttonStyle: {
     marginRight: 15
-  },
-  buttonGroup: {
-    display: 'flex',
-    padding: 10,
-    marginBottom: 40
   }
 };
 
 const EditProfileButton = (props) => (
-  <div className="profile-button-group" style={Styles.buttonGroup}>
+  <div className="profile-button-group">
     <RaisedButton
       style={Styles.buttonStyle}
       primary

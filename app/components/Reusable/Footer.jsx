@@ -6,8 +6,8 @@ const Footer = () => {
   const footerClass = classNames({
     footer: true,
     'text-center': true,
-    'text-yellow': window.location.pathname === '/donation',
-    'text-white': window.location.pathname !== '/donation'
+    'text-yellow': window.location.pathname === '/donation' || window.location.pathname === '/profile',
+    'text-white': window.location.pathname !== '/donation' && window.location.pathname !== '/profile'
   });
   return (
     <footer className={footerClass}>

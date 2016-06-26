@@ -1,40 +1,42 @@
-.user-profile-container {
+.user-profile {
 	min-height: calc(100vh - 135px);
+	width: 80%;
+	max-width: 500px;
+	margin: auto;
 }
-
-.user-profile-container p {
-	padding: 80px 0;
-	font-size: 30px;
-}
-
-.user-dashboard-form {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	margin-top: 50px;
-}
-
-/* user dashboard / profile */
-.user-avatar-image {
-	border-radius: 50%;
-	width: 75px;
-	height: 75px;
-}
-
-.user-avatar-frame{
-	border: 2px solid #ebebeb;
-}
-
-.user-avatar-frame,.user-avatar-frame img{
-	width: 100px;
-	height: 100px;
-	-webkit-border-radius: 50px; /* Saf3+, Chrome */
-	border-radius: 50px; /* Opera 10.5, IE 9 */
-	/*-moz-border-radius: 30px;  Disabled for FF1+ */
-		margin: auto;
+.user-profile-container {
+	text-align: center;
+	h1 {
+		font-family: $pt-serif;
+		letter-spacing: 2px;
+		font-size: $font-medium-thick;
+		padding: 30px;
 	}
-
-
+	p {
+		padding: 80px 0;
+		font-size: 30px;
+	}
+}
+.user-avatar-image {
+	border: 5px solid #ebebeb;
+	margin: 50px auto;
+	border-radius: 50%;
+	@mixin square 150px;
+}
+.user-dashboard-form {
+	@mixin flex column, center, *, *;
+	margin: auto;
+}
+.toggle {
+	margin: 30px auto;
+}
+.profile-button-group {
+	@mixin flex row, *, *, center;
+    margin: 20px auto 80px;
+}
+.change-password-reveal span {
+	padding: 0 !important;
+}
 /**
  * The geosuggest module
  */
@@ -42,12 +44,17 @@
   font-size: 18px;
   font-size: 1rem;
   position: relative;
-  width: 50%;
   margin: 1em auto;
   text-align: left;
 }
+.geosuggest__label {
+	display: block;
+	text-align: center;
+	margin: 30px;
+}
 .geosuggest__input {
   width: 100%;
+  margin: auto;
   border: 2px solid transparent;
   box-shadow: 0 0 1px #3d464d;
   padding: .5em 1em;
@@ -104,14 +111,6 @@
   background: #ccc;
 }
 
-.toggle-block {
-	max-width: 250px;
-	margin: 1em;
-}
-
-.toggle {
-	margin-bottom: 16px;
-}
 
 /* Loading indicator */
 .fullscreen-loader {
@@ -124,54 +123,45 @@
 	margin-left: -20px;
 	margin-top: -20px;
 }
-
-.fullscreen-loader .spinner {
-
-}
-
-.error-card-wrapper {
-
-}
-
-.button-inline {
-	display:inline-block;
-	margin-right:5px;
-}
-
 .error-card {
 	height: 400px;
 	width: 800px;
 }
-
 .Aligner {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-
 .Aligner-item {
 	max-width: 50%;
 }
-
 .Aligner-item--top {
 	align-self: flex-start;
 }
-
 .Aligner-item--bottom {
 	align-self: flex-end;
 }
-
-.form-group {
-	width: 350px;
-}
-
-.giant-title {
-	padding: 50px;
-}
-
 /* Inner dialog hack for changing the dialog's background color without
  * Changing the screen's background color.  Set as contentClassname on dialog in PasswordForm
  */
 .dialog-grey > div:first-child {
 	background-color: #ebebeb !important;
+}
+
+.update-password {
+	h4 {
+		text-transform: uppercase;
+		font-weight: 100;
+	}
+}
+.update-password__dialog {
+	width: 90% !important;
+	max-width: 500px !important;
+}
+.change-password-reveal {
+	margin: 50px !important;
+	transform: translateY(-30px);
+}
+.password-form {
+	width: 100%;
 }

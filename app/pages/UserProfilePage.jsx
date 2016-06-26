@@ -172,7 +172,7 @@ If error occurs, logout user and return to homepage.
         this.state.errors.Email = 'Email is not valid.';
       } else {
         this.state.errors.Email = '';
-      } 
+      }
     } else if (e.target.id === 'Phone') {
       if (!rePhone.test(e.target.value)) {
         this.state.errors.Phone = 'Phone Number is not valid.';
@@ -371,7 +371,7 @@ If error occurs, logout user and return to homepage.
     ];
     return (
       this.state.isLoading ? <FullscreenLoading isLoading={this.state.isLoading} /> :
-      <div>
+      <div className="user-profile">
         <UserProfile
           userData={this.state.userData}
           onFormSubmit={this.submitUserData}
@@ -388,6 +388,7 @@ If error occurs, logout user and return to homepage.
         />
         <Divider />
         <EditProfileButton
+          className="user-profile__btn-edit"
           isEditing={this.state.isEditing}
           onCancelClick={this.handleCancelClick}
           onEditButtonClick={this.handleEditButtonClick}
