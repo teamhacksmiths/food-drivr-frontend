@@ -4,26 +4,21 @@ import AvatarMissing from '../../assets/images/avatar-missing.png';
 import Toggle from 'material-ui/Toggle';
 
 const Styles = {
-  containerStyle: {
-    textAlign: 'center'
-  },
   formGroup: {
-    width: 350
+    width: '100%',
+    maxWidth: 500
   }
 };
 
 const UserProfile = (props) => (
-  <div className="user-profile-container lightgrey-background" style={Styles.containerStyle}>
-    <h1 className="giant-title text-center text-yellow">Hello, {props.userData.name}</h1>
-    <div className="user-avatar-frame">
-      <img
-        className="user-avatar-image"
-        src={props.userData.avatar ? props.userData.avatar : AvatarMissing}
-        alt="person-avatar"
-      />
-    </div>
+  <div className="user-profile-container">
+    <h1 className="text-center text-yellow">Hello, {props.userData.name}</h1>
+    <img
+      className="user-avatar-image"
+      src={props.userData.avatar ? props.userData.avatar : AvatarMissing}
+      alt="person-avatar"
+    />
     <form className="user-dashboard-form" onSubmit={props.onFormSubmit}>
-      <div className="form-group">
         <TextField
           id="Email"
           hintText="Enter Your Email"
@@ -68,7 +63,6 @@ const UserProfile = (props) => (
           id="Notifications"
           label="Toggle Notifications"
         />
-      </div>
     </form>
   </div>
 );

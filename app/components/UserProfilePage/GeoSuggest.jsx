@@ -1,19 +1,9 @@
 import React from 'react';
 import Geosuggest from 'react-geosuggest';
 
-const Styles = {
-  addressAlign: {
-    textAlign: 'center',
-    display: 'block',
-    top: 38,
-    zIndex: 1,
-    color: '#000000'
-  }
-};
-
 const GeoSuggest = (props) => (
   <div>
-    <label style={Styles.addressAlign}>
+    <label className="geosuggest__label">
       Address
       <Geosuggest
         placeholder="Start typing!"

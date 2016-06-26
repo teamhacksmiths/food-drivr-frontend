@@ -5,7 +5,8 @@ import FlatButton from 'material-ui/FlatButton';
 
 const Styles = {
   formGroup: {
-    width: 350
+    width: '95%',
+    maxWidth: 350
   },
   formCentered: {
     display: 'flex',
@@ -15,7 +16,8 @@ const Styles = {
     margin: 'auto'
   },
   dialog: {
-    textAlign: 'center'
+    textAlign: 'center',
+    width: '100%'
   },
   formHeader: {
     textAlign: 'center',
@@ -23,8 +25,7 @@ const Styles = {
   },
   changePasswordGroup: {
     margin: 10,
-    textAlign: 'center',
-    padding: 20
+    textAlign: 'center'
   }
 };
 
@@ -43,7 +44,7 @@ const PasswordForm = (props) => (
       actions={props.actions}
       modal={false}
       open={props.isOpen}
-      contentClassName="dialog-grey"
+      contentClassName="dialog-grey update-password__dialog"
       style={Styles.dialog}
       onRequestClose={props.onHandleClose}
     >
