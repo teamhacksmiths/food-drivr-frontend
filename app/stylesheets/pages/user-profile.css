@@ -1,5 +1,4 @@
 .user-profile {
-	min-height: calc(100vh - 135px);
 	width: 80%;
 	max-width: 500px;
 	margin: auto;
@@ -10,7 +9,7 @@
 		font-family: $pt-serif;
 		letter-spacing: 2px;
 		font-size: $font-medium-thick;
-		padding: 30px;
+		padding: 25px;
 	}
 	p {
 		padding: 80px 0;
@@ -19,7 +18,7 @@
 }
 .user-avatar-image {
 	border: 5px solid #ebebeb;
-	margin: 50px auto;
+	margin: 10px auto;
 	border-radius: 50%;
 	@mixin square 150px;
 }
