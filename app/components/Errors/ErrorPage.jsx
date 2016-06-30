@@ -41,7 +41,6 @@ const ErrorPage = (props) => (
   </div>
 );
 
-
 ErrorPage.propTypes = {
   errorNumber: React.PropTypes.number.isRequired,
   errorMessage: React.PropTypes.string
