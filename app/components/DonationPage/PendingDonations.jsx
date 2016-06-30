@@ -14,7 +14,12 @@ const PendingDonations = (props) => (
       onHandleRemoveItem={props.onHandleRemoveItem}
     />
     <button
-        className={props.enableDonation ? 'btn btn-donate btn--shadow bg-yellow text-white' : 'btn btn-donate btn--shadow bg-yellow text-white btn--disabled'} onClick={props.onHandleOpen}
+      onClick={props.onHandleOpen}
+      className={props.enableDonation ?
+        'btn btn-donate btn--shadow bg-yellow text-white'
+      :
+        'btn btn-donate btn--shadow bg-yellow text-white btn--disabled'
+      }
     >
       Donate
     </button>
