@@ -6,6 +6,8 @@
   "scripts": {
     "setup": "npm install",
     "build": "webpack",
+    "production": "node ./app.js",
+    "postinstall": "webpack --config ./webpack-prod.config.js --progress --colors",
     "start": "webpack-dev-server --progress --colors --inline && npm run build",
     "compile": "babel --presets react app/scripts/JSX --watch -d app/scripts/JSX-Compiled"
   },
@@ -51,6 +53,7 @@
   "dependencies": {
     "axios": "^0.11.0",
     "classnames": "^2.2.5",
+    "express": "^4.14.0",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.16.1",
     "material-ui": "^0.15.0",

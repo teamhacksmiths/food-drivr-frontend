@@ -1,7 +1,13 @@
 import React from 'react';
 
-const DonationHistoryItem = ({ quantity, unit, title }) => (
-    <div className="text-right">{quantity} {unit} x {title}</div>
+const DonationHistoryItem = ({
+  quantity,
+  unit,
+  title
+}) => (
+  <div className="text-right">
+    {quantity} {unit} x {title}
+  </div>
 );
 
 DonationHistoryItem.propTypes = {
@@ -10,4 +16,4 @@ DonationHistoryItem.propTypes = {
   title: React.PropTypes.string
 };
 
-module.exports = DonationHistoryItem;
+export default DonationHistoryItem;
