@@ -112,8 +112,12 @@ if(TARGET === 'start' || !TARGET) {
       },
       plugins: PRODUCTION ? [
         new webpack.optimize.UglifyJsPlugin({
-
+          minimize: true,
+          compress: {
+            warnings: false
+          }
         }),
+        new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
           'process.env': Object.keys(process.env).reduce(function(o, k) {
             o[k] = JSON.stringify(process.env[k]);
