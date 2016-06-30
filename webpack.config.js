@@ -17,6 +17,7 @@ const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
+  public: path.join(__dirname, 'public'),
   images: path.join(__dirname, 'assets/images'),
   style: path.join(__dirname, 'app/stylesheets')
 };
@@ -75,9 +76,7 @@ const common = {
   },
   postcss: function (webpack) {
     return [
-        postcssImport({
-            addDependencyTo: webpack
-        }),
+      postcssImport({ addDependencyTo: webpack }),
   		require('autoprefixer'),
   		require('precss'),
       require('cssnano')
