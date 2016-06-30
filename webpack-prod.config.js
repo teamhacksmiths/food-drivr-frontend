@@ -20,42 +20,41 @@ const PATHS = {
   style: path.join(__dirname, 'app/stylesheets')
 };
 
-process.env.BABEL_ENV = TARGET;
-
-const common = {
-  // Entry accepts a path or an object of entries. We'll be using the
-  // latter form given it's convenient with more complex configurations.
+module.exports = {
+  devtool: 'source-map',
   entry: {
-    app: PATHS.app
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-    alias: {
-      pages: path.resolve(PATHS.app, 'pages')
-    }
+    PATHS.app
   },
   output: {
-    path: PATHS.build,
+    path: PATHS.public,
     filename: 'bundle.js'
   },
+  plugins: [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
+  ],
   module: {
-    // This clutters the console with errors for each eslint error
-    // preLoaders: [{
-    //   test: /\.jsx?$/,
-    //   loaders: PRODUCTION ? [] : ['eslint'],
-    //   include: PATHS.app
-    // }],
     loaders: [
         // Set up jsx. This accepts js too thanks to RegExp
-        {
-          test: /\.jsx?$/,
-          // Enable caching for improved performance during development
-          // It uses default OS directory by default. If you need something
-          // more custom, pass a path to it. I.e., babel?cacheDirectory=<path>
-          loaders: ['babel?cacheDirectory'],
-          // Parse only app files! Without this it will go through entire project.
-          // In addition to being slow, that will most likely result in an error.
-          include: PATHS.app
+      {
+        test: /\.jsx?$/,
+        // Enable caching for improved performance during development
+        // It uses default OS directory by default. If you need something
+        // more custom, pass a path to it. I.e., babel?cacheDirectory=<path>
+        loaders: ['babel?cacheDirectory'],
+        // Parse only app files! Without this it will go through entire project.
+        // In addition to being slow, that will most likely result in an error.
+        include: PATHS.app
       },
       {
         // Test expects a RegExp! Note the slashes!
@@ -74,60 +73,9 @@ const common = {
   postcss: function (webpack) {
     return [
       postcssImport({ addDependencyTo: webpack }),
-  		require('autoprefixer'),
-  		require('precss'),
+      require('autoprefixer'),
+      require('precss'),
       require('cssnano')
     ];
   }
 };
-
-
-// Default configuration. We will return this if
-// Webpack is called outside of npm.
-if(TARGET === 'start' || !TARGET) {
-  module.exports = merge(common, {
-    devtool: 'eval-source-map',
-      devServer: {
-        contentBase: PATHS.build,
-
-        // Enable history API fallback so HTML5 History API based
-        // routing works. This is a good default that will come
-        // in handy in more complicated setups.
-        historyApiFallback: true,
-        hot: true,
-        inline: true,
-        progress: true,
-
-        // Display only errors to reduce the amount of output.
-        stats: 'errors-only',
-
-        // Constants defined above take care of logic
-        // For setting host and port
-        host: HOST,
-        port: PORT
-      },
-      plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-          minimize: true,
-          compress: {
-            warnings: false
-          }
-        }),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.DefinePlugin({
-          'process.env': Object.keys(process.env).reduce(function(o, k) {
-            o[k] = JSON.stringify(process.env[k]);
-            return o;
-          }, {})
-        }),
-        new HtmlwebpackPlugin({
-          title: 'Food Drivr',
-          template: 'index.html'
-        })
-      ]
-    });
-}
-
-if(TARGET === 'build') {
-  module.exports = merge(common, {});
-}
