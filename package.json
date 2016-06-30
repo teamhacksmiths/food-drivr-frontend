@@ -6,6 +6,7 @@
   "scripts": {
     "setup": "npm install",
     "build": "webpack",
+    "production": "node ./app.js",
     "start": "webpack-dev-server --progress --colors --inline && npm run build",
     "compile": "babel --presets react app/scripts/JSX --watch -d app/scripts/JSX-Compiled"
   },
