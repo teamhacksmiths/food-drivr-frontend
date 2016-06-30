@@ -12,7 +12,7 @@ const EditProfileButton = (props) => (
     <RaisedButton
       style={Styles.buttonStyle}
       primary
-      disabled={props.isEditing ? !props.emailComplete : false}
+      disabled={props.isEditing ? !props.saveChanges : false}
       onClick={props.onEditButtonClick}
       label={props.isEditing ? 'Save Profile' : 'Edit Profile'}
     />

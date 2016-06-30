@@ -30,20 +30,21 @@ class UserProfilePage extends React.Component {
         Email: '',
         Phone: '',
         Company: '',
-        Notifications: false,
+        Notifications: null,
         CurrentPassword: '',
         NewPassword: '',
         NewPasswordConfirmation: '',
         Avatar: null
       },
-      emailComplete: false,
       errors: {
         Email: '',
         CurrentPassword: '',
         NewPassword: '',
         NewPasswordConfirmation: ''
       },
-      canSubmit: false
+      saveChanges: false,
+      canSubmit: false,
+      toggled: null,
     };
     this.getUserData = this.getUserData.bind(this);
     this.submitUserData = this.submitUserData.bind(this);
@@ -53,7 +54,6 @@ class UserProfilePage extends React.Component {
     this.handleCancelClick = this.handleCancelClick.bind(this);
     this.handleEditButtonClick = this.handleEditButtonClick.bind(this);
     this.handleChangePasswordClick = this.handleChangePasswordClick.bind(this);
-    this.handleNotificationToggle = this.handleNotificationToggle.bind(this);
     this.handleSnackClose = this.handleSnackClose.bind(this);
     this.handleCloseAction = this.handleCloseAction.bind(this);
     this.handleSubmitAction = this.handleSubmitAction.bind(this);
@@ -101,12 +101,14 @@ If error occurs, logout user and return to homepage.
         } else {
           newForm.Avatar = null;
         }
+        newForm.Notifications = response.data.user.settings.notifications;
 
         this.setState({
           isLoading: false,
           isEditing: false,
           userData: response.data.user,
-          formData: newForm
+          formData: newForm,
+          toggled: newForm.Notifications
         });
       })
       .catch((error) => {
@@ -162,8 +164,10 @@ If error occurs, logout user and return to homepage.
   handleFormUpdate(e) {
     const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     const rePhone = /^\(\d{3}\) ?\d{3}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}/i;
+    const userData = Object.assign({}, this.state.userData);
     const newFormData = this.state.formData;
     const newFormErrors = this.state.errors;
+    const formData = this.state.formData;
 
     if (e.target.id === 'Email') {
       if (!e.target.value) {
@@ -199,16 +203,19 @@ If error occurs, logout user and return to homepage.
       } else {
         this.state.errors.NewPasswordConfirmation = '';
       }
+    } else if (e.target.id === 'Notifications') {
+      if (newFormData.Notifications === true && e.target.value === 'on') {
+        newFormData.Notifications = false;
+      } else if (e.target.value === 'on') {
+        newFormData.Notifications = true;
+      } else {
+        newFormData.Notifications = false;
+      }
     }
-
-    newFormData[e.target.id] = e.target.value;
+    if (e.target.id !== 'Notifications') {
+      newFormData[e.target.id] = e.target.value;
+    }
     newFormErrors[e.target.id] = this.state.errors[e.target.id];
-
-    if (newFormData.Email.length > 0 && !newFormErrors.Email) {
-      this.setState({ emailComplete: true });
-    } else {
-      this.setState({ emailComplete: false });
-    }
 
     if (!newFormErrors.CurrentPassword &&
       !newFormErrors.NewPassword &&
@@ -222,8 +229,21 @@ If error occurs, logout user and return to homepage.
     }
     this.setState({
       formData: newFormData,
-      errors: newFormErrors
+      errors: newFormErrors,
+      toggled: newFormData.Notifications
     });
+    if (newFormData.Email !== userData.email ||
+        newFormData.Phone !== userData.phone ||
+        newFormData.Company !== userData.company ||
+        newFormData.Notifications !== userData.settings.notifications
+      ) {
+      this.setState({ saveChanges: true });
+    } else {
+      this.setState({ saveChanges: false });
+    }
+    console.log(newFormData);
+    console.log(e.target.id);
+    console.log(e.target.value);
   }
 
 /*
@@ -268,6 +288,7 @@ If error occurs, logout user and return to homepage.
           snackBarIsOpen: true,
           snackBarMessage: 'Successfully updated your password'
         });
+        this.handleCancelClick();
       }).catch((err) => {
         console.log(err);
         this.setState({
@@ -281,7 +302,10 @@ If error occurs, logout user and return to homepage.
 @return set isEditing state. return to default state. Cancel profile edit
 */
   handleCancelClick() {
-    this.setState({ isEditing: false });
+    this.setState({
+      isEditing: false,
+      saveChanges: false
+    });
     this.handleFormReset();
   }
 
@@ -303,16 +327,6 @@ If error occurs, logout user and return to homepage.
 */
   handleChangePasswordClick() {
     this.setState({ passwordEdit: true });
-  }
-
-/*
-@return toggle boolean state of formData.notifications
-*/
-  handleNotificationToggle() {
-    const formData = this.state.formData;
-    const toggled = !formData.notifications;
-    formData.notifications = toggled;
-    this.setState({ formData });
   }
 
 /*
@@ -379,7 +393,7 @@ If error occurs, logout user and return to homepage.
           onFormUpdate={this.handleFormUpdate}
           formData={this.state.formData}
           isEditing={this.state.isEditing}
-          onNotificationToggle={this.handleNotificationToggle}
+          toggled={this.state.toggled}
           onFormReset={this.handleFormReset}
         />
         <GeoSuggest
@@ -392,7 +406,7 @@ If error occurs, logout user and return to homepage.
           isEditing={this.state.isEditing}
           onCancelClick={this.handleCancelClick}
           onEditButtonClick={this.handleEditButtonClick}
-          emailComplete={this.state.emailComplete}
+          saveChanges={this.state.saveChanges}
         />
         <PasswordForm
           actions={actions}

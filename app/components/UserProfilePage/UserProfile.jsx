@@ -57,8 +57,8 @@ const UserProfile = (props) => (
         />
         <Toggle
           className="toggle"
-          onToggle={props.onNotificationToggle}
-          toggled={props.formData.notifications}
+          onToggle={props.onFormUpdate}
+          toggled={props.toggled}
           disabled={!props.isEditing}
           id="Notifications"
           label="Toggle Notifications"
