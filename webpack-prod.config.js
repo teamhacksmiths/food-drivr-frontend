@@ -5,7 +5,7 @@ module.exports = {
   devtool: 'source-map',
 
   entry: [
-    './src/index'
+    './app/index'
   ],
 
   output: {
@@ -36,7 +36,7 @@ module.exports = {
         exclude: /node_modules/ },
       { test: /\.scss?$/,
         loader: 'style!css!sass',
-        include: path.join(__dirname, 'src', 'styles') },
+        include: path.join(__dirname, 'app', 'styles') },
       { test: /\.png$/,
         loader: 'file' },
       { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
