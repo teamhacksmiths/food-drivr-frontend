@@ -8,20 +8,20 @@ const thanks = 'Thanks again for supporting Food Drivr!';
 const somethingGoneWrong = 'something appears to have gone wrong';
 
 const SomethingWentWrong = () => (
-    <section className="something-went-wrong__section text-center text-white">
-      <header className="uppercase">
-          <WhiteTruckButton />
-          <h1 className="something-went-wrong__header">{oops}</h1>
-          <h2 className="something-went-wrong__subheader">{somethingGoneWrong}</h2>
-      </header>
-      <div className="something-went-wrong__paragraph-container">
-        <p>{message}</p>
-        <p>{thanks}</p>
-      </div>
-      <Link to="mailto: admin@fooddrivr.com">
-        <button className="btn btn-rect--hover bg-white text-red">Contact Support</button>
-      </Link>
-    </section>
+  <section className="something-went-wrong__section text-center text-white">
+    <header className="uppercase">
+      <WhiteTruckButton />
+      <h1 className="something-went-wrong__header">{oops}</h1>
+      <h2 className="something-went-wrong__subheader">{somethingGoneWrong}</h2>
+    </header>
+    <div className="something-went-wrong__paragraph-container">
+      <p>{message}</p>
+      <p>{thanks}</p>
+    </div>
+    <Link to="mailto: admin@fooddrivr.com">
+      <button className="btn btn-rect--hover bg-white text-red">Contact Support</button>
+    </Link>
+  </section>
 );
 
 export default SomethingWentWrong;
