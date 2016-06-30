@@ -23,7 +23,7 @@ const PendingDonations = (props) => (
     >
       Donate
     </button>
-</section>
+  </section>
 );
 
 PendingDonations.propTypes = {
@@ -36,4 +36,4 @@ PendingDonations.propTypes = {
   onHandleRemoveItem: React.PropTypes.func.isRequired
 };
 
-module.exports = PendingDonations;
+export default PendingDonations;
