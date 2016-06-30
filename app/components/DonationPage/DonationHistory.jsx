@@ -16,7 +16,9 @@ const convertDate = function convertDate(date) {
   return `${months[parseInt(dateItems[1] - 1, 10)]} ${dateItems[2]}, ${dateItems[0]}`;
 };
 
-const DonationHistory = ({ donations }) => (
+const DonationHistory = ({
+  donations
+}) => (
   <section className="donations-history">
     <Headline value="Donations History" />
     <ul className="donations-history__list">
