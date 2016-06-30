@@ -1,4 +1,4 @@
-import React from 'react';
+daimport React from 'react';
 
 class BackButton extends React.Component {
   constructor(props, context) {
@@ -13,7 +13,7 @@ class BackButton extends React.Component {
   render() {
     return (
       <div className="header__back pointer-cursor" onClick={this.handleGoBack}></div>
-	);
+    );
   }
 }
 
