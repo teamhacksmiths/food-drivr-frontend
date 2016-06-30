@@ -49,9 +49,11 @@
   "dependencies": {
     "axios": "^0.11.0",
     "classnames": "^2.2.5",
+    "express": "^4.14.0",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.16.1",
     "material-ui": "^0.15.0",
+    "postcss-import": "^8.1.2",
     "react": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
     "react-dom": "^15.0.2",
@@ -60,7 +62,6 @@
     "react-scroll": "^1.0.16",
     "react-tap-event-plugin": "^1.0.0",
     "webpack": "^1.13.0",
-    "postcss-import": "^8.1.2",
     "webpack-merge": "^0.12.0"
   }
 }
