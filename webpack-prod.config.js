@@ -2,8 +2,6 @@ const path = require('path');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const postcssImport = require('postcss-import');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const HtmlwebpackPlugin = require('html-webpack-plugin');
 
 //Standard Node environment variables for determining if we are in PRODUCTION
 //To enable / disable the hot module replacement.
@@ -108,7 +106,7 @@ if(TARGET === 'start' || !TARGET) {
         host: HOST,
         port: PORT
       },
-      plugins: PRODUCTION ? [
+      plugins: [
         new webpack.optimize.UglifyJsPlugin({
           minimize: true,
           compress: {
@@ -125,16 +123,6 @@ if(TARGET === 'start' || !TARGET) {
         new HtmlwebpackPlugin({
           title: 'Food Drivr',
           template: 'index.html'
-        })
-      ] :
-       [
-        new webpack.HotModuleReplacementPlugin(),
-        new HtmlwebpackPlugin({
-          title: 'Food Drivr',
-          template: 'index.html'
-        }),
-        new OpenBrowserPlugin({
-          url: URL
         })
       ]
     });
