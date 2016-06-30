@@ -22,9 +22,9 @@ const PATHS = {
 
 module.exports = {
   devtool: 'source-map',
-  entry: {
+  entry: [
     PATHS.app
-  },
+  ],
   output: {
     path: PATHS.public,
     filename: 'bundle.js'
