@@ -5,7 +5,7 @@ module.exports = {
   devtool: 'source-map',
 
   entry: [
-    './app/index'
+    app: path.join(__dirname, 'app')
   ],
 
   output: {
