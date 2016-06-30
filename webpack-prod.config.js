@@ -1,11 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
 
+const appEntry = path.join(__dirname, 'app')
+
 module.exports = {
   devtool: 'source-map',
 
   entry: [
-    app: path.join(__dirname, 'app')
+    appEntry
   ],
 
   output: {
