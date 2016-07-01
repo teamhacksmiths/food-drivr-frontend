@@ -18,4 +18,4 @@ Comment.propTypes = {
   company: React.PropTypes.string.isRequired
 };
 
-module.exports = Comment;
+export default Comment;

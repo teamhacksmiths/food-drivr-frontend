@@ -28,20 +28,38 @@ class SectionBecomeA extends React.Component {
   render() {
     return (
       <section className="become-a bg-grey-dark__gradient">
-        <Arrow direction="Left" onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver} />
+        <Arrow
+          direction="Left"
+          onClick={this.state.userType === 'Driver' ?
+            this.onSubmitVolunteer
+          :
+            this.onSubmitDriver
+          }
+        />
         <section className="become-a__content text-white">
-          <Headline value={`Become a ${this.state.userType}`} className="become-a__title" />
+          <Headline
+            value={`Become a ${this.state.userType}`}
+            className="become-a__title"
+          />
             {this.state.userType === 'Driver' ?
-              <DriverDescription /> :
-              <DonorDescription />}
+              <DriverDescription />
+            :
+              <DonorDescription />
+            }
           <BodyButton />
         </section>
         <AppStoreIcon className="become-a__appstore-icon" />
         <div className="become-a__app-sample" />
-        <Arrow direction="Right" onClick={this.state.userType === 'Driver' ? this.onSubmitVolunteer : this.onSubmitDriver} />
+        <Arrow
+          direction="Right"
+          onClick={this.state.userType === 'Driver' ?
+            this.onSubmitVolunteer
+          :
+            this.onSubmitDriver}
+        />
       </section>
     );
   }
 }
 
-module.exports = SectionBecomeA;
+export default SectionBecomeA;
