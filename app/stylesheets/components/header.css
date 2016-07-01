@@ -4,6 +4,7 @@
 .header {
   width: 90%;
   max-width: 1000px;
+  max-height: 40px;
   margin: 30px auto;
   @mixin flex *, center, *, space-between;
   font-family: $open-sans;
@@ -81,5 +82,10 @@
   .header__back {
     @mixin square 55px;
     @mixin absolute 50px, *, * , 50px;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .header--donation {
+    padding: 0 calc((100% - 1000px) / 2);
   }
 }
