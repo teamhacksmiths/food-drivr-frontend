@@ -2,7 +2,7 @@
 
 .donations {
 	width: 90%;
-	margin:  50px auto 80px;
+	margin:  30px auto 80px;
 }
 .donations__form {
   @mixin flex *, *, *, center;
@@ -16,14 +16,14 @@
   max-height: 40vh;
   max-width: 540px;
   width: 95%;
-  margin: 20px auto 0;
+  margin: 0 auto 20px;
 }
 .donation__item {
 	@mixin flex *, flex-end, *, space-between;
 }
 .donation__item-name {
   margin-top: 15px;
-  font-size: $font-medium-thin;
+  font-size: $font-small;
   letter-spacing: 0.9px;
   font-family: $open-sans;
 }
@@ -34,7 +34,7 @@
 }
 .donations-history h1 {
   font-family: $open-sans;
-  font-size: $font-medium-thick;
+  font-size: $font-medium;
   font-weight: 100;
   letter-spacing: 1.2px;
   margin: 20px auto;
@@ -50,16 +50,18 @@
   max-width: 40%;
   h2 {
     font-weight: 500;
-    font-size: $font-medium;
+    font-size: $font-medium-thin;
     letter-spacing: 1.2px;
   }
   i {
+    font-size: $font-small;
     letter-spacing: 1.2px;
   }
 }
 .donations-history__items {
   letter-spacing: 1px;
   max-width: 50%;
+  font-size: $font-small;
 }
 
 .donation-popup section {
@@ -67,12 +69,14 @@
   font-family: $open-sans;
 }
 .donation-popup__items-title {
-  font-size: $font-medium;
+  font-size: $font-medium-thin;
   letter-spacing: 2px;
 }
 .donation-popup__items-list {
-  font-size: $font-medium-thin;
+  font-size: $font-small-thick;
   overflow-wrap: break-word;
+  max-height: 45px;
+  overflow-y: scroll;
   li {
     display: inline;
     letter-spacing: 1px;
@@ -82,15 +86,25 @@
   }
 }
 .donation-popup__address {
-  font-size: $font-medium-thin;
+  font-size: $font-small-thick;
   margin: 0;
 }
 .donation-popup__textarea {
-  font-size: $font-medium-thin;
+  font-size: $font-small-thick;
   resize: none;
   font-family: $open-sans;
   margin-top: 10px;
   width: 100%;
+}
+.donation-popup__btn-container {
+  @mixin flex row, *, *, space-between;
+  button {
+    width: 48%;
+    min-width: inherit;
+    max-width: none;
+    height: 50px;
+    margin: 10px auto 30px;
+  }
 }
 .donation-popup__btn-donate {
   margin: auto;
@@ -101,8 +115,9 @@
   @mixin bg-img '/images/add-button.svg';
 }
 .btn-delDonation {
-  @mixin square 25px;
+  @mixin square 20px;
   @mixin bg-img '/images/delete-item.svg';
+  margin-right: 5px;
 }
 .btn-donate {
   @mixin rect 60%, 50px;
@@ -116,7 +131,13 @@
 }
 
 @media screen and (min-width: 768px) {
+  .donations {
+    margin-top: 60px;
+  }
   .donations__form {
+    >div {
+      height: 55px !important;
+    }
     div,
     input {
       /* Using !important is highly discouraged. In this case it is the only way to override Material UI inline styling */
@@ -124,6 +145,9 @@
       line-height: 1.9 !important;
     }
 	}
+  .donation__item-name {
+    font-size: $font-medium-thin;
+  }
   .donations-history h1 {
     font-size: $font-large-thin;
   }
@@ -132,5 +156,9 @@
   }
   .donations-history__items {
     font-size: $font-medium-thin;
+  }
+  .btn-delDonation {
+    @mixin square 25px;
+    margin-right: 0;
   }
 }

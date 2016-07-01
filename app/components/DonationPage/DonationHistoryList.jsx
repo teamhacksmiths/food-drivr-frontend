@@ -19,7 +19,7 @@ const DonationHistoryList = ({
 DonationHistoryList.propTypes = {
   title: React.PropTypes.string.isRequired,
   date: React.PropTypes.string.isRequired,
-  children: React.children
+  children: React.PropTypes.array
 };
 
 export default DonationHistoryList;
