@@ -27,7 +27,7 @@
 }
 .signup__form {
   @mixin flex column, center, *, *;
-  width: 100%;
+  width: 90%;
   input {
     color: rgba(255, 255, 255, 1) !important;
   }
