@@ -12,8 +12,11 @@ class BackButton extends React.Component {
 
   render() {
     return (
-      <div className="header__back pointer-cursor" onClick={this.handleGoBack}></div>
-	);
+      <div
+        className="header__back pointer-cursor"
+        onClick={this.handleGoBack}
+      />
+    );
   }
 }
 
@@ -21,4 +24,4 @@ BackButton.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-module.exports = BackButton;
+export default BackButton;
