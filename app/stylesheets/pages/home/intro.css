@@ -51,6 +51,9 @@
   .intro {
     padding: 10px;
   }
+  .intro__powered {
+    font-size: $font-small;
+  }
   .intro__title {
 		max-width: 900px;
 		font-size: $font-huge-thin;
@@ -58,6 +61,10 @@
 	}
 	.intro__content {
 		font-size: $font-medium-thin;
+    p:first-child,
+    p:last-child {
+      display: block;
+    }
 	}
 }
 @media screen and (min-width: 1024px) {
