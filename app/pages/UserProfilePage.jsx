@@ -241,9 +241,6 @@ If error occurs, logout user and return to homepage.
     } else {
       this.setState({ saveChanges: false });
     }
-    console.log(newFormData);
-    console.log(e.target.id);
-    console.log(e.target.value);
   }
 
 /*
@@ -272,10 +269,8 @@ If error occurs, logout user and return to homepage.
 @return Confirmation + snackbar message
 */
   handlePasswordReset(data) {
-    console.log(data);
     auth.updatePassword(data)
       .then((response) => {
-        console.log(response);
         const newFormData = this.state.formData;
         if (this.state.isEditing === true) {
           newFormData.CurrentPassword = '';
