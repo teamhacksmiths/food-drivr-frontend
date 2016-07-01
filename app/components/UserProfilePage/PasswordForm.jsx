@@ -64,7 +64,7 @@ const PasswordForm = (props) => (
             <div className="form-group">
               <TextField
                 style={Styles.formGroup}
-                id="CurrentPassword"
+                id="currentPassword"
                 name="currentPassword"
                 floatingLabelText="Current Password"
                 value={props.formData.CurrentPassword}
@@ -76,7 +76,7 @@ const PasswordForm = (props) => (
             </div>
             <div className="form-group">
               <TextField
-                id="NewPassword"
+                id="newPassword"
                 style={Styles.formGroup}
                 name="password"
                 floatingLabelText="New Password"
@@ -90,7 +90,7 @@ const PasswordForm = (props) => (
             <div className="form-group">
               <TextField
                 style={Styles.formGroup}
-                id="NewPasswordConfirmation"
+                id="newPasswordConfirmation"
                 name="passwordConfirmation"
                 floatingLabelText="Confirm New Password"
                 value={props.formData.NewPasswordConfirmation}
