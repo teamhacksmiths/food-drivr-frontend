@@ -40,3 +40,11 @@ p {
 	padding: 0;
 	position: relative;
 }
+
+
+/* Thanks Cperry!! */
+html {
+	height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
