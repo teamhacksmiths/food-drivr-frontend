@@ -6,7 +6,7 @@
   align-self: center;
   img {
     margin: 0 5px;
-    @mixin square 45px;
+    @mixin square 35px;
   }
 }
 .become-a__content {

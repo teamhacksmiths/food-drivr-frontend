@@ -15,7 +15,7 @@
 }
 .header__back {
   @mixin bg-img '/images/back-arrow.svg';
-  @mixin square 55px;
+  @mixin square 45px;
   @mixin absolute 25px, *, * , 25px;
 }
 
@@ -83,6 +83,7 @@
 
 @media screen and (min-width: 768px){
   .header__back {
+    @mixin square 55px;
     @mixin absolute 50px, *, * , 50px;
   }
 }

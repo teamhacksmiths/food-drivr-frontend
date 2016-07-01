@@ -1,21 +1,25 @@
 .signup {
 	min-height: 80vh;
-  margin-top: 100px;
+  margin-top: 85px;
 	@mixin flex column, center, *, *;
 	font-family: $open-sans;
 }
 .signup__title {
-  font-size: $font-large;
-  margin-bottom: 50px;
+  font-size: $font-large-thin;
+  margin-bottom: 30px;
 }
 .signup__or {
   font-size: $font-medium;
+  margin: 0 auto;
 }
 .signup__selection {
-  @mixin flex column, *, *, *;
-  font-size: $font-medium-thick;
+  @mixin flex column, center, *, *;
+  font-size: $font-medium;
+  img {
+    @mixin square 60px;
+  }
   span {
-    margin-top: 15px;
+    margin-top: 5px;
   }
   * {
     cursor: pointer;
@@ -23,7 +27,7 @@
 }
 .signup__form {
   @mixin flex column, center, *, *;
-  width: 100%;
+  width: 90%;
   input {
     color: rgba(255, 255, 255, 1) !important;
   }
@@ -38,4 +42,22 @@
 .signup__form--volunteer input:-webkit-autofill {
   box-shadow: 0 0 0px 1000px $blue-light inset;
   color: rgba(255, 255, 255, 1) !important;
+}
+@media screen and (min-width: 768px) {
+  .signup {
+    margin-top: 100px
+  }
+  .signup__title {
+    font-size: $font-large;
+    margin-bottom: 50px;
+  }
+  .signup__selection {
+    font-size: $font-medium-thick;
+    img {
+      @mixin square 85px;
+    }
+    span {
+      margin-top: 15px;
+    }
+  }
 }
