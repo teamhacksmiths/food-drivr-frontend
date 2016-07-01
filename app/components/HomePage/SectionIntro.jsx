@@ -10,7 +10,7 @@ const paragraphOne = `On a daily basis catering facilities, restaurants,
   grocery stores, as well as individuals produce more
   food than what is needed for them to meet their needs.`;
 const paragraphTwo = `Using Food Drivr, organizations help
-  to deliver this excess to people in need.`;
+  to deliver excess food to people in need.`;
 const joinUs = 'Join us and help end hunger.';
 
 const FoodDrivrTruck = ({

@@ -6,24 +6,21 @@
 }
 .intro__truck-white {
   @mixin bg-img '/images/fd-logo.svg';
-  @mixin square 46px;
+  @mixin square 40px;
   margin: auto;
 }
 .intro__food-drivr {
 	letter-spacing: 3.3px;
 }
-.intro__truck-white:hover {
-  /* Unused class */
-}
 .intro__powered {
-  font-size: $font-small;
+  font-size: $font-small-thin;
 	line-height: 3px;
 	letter-spacing: 2.8px;
 }
 .intro__title {
   margin: 1rem;
   font-weight: bold;
-  font-size: $font-large-thick;
+  font-size: $font-large;
   max-width: 60rem;
 }
 .intro__content {
@@ -32,6 +29,10 @@
   line-height: 1.11;
   max-width: 40rem;
   padding: 0 2rem;
+  p:first-child,
+  p:last-child {
+    display: none;
+  }
 }
 .intro__scrolldown {
   font-size: $font-small-thin;
