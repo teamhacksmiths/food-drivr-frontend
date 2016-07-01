@@ -1,6 +1,10 @@
 import React from 'react';
 
-const DonationHistoryList = ({ title, date, children }) => (
+const DonationHistoryList = ({
+  title,
+  date,
+  children
+}) => (
   <li>
     <header className="donations-history__titles">
       <h2 className="uppercase">{title}</h2>
@@ -15,6 +19,7 @@ const DonationHistoryList = ({ title, date, children }) => (
 DonationHistoryList.propTypes = {
   title: React.PropTypes.string.isRequired,
   date: React.PropTypes.string.isRequired,
+  children: React.children
 };
 
-module.exports = DonationHistoryList;
+export default DonationHistoryList;
