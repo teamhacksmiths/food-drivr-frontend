@@ -7,4 +7,4 @@ const Login = () => (
   </h3>
 );
 
-module.exports = Login;
+export default Login;

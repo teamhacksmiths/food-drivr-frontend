@@ -51,13 +51,24 @@ class Header extends React.Component {
       headerButton = <BackButton />;
     }
 
-    if (winlo === '/thankyou' || winlo.indexOf('/signup') > -1 || winlo === '/signin' || winlo === '/error' || validRoutes.indexOf(winlo) === -1) {
+    if (winlo === '/thankyou' ||
+      winlo.indexOf('/signup') > -1 ||
+      winlo === '/signin' ||
+      winlo === '/error' ||
+      validRoutes.indexOf(winlo) === -1
+    ) {
       logInButton = '';
     } else if (this.state.loggedIn || winlo === '/donation') {
       logInButton = <UserHeader />;
     }
     return (
-      <header className={winlo === '/donation' ? 'header header--donation bg-grey-x-light' : 'header'}>
+      <header
+        className={winlo === '/donation' ?
+          'header header--donation bg-grey-x-light'
+        :
+          'header'
+        }
+      >
         {headerButton}
         {logInButton}
       </header>
@@ -65,4 +76,4 @@ class Header extends React.Component {
   }
 }
 
-module.exports = Header;
+export default Header;

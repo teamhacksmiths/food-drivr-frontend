@@ -11,9 +11,13 @@ const Footer = () => {
   });
   return (
     <footer className={footerClass}>
-      <p>Made with ♥ by <Link to="http://hacksmiths.io">Team Hacksmiths</Link></p>
+      <p>Made with ♥ by
+        <Link to="http://hacksmiths.io">
+          {' Team Hacksmiths'}
+        </Link>
+      </p>
     </footer>
   );
 };
 
-module.exports = Footer;
+export default Footer;

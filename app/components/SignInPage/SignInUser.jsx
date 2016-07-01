@@ -70,4 +70,4 @@ SignInUser.propTypes = {
   onFormSubmit: React.PropTypes.func.isRequired
 };
 
-module.exports = SignInUser;
+export default SignInUser;

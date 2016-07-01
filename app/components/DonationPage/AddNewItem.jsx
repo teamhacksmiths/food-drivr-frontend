@@ -14,7 +14,11 @@ const styles = {
   }
 };
 
-const AddNewItem = ({ onUpdateItem, enableAddItem, onAddItem }) => (
+const AddNewItem = ({
+  onUpdateItem,
+  enableAddItem,
+  onAddItem
+}) => (
   <form className="donations__form">
     <TextField
       type="text"
@@ -24,7 +28,11 @@ const AddNewItem = ({ onUpdateItem, enableAddItem, onAddItem }) => (
       style={styles.textField}
     />
     <button
-      className={enableAddItem ? 'btn btn-addDonation' : 'btn btn-addDonation btn--disabled'}
+      className={enableAddItem ?
+        'btn btn-addDonation'
+      :
+        'btn btn-addDonation btn--disabled'
+      }
       onClick={onAddItem}
     />
   </form>
@@ -36,4 +44,4 @@ AddNewItem.propTypes = {
   onAddItem: React.PropTypes.func.isRequired
 };
 
-module.exports = AddNewItem;
+export default AddNewItem;

@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const TruckButton = () => (
-    <Link to="/">
-        <div className="header--donation__truck"></div>
-    </Link>
+  <Link to="/">
+    <div className="header--donation__truck" />
+  </Link>
 );
 
-module.exports = TruckButton;
+export default TruckButton;
