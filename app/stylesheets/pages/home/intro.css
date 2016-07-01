@@ -10,15 +10,15 @@
   margin: auto;
 }
 .intro__food-drivr {
-  letter-spacing: 3.3px;
+	letter-spacing: 3.3px;
 }
 .intro__truck-white:hover {
   /* Unused class */
 }
 .intro__powered {
   font-size: $font-small;
-  line-height: 3px;
-  letter-spacing: 2.8px;
+	line-height: 3px;
+	letter-spacing: 2.8px;
 }
 .intro__title {
   margin: 1rem;

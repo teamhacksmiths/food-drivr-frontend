@@ -17,7 +17,6 @@ const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
-  public: path.join(__dirname, 'public'),
   images: path.join(__dirname, 'assets/images'),
   style: path.join(__dirname, 'app/stylesheets')
 };
@@ -76,7 +75,9 @@ const common = {
   },
   postcss: function (webpack) {
     return [
-      postcssImport({ addDependencyTo: webpack }),
+        postcssImport({
+            addDependencyTo: webpack
+        }),
   		require('autoprefixer'),
   		require('precss'),
       require('cssnano')
@@ -111,12 +112,8 @@ if(TARGET === 'start' || !TARGET) {
       },
       plugins: PRODUCTION ? [
         new webpack.optimize.UglifyJsPlugin({
-          minimize: true,
-          compress: {
-            warnings: false
-          }
+
         }),
-        new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
           'process.env': Object.keys(process.env).reduce(function(o, k) {
             o[k] = JSON.stringify(process.env[k]);

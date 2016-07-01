@@ -61,18 +61,8 @@ const DonationConfirmed = (props) => (
         />
       </section>
       <div className="text-center">
-        <button
-          className="btn btn-rect--hover bg-yellow text-white"
-          onClick={props.onHandleClose}
-        >
-          Cancel
-        </button>
-        <button
-          className="btn btn-rect--hover bg-yellow text-white"
-          onClick={props.onConfirm}
-        >
-          Donate
-        </button>
+        <button className="btn btn-rect--hover bg-yellow text-white" onClick={props.onHandleClose}>Cancel</button>
+        <button className="btn btn-rect--hover bg-yellow text-white" onClick={props.onConfirm}>Donate</button>
       </div>
     </Dialog>
     <Snackbar
@@ -96,4 +86,4 @@ DonationConfirmed.propTypes = {
   onSnackClose: React.PropTypes.func.isRequired
 };
 
-export default DonationConfirmed;
+module.exports = DonationConfirmed;

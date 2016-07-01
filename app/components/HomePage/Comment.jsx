@@ -1,10 +1,6 @@
 import React from 'react';
 
-const Comment = ({
-  text,
-  author,
-  company
-}) => (
+const Comment = ({ text, author, company }) => (
   <section className="comment">
     <q>{text}</q>
     <div className="comment__author">
@@ -22,4 +18,4 @@ Comment.propTypes = {
   company: React.PropTypes.string.isRequired
 };
 
-export default Comment;
+module.exports = Comment;

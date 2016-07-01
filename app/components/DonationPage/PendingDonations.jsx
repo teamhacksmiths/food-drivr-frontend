@@ -14,16 +14,11 @@ const PendingDonations = (props) => (
       onHandleRemoveItem={props.onHandleRemoveItem}
     />
     <button
-      onClick={props.onHandleOpen}
-      className={props.enableDonation ?
-        'btn btn-donate btn--shadow bg-yellow text-white'
-      :
-        'btn btn-donate btn--shadow bg-yellow text-white btn--disabled'
-      }
+        className={props.enableDonation ? 'btn btn-donate btn--shadow bg-yellow text-white' : 'btn btn-donate btn--shadow bg-yellow text-white btn--disabled'} onClick={props.onHandleOpen}
     >
       Donate
     </button>
-  </section>
+</section>
 );
 
 PendingDonations.propTypes = {
@@ -36,4 +31,4 @@ PendingDonations.propTypes = {
   onHandleRemoveItem: React.PropTypes.func.isRequired
 };
 
-export default PendingDonations;
+module.exports = PendingDonations;
