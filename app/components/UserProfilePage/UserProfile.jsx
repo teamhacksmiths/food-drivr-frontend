@@ -20,20 +20,20 @@ const UserProfile = (props) => (
     />
     <form className="user-dashboard-form" onSubmit={props.onFormSubmit}>
         <TextField
-          id="Email"
+          id="email"
           hintText="Enter Your Email"
-          errorText={props.errors.Email}
+          errorText={props.errors.email}
           floatingLabelText="Email"
           onChange={props.onFormUpdate}
-          value={props.formData.Email}
+          value={props.formData.email}
           disabled
           style={Styles.formGroup}
         />
         <TextField
-          id="Phone"
+          id="phone"
           name="Phone"
           style={Styles.formGroup}
-          value={props.formData.Phone}
+          value={props.formData.phone}
           onChange={props.onFormUpdate}
           disabled={!props.isEditing}
           floatingLabelText="Phone"
@@ -44,10 +44,10 @@ const UserProfile = (props) => (
         />
         <TextField
           style={Styles.formGroup}
-          id="Company"
+          id="company"
           name="Company"
           floatingLabelText="Company"
-          value={props.formData.Company}
+          value={props.formData.company}
           onChange={props.onFormUpdate}
           disabled={!props.isEditing}
           type="text"
@@ -60,7 +60,7 @@ const UserProfile = (props) => (
           onToggle={props.onFormUpdate}
           toggled={props.toggled}
           disabled={!props.isEditing}
-          id="Notifications"
+          id="notifications"
           label="Toggle Notifications"
         />
     </form>

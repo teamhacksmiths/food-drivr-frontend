@@ -34,7 +34,8 @@ class UserProfilePage extends React.Component {
         CurrentPassword: '',
         NewPassword: '',
         NewPasswordConfirmation: '',
-        Avatar: null
+        Avatar: null,
+        Address: ''
       },
       errors: {
         Email: '',
@@ -167,7 +168,6 @@ If error occurs, logout user and return to homepage.
     const userData = Object.assign({}, this.state.userData);
     const newFormData = this.state.formData;
     const newFormErrors = this.state.errors;
-    const formData = this.state.formData;
 
     if (e.target.id === 'Email') {
       if (!e.target.value) {
