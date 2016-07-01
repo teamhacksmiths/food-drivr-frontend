@@ -131,7 +131,13 @@
 }
 
 @media screen and (min-width: 768px) {
+  .donations {
+    margin-top: 60px;
+  }
   .donations__form {
+    >div {
+      height: 55px !important;
+    }
     div,
     input {
       /* Using !important is highly discouraged. In this case it is the only way to override Material UI inline styling */
@@ -139,6 +145,9 @@
       line-height: 1.9 !important;
     }
 	}
+  .donation__item-name {
+    font-size: $font-medium-thin;
+  }
   .donations-history h1 {
     font-size: $font-large-thin;
   }
@@ -147,5 +156,9 @@
   }
   .donations-history__items {
     font-size: $font-medium-thin;
+  }
+  .btn-delDonation {
+    @mixin square 25px;
+    margin-right: 0;
   }
 }

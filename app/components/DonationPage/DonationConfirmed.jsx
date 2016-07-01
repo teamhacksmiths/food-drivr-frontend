@@ -9,9 +9,9 @@ const styles = {
     textAlign: 'center',
     fontFamily: "'Roboto', sans-serif",
     textTransform: 'uppercase',
-    fontSize: 18,
-    paddingBottom: 0,
-    paddingTop: 10,
+    fontSize: window.screen.width >= 768 ? 20 : 18,
+    paddingBottom: window.screen.width >= 768 ? 15 : 0,
+    paddingTop: window.screen.width >= 768 ? 20 : 10,
     letterSpacing: 1.5
   },
   bodyStyle: {
