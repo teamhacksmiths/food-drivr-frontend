@@ -6,7 +6,6 @@
   "scripts": {
     "setup": "npm install",
     "build": "webpack",
-    "production": "node ./app.js",
     "start": "webpack-dev-server --progress --colors --inline && npm run build",
     "compile": "babel --presets react app/scripts/JSX --watch -d app/scripts/JSX-Compiled"
   },
@@ -41,27 +40,26 @@
     "eslint-plugin-react": "^5.0.1",
     "npm-install-webpack-plugin": "^3.1.1",
     "open-browser-webpack-plugin": "0.0.2",
+    "postcss-import": "^8.1.2",
     "postcss-loader": "^0.9.1",
     "precss": "^1.4.0",
     "style-loader": "^0.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.12.0"
   },
   "dependencies": {
     "axios": "^0.11.0",
     "classnames": "^2.2.5",
-    "express": "^4.14.0",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.16.1",
     "material-ui": "^0.15.0",
-    "postcss-import": "^8.1.2",
     "react": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-geosuggest": "^1.22.0",
     "react-router": "^2.4.0",
     "react-scroll": "^1.0.16",
-    "react-tap-event-plugin": "^1.0.0",
-    "webpack": "^1.13.0",
-    "webpack-merge": "^0.12.0"
+    "react-tap-event-plugin": "^1.0.0"
   }
 }
