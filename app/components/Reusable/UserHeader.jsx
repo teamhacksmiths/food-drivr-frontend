@@ -30,4 +30,4 @@ class UserHeader extends React.Component {
   }
 }
 
-module.exports = UserHeader;
+export default UserHeader;

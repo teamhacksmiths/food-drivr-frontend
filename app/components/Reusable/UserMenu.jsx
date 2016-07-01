@@ -25,13 +25,37 @@ class UserMenu extends React.Component {
 
   render() {
     return (
-      <nav refs="userMenu" className="header-menu bg-white text-black text-right">
+      <nav
+        refs="userMenu"
+        className="header-menu bg-white text-black text-right"
+      >
         <div className="header-menu__arrow bg-white" />
-        <Link to="/" className="header-menu__item">Home</Link>
-        {this.state.userRole === 1 ? '' : <Link to="/donation" className="header-menu__item">Donate</Link>}
-        <Link to="/profile" className="header-menu__item">Settings</Link>
-        <a className="header-menu__logout pointer-cursor" onClick={this.handleLogout}>Logout</a>
-     </nav>
+        <Link
+          to="/"
+          className="header-menu__item"
+        >
+          Home
+        </Link>
+        {this.state.userRole === 1 ?
+          ''
+        :
+          <Link to="/donation" className="header-menu__item">
+            Donate
+          </Link>
+        }
+        <Link
+          to="/profile"
+          className="header-menu__item"
+        >
+          Settings
+        </Link>
+        <a
+          className="header-menu__logout pointer-cursor"
+          onClick={this.handleLogout}
+        >
+          Logout
+        </a>
+      </nav>
     );
   }
 }
@@ -40,4 +64,4 @@ UserMenu.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-module.exports = UserMenu;
+export default UserMenu;

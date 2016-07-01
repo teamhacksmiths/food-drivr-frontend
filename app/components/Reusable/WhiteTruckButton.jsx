@@ -7,4 +7,4 @@ const WhiteTruckButton = () => (
   </Link>
 );
 
-module.exports = WhiteTruckButton;
+export default WhiteTruckButton;
