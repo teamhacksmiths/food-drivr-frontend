@@ -18,7 +18,6 @@
   @mixin square 45px;
   @mixin absolute 25px, *, * , 25px;
 }
-
 .header-menu {
   @mixin absolute 50px, 0, *, *;
   padding: 12px;
@@ -31,14 +30,12 @@
   opacity: 0;
   transition: 0.3s opacity ease-in, 1s;
 }
-
 .header > div:hover .header-menu,
 .header-menu:hover {
   opacity: 1;
   visibility: visible;
   transition-delay: 0s;
 }
-
 .header-menu__arrow {
   @mixin square 20px;
   @mixin absolute -11px, 20%, *, *;
@@ -62,14 +59,13 @@
   letter-spacing: 4px;
   font-weight: bold;
 }
-
 .header--donation {
   width: 100%;
   max-width: 100%;
-  min-height: 110px;
+  min-height: 100px;
   margin: 0;
   box-shadow: 0 4px 4px 0 rgba(228, 228, 228, 0.5);
-  padding: 0 15%;
+  padding: 0 5%;
 }
 .header--donation__truck {
   @mixin bg-img '/images/food-drivr-logo-grey.svg';

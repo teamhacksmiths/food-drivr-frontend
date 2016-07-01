@@ -9,9 +9,9 @@ const styles = {
     textAlign: 'center',
     fontFamily: "'Roboto', sans-serif",
     textTransform: 'uppercase',
-    fontSize: 26,
-    paddingBottom: 30,
-    paddingTop: 40,
+    fontSize: 18,
+    paddingBottom: 0,
+    paddingTop: 10,
     letterSpacing: 1.5
   },
   bodyStyle: {
@@ -55,12 +55,12 @@ const DonationConfirmed = (props) => (
         <textarea
           className="donation-popup__textarea text-grey"
           placeholder="Special Notes For The Driver"
-          rows="4"
+          rows="3"
           onChange={props.onNoteChange}
           value={props.noteMsg}
         />
       </section>
-      <div className="text-center">
+      <div className="donation-popup__btn-container">
         <button
           className="btn btn-rect--hover bg-yellow text-white"
           onClick={props.onHandleClose}

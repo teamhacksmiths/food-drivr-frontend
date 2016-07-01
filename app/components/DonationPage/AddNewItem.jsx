@@ -5,12 +5,13 @@ const styles = {
   textField: {
     width: '100%',
     maxWidth: 500,
-    height: 55,
+    height: 50,
     marginRight: 15,
     lineHeight: 2.7,
     paddingBottom: 30,
     letterSpacing: 1.9,
-    fontFamily: "'Open Sans', sans-serif"
+    fontFamily: "'Open Sans', sans-serif",
+    fontSize: 14
   }
 };
 
