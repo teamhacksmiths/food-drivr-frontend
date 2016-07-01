@@ -1,13 +1,12 @@
 .signin {
 	min-height: calc(100vh - 135px);
-  margin-top: 100px;
-	padding: 50px 0;
+  margin-top: 80px;
 	background-color: #ff1e40;
   font-family: $open-sans;
 }
 .signin__title {
   margin: 10px 0 30px;
-  font-size: $font-large;
+  font-size: $font-large-thin;
 }
 .signin__btn button {
   height: 63px !important;
@@ -19,5 +18,10 @@
   }
   input:-webkit-autofill {
   	box-shadow: 0 0 0px 1000px $red inset;
+  }
+}
+@media screen and (min-width: 768px) {
+  .signin__title {
+    font-size: $font-large;
   }
 }

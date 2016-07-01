@@ -1,8 +1,8 @@
 @import "utils/reset.css";
 @import "utils/backgrounds.css";
 @import "utils/animations.css";
-@import "utils/text.css";
 @import "utils/various.css";
+@import "utils/text.css";
 
 @import "components/footer.css";
 @import "components/header.css";
