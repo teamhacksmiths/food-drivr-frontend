@@ -27,20 +27,21 @@ class UserProfilePage extends React.Component {
       isEditing: false,
       passwordEdit: false,
       formData: {
-        Email: '',
-        Phone: '',
-        Company: '',
-        Notifications: null,
-        CurrentPassword: '',
-        NewPassword: '',
-        NewPasswordConfirmation: '',
-        Avatar: null
+        email: '',
+        phone: '',
+        company: '',
+        notifications: null,
+        currentPassword: '',
+        newPassword: '',
+        newPasswordConfirmation: '',
+        avatar: null,
+        address: ''
       },
       errors: {
-        Email: '',
-        CurrentPassword: '',
-        NewPassword: '',
-        NewPasswordConfirmation: ''
+        email: '',
+        currentPassword: '',
+        newPassword: '',
+        newPasswordConfirmation: ''
       },
       saveChanges: false,
       canSubmit: false,
@@ -82,33 +83,33 @@ If error occurs, logout user and return to homepage.
         console.log(response);
         const newForm = this.state.formData;
         if (response.data.user.email != null) {
-          newForm.Email = response.data.user.email;
+          newForm.email = response.data.user.email;
         } else {
-          newForm.Email = '';
+          newForm.email = '';
         }
         if (response.data.user.phone != null) {
-          newForm.Phone = response.data.user.phone;
+          newForm.phone = response.data.user.phone;
         } else {
-          newForm.Phone = '';
+          newForm.phone = '';
         }
         if (response.data.user.company != null) {
-          newForm.Company = response.data.user.company;
+          newForm.company = response.data.user.company;
         } else {
-          newForm.Company = '';
+          newForm.company = '';
         }
         if (response.data.user.avatar != null) {
-          newForm.Avatar = response.data.user.avatar;
+          newForm.avatar = response.data.user.avatar;
         } else {
-          newForm.Avatar = null;
+          newForm.avatar = null;
         }
-        newForm.Notifications = response.data.user.settings.notifications;
+        newForm.notifications = response.data.user.settings.notifications;
 
         this.setState({
           isLoading: false,
           isEditing: false,
           userData: response.data.user,
           formData: newForm,
-          toggled: newForm.Notifications
+          toggled: newForm.notifications
         });
       })
       .catch((error) => {
@@ -122,6 +123,7 @@ If error occurs, logout user and return to homepage.
             snackBarMessage: 'An unknown error has occured while loading the network data.'
           });
           this.context.router.push('/');
+          localStorage.clear();
         }
       });
   }
@@ -167,62 +169,61 @@ If error occurs, logout user and return to homepage.
     const userData = Object.assign({}, this.state.userData);
     const newFormData = this.state.formData;
     const newFormErrors = this.state.errors;
-    const formData = this.state.formData;
 
-    if (e.target.id === 'Email') {
+    if (e.target.id === 'email') {
       if (!e.target.value) {
-        this.state.errors.Email = 'This field is required.';
+        this.state.errors.email = 'This field is required.';
       } else if (!re.test(e.target.value)) {
-        this.state.errors.Email = 'Email is not valid.';
+        this.state.errors.email = 'Email is not valid.';
       } else {
-        this.state.errors.Email = '';
+        this.state.errors.email = '';
       }
-    } else if (e.target.id === 'Phone') {
+    } else if (e.target.id === 'phone') {
       if (!rePhone.test(e.target.value)) {
-        this.state.errors.Phone = 'Phone Number is not valid.';
+        this.state.errors.phone = 'Phone Number is not valid.';
       } else {
-        this.state.errors.Phone = '';
+        this.state.errors.phone = '';
       }
-    } else if (e.target.id === 'NewPassword') {
+    } else if (e.target.id === 'newPassword') {
       if (!e.target.value) {
-        this.state.errors.NewPassword = 'This field is required.';
+        this.state.errors.newPassword = 'This field is required.';
       } else if (e.target.value.length < 8) {
-        this.state.errors.NewPassword = 'Password needs more than 8 characters.';
-      } else if (e.target.value === this.state.formData.CurrentPassword) {
-        this.state.errors.NewPassword = 'New password must be different!';
+        this.state.errors.newPassword = 'Password needs more than 8 characters.';
+      } else if (e.target.value === this.state.formData.currentPassword) {
+        this.state.errors.newPassword = 'New password must be different!';
       } else {
-        this.state.errors.NewPassword = '';
+        this.state.errors.newPassword = '';
       }
-    } else if (e.target.id === 'NewPasswordConfirmation') {
+    } else if (e.target.id === 'newPasswordConfirmation') {
       if (!e.target.value) {
-        this.state.errors.NewPasswordConfirmation = 'This field is required.';
+        this.state.errors.newPasswordConfirmation = 'This field is required.';
       } else if (e.target.value.length < 8) {
-        this.state.errors.NewPasswordConfirmation = 'Passwords need more than 8 characters.';
-      } else if (e.target.value !== this.state.formData.NewPassword) {
-        this.state.errors.NewPasswordConfirmation = 'Passwords must match!';
+        this.state.errors.newPasswordConfirmation = 'Passwords need more than 8 characters.';
+      } else if (e.target.value !== this.state.formData.newPassword) {
+        this.state.errors.newPasswordConfirmation = 'Passwords must match!';
       } else {
-        this.state.errors.NewPasswordConfirmation = '';
+        this.state.errors.newPasswordConfirmation = '';
       }
-    } else if (e.target.id === 'Notifications') {
-      if (newFormData.Notifications === true && e.target.value === 'on') {
-        newFormData.Notifications = false;
+    } else if (e.target.id === 'notifications') {
+      if (newFormData.notifications === true && e.target.value === 'on') {
+        newFormData.notifications = false;
       } else if (e.target.value === 'on') {
-        newFormData.Notifications = true;
+        newFormData.notifications = true;
       } else {
-        newFormData.Notifications = false;
+        newFormData.notifications = false;
       }
     }
-    if (e.target.id !== 'Notifications') {
+    if (e.target.id !== 'notifications') {
       newFormData[e.target.id] = e.target.value;
     }
     newFormErrors[e.target.id] = this.state.errors[e.target.id];
 
-    if (!newFormErrors.CurrentPassword &&
-      !newFormErrors.NewPassword &&
-      !newFormErrors.NewPasswordConfirmation &&
-      newFormData.CurrentPassword.length > 1 &&
-      newFormData.NewPassword.length > 1 &&
-      newFormData.NewPasswordConfirmation.length > 1) {
+    if (!newFormErrors.currentPassword &&
+      !newFormErrors.newPassword &&
+      !newFormErrors.newPasswordConfirmation &&
+      newFormData.currentPassword.length > 1 &&
+      newFormData.newPassword.length > 1 &&
+      newFormData.newPasswordConfirmation.length > 1) {
       this.setState({ canSubmit: true });
     } else {
       this.setState({ canSubmit: false });
@@ -230,12 +231,12 @@ If error occurs, logout user and return to homepage.
     this.setState({
       formData: newFormData,
       errors: newFormErrors,
-      toggled: newFormData.Notifications
+      toggled: newFormData.notifications
     });
-    if (newFormData.Email !== userData.email ||
-        newFormData.Phone !== userData.phone ||
-        newFormData.Company !== userData.company ||
-        newFormData.Notifications !== userData.settings.notifications
+    if (newFormData.email !== userData.email ||
+        newFormData.phone !== userData.phone ||
+        newFormData.company !== userData.company ||
+        newFormData.notifications !== userData.settings.notifications
       ) {
       this.setState({ saveChanges: true });
     } else {
@@ -273,9 +274,9 @@ If error occurs, logout user and return to homepage.
       .then((response) => {
         const newFormData = this.state.formData;
         if (this.state.isEditing === true) {
-          newFormData.CurrentPassword = '';
-          newFormData.NewPassword = '';
-          newFormData.NewPasswordConfirmation = '';
+          newFormData.currentPassword = '';
+          newFormData.newPassword = '';
+          newFormData.newPasswordConfirmation = '';
         }
         this.setState({
           passwordEdit: false,
@@ -336,9 +337,9 @@ If error occurs, logout user and return to homepage.
 */
   handleCloseAction() {
     const formData = this.state.formData;
-    formData.NewPassword = '';
-    formData.NewPasswordConfirmation = '';
-    formData.CurrentPassword = '';
+    formData.newPassword = '';
+    formData.newPasswordConfirmation = '';
+    formData.currentPassword = '';
     this.setState({
       formData,
       passwordEdit: false,
@@ -358,7 +359,7 @@ If error occurs, logout user and return to homepage.
   handleSuggestSelect(address) {
     const formData = this.state.formData;
     console.log(address.label);
-    formData.Address = address.label;
+    formData.address = address.label;
     this.setState({ formData });
   }
 
