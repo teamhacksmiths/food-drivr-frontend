@@ -10,4 +10,4 @@ DonateButton.propTypes = {
   onClick: React.PropTypes.func.isRequired
 };
 
-module.exports = DonateButton;
+export default DonateButton;
