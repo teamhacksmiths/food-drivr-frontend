@@ -25,7 +25,14 @@ const AddressList = ({
         )}
       </List>
     :
-      <h4 className="need-address">Please enter at least one address</h4>
+      <div className="warning">
+        <p className="warning-alert">
+          {'⚠'}
+        </p>
+        <h4 className="need-address">
+          Please enter at least one address
+        </h4>
+      </div>
     }
   </div>
 );

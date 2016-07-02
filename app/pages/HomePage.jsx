@@ -15,4 +15,4 @@ const HomePage = () => (
   </div>
 );
 
-module.exports = HomePage;
+export default HomePage;

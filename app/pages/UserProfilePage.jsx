@@ -92,7 +92,7 @@ class UserProfilePage extends React.Component {
     const {
       formData
     } = this.state;
-    const addresses = formData.Addresses;
+    const addresses = formData.addresses;
     /* I know this is really wrong, binding to the dom, but we are not using redux,
       Be careful to change any of the address list and list items because the id is bound to the index
       of the item so that I can reference it from the container.
@@ -106,7 +106,7 @@ class UserProfilePage extends React.Component {
     newAddresses.forEach((item, i) => newAddresses[i].default = false);
     newAddresses.unshift(alteredAddress);
     const newFormData = Object.assign({}, formData, {
-      Addresses: newAddresses
+      addresses: newAddresses
     });
     this.setState({
       formData: newFormData,
