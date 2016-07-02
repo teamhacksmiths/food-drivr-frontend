@@ -237,7 +237,6 @@ If error occurs, logout user and return to homepage.
     const userData = Object.assign({}, this.state.userData);
     const newFormData = this.state.formData;
     const newFormErrors = this.state.errors;
-    const formData = this.state.formData;
 
     if (e.target.id === 'Email') {
       if (!e.target.value) {
@@ -319,13 +318,15 @@ If error occurs, logout user and return to homepage.
   handleFormReset() {
     const newFormData = this.state.formData;
     if (this.state.isEditing === true) {
+      newFormData.Addresses = [];
       for (const i in newFormData) {
-        if (typeof newFormData[i] === 'String') {
+        if (typeof newFormData[i] == 'string') {
           newFormData[i] = '';
         }
       }
     }
     this.setState({
+      key: 1337,
       isLoading: true,
       snackBarIsOpen: false,
       snackBarMessage: '',
@@ -488,7 +489,7 @@ If error occurs, logout user and return to homepage.
       this.state.isLoading ?
         <FullscreenLoading isLoading={this.state.isLoading} />
       :
-        <div className="user-profile">
+        <div className="user-profile" key={this.state.key || 1}>
           <UserProfile
             userData={this.state.userData}
             onFormSubmit={this.submitUserData}
