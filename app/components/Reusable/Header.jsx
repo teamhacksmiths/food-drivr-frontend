@@ -22,7 +22,6 @@ class Header extends React.Component {
     if (this.state.loggedIn === true) {
       auth.login(email, pass)
       .then((response) => {
-        console.log(response);
         localStorage.setItem('token', response.data.authtoken.auth_token);
         auth.onChange(true);
       })
