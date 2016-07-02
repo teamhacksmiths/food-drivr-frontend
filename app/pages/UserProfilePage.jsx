@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import auth from '../utils/auth.js';
 import FullscreenLoading from '../components/Reusable/FullscreenLoading';
 import Snackbar from 'material-ui/Snackbar';
