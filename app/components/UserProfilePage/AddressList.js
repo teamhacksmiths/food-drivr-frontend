@@ -9,7 +9,6 @@ const AddressList = ({
 }) => (
   <div className="address-list">
     <List>
-      <Divider />
       {addresses.map((address, i) =>
         <div>
           <AddressListItem

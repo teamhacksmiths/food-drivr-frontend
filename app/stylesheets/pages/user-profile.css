@@ -53,40 +53,40 @@
 	margin: 30px;
 }
 .geosuggest__input {
-  width: 100%;
-  margin: auto;
-  border: 2px solid transparent;
-  box-shadow: 0 0 1px #3d464d;
-  padding: .5em 1em;
-  -webkit-transition: border 0.2s, box-shadow 0.2s;
-          transition: border 0.2s, box-shadow 0.2s;
+	width: 100%;
+	margin: auto;
+	border: 2px solid transparent;
+	box-shadow: 0 0 1px #3d464d;
+	padding: .5em 1em;
+	-webkit-transition: border 0.2s, box-shadow 0.2s;
+	        transition: border 0.2s, box-shadow 0.2s;
 }
 .geosuggest__input:focus {
-  border-color: #267dc0;
-  box-shadow: 0 0 0 transparent;
+	border-color: #267dc0;
+	box-shadow: 0 0 0 transparent;
 }
 .geosuggest__suggests {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  max-height: 25em;
-  padding: 0;
-  margin-top: -1px;
-  background: #fff;
-  border: 2px solid #267dc0;
-  border-top-width: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  list-style: none;
-  z-index: 5;
-  -webkit-transition: max-height 0.2s, border 0.2s;
-          transition: max-height 0.2s, border 0.2s;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	max-height: 25em;
+	padding: 0;
+	margin-top: -1px;
+	background: #fff;
+	border: 2px solid #267dc0;
+	border-top-width: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	list-style: none;
+	z-index: 5;
+	-webkit-transition: max-height 0.2s, border 0.2s;
+	        transition: max-height 0.2s, border 0.2s;
 }
 .geosuggest__suggests--hidden {
-  max-height: 0;
-  overflow: hidden;
-  border-width: 0;
+	max-height: 0;
+	overflow: hidden;
+	border-width: 0;
 }
 
 /**
@@ -187,4 +187,5 @@
 .btn__geosuggest {
 	margin-top: auto;
 	margin-bottom: auto;
+	margin-left: 10px;
 }

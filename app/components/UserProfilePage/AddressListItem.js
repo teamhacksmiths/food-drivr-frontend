@@ -26,7 +26,9 @@ const AddressListItem = ({
         index={index}
         address={address}
       />
-      <h4 className="addressText">{constructAddress(address)}</h4>
+      <h4 className="addressText">
+        {constructAddress(address)}
+      </h4>
     </div>
   </ListItem>
 );

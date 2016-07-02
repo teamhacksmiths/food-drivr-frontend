@@ -25,7 +25,10 @@ const AddressSection = ({
   addresses,
   handleToggle,
   isEditing,
-  handleSuggestSelect
+  handleSuggestSelect,
+  handleAddAddress,
+  handleRemoveAddress,
+  buttonIsEnabled
 }) => (
   <section className="address-section">
     {isEditing &&
@@ -33,11 +36,14 @@ const AddressSection = ({
         <GeoSuggest
           isEditing={isEditing}
           onSuggestSelect={handleSuggestSelect}
+          handleAddAddress={handleAddAddress}
+          buttonIsEnabled={buttonIsEnabled}
         />
-      <AddressList
-        addresses={addresses}
-        handleToggle={handleToggle}
-      />
+        <AddressList
+          addresses={addresses}
+          handleToggle={handleToggle}
+          handleRemoveAddress={handleRemoveAddress}
+        />
       </div>
     }
   </section>
@@ -96,6 +102,7 @@ class UserProfilePage extends React.Component {
       saveChanges: false,
       canSubmit: false,
       toggled: null,
+      canAddAddress: false
     };
     this.getUserData = this.getUserData.bind(this);
     this.submitUserData = this.submitUserData.bind(this);
@@ -110,6 +117,8 @@ class UserProfilePage extends React.Component {
     this.handleSubmitAction = this.handleSubmitAction.bind(this);
     this.handleSuggestSelect = this.handleSuggestSelect.bind(this);
     this.onToggleDefault = this.onToggleDefault.bind(this);
+    this.handleRemoveAddress = this.handleRemoveAddress.bind(this);
+    this.handleAddAddress = this.handleAddAddress.bind(this);
   }
 
   componentWillMount() {
@@ -422,11 +431,34 @@ If error occurs, logout user and return to homepage.
     }
   }
 
-  handleSuggestSelect(address) {
+  handleRemoveAddress(i) {
     const formData = this.state.formData;
-    console.log(address.label);
-    formData.Address = address.label;
-    this.setState({ formData });
+    const newFormData = Object.assign({}, formData, {
+      Addresses: [
+        ...formData.Addresses.slice(0, i),
+        ...formData.Addresses.slice(1 + 1)
+      ]
+    });
+    this.setState({
+      formData: newFormData
+    });
+  }
+
+  handleAddAddress(address) {
+    const formData = this.state.formData;
+    const newFormData = Object.assign({}, formData, {
+      Addresses: [...formData.Addresses, address.label]
+    });
+    this.setState({
+      formData: newFormData,
+      canAddAddress: false
+    });
+  }
+
+  handleSuggestSelect(address) {
+    this.setState({
+      canAddAddress: true
+    });
   }
 
   render() {
@@ -464,6 +496,8 @@ If error occurs, logout user and return to homepage.
           <AddressSection
             isEditing={this.state.isEditing}
             handleSuggestSelect={this.handleSuggestSelect}
+            handleAddAddress={this.handleAddAddress}
+            handleRemoveAddress={this.handleRemoveAddress}
             handleToggle={this.onToggleDefault}
             addresses={this.state.formData.Addresses}
           />
