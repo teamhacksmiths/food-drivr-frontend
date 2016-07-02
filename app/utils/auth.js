@@ -95,11 +95,11 @@ module.exports = {
       ],
       data: {
         user: {
-          email: data.Email,
-          phone: data.Phone,
-          company: data.Company,
+          email: data.email,
+          phone: data.phone,
+          company: data.company,
           setting_attributes: {
-            notifications: data.Notifications
+            notifications: data.notifications
           }
         }
       },
@@ -167,9 +167,9 @@ module.exports = {
       ],
       data: {
         user: {
-          password: data.NewPassword,
-          password_confirmation: data.NewPasswordConfirmation,
-          current_password: data.CurrentPassword
+          password: data.newPassword,
+          password_confirmation: data.newPasswordConfirmation,
+          current_password: data.currentPassword
         }
       },
       responseType: 'json',

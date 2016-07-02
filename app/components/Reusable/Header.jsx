@@ -29,6 +29,7 @@ class Header extends React.Component {
       .catch((err) => {
         console.log(err);
         auth.onChange(false);
+        localStorage.clear()
       });
     }
   }

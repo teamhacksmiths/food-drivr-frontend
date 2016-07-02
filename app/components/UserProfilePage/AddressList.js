@@ -9,20 +9,24 @@ const AddressList = ({
   handleRemoveAddress
 }) => (
   <div className="address-list">
-    <List>
-      {addresses.map((address, i) =>
-        <div>
-          <AddressListItem
-            key={i}
-            address={address}
-            index={i}
-            handleToggle={handleToggle}
-            handleRemoveAddress={handleRemoveAddress}
-          />
-          <Divider />
-        </div>
-      )}
-    </List>
+    {addresses.length ?
+      <List>
+        {addresses.map((address, i) =>
+          <div>
+            <AddressListItem
+              key={i}
+              address={address}
+              index={i}
+              handleToggle={handleToggle}
+              handleRemoveAddress={handleRemoveAddress}
+            />
+            <Divider />
+          </div>
+        )}
+      </List>
+    :
+      <h4 className="need-address">Please enter at least one address</h4>
+    }
   </div>
 );
 

@@ -194,3 +194,9 @@
 .flex-end {
 	align-self: flex-end;
 }
+
+.need-address {
+	text-align: center;
+	color: red;
+	margin: 30px 0;
+}
