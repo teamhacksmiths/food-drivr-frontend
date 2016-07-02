@@ -17,3 +17,13 @@
 .flex-grow-3 {
 	flex-grow: 3;
 }
+.flex-end {
+	align-self: flex-end;
+}
+.flex-row {
+	display: flex;
+	vertical-align: top;
+}
+.flex {
+  display: flex;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
 const EditProfileButton = (props) => (
-  <div className="profile-button-group">
+  <div className="user-profile__btn-group">
     <RaisedButton
       primary
       disabled={props.isEditing ? !props.saveChanges : false}

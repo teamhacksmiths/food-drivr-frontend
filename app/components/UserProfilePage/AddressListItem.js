@@ -21,13 +21,13 @@ const AddressListItem = ({
   handleRemoveAddress
 }) => (
   <ListItem>
-    <div className="flexRow">
+    <div className="flex-row">
       <DefaultCheckbox
         handleToggle={handleToggle}
         id={index}
         address={address}
       />
-      <h4 className="addressText">
+      <h4 className="address-text">
         {constructAddress(address)}
       </h4>
       <button
