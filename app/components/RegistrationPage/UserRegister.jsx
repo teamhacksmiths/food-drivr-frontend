@@ -27,7 +27,7 @@ const UserRegister = (props) => {
   const formClass = classNames({
     signup__form: true,
     'signup__form--volunteer': props.userType === 'Volunteer',
-    'signup__form--dono': props.userType === 'Donor'
+    'signup__form--donor': props.userType === 'Donor'
   });
   return (
       <section className="signup text-center">
@@ -40,6 +40,8 @@ const UserRegister = (props) => {
             onChange={props.onNameChange}
             style={styles.textField}
             floatingLabelStyle={styles.floatingLabel}
+            underlineStyle={{ borderColor: 'white' }}
+            underlineFocusStyle={{ borderColor: 'white' }}
             errorStyle={styles.colorWhite}
             value={props.name}
           />
