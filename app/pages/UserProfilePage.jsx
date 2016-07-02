@@ -15,6 +15,16 @@ const Styles = {
   }
 };
 
+/**
+ * @function check defaults
+ * @description filter and count the address array,
+ * returning whether there is a default value set;
+ * @param [Addresses] - the array of addresses.
+ * @return - Bool - Whether or not the addresses array contains at least one default
+ */
+const checkDefaults = (addresses) =>
+  addresses.filter((item) => item.default === true).length > 0;
+
 class UserProfilePage extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -141,19 +151,19 @@ If error occurs, logout user and return to homepage.
       });
   }
 
-/*
-@param Object {} optional fields:
-      formData: {
-        Email: '',
-        Phone: '',
-        Company: '',
-        Notifications: false,
-        CurrentPassword: '',
-        NewPassword: '',
-        NewPasswordConfirmation: ''
-      }
-@return Confirmation + snackbar message.
-*/
+  /*
+  @param Object {} optional fields:
+        formData: {
+          Email: '',
+          Phone: '',
+          Company: '',
+          Notifications: false,
+          CurrentPassword: '',
+          NewPassword: '',
+          NewPasswordConfirmation: ''
+        }
+  @return Confirmation + snackbar message.
+  */
   submitUserData() {
     auth.postUser(this.state.formData)
       .then(() => {
@@ -172,10 +182,11 @@ If error occurs, logout user and return to homepage.
       });
   }
 
-/*
-@param event
-@return Error + Value for form. Gets set to appropriate state based on event ID.
-*/
+  /*
+  @param event
+  @return Error + Value for form. Gets set to appropriate state based on event ID.
+  */
+  /* THIS METHOD NEEDS SERIOUS LIPOSUCTION @FRANK :D */
   handleFormUpdate(e) {
     const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     const rePhone = /^\(\d{3}\) ?\d{3}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}/i;
@@ -257,9 +268,11 @@ If error occurs, logout user and return to homepage.
     }
   }
 
-/*
-@return set state to a default on form reset.
-*/
+  /**
+ * @function handleFormReset
+ * @description - Set's the form back to initial state.  Refactor to Model if possible.
+ * @param None
+ */
   handleFormReset() {
     const newFormData = this.state.formData;
     if (this.state.isEditing === true) {
@@ -287,6 +300,12 @@ If error occurs, logout user and return to homepage.
 @param Object {} : Password, NewPassword, NewPasswordConfirmation
 @return Confirmation + snackbar message
 */
+  /**
+  * @function handlePasswordReset
+  * @description Takes data and sends to the api for resetting password
+  * @param {data} - the data from the form.
+  * @sideeffect - sets the state of the form data and handles errors.
+  */
   handlePasswordReset(data) {
     auth.updatePassword(data)
       .then((response) => {
@@ -312,9 +331,9 @@ If error occurs, logout user and return to homepage.
       });
   }
 
-/*
-@return set isEditing state. return to default state. Cancel profile edit
-*/
+  /*
+  @return set isEditing state. return to default state. Cancel profile edit
+  */
   handleCancelClick() {
     this.setState({
       isEditing: false,
@@ -323,10 +342,10 @@ If error occurs, logout user and return to homepage.
     this.handleFormReset();
   }
 
-/*
-@param event
-@return Submit form data.
-*/
+  /*
+  @param event
+  @return Submit form data.
+  */
   handleEditButtonClick(e) {
     if (this.state.isEditing) {
       this.submitUserData();
@@ -366,15 +385,20 @@ If error occurs, logout user and return to homepage.
     });
   }
 
-/*
-@return set canSubmit state. Allow user to submit password change to server.
-*/
+  /*
+  @return set canSubmit state. Allow user to submit password change to server.
+  */
   handleSubmitAction() {
     if (this.state.canSubmit === true) {
       this.handlePasswordReset(this.state.formData);
     }
   }
 
+  /**
+ * @function handleRemoveAddress
+ * @description Takes an index and sets the state of the address array without the item.
+ * @param i - the index of the item to alter in the address array
+ */
   handleRemoveAddress(i) {
     const formData = this.state.formData;
     const elementId = i.target.id;
@@ -389,24 +413,41 @@ If error occurs, logout user and return to homepage.
     });
   }
 
+  /**
+ * @function handleAddAddress
+ * @description - Handles adding of the address to the form's data
+ * @param None
+ */
   handleAddAddress() {
     const {
       addressToAdd
     } = this.state;
     if (addressToAdd === null) { return undefined; }
     const formData = this.state.formData;
-    const newAddress = { fullAddress: addressToAdd }
+    const newAddress = {
+      fullAddress: addressToAdd,
+      default: !checkDefaults(formData.Addresses)
+    };
     const newFormData = Object.assign({}, formData, {
-      Addresses: [...formData.Addresses, newAddress]
+      Addresses: [
+        ...formData.Addresses,
+        newAddress
+      ]
     });
     this.setState({
       formData: newFormData,
       canAddAddress: false,
       addressToAdd: null,
-      saveChanges: true
+      saveChanges: checkDefaults(newFormData.Addresses)
     });
   }
 
+  /**
+ * @function handleSuggestSelect
+ * @description - Handles the selection of an address from the select field
+ * @param {address} - the address object selected from the field
+ * @sideeffect - Sets state of the form data with the addressToAdd value
+ */
   handleSuggestSelect(address) {
     this.setState({
       canAddAddress: true,
