@@ -137,17 +137,29 @@ class UserProfilePage extends React.Component {
     this.getUserData();
   }
 
-  onToggleDefault(index) {
+  onToggleDefault(e) {
     const {
       formData
     } = this.state;
     const addresses = formData.Addresses;
-    const newAddresses = addresses.map((address) => {
-      address.default = address === addresses[index]
-    })
-    const newFormData = assign(formData, 'Addresses', newAddresses);
+    /* I know this is really wrong, binding to the dom, but we are not using redux,
+      Be careful to change any of the address list and list items because the id is bound to the index
+      of the item so that I can reference it from the container.
+    */
+    const index = e.target.id;
+    const selectedAddress = addresses[index];
+    const alteredAddress = Object.assign({}, selectedAddress, {
+      default: true
+    });
+    const newAddresses = addresses.filter((item) => item !== selectedAddress);
+    newAddresses.forEach((item, i) => newAddresses[i].default = false);
+    newAddresses.unshift(alteredAddress);
+    const newFormData = Object.assign({}, formData, {
+      Addresses: newAddresses
+    });
     this.setState({
-      formData: newFormData
+      formData: newFormData,
+      saveChanges: true
     });
   }
 

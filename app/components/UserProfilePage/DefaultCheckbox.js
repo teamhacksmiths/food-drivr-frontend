@@ -3,10 +3,12 @@ import Checkbox from 'material-ui/Checkbox';
 
 const DefaultCheckbox = ({
   address,
-  handleToggle
+  handleToggle,
+  id
 }) => (
   <span>
     <Checkbox
+      id={id}
       defaultChecked={address.default}
       onCheck={handleToggle}
     />
@@ -15,7 +17,8 @@ const DefaultCheckbox = ({
 
 DefaultCheckbox.propTypes = {
   address: PropTypes.object.isRequired,
-  handleToggle: PropTypes.func.isRequired
+  handleToggle: PropTypes.func.isRequired,
+  id: PropTypes.number
 };
 
 export default DefaultCheckbox;

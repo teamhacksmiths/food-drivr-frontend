@@ -24,7 +24,7 @@ const AddressListItem = ({
     <div className="flexRow">
       <DefaultCheckbox
         handleToggle={handleToggle}
-        index={index}
+        id={index}
         address={address}
       />
       <h4 className="addressText">
