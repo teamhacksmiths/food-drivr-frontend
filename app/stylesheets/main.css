@@ -1,20 +1,27 @@
-@import "utils/reset.css";
-@import "utils/backgrounds.css";
-@import "utils/animations.css";
-@import "utils/various.css";
-@import "utils/text.css";
+@import "config/fonts.scss";
+@import "config/z-indexes.scss";
+@import "config/colors.scss";
 
-@import "components/footer.css";
-@import "components/header.css";
+@import "utils/reset.scss";
+@import "utils/mixins.scss";
+@import "utils/backgrounds.scss";
+@import "utils/animations.scss";
+@import "utils/various.scss";
+@import "utils/text.scss";
 
-@import "pages/home.css";
-@import "pages/signin.css";
-@import "pages/signup.css";
-@import "pages/donations.css";
-@import "pages/thankyou.css";
-@import "pages/user-profile.css";
+@import "components/button.scss";
+@import "components/footer.scss";
+@import "components/header.scss";
 
-@import "pages/somethingWentWrong";
+@import "pages/home.scss";
+@import "pages/signin.scss";
+@import "pages/signup.scss";
+@import "pages/donations.scss";
+@import "pages/thankyou.scss";
+@import "pages/user-profile.scss";
+
+@import "pages/error-page.scss";
+@import "pages/something-went-wrong.scss";
 
 /* Planning on adding CSS MQPacker plugin */
 /* Main content */
@@ -22,20 +29,16 @@ body {
 	width: 100%;
 	font-family: $montserrat;
 }
-
 * {
   box-sizing: border-box;
 }
-
 p {
   margin: 16px auto;
 }
-
 .container {
   @extend %clearfix;
 	width: 100%;
 	min-height: 100vh;
-	/*max-width: 1450px;*/
 	margin: auto;
 	padding: 0;
 	position: relative;
@@ -44,7 +47,7 @@ p {
 
 /* Thanks Cperry!! */
 html {
-	height: 100%;
+	height: 100%; /* This has no effect, body already has 100% width */
   width: 100%;
   overflow-x: hidden;
 }

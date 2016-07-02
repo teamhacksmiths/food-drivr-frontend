@@ -11,14 +11,14 @@ const Styles = {
 };
 
 const UserProfile = (props) => (
-  <div className="user-profile-container">
+  <div className="user-profile__container">
     <h1 className="text-center text-yellow">Hello, {props.userData.name}</h1>
     <img
-      className="user-avatar-image"
+      className="user-profile__avatar"
       src={props.userData.avatar ? props.userData.avatar : AvatarMissing}
       alt="person-avatar"
     />
-    <form className="user-dashboard-form" onSubmit={props.onFormSubmit}>
+    <form className="user-profile__form" onSubmit={props.onFormSubmit}>
         <TextField
           id="email"
           hintText="Enter Your Email"
@@ -56,7 +56,7 @@ const UserProfile = (props) => (
           style={Styles.formGroup}
         />
         <Toggle
-          className="toggle"
+          className="user-profile__toggle"
           onToggle={props.onFormUpdate}
           toggled={props.toggled}
           disabled={!props.isEditing}

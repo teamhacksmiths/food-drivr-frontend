@@ -3,7 +3,7 @@
 	max-width: 500px;
 	margin: auto;
 }
-.user-profile-container {
+.user-profile__container {
 	text-align: center;
 	h1 {
 		font-family: $pt-serif;
@@ -16,37 +16,40 @@
 		font-size: 30px;
 	}
 }
-.user-avatar-image {
+.user-profile__avatar {
 	border: 5px solid #ebebeb;
 	margin: 10px auto;
 	border-radius: 50%;
 	@mixin square 150px;
 }
-.user-dashboard-form {
+.user-profile__form {
 	@mixin flex column, center, *, *;
 	margin: auto;
 }
-.toggle {
+.user-profile__toggle {
 	margin: 30px auto;
 }
-.profile-button-group {
-	@mixin flex row, *, *, center;
+.user-profile__btn-group {
+	@mixin flex row, *, *, space-around;
 	margin: 20px auto 80px;
 }
-.change-password-reveal span {
-	padding: 0 !important;
+.change-password-reveal {
+  text-align: center;
+	margin: 50px;
+	transform: translateY(-30px);
+  span {
+   padding: 0 !important;
+  }
 }
 /**
  * The geosuggest module
  */
 .geosuggest {
-	font-size: 18px;
 	font-size: 1rem;
 	position: relative;
 	flex: 1;
 	text-align: left;
 }
-
 .geosuggest__label {
 	display: block;
 	text-align: center;
@@ -58,12 +61,12 @@
 	border: 2px solid transparent;
 	box-shadow: 0 0 1px #3d464d;
 	padding: .5em 1em;
-	-webkit-transition: border 0.2s, box-shadow 0.2s;
-	        transition: border 0.2s, box-shadow 0.2s;
-}
-.geosuggest__input:focus {
-	border-color: #267dc0;
-	box-shadow: 0 0 0 transparent;
+	transition: border 0.2s, box-shadow 0.2s;
+  &:focus {
+    outline: none;
+    border-color: #267dc0;
+  	box-shadow: 0 0 0 transparent;
+  }
 }
 .geosuggest__suggests {
 	position: absolute;
@@ -80,15 +83,21 @@
 	overflow-y: auto;
 	list-style: none;
 	z-index: 5;
-	-webkit-transition: max-height 0.2s, border 0.2s;
-	        transition: max-height 0.2s, border 0.2s;
+	transition: max-height 0.2s, border 0.2s;
 }
 .geosuggest__suggests--hidden {
 	max-height: 0;
 	overflow: hidden;
 	border-width: 0;
 }
-
+.geosuggest__input {
+	padding: 1em 1em !important;
+}
+.btn__geosuggest {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 10px;
+}
 /**
  * A geosuggest item
  */
@@ -123,84 +132,33 @@
 	margin-left: -20px;
 	margin-top: -20px;
 }
-.error-card {
-	height: 400px;
-	width: 800px;
-}
-.Aligner {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.Aligner-item {
-	max-width: 50%;
-}
-.Aligner-item--top {
-	align-self: flex-start;
-}
-.Aligner-item--bottom {
-	align-self: flex-end;
-}
 /* Inner dialog hack for changing the dialog's background color without
  * Changing the screen's background color.  Set as contentClassname on dialog in PasswordForm
  */
-.dialog-grey > div:first-child {
-	background-color: #ebebeb !important;
-}
-
-.update-password {
-	h4 {
-		text-transform: uppercase;
-		font-weight: 100;
-	}
-}
-.update-password__dialog {
+.update-password-dialog {
 	width: 90% !important;
 	max-width: 500px !important;
+  > div:first-child {
+    background-color: #ebebeb !important; /* hack */
+  }
+  h4 {
+    text-transform: uppercase;
+  	font-weight: 100;
+    font-size: $font-medium-thin;
+  }
+  form {
+    width: 100%;
+  }
 }
-.change-password-reveal {
-	margin: 50px !important;
-	transform: translateY(-30px);
-}
-.password-form {
-	width: 100%;
-}
-
-.flexRow {
-	display: flex;
-	vertical-align: top; /* here */
-}
-
-.addressText {
+.address-text {
 	line-height: 1.4rem;
 	flex: 1;
 }
-
-.geosuggest__input {
-	padding: 1em 1em !important;
-}
-
-.geosuggest__input-wrapper {
-	display: flex;
-	flex-direction: row;
-}
-
-.btn__geosuggest {
-	margin-top: auto;
-	margin-bottom: auto;
-	margin-left: 10px;
-}
-
-.flex-end {
-	align-self: flex-end;
-}
-
 .warning {
 	text-align: center;
 	color: red;
 	margin: 30px 0;
 }
-
 .warning-alert {
 	font-size: 2.2rem;
 }

@@ -1,6 +1,3 @@
-@import "../config/fonts.css";
-@import "../config/colors.css";
-
 /* Generic Classes */
 .pointer-cursor {
 	cursor: pointer;
@@ -16,4 +13,14 @@
 }
 .flex-grow-3 {
 	flex-grow: 3;
+}
+.flex-end {
+	align-self: flex-end;
+}
+.flex-row {
+	display: flex;
+	vertical-align: top;
+}
+.flex {
+  display: flex;
 }

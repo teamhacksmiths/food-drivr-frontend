@@ -7,11 +7,11 @@ const GeoSuggest = ({
   handleAddAddress,
   buttonIsEnabled
 }) => (
-  <div className="geosuggest__wrapper">
+  <div>
     <label htmlFor="geosuggestInput" className="geosuggest__label">
       Address List
     </label>
-    <div className="geosuggest__input-wrapper">
+    <div className="flex">
       <Geosuggest
         placeholder="Start typing to add an address to the list!"
         initialValue=""
