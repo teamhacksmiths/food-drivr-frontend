@@ -1,22 +1,34 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const EditProfileButton = (props) => (
+const EditProfileButton = ({
+  isEditing,
+  saveChanges,
+  onEditButtonClick,
+  onCancelClick
+}) => (
   <div className="user-profile__btn-group">
     <RaisedButton
       primary
-      disabled={props.isEditing ? !props.saveChanges : false}
-      onClick={props.onEditButtonClick}
-      label={props.isEditing ? 'Save Profile' : 'Edit Profile'}
+      disabled={isEditing ? !saveChanges : false}
+      onClick={onEditButtonClick}
+      label={isEditing ? 'Save Profile' : 'Edit Profile'}
     />
-    <div className={props.isEditing ? 'cancel-button' : 'hidden'}>
+    <div className={isEditing ? 'cancel-button' : 'hidden'}>
       <RaisedButton
         secondary
-        onTouchTap={props.onCancelClick}
+        onTouchTap={onCancelClick}
         label="Cancel"
       />
     </div>
   </div>
 );
+
+EditProfileButton.propTypes = {
+  isEditing: PropTypes.bool.isRequired,
+  onEditButtonClick: PropTypes.func.isRequired,
+  onCancelClick: PropTypes.func.isRequired,
+  saveChanges: PropTypes.bool.isRequired
+};
 
 export default EditProfileButton;
