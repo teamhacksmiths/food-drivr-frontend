@@ -5,7 +5,8 @@ import { List } from 'material-ui/List';
 
 const AddressList = ({
   addresses,
-  handleToggle
+  handleToggle,
+  handleRemoveAddress
 }) => (
   <div className="address-list">
     <List>
@@ -15,6 +16,7 @@ const AddressList = ({
             key={i}
             address={address}
             handleToggle={handleToggle}
+            handleRemoveAddress={handleRemoveAddress}
             index={i}
           />
           <Divider />
@@ -25,7 +27,8 @@ const AddressList = ({
 );
 
 AddressList.propTypes = {
-  addresses: PropTypes.array.isRequired
+  addresses: PropTypes.array.isRequired,
+  handleRemoveAddress: PropTypes.func.isRequired
 };
 
 export default AddressList;

@@ -134,18 +134,18 @@ class UserProfilePage extends React.Component {
   }
 
   onToggleDefault(index) {
-    // const {
-    //   formData
-    // } = this.state;
-    // const addresses = formData.Addresses;
-    // const newAddresses = addresses.map((address) => {
-    //   address.default = address === addresses[index]
-    // })
-    // const newFormData = assignFormData(formData, 'Addresses', newAddresses);
-    // console.log(`Swapping old formData ${formData} for new formData ${newFormData}`)
-    // this.setState({
-    //   formData: newFormData
-    // });
+    const {
+      formData
+    } = this.state;
+    const addresses = formData.Addresses;
+    const newAddresses = addresses.map((address) => {
+      address.default = address === addresses[index]
+    })
+    const newFormData = assignFormData(formData, 'Addresses', newAddresses);
+    console.log(`Swapping old formData ${formData} for new formData ${newFormData}`)
+    this.setState({
+      formData: newFormData
+    });
   }
 
 /*

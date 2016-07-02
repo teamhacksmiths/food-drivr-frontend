@@ -173,6 +173,7 @@
 
 .addressText {
 	line-height: 1.4rem;
+	flex: 1;
 }
 
 .geosuggest__input {
@@ -188,4 +189,8 @@
 	margin-top: auto;
 	margin-bottom: auto;
 	margin-left: 10px;
+}
+
+.flex-end {
+	align-self: flex-end;
 }

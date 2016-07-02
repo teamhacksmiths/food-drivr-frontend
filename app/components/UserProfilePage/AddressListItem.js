@@ -17,7 +17,8 @@ const constructAddress = (address) =>
 const AddressListItem = ({
   handleToggle,
   address,
-  index
+  index,
+  handleRemoveAddress
 }) => (
   <ListItem>
     <div className="flexRow">
@@ -29,6 +30,10 @@ const AddressListItem = ({
       <h4 className="addressText">
         {constructAddress(address)}
       </h4>
+      <button
+        className="btn btn-delDonation flex-end"
+        onClick={handleRemoveAddress}
+      />
     </div>
   </ListItem>
 );
@@ -36,7 +41,8 @@ const AddressListItem = ({
 AddressListItem.propTypes = {
   address: PropTypes.object.isRequired,
   handleToggle: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
+  handleRemoveAddress: PropTypes.func
 };
 
 export default AddressListItem;
