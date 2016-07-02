@@ -20,7 +20,7 @@ const AddressListItem = ({
   index,
   handleRemoveAddress
 }) => (
-  <ListItem>
+  <ListItem key={index}>
     <div className="flex-row">
       <DefaultCheckbox
         handleToggle={handleToggle}

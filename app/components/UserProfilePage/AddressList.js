@@ -20,7 +20,7 @@ const AddressList = ({
               handleToggle={handleToggle}
               handleRemoveAddress={handleRemoveAddress}
             />
-            <Divider />
+          <Divider key={i + 1 * Math.random()} />
           </div>
         )}
       </List>

@@ -401,7 +401,7 @@ If error occurs, logout user and return to homepage.
  */
   handleRemoveAddress(i) {
     const formData = this.state.formData;
-    const elementId = i.target.id;
+    const elementId = parseInt(i.target.id, 10);
     const newFormData = Object.assign({}, formData, {
       addresses: [
         ...formData.addresses.slice(0, elementId),
