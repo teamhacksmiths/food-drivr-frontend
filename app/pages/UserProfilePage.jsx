@@ -36,7 +36,7 @@ const AddressSection = ({
       <div>
         <GeoSuggest
           isEditing={isEditing}
-          onSuggestSelect={handleSuggestSelect}
+          handleSuggestSelect={handleSuggestSelect}
           handleAddAddress={handleAddAddress}
           buttonIsEnabled={buttonIsEnabled}
         />
@@ -60,11 +60,6 @@ AddressSection.propTypes = {
   handleSuggestSelect: PropTypes.func.isRequired
 };
 
-
-const assign = (data, key, newData) =>
-  Object.assign({}, data[key], {
-    newData
-  });
 
 class UserProfilePage extends React.Component {
   constructor(props, context) {
