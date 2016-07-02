@@ -431,12 +431,13 @@ If error occurs, logout user and return to homepage.
     }
   }
 
-  handleRemoveAddress(i) {
+  handleRemoveAddress(e, i) {
     const formData = this.state.formData;
+    console.log("removing address with id of ", i)
     const newFormData = Object.assign({}, formData, {
       Addresses: [
         ...formData.Addresses.slice(0, i),
-        ...formData.Addresses.slice(1 + 1)
+        ...formData.Addresses.slice(i + 1)
       ]
     });
     this.setState({

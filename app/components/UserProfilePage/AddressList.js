@@ -16,8 +16,7 @@ const AddressList = ({
             key={i}
             address={address}
             handleToggle={handleToggle}
-            handleRemoveAddress={handleRemoveAddress}
-            index={i}
+            handleRemoveAddress={handleRemoveAddress.bind(this, i)}
           />
           <Divider />
         </div>
@@ -28,7 +27,8 @@ const AddressList = ({
 
 AddressList.propTypes = {
   addresses: PropTypes.array.isRequired,
-  handleRemoveAddress: PropTypes.func.isRequired
+  handleRemoveAddress: PropTypes.func.isRequired,
+  handleToggle: PropTypes.func.isRequired
 };
 
 export default AddressList;
