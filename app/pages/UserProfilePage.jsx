@@ -408,6 +408,10 @@ If error occurs, logout user and return to homepage.
         ...formData.Addresses.slice(elementId + 1)
       ]
     });
+    /* If their are no default addresses set, just set the first one as default */
+    if (newFormData.Addresses.length && !checkDefaults(newFormData.Addresses)) {
+      newFormData.Addresses[0].default = true;
+    }
     this.setState({
       formData: newFormData,
     });
@@ -449,10 +453,12 @@ If error occurs, logout user and return to homepage.
  * @sideeffect - Sets state of the form data with the addressToAdd value
  */
   handleSuggestSelect(address) {
-    this.setState({
-      canAddAddress: true,
-      addressToAdd: address.label
-    });
+    if (address.label) {
+      this.setState({
+        canAddAddress: true,
+        addressToAdd: address.label
+      });
+    }
   }
 
   render() {
