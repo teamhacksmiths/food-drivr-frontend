@@ -45,3 +45,8 @@
     width: 260px;
   }
 }
+
+.button-add {
+  @mixin square 30px;
+  @mixin bg-img '/images/add-button.svg';
+}

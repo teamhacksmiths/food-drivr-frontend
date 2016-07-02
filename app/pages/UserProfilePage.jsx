@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import auth from '../utils/auth.js';
 import FullscreenLoading from '../components/Reusable/FullscreenLoading';
 import Snackbar from 'material-ui/Snackbar';
@@ -8,12 +8,53 @@ import UserProfile from '../components/UserProfilePage/UserProfile';
 import PasswordForm from '../components/UserProfilePage/PasswordForm.jsx';
 import GeoSuggest from '../components/UserProfilePage/GeoSuggest.jsx';
 import EditProfileButton from '../components/UserProfilePage/EditProfileButton.jsx';
+import AddressList from '../components/UserProfilePage/AddressList';
 
 const Styles = {
   buttonGroup: {
     margin: 15
   }
 };
+
+/* I hate doing this.  The organization in the project needs serious work though and I told you I
+   Would not change much.  This SHOULD be refactored into another component outside of this page.
+   God help us all when your component is over 500 lines :D.
+   -- Ryan
+*/
+const AddressSection = ({
+  addresses,
+  handleToggle,
+  isEditing,
+  handleSuggestSelect
+}) => (
+  <section className="address-section">
+    {isEditing &&
+      <div>
+        <GeoSuggest
+          isEditing={isEditing}
+          onSuggestSelect={handleSuggestSelect}
+        />
+      <AddressList
+        addresses={addresses}
+        handleToggle={handleToggle}
+      />
+      </div>
+    }
+  </section>
+);
+
+AddressSection.propTypes = {
+  addresses: PropTypes.array.isRequired,
+  handleToggle: PropTypes.func.isRequired,
+  isEditing: PropTypes.bool.isRequired,
+  handleSuggestSelect: PropTypes.func.isRequired
+};
+
+
+const assignFormData = (formData, key, newData) =>
+  Object.assign({}, formData[key], {
+    newData
+  });
 
 class UserProfilePage extends React.Component {
   constructor(props, context) {
@@ -27,6 +68,16 @@ class UserProfilePage extends React.Component {
       isEditing: false,
       passwordEdit: false,
       formData: {
+        Addresses: [
+          {
+            "fullAddress": "1213 Coral Lane, Corolla NC 28928",
+            "default" : true
+          },
+          {
+            "fullAddress": "2025 Main st., Some City, NY 39938",
+            "default" : false
+          }
+        ],
         Email: '',
         Phone: '',
         Company: '',
@@ -58,6 +109,7 @@ class UserProfilePage extends React.Component {
     this.handleCloseAction = this.handleCloseAction.bind(this);
     this.handleSubmitAction = this.handleSubmitAction.bind(this);
     this.handleSuggestSelect = this.handleSuggestSelect.bind(this);
+    this.onToggleDefault = this.onToggleDefault.bind(this);
   }
 
   componentWillMount() {
@@ -70,6 +122,21 @@ class UserProfilePage extends React.Component {
   componentDidMount() {
     // Get user data on component mount
     this.getUserData();
+  }
+
+  onToggleDefault(index) {
+    // const {
+    //   formData
+    // } = this.state;
+    // const addresses = formData.Addresses;
+    // const newAddresses = addresses.map((address) => {
+    //   address.default = address === addresses[index]
+    // })
+    // const newFormData = assignFormData(formData, 'Addresses', newAddresses);
+    // console.log(`Swapping old formData ${formData} for new formData ${newFormData}`)
+    // this.setState({
+    //   formData: newFormData
+    // });
   }
 
 /*
@@ -379,49 +446,53 @@ If error occurs, logout user and return to homepage.
       />
     ];
     return (
-      this.state.isLoading ? <FullscreenLoading isLoading={this.state.isLoading} /> :
-      <div className="user-profile">
-        <UserProfile
-          userData={this.state.userData}
-          onFormSubmit={this.submitUserData}
-          errors={this.state.errors}
-          onFormUpdate={this.handleFormUpdate}
-          formData={this.state.formData}
-          isEditing={this.state.isEditing}
-          toggled={this.state.toggled}
-          onFormReset={this.handleFormReset}
-        />
-        <GeoSuggest
-          isEditing={this.state.isEditing}
-          onSuggestSelect={this.handleSuggestSelect}
-        />
-        <Divider />
-        <EditProfileButton
-          className="user-profile__btn-edit"
-          isEditing={this.state.isEditing}
-          onCancelClick={this.handleCancelClick}
-          onEditButtonClick={this.handleEditButtonClick}
-          saveChanges={this.state.saveChanges}
-        />
-        <PasswordForm
-          actions={actions}
-          onPasswordReset={this.handlePasswordReset}
-          isOpen={this.state.passwordEdit}
-          onFormUpdate={this.handleFormUpdate}
-          formData={this.state.formData}
-          errors={this.state.errors}
-          onHandleClose={this.handleCloseAction}
-          onChangePasswordClick={this.handleChangePasswordClick}
-          isEditing={this.state.isEditing}
-        />
-        <Snackbar
-          open={this.state.snackBarIsOpen}
-          action="Close"
-          message={this.state.snackBarMessage}
-          autoHideDuration={3000}
-          onRequestClose={this.handleSnackClose}
-        />
-      </div>
+      this.state.isLoading ?
+        <FullscreenLoading isLoading={this.state.isLoading} />
+      :
+        <div className="user-profile">
+          <UserProfile
+            userData={this.state.userData}
+            onFormSubmit={this.submitUserData}
+            errors={this.state.errors}
+            onFormUpdate={this.handleFormUpdate}
+            formData={this.state.formData}
+            isEditing={this.state.isEditing}
+            toggled={this.state.toggled}
+            onFormReset={this.handleFormReset}
+          />
+          <Divider />
+          <AddressSection
+            isEditing={this.state.isEditing}
+            handleSuggestSelect={this.handleSuggestSelect}
+            handleToggle={this.onToggleDefault}
+            addresses={this.state.formData.Addresses}
+          />
+          <EditProfileButton
+            className="user-profile__btn-edit"
+            isEditing={this.state.isEditing}
+            onCancelClick={this.handleCancelClick}
+            onEditButtonClick={this.handleEditButtonClick}
+            saveChanges={this.state.saveChanges}
+          />
+          <PasswordForm
+            actions={actions}
+            onPasswordReset={this.handlePasswordReset}
+            isOpen={this.state.passwordEdit}
+            onFormUpdate={this.handleFormUpdate}
+            formData={this.state.formData}
+            errors={this.state.errors}
+            onHandleClose={this.handleCloseAction}
+            onChangePasswordClick={this.handleChangePasswordClick}
+            isEditing={this.state.isEditing}
+          />
+          <Snackbar
+            open={this.state.snackBarIsOpen}
+            action="Close"
+            message={this.state.snackBarMessage}
+            autoHideDuration={3000}
+            onRequestClose={this.handleSnackClose}
+          />
+        </div>
     );
   }
 }

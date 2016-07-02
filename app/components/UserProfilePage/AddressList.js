@@ -1,18 +1,27 @@
 import React, { PropTypes } from 'react'
 import AddressListItem from './AddressListItem';
 import Divider from 'material-ui/Divider';
-import { ListItem } from 'material-ui/List';
+import { List } from 'material-ui/List';
 
 const AddressList = ({
-  addresses
+  addresses,
+  handleToggle
 }) => (
   <div className="address-list">
-    {addresses.map((address, i) =>
-      <AddressListItem
-        key={i}
-        address={address}
-      />
-    )}
+    <List>
+      <Divider />
+      {addresses.map((address, i) =>
+        <div>
+          <AddressListItem
+            key={i}
+            address={address}
+            handleToggle={handleToggle}
+            index={i}
+          />
+          <Divider />
+        </div>
+      )}
+    </List>
   </div>
 );
 

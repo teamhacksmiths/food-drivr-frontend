@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 import { ListItem } from 'material-ui/List';
 import DefaultCheckbox from './DefaultCheckbox';
 
@@ -14,17 +14,27 @@ const join = (address) =>
 const constructAddress = (address) =>
   address.fullAddress || join(address);
 
-const AddressListItem = (props) => (
-  <ListItem
-    primaryText={constructAddress(props.address)}
-    leftCheckbox={
-      <DefaultCheckbox {...props} />
-    }
-  />
+const AddressListItem = ({
+  handleToggle,
+  address,
+  index
+}) => (
+  <ListItem>
+    <div className="flexRow">
+      <DefaultCheckbox
+        handleToggle={handleToggle}
+        index={index}
+        address={address}
+      />
+      <h4 className="addressText">{constructAddress(address)}</h4>
+    </div>
+  </ListItem>
 );
 
 AddressListItem.propTypes = {
-  address: PropTypes.object.isRequired
+  address: PropTypes.object.isRequired,
+  handleToggle: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired
 };
 
 export default AddressListItem;

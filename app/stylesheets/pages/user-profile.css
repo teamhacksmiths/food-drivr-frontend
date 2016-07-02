@@ -164,3 +164,16 @@
 .password-form {
 	width: 100%;
 }
+
+.flexRow {
+	display: flex;
+	vertical-align: top; /* here */
+}
+
+.addressText {
+	line-height: 1.4rem;
+}
+
+.geosuggest__input {
+	padding: 1em 1em !important;
+}

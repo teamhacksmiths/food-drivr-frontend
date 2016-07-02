@@ -5,10 +5,12 @@ const DefaultCheckbox = ({
   address,
   handleToggle
 }) => (
-  <Checkbox
-    defaultChecked={address.default}
-    onClick={handleToggle}
-  />
+  <span>
+    <Checkbox
+      defaultChecked={address.default}
+      onCheck={handleToggle}
+    />
+  </span>
 );
 
 DefaultCheckbox.propTypes = {
