@@ -111,17 +111,17 @@
 .btn-addDonation {
   @mixin square 55px;
   @mixin bg-img '/images/add-button.svg';
-	@media screen and (max-width: 650px) {
-		@mixin square 40px;
-	}
+  @media screen and (max-width: 650px) {
+    @mixin square 40px;
+  }
 }
 .btn-delDonation {
   @mixin square 20px;
   @mixin bg-img '/images/delete-item.svg';
-  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
   @media screen and (max-width: 650px) {
-    margin-top: auto;
-    margin-bottom: auto;
     @mixin square 15px;
   }
 }
