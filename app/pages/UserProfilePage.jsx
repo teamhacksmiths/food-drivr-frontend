@@ -414,7 +414,7 @@ If error occurs, logout user and return to homepage.
     }
     this.setState({
       formData: newFormData,
-      saveChanges: newFormData.addresses.length
+      saveChanges: newFormData.addresses.length > 0
     });
   }
 
