@@ -444,20 +444,28 @@ If error occurs, logout user and return to homepage.
     });
   }
 
-  handleAddAddress(address) {
+  handleAddAddress() {
+    const {
+      addressToAdd
+    } = this.state;
+    if (addressToAdd === null) { return undefined; }
     const formData = this.state.formData;
+    const newAddress = { fullAddress: addressToAdd }
     const newFormData = Object.assign({}, formData, {
-      Addresses: [...formData.Addresses, address.label]
+      Addresses: [...formData.Addresses, newAddress]
     });
     this.setState({
       formData: newFormData,
-      canAddAddress: false
+      canAddAddress: false,
+      addressToAdd: null,
+      saveChanges: true
     });
   }
 
   handleSuggestSelect(address) {
     this.setState({
-      canAddAddress: true
+      canAddAddress: true,
+      addressToAdd: address.label
     });
   }
 
