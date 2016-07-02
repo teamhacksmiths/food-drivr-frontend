@@ -16,8 +16,9 @@ const Styles = {
   }
 };
 
-/* I hate doing this.  The organization in the project needs serious work though and I told you I
-   Would not change much.  This SHOULD be refactored into another component outside of this page.
+/* I hate doing this, that is adding a component in a container.
+   The organization in the project needs work though and I told you I
+   Would change as little as possible.  This SHOULD be refactored into another component outside of this page.
    God help us all when your component is over 500 lines :D.
    -- Ryan
 */
@@ -52,6 +53,9 @@ const AddressSection = ({
 AddressSection.propTypes = {
   addresses: PropTypes.array.isRequired,
   handleToggle: PropTypes.func.isRequired,
+  handleAddAddress: PropTypes.func.isRequired,
+  handleRemoveAddress: PropTypes.func.isRequired,
+  buttonIsEnabled: PropTypes.bool.isRequired,
   isEditing: PropTypes.bool.isRequired,
   handleSuggestSelect: PropTypes.func.isRequired
 };
@@ -141,7 +145,7 @@ class UserProfilePage extends React.Component {
     const newAddresses = addresses.map((address) => {
       address.default = address === addresses[index]
     })
-    const newFormData = assignFormData(formData, 'Addresses', newAddresses);
+    const newFormData = assign(formData, 'Addresses', newAddresses);
     this.setState({
       formData: newFormData
     });
@@ -433,11 +437,11 @@ If error occurs, logout user and return to homepage.
 
   handleRemoveAddress(i) {
     const formData = this.state.formData;
-    console.log("removing address with id of ", i.target.id)
+    const elementId = i.target.id;
     const newFormData = Object.assign({}, formData, {
       Addresses: [
-        ...formData.Addresses.slice(0, i),
-        ...formData.Addresses.slice(i + 1)
+        ...formData.Addresses.slice(0, elementId),
+        ...formData.Addresses.slice(elementId + 1)
       ]
     });
     this.setState({
