@@ -21,7 +21,7 @@ const Styles = {
   },
   formHeader: {
     textAlign: 'center',
-    fontSize: 26
+    fontSize: 20
   },
   changePasswordGroup: {
     margin: 10,
@@ -70,7 +70,6 @@ const PasswordForm = (props) => (
                 value={props.formData.CurrentPassword}
                 onChange={props.onFormUpdate}
                 type="password"
-                hintText="Current Password"
                 hasErrors
               />
             </div>
@@ -84,7 +83,6 @@ const PasswordForm = (props) => (
                 errorText={props.errors.NewPassword}
                 onChange={props.onFormUpdate}
                 type="password"
-                hintText="New Password"
               />
             </div>
             <div className="form-group">
@@ -97,7 +95,6 @@ const PasswordForm = (props) => (
                 errorText={props.errors.NewPasswordConfirmation}
                 onChange={props.onFormUpdate}
                 type="password"
-                hintText="Confirm Password"
               />
             </div>
           </form>

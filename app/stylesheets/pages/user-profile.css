@@ -30,7 +30,6 @@
 	margin: 30px auto;
 }
 .profile-button-group {
-	@mixin flex row, *, *, center;
 	margin: 20px auto 80px;
 }
 .change-password-reveal span {

@@ -13,6 +13,7 @@
 	letter-spacing: 3.3px;
 }
 .intro__powered {
+  display: none;
   font-size: $font-small-thin;
 	line-height: 3px;
 	letter-spacing: 2.8px;
@@ -52,6 +53,7 @@
     padding: 10px;
   }
   .intro__powered {
+    display: block;
     font-size: $font-small;
   }
   .intro__title {
