@@ -153,6 +153,13 @@
 .address-text {
 	line-height: 1.4rem;
 	flex: 1;
+	font-weight: 500;
+	font-family: 'Open Sans';
+	@media screen and (max-width: 650px) {
+		font-size: 0.8rem;
+		margin-right: 5px;
+		font-weight: 400;
+	}
 }
 .warning {
 	text-align: center;
