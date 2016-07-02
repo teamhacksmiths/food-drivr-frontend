@@ -70,7 +70,7 @@ const UserProfile = ({
           toggled={toggled}
           disabled={!isEditing}
           id="notifications"
-          label="Toggle Notifications"
+          label="Toggle Mobile Push Notifications"
         />
     </form>
   </div>
