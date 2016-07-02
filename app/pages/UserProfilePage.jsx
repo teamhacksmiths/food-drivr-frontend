@@ -167,26 +167,10 @@ If error occurs, logout user and return to homepage.
       .then((response) => {
         console.log(response);
         const newForm = this.state.formData;
-        if (response.data.user.email != null) {
-          newForm.Email = response.data.user.email;
-        } else {
-          newForm.Email = '';
-        }
-        if (response.data.user.phone != null) {
-          newForm.Phone = response.data.user.phone;
-        } else {
-          newForm.Phone = '';
-        }
-        if (response.data.user.company != null) {
-          newForm.Company = response.data.user.company;
-        } else {
-          newForm.Company = '';
-        }
-        if (response.data.user.avatar != null) {
-          newForm.Avatar = response.data.user.avatar;
-        } else {
-          newForm.Avatar = null;
-        }
+        newForm.Email = response.data.user.email || '';
+        newForm.Phone = response.data.user.phone || '';
+        newForm.Company = response.data.user.company || '';
+        newForm.Avatar = response.data.user.avatar || null;
         newForm.Notifications = response.data.user.settings.notifications;
 
         this.setState({
@@ -336,7 +320,9 @@ If error occurs, logout user and return to homepage.
     const newFormData = this.state.formData;
     if (this.state.isEditing === true) {
       for (const i in newFormData) {
-        newFormData[i] = '';
+        if (typeof newFormData[i] === 'String') {
+          newFormData[i] = '';
+        }
       }
     }
     this.setState({
@@ -425,6 +411,7 @@ If error occurs, logout user and return to homepage.
     formData.NewPassword = '';
     formData.NewPasswordConfirmation = '';
     formData.CurrentPassword = '';
+    formData.Addresses = [];
     this.setState({
       formData,
       passwordEdit: false,
