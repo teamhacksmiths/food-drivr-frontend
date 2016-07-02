@@ -42,7 +42,6 @@ class DonationPage extends React.Component {
 
   handleGetDonations() {
     auth.getDonation().then((response) => {
-      console.log(response);
       response.data.donations.sort((a, b) => a.created_at < b.created_at);
       this.setState({ donations: response.data.donations });
     })
@@ -105,8 +104,7 @@ class DonationPage extends React.Component {
 
   handleDonate() {
     auth.postDonation(this.state.itemsAdded)
-    .then((response) => {
-      console.log(response);
+    .then((_) => {
       this.setState({
         open: false,
         openSnackBar: true,

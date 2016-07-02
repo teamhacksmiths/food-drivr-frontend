@@ -6,7 +6,6 @@ import axios from 'axios';
 
 module.exports = {
   login(email, pass) {
-    console.log(JSON.stringify({ session: { email, password: pass } }));
     const token = (typeof window !== 'undefined') ? localStorage.getItem('token') : undefined;
 
     return axios({
@@ -26,7 +25,6 @@ module.exports = {
   register(name, email, pass, passconf, role) {
     // ensure callback is always last argument
     // create new session, pass in email and password as object
-    console.log(JSON.stringify({ user: { name, email, password: pass, password_confirmation: pass, role_id: role } }));
     return axios({
       url: '/users',
       method: 'post',
@@ -129,12 +127,6 @@ module.exports = {
   },
 
   postDonation(items) {
-    console.log(JSON.stringify({
-      donation: {
-        items
-      }
-    }));
-
     return axios({
       url: '/donor/donations',
       method: 'post',
@@ -161,9 +153,9 @@ module.exports = {
       url: `/users/${localStorage.getItem('token')}/password-update`,
       method: 'patch',
       baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
-      transformRequest: [(data) =>
+      transformRequest: [(theData) =>
     // Do whatever you want to transform the data
-        JSON.stringify(data)
+        JSON.stringify(theData)
       ],
       data: {
         user: {

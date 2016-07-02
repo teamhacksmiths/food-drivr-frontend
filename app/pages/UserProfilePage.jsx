@@ -121,7 +121,6 @@ If error occurs, logout user and return to homepage.
   getUserData() {
     auth.getUser()
       .then((response) => {
-        console.log(response);
         const newForm = this.state.formData;
         newForm.email = response.data.user.email || '';
         newForm.phone = response.data.user.phone || '';
@@ -169,7 +168,6 @@ If error occurs, logout user and return to homepage.
   submitUserData() {
     auth.postUser(this.state.formData)
       .then(() => {
-        console.log('Successfully submitted user data.');
         this.setState({
           isEditing: false,
           snackBarIsOpen: true,
