@@ -31,7 +31,7 @@
 }
 .profile-button-group {
 	@mixin flex row, *, *, center;
-    margin: 20px auto 80px;
+	margin: 20px auto 80px;
 }
 .change-password-reveal span {
 	padding: 0 !important;
@@ -40,12 +40,13 @@
  * The geosuggest module
  */
 .geosuggest {
-  font-size: 18px;
-  font-size: 1rem;
-  position: relative;
-  margin: 1em auto;
-  text-align: left;
+	font-size: 18px;
+	font-size: 1rem;
+	position: relative;
+	flex: 1;
+	text-align: left;
 }
+
 .geosuggest__label {
 	display: block;
 	text-align: center;
@@ -92,22 +93,22 @@
  * A geosuggest item
  */
 .geosuggest-item {
-  font-size: 18px;
-  font-size: 1rem;
-  padding: .5em .65em;
-  cursor: pointer;
+	font-size: 18px;
+	font-size: 1rem;
+	padding: .5em .65em;
+	cursor: pointer;
 }
 .geosuggest-item:hover,
 .geosuggest-item:focus {
-  background: #f5f5f5;
+	background: #f5f5f5;
 }
 .geosuggest-item--active {
-  background: #267dc0;
-  color: #fff;
+	background: #267dc0;
+	color: #fff;
 }
 .geosuggest-item--active:hover,
 .geosuggest-item--active:focus {
-  background: #ccc;
+	background: #ccc;
 }
 
 
@@ -176,4 +177,14 @@
 
 .geosuggest__input {
 	padding: 1em 1em !important;
+}
+
+.geosuggest__input-wrapper {
+	display: flex;
+	flex-direction: row;
+}
+
+.btn__geosuggest {
+	margin-top: auto;
+	margin-bottom: auto;
 }
