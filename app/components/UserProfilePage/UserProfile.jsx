@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import TextField from 'material-ui/TextField';
-import AvatarMissing from '../../assets/images/avatar-missing.png';
 import Toggle from 'material-ui/Toggle';
+import UserAvatar from './UserAvatar';
 
 const Styles = {
   formGroup: {
@@ -17,15 +17,16 @@ const UserProfile = ({
   formData,
   errors,
   onFormSubmit,
-  userData
+  userData,
+  handleUploadAvatar
 }) => (
   <div className="user-profile__container">
     <h1 className="text-center text-yellow">Hello, {userData.name}</h1>
-    <img
-      className="user-profile__avatar"
-      src={userData.avatar ? userData.avatar : AvatarMissing}
-      alt="person-avatar"
-    />
+      <UserAvatar
+        avatar={userData.avatar}
+        handleUploadAvatar={handleUploadAvatar}
+        isEditing={isEditing}
+      />
     <form className="user-profile__form" onSubmit={onFormSubmit}>
         <TextField
           id="email"
@@ -91,7 +92,8 @@ UserProfile.propTypes = {
   userData: PropTypes.shape({
     name: PropTypes.string,
     avatar: PropTypes.string
-  })
+  }),
+  handleUploadAvatar: PropTypes.func.isRequired
 };
 
 export default UserProfile;

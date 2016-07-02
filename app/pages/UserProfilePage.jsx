@@ -74,6 +74,7 @@ class UserProfilePage extends React.Component {
     this.onToggleDefault = this.onToggleDefault.bind(this);
     this.handleRemoveAddress = this.handleRemoveAddress.bind(this);
     this.handleAddAddress = this.handleAddAddress.bind(this);
+    this.handleUploadAvatar = this.handleUploadAvatar.bind(this);
   }
 
   componentWillMount() {
@@ -113,6 +114,7 @@ class UserProfilePage extends React.Component {
       saveChanges: true
     });
   }
+
 
 /*
 @return Pull user data from server. set isLoading, isEditing and userData state.
@@ -180,6 +182,30 @@ If error occurs, logout user and return to homepage.
           snackBarMessage: 'An error occured while submitting data to the network.'
         });
       });
+  }
+
+  handleUploadAvatar (data, error) {
+    if (error !== undefined || data === null) {
+      return this.setState({
+        snackBarIsOpen: true,
+        snackBarMessage: 'An error occured while uploading your image.  Please try again.'
+      });
+    }
+    const {
+      formData,
+      userData
+    } = this.state;
+    const newFormData = Object.assign({}, formData, {
+      avatar: data.avatar
+    });
+    const newUserData = Object.assign({}, userData, {
+      avatar: data.avatar
+    });
+    this.setState({
+      saveChanges: true,
+      formData: newFormData,
+      userData: newUserData
+    });
   }
 
   /*
@@ -492,6 +518,7 @@ If error occurs, logout user and return to homepage.
             isEditing={this.state.isEditing}
             toggled={this.state.toggled}
             onFormReset={this.handleFormReset}
+            handleUploadAvatar={this.handleUploadAvatar}
           />
           <Divider />
           <AddressSection
