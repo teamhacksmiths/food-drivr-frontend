@@ -1,65 +1,19 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import auth from '../utils/auth.js';
 import FullscreenLoading from '../components/Reusable/FullscreenLoading';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 import UserProfile from '../components/UserProfilePage/UserProfile';
-import PasswordForm from '../components/UserProfilePage/PasswordForm.jsx';
-import GeoSuggest from '../components/UserProfilePage/GeoSuggest.jsx';
-import EditProfileButton from '../components/UserProfilePage/EditProfileButton.jsx';
-import AddressList from '../components/UserProfilePage/AddressList';
+import PasswordForm from '../components/UserProfilePage/PasswordForm';
+import EditProfileButton from '../components/UserProfilePage/EditProfileButton';
+import AddressSection from '../components/UserProfilePage/AddressSection';
 
 const Styles = {
   buttonGroup: {
     margin: 15
   }
 };
-
-/* I hate doing this, that is adding a component in a container.
-   The organization in the project needs work though and I told you I
-   Would change as little as possible.  This SHOULD be refactored into another component outside of this page.
-   God help us all when your component is over 500 lines :D.
-   -- Ryan
-*/
-const AddressSection = ({
-  addresses,
-  handleToggle,
-  isEditing,
-  handleSuggestSelect,
-  handleAddAddress,
-  handleRemoveAddress,
-  buttonIsEnabled
-}) => (
-  <section className="address-section">
-    {isEditing &&
-      <div>
-        <GeoSuggest
-          isEditing={isEditing}
-          handleSuggestSelect={handleSuggestSelect}
-          handleAddAddress={handleAddAddress}
-          buttonIsEnabled={buttonIsEnabled}
-        />
-        <AddressList
-          addresses={addresses}
-          handleToggle={handleToggle}
-          handleRemoveAddress={handleRemoveAddress}
-        />
-      </div>
-    }
-  </section>
-);
-
-AddressSection.propTypes = {
-  addresses: PropTypes.array.isRequired,
-  handleToggle: PropTypes.func.isRequired,
-  handleAddAddress: PropTypes.func.isRequired,
-  handleRemoveAddress: PropTypes.func.isRequired,
-  buttonIsEnabled: PropTypes.bool.isRequired,
-  isEditing: PropTypes.bool.isRequired,
-  handleSuggestSelect: PropTypes.func.isRequired
-};
-
 
 class UserProfilePage extends React.Component {
   constructor(props, context) {
@@ -73,16 +27,7 @@ class UserProfilePage extends React.Component {
       isEditing: false,
       passwordEdit: false,
       formData: {
-        Addresses: [
-          {
-            "fullAddress": "1213 Coral Lane, Corolla NC 28928",
-            "default" : true
-          },
-          {
-            "fullAddress": "2025 Main st., Some City, NY 39938",
-            "default" : false
-          }
-        ],
+        Addresses: [],
         Email: '',
         Phone: '',
         Company: '',
@@ -325,8 +270,9 @@ If error occurs, logout user and return to homepage.
         }
       }
     }
+    const randomKey = Math.floor(Math.random() * (1337 - 1)) + 1;
     this.setState({
-      key: 1337,
+      key: randomKey,
       isLoading: true,
       snackBarIsOpen: false,
       snackBarMessage: '',
@@ -429,7 +375,6 @@ If error occurs, logout user and return to homepage.
     }
   }
 
-
   handleRemoveAddress(i) {
     const formData = this.state.formData;
     const elementId = i.target.id;
@@ -507,6 +452,7 @@ If error occurs, logout user and return to homepage.
             handleAddAddress={this.handleAddAddress}
             handleRemoveAddress={this.handleRemoveAddress}
             handleToggle={this.onToggleDefault}
+            buttonIsEnabled={this.state.canAddAddress}
             addresses={this.state.formData.Addresses}
           />
           <EditProfileButton
