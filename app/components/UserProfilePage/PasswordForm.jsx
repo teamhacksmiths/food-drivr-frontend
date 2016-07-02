@@ -47,7 +47,7 @@ const PasswordForm = ({
           id="currentPassword"
           name="currentPassword"
           floatingLabelText="Current Password"
-          value={formData.CurrentPassword}
+          value={formData.currentPassword}
           onChange={onFormUpdate}
           type="password"
           hasErrors
@@ -57,8 +57,8 @@ const PasswordForm = ({
           style={Styles.formGroup}
           name="password"
           floatingLabelText="New Password"
-          value={formData.NewPassword}
-          errorText={errors.NewPassword}
+          value={formData.newPassword}
+          errorText={errors.newPassword}
           onChange={onFormUpdate}
           type="password"
         />
@@ -67,8 +67,8 @@ const PasswordForm = ({
           id="newPasswordConfirmation"
           name="passwordConfirmation"
           floatingLabelText="Confirm New Password"
-          value={formData.NewPasswordConfirmation}
-          errorText={errors.NewPasswordConfirmation}
+          value={formData.newPasswordConfirmation}
+          errorText={errors.newPasswordConfirmation}
           onChange={onFormUpdate}
           type="password"
         />
@@ -80,11 +80,15 @@ const PasswordForm = ({
 PasswordForm.propTypes = {
   isEditing: PropTypes.bool,
   formData: PropTypes.shape({
-    CurrentPassword: PropTypes.string,
-    NewPassword: PropTypes.string,
-    NewPasswordConfirmation: PropTypes.string
+    currentPassword: PropTypes.string,
+    newPassword: PropTypes.string,
+    newPasswordConfirmation: PropTypes.string
   }),
-  errors: PropTypes.array(PropTypes.string),
+  errors: PropTypes.shape({
+    currentPassword: PropTypes.string,
+    newPassword: PropTypes.string,
+    newPasswordConfirmation: PropTypes.string
+  }),
   onChangePasswordClick: PropTypes.func,
   onFormUpdate: PropTypes.func,
   actions: PropTypes.array,
