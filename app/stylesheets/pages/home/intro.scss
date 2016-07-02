@@ -1,5 +1,3 @@
-@import "../../components/button.css";
-
 .intro {
   @mixin flex column, center, *, *;
   height: calc( 100vh - 6rem);

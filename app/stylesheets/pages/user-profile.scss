@@ -132,24 +132,6 @@
 	margin-left: -20px;
 	margin-top: -20px;
 }
-.error-card {
-	height: 400px;
-	width: 800px;
-}
-.aligner {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.aligner-item {
-	max-width: 50%;
-}
-.aligner-item--top {
-	align-self: flex-start;
-}
-.aligner-item--bottom {
-	align-self: flex-end;
-}
 /* Inner dialog hack for changing the dialog's background color without
  * Changing the screen's background color.  Set as contentClassname on dialog in PasswordForm
  */
@@ -168,12 +150,10 @@
     width: 100%;
   }
 }
-
 .address-text {
 	line-height: 1.4rem;
 	flex: 1;
 }
-
 .warning {
 	text-align: center;
 	color: red;
