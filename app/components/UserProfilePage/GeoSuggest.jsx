@@ -17,7 +17,7 @@ const GeoSuggest = (props) => (
         disabled={!props.isEditing}
       />
       <button
-        className="btn button-add btn__geosuggest"
+        className={`btn button-add btn__geosuggest ${props.buttonIsEnabled ? '' : 'btn--disabled'}`}
         enabled={props.buttonIsEnabled}
         onClick={props.handleAddAddress}
       />

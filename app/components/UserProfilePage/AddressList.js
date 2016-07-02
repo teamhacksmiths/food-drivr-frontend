@@ -15,8 +15,9 @@ const AddressList = ({
           <AddressListItem
             key={i}
             address={address}
+            index={i}
             handleToggle={handleToggle}
-            handleRemoveAddress={handleRemoveAddress.bind(this, i)}
+            handleRemoveAddress={handleRemoveAddress}
           />
           <Divider />
         </div>

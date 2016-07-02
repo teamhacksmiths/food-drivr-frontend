@@ -32,6 +32,7 @@ const AddressListItem = ({
       </h4>
       <button
         className="btn btn-delDonation flex-end"
+        id={index}
         onClick={handleRemoveAddress}
       />
     </div>
@@ -41,8 +42,8 @@ const AddressListItem = ({
 AddressListItem.propTypes = {
   address: PropTypes.object.isRequired,
   handleToggle: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired,
-  handleRemoveAddress: PropTypes.func
+  handleRemoveAddress: PropTypes.func,
+  index: PropTypes.number.isRequired
 };
 
 export default AddressListItem;

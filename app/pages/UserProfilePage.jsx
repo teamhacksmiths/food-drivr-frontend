@@ -57,8 +57,8 @@ AddressSection.propTypes = {
 };
 
 
-const assignFormData = (formData, key, newData) =>
-  Object.assign({}, formData[key], {
+const assign = (data, key, newData) =>
+  Object.assign({}, data[key], {
     newData
   });
 
@@ -142,7 +142,6 @@ class UserProfilePage extends React.Component {
       address.default = address === addresses[index]
     })
     const newFormData = assignFormData(formData, 'Addresses', newAddresses);
-    console.log(`Swapping old formData ${formData} for new formData ${newFormData}`)
     this.setState({
       formData: newFormData
     });
@@ -431,9 +430,10 @@ If error occurs, logout user and return to homepage.
     }
   }
 
-  handleRemoveAddress(e, i) {
+
+  handleRemoveAddress(i) {
     const formData = this.state.formData;
-    console.log("removing address with id of ", i)
+    console.log("removing address with id of ", i.target.id)
     const newFormData = Object.assign({}, formData, {
       Addresses: [
         ...formData.Addresses.slice(0, i),
@@ -441,7 +441,7 @@ If error occurs, logout user and return to homepage.
       ]
     });
     this.setState({
-      formData: newFormData
+      formData: newFormData,
     });
   }
 
