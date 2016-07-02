@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import auth from '../utils/auth.js';
 import FullscreenLoading from '../components/Reusable/FullscreenLoading';
 import Snackbar from 'material-ui/Snackbar';
@@ -39,8 +39,8 @@ class UserProfilePage extends React.Component {
       formData: {
         addresses: [],
         email: '',
-        phone: '',
-        company: '',
+        phone: null,
+        company: null,
         notifications: null,
         currentPassword: '',
         newPassword: '',
@@ -125,8 +125,8 @@ If error occurs, logout user and return to homepage.
       .then((response) => {
         const newForm = this.state.formData;
         newForm.email = response.data.user.email || '';
-        newForm.phone = response.data.user.phone || '';
-        newForm.company = response.data.user.company || '';
+        newForm.phone = response.data.user.phone || null;
+        newForm.company = response.data.user.company || null;
         newForm.avatar = response.data.user.avatar || null;
         newForm.notifications = response.data.user.settings.notifications;
 
@@ -304,7 +304,7 @@ If error occurs, logout user and return to homepage.
     if (this.state.isEditing === true) {
       newFormData.addresses = [];
       for (const i in newFormData) {
-        if (typeof newFormData[i] == 'string') {
+        if (typeof newFormData[i] === 'string') {
           newFormData[i] = '';
         }
       }
