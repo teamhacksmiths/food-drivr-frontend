@@ -11,8 +11,8 @@ const styles = {
 };
 
 const ErrorPage = (props) => (
-  <div className="error-card-wrapper Aligner">
-    <div className="error-card Aligner-item">
+  <div className="error-card-wrapper aligner">
+    <div className="error-card aligner-item">
       <Card>
         <CardHeader
           title="Something went terribly wrong"

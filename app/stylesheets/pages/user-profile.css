@@ -127,18 +127,18 @@
 	height: 400px;
 	width: 800px;
 }
-.Aligner {
+.aligner {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-.Aligner-item {
+.aligner-item {
 	max-width: 50%;
 }
-.Aligner-item--top {
+.aligner-item--top {
 	align-self: flex-start;
 }
-.Aligner-item--bottom {
+.aligner-item--bottom {
 	align-self: flex-end;
 }
 /* Inner dialog hack for changing the dialog's background color without
