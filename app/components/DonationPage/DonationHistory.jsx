@@ -2,6 +2,8 @@ import React from 'react';
 import Headline from '../Reusable/Headline';
 import DonationHistoryList from './DonationHistoryList';
 import DonationHistoryItem from './DonationHistoryItem';
+import ScrollDownButton from '../Reusable/ScrollDownButton';
+import { Element as ScrollDest } from 'react-scroll';
 
 const convertDate = function convertDate(date) {
   const dateItems = date.split(/\-|T/i);
@@ -16,31 +18,51 @@ const convertDate = function convertDate(date) {
   return `${months[parseInt(dateItems[1] - 1, 10)]} ${dateItems[2]}, ${dateItems[0]}`;
 };
 
-const DonationHistory = ({
-  donations
-}) => (
-  <section className="donations-history">
-    <Headline value="Donations History" />
-    <ul className="donations-history__list">
-      {donations.map((donation, i) =>
-        <DonationHistoryList
-          key={i}
-          title={donation.participants.donor.name}
-          date={convertDate(donation.created_at)}
+class DonationHistory extends React.Component {
+  render() {
+    const originalDonationList = this.props.donations.map((donation, i) =>
+            <DonationHistoryList
+              key={i}
+              title={donation.participants.donor.name}
+              date={convertDate(donation.created_at)}
+            >
+              {donation.items.map((item, index) =>
+                <DonationHistoryItem
+                  key={index}
+                  quantity={item.quantity}
+                  unit={item.unit}
+                  title={item.description}
+                />
+              )}
+            </DonationHistoryList>
+          );
+    const newDonationList = originalDonationList.slice(0, 3);
+    console.log('Original Donation List');
+    console.log(originalDonationList);
+    console.log('New Donation List:');
+    console.log(newDonationList);
+
+    return (
+      <section className="donations-history">
+        <Headline value="Donations History" />
+        <ul className="donations-history__list">
+          <ScrollDest name="donationList">
+          {newDonationList}
+          </ScrollDest>
+        </ul>
+        <div
+          href="#howto"
+          className="intro__scrolldown text-center text-yellow pointer-cursor"
         >
-          {donation.items.map((item, index) =>
-            <DonationHistoryItem
-              key={index}
-              quantity={item.quantity}
-              unit={item.unit}
-              title={item.description}
-            />
-          )}
-        </DonationHistoryList>
-      )}
-    </ul>
-  </section>
-);
+          <ScrollDownButton
+            destination="donationList"
+            text="View More"
+          />
+        </div>
+      </section>
+    );
+  }
+}
 
 DonationHistory.propTypes = {
   donations: React.PropTypes.array.isRequired
