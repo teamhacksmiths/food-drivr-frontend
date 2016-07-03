@@ -16,7 +16,10 @@ class DonationPage extends React.Component {
       open: false,
       openSnackBar: false,
       snackbarMessage: '',
-      noteMsg: ''
+      noteMsg: '',
+      donationList: [],
+      listBegin: 0,
+      listEnd: 3
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleUpdateItem = this.handleUpdateItem.bind(this);
@@ -27,6 +30,7 @@ class DonationPage extends React.Component {
     this.handleSnackClose = this.handleSnackClose.bind(this);
     this.handleNoteChange = this.handleNoteChange.bind(this);
     this.handleGetDonations = this.handleGetDonations.bind(this);
+    this.handleSlice = this.handleSlice.bind(this);
   }
 
   componentWillMount() {
@@ -104,7 +108,7 @@ class DonationPage extends React.Component {
 
   handleDonate() {
     auth.postDonation(this.state.itemsAdded)
-    .then((_) => {
+    .then(() => {
       this.setState({
         open: false,
         openSnackBar: true,
@@ -132,6 +136,19 @@ class DonationPage extends React.Component {
     this.setState({ noteMsg: e.target.value });
   }
 
+  handleSlice(oldList, limiter) {
+    const { listBegin, listEnd } = this.state;
+    const begin = listBegin + limiter;
+    const end = listEnd + limiter;
+    const newList = oldList.slice(this.state.listBegin, this.state.listEnd);
+
+    this.setState({
+      listBegin: begin,
+      listEnd: end,
+      donationList: newList
+    });
+  }
+
   render() {
     return (
     <section className="donations">
@@ -157,6 +174,8 @@ class DonationPage extends React.Component {
       />
       <DonationHistory
         donations={this.state.donations}
+        onSlice={this.handleSlice}
+        donationList={this.state.donationList}
       />
     </section>
     );

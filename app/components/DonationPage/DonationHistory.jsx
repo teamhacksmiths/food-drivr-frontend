@@ -21,33 +21,27 @@ const convertDate = function convertDate(date) {
 class DonationHistory extends React.Component {
   render() {
     const originalDonationList = this.props.donations.map((donation, i) =>
-            <DonationHistoryList
-              key={i}
-              title={donation.participants.donor.name}
-              date={convertDate(donation.created_at)}
-            >
-              {donation.items.map((item, index) =>
-                <DonationHistoryItem
-                  key={index}
-                  quantity={item.quantity}
-                  unit={item.unit}
-                  title={item.description}
-                />
-              )}
-            </DonationHistoryList>
-          );
-    const newDonationList = originalDonationList.slice(0, 3);
-    console.log('Original Donation List');
-    console.log(originalDonationList);
-    console.log('New Donation List:');
-    console.log(newDonationList);
-
+        <DonationHistoryList
+          key={i}
+          title={donation.participants.donor.name}
+          date={convertDate(donation.created_at)}
+        >
+          {donation.items.map((item, index) =>
+            <DonationHistoryItem
+              key={index}
+              quantity={item.quantity}
+              unit={item.unit}
+              title={item.description}
+            />
+          )}
+        </DonationHistoryList>
+      );
     return (
       <section className="donations-history">
         <Headline value="Donations History" />
         <ul className="donations-history__list">
           <ScrollDest name="donationList">
-          {newDonationList}
+          {this.props.onSlice(originalDonationList)}
           </ScrollDest>
         </ul>
         <div
@@ -56,6 +50,7 @@ class DonationHistory extends React.Component {
         >
           <ScrollDownButton
             destination="donationList"
+            color="yellow"
             text="View More"
           />
         </div>
