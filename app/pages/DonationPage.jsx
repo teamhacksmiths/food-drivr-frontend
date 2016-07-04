@@ -3,6 +3,8 @@ import auth from '../utils/auth.js';
 import PendingDonations from '../components/DonationPage/PendingDonations.jsx';
 import DonationConfirmation from '../components/DonationPage/DonationConfirmation.jsx';
 import DonationHistory from '../components/DonationPage/DonationHistory.jsx';
+import DonationHistoryList from '../components/DonationPage/DonationHistoryList';
+import DonationHistoryItem from '../components/DonationPage/DonationHistoryItem';
 
 class DonationPage extends React.Component {
   constructor(props, context) {
@@ -18,6 +20,7 @@ class DonationPage extends React.Component {
       snackbarMessage: '',
       noteMsg: '',
       donationList: [],
+      newDonationList: [],
       listBegin: 0,
       listEnd: 3
     };
@@ -47,7 +50,29 @@ class DonationPage extends React.Component {
   handleGetDonations() {
     auth.getDonation().then((response) => {
       response.data.donations.sort((a, b) => a.created_at < b.created_at);
-      this.setState({ donations: response.data.donations });
+      const list = response.data.donations;
+      const mappedDonationList = list.map((donation, i) =>
+        <DonationHistoryList
+          key={i}
+          title={donation.participants.donor.name}
+          date={this.convertDate(donation.created_at)}
+        >
+          {donation.items.map((item, index) =>
+            <DonationHistoryItem
+              key={index}
+              quantity={item.quantity}
+              unit={item.unit}
+              title={item.description}
+            />
+          )}
+        </DonationHistoryList>);
+
+      this.setState({
+        donations: response.data.donations,
+        donationList: mappedDonationList,
+        newDonationList: mappedDonationList
+      });
+      this.handleSlice(0);
     })
     .catch((err) => {
       if (err.status >= 400 && err.status <= 500) {
@@ -55,6 +80,7 @@ class DonationPage extends React.Component {
         auth.logout();
         auth.onChange(false);
         this.context.router.push('/');
+        localStorage.clear();
       }
     });
   }
@@ -136,11 +162,23 @@ class DonationPage extends React.Component {
     this.setState({ noteMsg: e.target.value });
   }
 
-  handleSlice(oldList, limiter) {
-    const { listBegin, listEnd } = this.state;
-    const begin = listBegin + limiter;
-    const end = listEnd + limiter;
-    const newList = oldList.slice(this.state.listBegin, this.state.listEnd);
+  convertDate(date) {
+    const dateItems = date.split(/\-|T/i);
+    const months = [
+      'January', 'Febraury',
+      'March', 'April',
+      'May', 'June',
+      'July', 'September',
+      'October', 'November',
+      'December'
+    ];
+    return `${months[parseInt(dateItems[1] - 1, 10)]} ${dateItems[2]}, ${dateItems[0]}`;
+  }
+
+  handleSlice(limiter) {
+    const begin = this.state.listBegin;
+    const end = this.state.listEnd + limiter;
+    const newList = this.state.newDonationList.slice(begin, end);
 
     this.setState({
       listBegin: begin,
@@ -176,6 +214,7 @@ class DonationPage extends React.Component {
         donations={this.state.donations}
         onSlice={this.handleSlice}
         donationList={this.state.donationList}
+        convertDate={this.convertDate}
       />
     </section>
     );
