@@ -12,7 +12,7 @@
 .donation__item-list {
   overflow-x: hidden;
   max-height: 40vh;
-  max-width: 540px;
+  max-width: 755px;
   width: 95%;
   margin: 0 auto 20px;
 }
@@ -27,7 +27,7 @@
 }
 
 .donations-history {
-  max-width: 550px;
+  max-width: 755px;
   margin: auto;
 }
 .donations-history h1 {
@@ -143,6 +143,9 @@
       line-height: 1.9 !important;
     }
 	}
+  .donation__item-list {
+    width: 96%;
+  }
   .donation__item-name {
     font-size: $font-medium-thin;
   }
