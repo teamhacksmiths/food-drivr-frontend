@@ -74,13 +74,13 @@
   font-size: $font-small-thick;
   overflow-wrap: break-word;
   max-height: 45px;
-  overflow-y: scroll;
+  overflow-y: auto;
   li {
     display: inline;
     letter-spacing: 1px;
   }
   li:not(:last-child):after {
-    content: ","
+    content: ", "
   }
 }
 .donation-popup__address {
