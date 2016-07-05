@@ -11,7 +11,7 @@ const styles = {
     paddingBottom: 10,
     letterSpacing: 1.9,
     fontFamily: "'Open Sans', sans-serif",
-    fontSize: 14
+    fontSize: 12
   }
 };
 
