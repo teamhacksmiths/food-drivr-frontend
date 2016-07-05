@@ -34,12 +34,15 @@ class DonationHistory extends React.Component {
         <div
           href="#howto"
           className="intro__scrolldown text-center text-yellow pointer-cursor"
-          onClick={this.props.onSlice.bind(null, 3)}
+          onClick={this.props.donationList.length !== this.props.donations.length ?
+            this.props.onSlice.bind(null, 3) :
+            this.props.onSlice.bind(null, -3)}
         >
       <ScrollDownButton
         destination="donations"
         color="yellow"
-        text="View More"
+        text={this.props.donationList.length !== this.props.donations.length ?
+          'View More' : 'View Fewer'}
       />
         </div>
       </section>
