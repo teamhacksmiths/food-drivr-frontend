@@ -16,10 +16,12 @@ const ScrollDownButton = ({
   >
     <p>{text}</p>
     <img
-      src={color === 'white' ?
-        'images/down-arrow.svg'
+      src={color === 'white' ? 'images/down-arrow.svg'
       :
-        'images/down-arrow-yellow.svg'}
+        text === 'View More' ? 'images/down-arrow-yellow.svg'
+      :
+        'images/up-arrow-yellow.svg'
+      }
         alt="down arrow"
     />
   </ScrollTo>
