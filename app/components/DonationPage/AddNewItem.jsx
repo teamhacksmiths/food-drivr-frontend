@@ -8,7 +8,7 @@ const styles = {
     height: 50,
     marginRight: 15,
     lineHeight: 2.7,
-    paddingBottom: 30,
+    paddingBottom: 10,
     letterSpacing: 1.9,
     fontFamily: "'Open Sans', sans-serif",
     fontSize: 14
