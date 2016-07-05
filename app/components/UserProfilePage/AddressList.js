@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 import AddressListItem from './AddressListItem';
 import Divider from 'material-ui/Divider';
 import { List } from 'material-ui/List';
@@ -12,9 +12,10 @@ const AddressList = ({
     {addresses.length ?
       <List>
         {addresses.map((address, i) =>
-          <div>
+          <div
+            key={i}
+          >
             <AddressListItem
-              key={i}
               address={address}
               index={i}
               handleToggle={handleToggle}

@@ -2,31 +2,16 @@ import React from 'react';
 import Headline from '../Reusable/Headline';
 import DonationHistoryList from './DonationHistoryList';
 import DonationHistoryItem from './DonationHistoryItem';
+import ScrollDownButton from '../Reusable/ScrollDownButton.jsx';
+import { Element as ScrollDest } from 'react-scroll';
 
-const convertDate = function convertDate(date) {
-  const dateItems = date.split(/\-|T/i);
-  const months = [
-    'January', 'Febraury',
-    'March', 'April',
-    'May', 'June',
-    'July', 'September',
-    'October', 'November',
-    'December'
-  ];
-  return `${months[parseInt(dateItems[1] - 1, 10)]} ${dateItems[2]}, ${dateItems[0]}`;
-};
-
-const DonationHistory = ({
-  donations
-}) => (
-  <section className="donations-history">
-    <Headline value="Donations History" />
-    <ul className="donations-history__list">
-      {donations.map((donation, i) =>
+class DonationHistory extends React.Component {
+  render() {
+    const originalDonationList = this.props.donations.map((donation, i) =>
         <DonationHistoryList
           key={i}
           title={donation.participants.donor.name}
-          date={convertDate(donation.created_at)}
+          date={this.props.convertDate(donation.created_at)}
         >
           {donation.items.map((item, index) =>
             <DonationHistoryItem
@@ -37,10 +22,30 @@ const DonationHistory = ({
             />
           )}
         </DonationHistoryList>
-      )}
-    </ul>
-  </section>
-);
+      );
+    return (
+      <section className="donations-history">
+        <Headline value="Donations History" />
+        <ul className="donations-history__list">
+          <ScrollDest name="donations">
+            {this.props.donationList}
+          </ScrollDest>
+        </ul>
+        <div
+          href="#howto"
+          className="intro__scrolldown text-center text-yellow pointer-cursor"
+          onClick={this.props.onSlice.bind(null, 3)}
+        >
+      <ScrollDownButton
+        destination="donations"
+        color="yellow"
+        text="View More"
+      />
+        </div>
+      </section>
+    );
+  }
+}
 
 DonationHistory.propTypes = {
   donations: React.PropTypes.array.isRequired
