@@ -46,8 +46,12 @@ p {
 
 
 /* Thanks Cperry!! */
-html {
-	height: 100%; /* This has no effect, body already has 100% width */
+/*
+  Temporarily commentig this so it can be tested on actual devices, the new fix
+  has been added on .become-a__content class with a width of 65%.
+*/
+/* html {
+	height: 100%;
   width: 100%;
   overflow-x: hidden;
-}
+}  */

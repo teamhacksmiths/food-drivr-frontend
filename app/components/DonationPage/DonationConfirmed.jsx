@@ -20,7 +20,7 @@ const styles = {
     paddingBottom: 0
   },
   contentStyle: {
-    width: '50%',
+    width: '90%',
     minWidth: 300,
     maxWidth: 600
   }

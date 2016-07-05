@@ -3,15 +3,15 @@ import TextField from 'material-ui/TextField';
 
 const styles = {
   textField: {
-    width: '100%',
-    maxWidth: 500,
+    width: 'calc(100% - 40px)',
+    maxWidth: 715,
     height: 50,
     marginRight: 15,
     lineHeight: 2.7,
-    paddingBottom: 30,
+    paddingBottom: 10,
     letterSpacing: 1.9,
     fontFamily: "'Open Sans', sans-serif",
-    fontSize: 14
+    fontSize: 12
   }
 };
 

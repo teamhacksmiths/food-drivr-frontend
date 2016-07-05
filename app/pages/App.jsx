@@ -9,7 +9,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 class App extends React.Component {
   render() {
     const path = window.location.pathname;
-    const validRoutes = ['/signup/volunteer', '/signup/donor', 'donation', 'profile', '/'];
+    const validRoutes = ['/signup/volunteer', '/signup/donor', 'donation', 'profile', '/', '/thankyou'];
     const containerClass = classNames({
       container: true,
       'bg-blue': path === '/',
