@@ -109,21 +109,13 @@
 }
 
 .btn-addDonation {
-  @mixin square 55px;
+  @mixin square 40px;
   @mixin bg-img '/images/add-button.svg';
-  @media screen and (max-width: 650px) {
-    @mixin square 40px;
-  }
 }
 .btn-delDonation {
-  @mixin square 20px;
+  @mixin square 15px;
   @mixin bg-img '/images/delete-item.svg';
-  margin-left: 5px;
-  margin-top: auto;
-  margin-bottom: auto;
-  @media screen and (max-width: 650px) {
-    @mixin square 15px;
-  }
+  margin: auto 2px;
 }
 .btn-donate {
   @mixin rect 60%, 50px;
@@ -164,7 +156,9 @@
     font-size: $font-medium-thin;
   }
   .btn-delDonation {
-    @mixin square 25px;
-    margin-right: 0;
+    @mixin square 20px;
+  }
+  .btn-addDonation {
+    @mixin square 55px;
   }
 }
