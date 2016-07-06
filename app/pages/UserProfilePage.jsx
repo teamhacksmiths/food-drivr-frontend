@@ -450,10 +450,8 @@ If error occurs, logout user and return to homepage.
  * @param None
  */
   handleAddAddress() {
-    const {
-      addressToAdd
-    } = this.state;
-    if (addressToAdd === null) { return undefined; }
+    const { addressToAdd } = this.state;
+    if (!addressToAdd) { return undefined; }
     const formData = this.state.formData;
     const newAddress = {
       fullAddress: addressToAdd,
