@@ -28,7 +28,7 @@ class Header extends React.Component {
       .catch((err) => {
         console.log(err);
         auth.onChange(false);
-        localStorage.clear()
+        localStorage.clear();
       });
     }
   }
@@ -41,29 +41,29 @@ class Header extends React.Component {
     let headerButton = <AppStoreIcon />;
     let logInButton = <Login />;
     const validRoutes = ['/donation', '/profile', '/'];
-    const winlo = window.location.pathname;
+    const path = window.location.pathname;
 
-    if (winlo === '/donation' || winlo === '/profile') {
+    if (path === '/donation' || path === '/profile') {
       headerButton = <TruckButton />;
-    } else if (winlo === '/thankyou') {
+    } else if (path === '/thankyou') {
       headerButton = '';
-    } else if (winlo !== '/') {
+    } else if (path !== '/') {
       headerButton = <BackButton />;
     }
 
-    if (winlo === '/thankyou' ||
-      winlo.indexOf('/signup') > -1 ||
-      winlo === '/signin' ||
-      winlo === '/error' ||
-      validRoutes.indexOf(winlo) === -1
+    if (path === '/thankyou' ||
+        path.indexOf('/signup') > -1 ||
+        path === '/signin' ||
+        path === '/error' ||
+        validRoutes.indexOf(path) === -1
     ) {
       logInButton = '';
-    } else if (this.state.loggedIn || winlo === '/donation') {
+    } else if (this.state.loggedIn || path === '/donation') {
       logInButton = <UserHeader />;
     }
     return (
       <header
-        className={winlo === '/donation' ?
+        className={path === '/donation' ?
           'header header--donation bg-grey-x-light'
         :
           'header'
