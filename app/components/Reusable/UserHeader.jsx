@@ -8,6 +8,19 @@ class UserHeader extends React.Component {
     this.displayName = 'UserHeader';
   }
 
+  handleCloseMenu() {
+    document.querySelector('.header-menu').classList.remove('visible');
+    document.querySelector('.header-menu').classList.add('not-visible');
+  }
+
+  handleOpenMenu() {
+    const menuIsNotVisible = document.querySelector('.header-menu').classList.contains('not-visible');
+    if (menuIsNotVisible) {
+      document.querySelector('.header-menu').classList.remove('not-visible');
+      document.querySelector('.header-menu').classList.add('visible');
+    }
+  }
+
   render() {
     const UserHeaderClass = classNames({
       relative: true,
@@ -21,10 +34,16 @@ class UserHeader extends React.Component {
     const name = localStorage.getItem('name');
     return (
       <div className={UserHeaderClass}>
-        <div className={`header__user-name ${UserInfoContainerClass}`}>
+        <div
+          className={`header__user-name ${UserInfoContainerClass}`}
+          onMouseOver={this.handleOpenMenu}
+        >
           {name}
         </div>
-        <UserMenu />
+        <UserMenu
+          onOpenMenu={this.handleOpenMenu}
+          onCloseMenu={this.handleCloseMenu}
+        />
       </div>
     );
   }
