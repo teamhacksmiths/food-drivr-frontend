@@ -7,6 +7,15 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends React.Component {
+  handleCloseMenu(e) {
+    const clickOnMenuItem = e.target.classList.contains('header-menu__item');
+    const menuIsVisible = document.querySelector('.header-menu').classList.contains('visible');
+    if (!clickOnMenuItem && menuIsVisible) {
+      document.querySelector('.header-menu').classList.remove('visible');
+      document.querySelector('.header-menu').classList.add('not-visible');
+    }
+  }
+
   render() {
     const path = window.location.pathname;
     const validRoutes = ['/signup/volunteer', '/signup/donor', 'donation', 'profile', '/', '/thankyou'];
@@ -21,7 +30,7 @@ class App extends React.Component {
     });
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <div className={containerClass}>
+        <div className={containerClass} onClick={this.handleCloseMenu}>
           <Header />
           <ReactCSSTransitionGroup transitionName="appear" transitionEnterTimeout={500} transitionLeaveTimeout={1}>
             {React.cloneElement(this.props.children, { key: this.props.location.pathname })}
