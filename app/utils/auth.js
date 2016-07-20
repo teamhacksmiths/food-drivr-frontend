@@ -6,15 +6,15 @@ import axios from 'axios';
 
 module.exports = {
   login(email, pass) {
-    const token = (typeof window !== 'undefined') ? localStorage.getItem('token') : undefined;
+    const token = (typeof window !== 'undefined') ?
+      localStorage.getItem('token') : undefined;
 
     return axios({
       url: '/sessions',
       method: 'post',
       baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
-      transformRequest: [(data) =>
-        // Do whatever you want to transform the data
-        JSON.stringify(data)
+      transformRequest: [
+        (data) => JSON.stringify(data)
       ],
       data: { session: { email, password: pass } },
       responseType: 'json',
