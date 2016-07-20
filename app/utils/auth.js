@@ -13,7 +13,7 @@ module.exports = {
       method: 'post',
       baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
       transformRequest: [(data) =>
-    // Do whatever you want to transform the data
+        // Do whatever you want to transform the data
         JSON.stringify(data)
       ],
       data: { session: { email, password: pass } },
@@ -29,10 +29,9 @@ module.exports = {
       url: '/users',
       method: 'post',
       baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
-      transformRequest: [(data) =>
-    // Do whatever you want to transform the data
-        JSON.stringify(data)
-            ],
+      transformRequest: [
+        (data) => JSON.stringify(data)
+      ],
       data: {
         user: {
           name,
@@ -87,9 +86,8 @@ module.exports = {
       url: `/users/${localStorage.getItem('token')}`,
       method: 'patch',
       baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
-      transformRequest: [(data) =>
-    // Do whatever you want to transform the data
-        JSON.stringify(data)
+      transformRequest: [
+        (_) => JSON.stringify(_)
       ],
       data: {
         user: {
@@ -131,9 +129,8 @@ module.exports = {
       url: '/donor/donations',
       method: 'post',
       baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
-      transformRequest: [(data) =>
-    // Do whatever you want to transform the data
-        JSON.stringify(data)
+      transformRequest: [
+        (_) => JSON.stringify(_)
       ],
       data: {
         donation: {
@@ -153,9 +150,8 @@ module.exports = {
       url: `/users/${localStorage.getItem('token')}/password-update`,
       method: 'patch',
       baseURL: 'https://wastenotfoodtaxi.herokuapp.com/api/v1',
-      transformRequest: [(theData) =>
-    // Do whatever you want to transform the data
-        JSON.stringify(theData)
+      transformRequest: [
+        (_) => JSON.stringify(_)
       ],
       data: {
         user: {
