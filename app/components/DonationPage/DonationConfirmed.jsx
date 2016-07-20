@@ -2,6 +2,12 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
 
+const isBrowser = () =>
+  typeof window !== 'undefined';
+
+const isMobile = () =>
+  isBrowser && window.innerWidth <= 800 && window.innerHeight <= 600;
+
 const styles = {
   titleStyle: {
     borderBottom: 'none',
@@ -9,9 +15,9 @@ const styles = {
     textAlign: 'center',
     fontFamily: "'Roboto', sans-serif",
     textTransform: 'uppercase',
-    fontSize: window.screen.width >= 768 ? 20 : 18,
-    paddingBottom: window.screen.width >= 768 ? 15 : 0,
-    paddingTop: window.screen.width >= 768 ? 20 : 10,
+    fontSize: isMobile ? 18 : 20,
+    paddingBottom: isMobile ? 0 : 15,
+    paddingTop: isMobile ? 10 : 20,
     letterSpacing: 1.5
   },
   bodyStyle: {
