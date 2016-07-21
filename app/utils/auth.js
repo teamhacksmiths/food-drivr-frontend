@@ -91,6 +91,7 @@ module.exports = {
       ],
       data: {
         user: {
+          addresses_attributes: data.addresses,
           email: data.email,
           phone: data.phone,
           company: data.company,

@@ -123,12 +123,21 @@ If error occurs, logout user and return to homepage.
   getUserData() {
     auth.getUser()
       .then((response) => {
+        const {
+          email,
+          addresses,
+          phone,
+          company,
+          avatar,
+          settings
+        } = response.data.user;
         const newForm = this.state.formData;
-        newForm.email = response.data.user.email || '';
-        newForm.phone = response.data.user.phone || null;
-        newForm.company = response.data.user.company || null;
-        newForm.avatar = response.data.user.avatar || null;
-        newForm.notifications = response.data.user.settings.notifications;
+        newForm.email = email || '';
+        newForm.addresses = addresses;
+        newForm.phone = phone || null;
+        newForm.company = company || null;
+        newForm.avatar = avatar || null;
+        newForm.notifications = settings.notifications;
 
         this.setState({
           isLoading: false,
