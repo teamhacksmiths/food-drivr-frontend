@@ -61,6 +61,7 @@
     "react-geosuggest": "^1.22.0",
     "react-router": "^2.4.0",
     "react-scroll": "^1.0.16",
-    "react-tap-event-plugin": "^1.0.0"
+    "react-tap-event-plugin": "^1.0.0",
+    "webpack-hot-middleware": "^2.12.2"
   }
 }
