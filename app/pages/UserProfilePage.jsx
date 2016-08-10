@@ -25,16 +25,6 @@ const Styles = {
 const checkDefaults = (addresses) =>
   addresses.filter((item) => item.default === true).length > 0;
 
-const phoneHandler = {
-  set(target, name, value) {
-    console.log(`${target} ${name} ${value}`)
-    target[name] = value.match(/[0-9]/g).join('');
-  },
-  get(target, name) {
-    return target[name].replace(/(\d{3})(\d{3})(\d{4})/, '($1)-$2-$3');
-  }
-};
-
 class UserProfilePage extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -235,7 +225,6 @@ If error occurs, logout user and return to homepage.
   handleFormUpdate(e) {
     const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     const rePhone = /^\(\d{3}\) ?\d{3}( |-)?\d{4}|^\d{3}( |-)?\d{3}( |-)?\d{4}/i;
-    const numberRE = new RegExp(/[0-9]/g);
     const userData = Object.assign({}, this.state.userData);
     const newFormData = this.state.formData;
     const newFormErrors = this.state.errors;
@@ -249,11 +238,10 @@ If error occurs, logout user and return to homepage.
         this.state.errors.email = '';
       }
     } else if (e.target.id === 'phone') {
-      const phoneProxy = new Proxy({}, phoneHandler);
-      if (numberRE.test(e.target.value)) {
-        phoneProxy.phoneNumber = e.target.value;
+      if (!rePhone.test(e.target.value)) {
+        this.state.errors.phone = 'Phone Number is not valid.';
       } else {
-        this.state.errors.phone = 'Please enter a valid phone number (digits only, we\'ll do the rest)';
+        this.state.errors.phone = '';
       }
     } else if (e.target.id === 'newPassword') {
       if (!e.target.value) {
