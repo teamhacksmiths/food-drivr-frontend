@@ -51,16 +51,14 @@ class SignInPage extends React.Component {
       this.setState({ error: <CircularProgress /> });
       auth.login(valueEmail, valuePassword)
       .then((response) => {
-        console.log('hello from login');
-        console.log(response);
-        localStorage.setItem('token', response.data.authtoken.auth_token);
+        const {
+          auth_token
+        } = response.data.authtoken;
+        localStorage.setItem('token', auth_token);
         localStorage.setItem('email', valueEmail);
-        localStorage.setItem('password', valuePassword);
         return auth.getUser();
       })
       .then((response) => {
-        console.log(response);
-        console.log(response.data.user.role_id);
         localStorage.setItem('role', response.data.user.role_id);
         localStorage.setItem('name', response.data.user.name);
         const role = localStorage.getItem('role');
@@ -84,7 +82,13 @@ class SignInPage extends React.Component {
   }
 
   render() {
-    const { errorPassword, errorEmail, valueEmail, valuePassword, error } = this.state;
+    const {
+      errorPassword,
+      errorEmail,
+      valueEmail,
+      valuePassword,
+      error
+    } = this.state;
     return (
       <SignInUser
         email={valueEmail}
