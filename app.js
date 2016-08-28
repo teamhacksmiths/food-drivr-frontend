@@ -5,6 +5,7 @@ import express from 'express';
 //import routes from './app/config/routes';
 const app = express();
 const path = require('path');
+const port = process.env.NODE_ENV === 'production' ? process.env.PORT : 3000;
 
 // app.use((req, res) => {
 //   // Note that req.url here should be the full URL path from
@@ -30,4 +31,6 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
-app.listen(3000);
+app.listen(() => {
+  console.log(`Server running on port ${port}`);
+});
