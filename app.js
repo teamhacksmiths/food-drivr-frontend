@@ -26,11 +26,14 @@ const port = process.env.NODE_ENV === 'production' ? process.env.PORT : 3000;
 //   });
 // });
 
-app.use(express.static('./build'));
-app.get('/*', (req, res) => {
+app.use(express.static(__dirname + '/build'));
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
-app.listen(() => {
-  console.log(`Server running on port ${port}`);
+app.listen(port, '0.0.0.0', (err) => {
+  if (err) {
+    console.warn(err);
+  }
+  console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port);
 });
