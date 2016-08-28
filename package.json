@@ -8,7 +8,7 @@
     "build": "webpack",
     "start": "webpack-dev-server --progress --colors --inline && npm run build",
     "compile": "babel --presets react app/scripts/JSX --watch -d app/scripts/JSX-Compiled",
-    "serve": "./node_modules/.bin/babel-node server.js"
+    "serve": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -50,7 +50,6 @@
   },
   "dependencies": {
     "axios": "^0.11.0",
-    "babel": "^6.5.2",
     "babel-core": "^6.8.0",
     "classnames": "^2.2.5",
     "cloudinary": "^1.4.1",
