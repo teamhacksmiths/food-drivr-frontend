@@ -1,3 +1,4 @@
+![https://codeship.com/projects/de01a5b0-b24a-0133-5ab8-4a6e91c1fec7/status?branch=master]
 # Food Drivr Web App
 
 ## Getting Started
